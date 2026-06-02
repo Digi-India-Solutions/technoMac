@@ -205,22 +205,18 @@ const handleDelete = async (id) => {
               Manage promotional banners and advertisements
             </p>
           </div>
-          {/* {permiton?.write && (
+           {/* {permiton?.write && ( */}
             <Button
               onClick={() => {
-                if (permiton?.write) {
-                  resetForm();
-                  setShowAddModal(true);
-                } else {
-                  toast.error('You do not have permission to add banner');
-                }
+               resetForm();
+               setShowAddModal(true);
               }}
               className="bg-blue-600 hover:bg-blue-700 text-white flex items-center space-x-2"
             >
               <i className="ri-add-line"></i>
               <span>Add Banner</span>
             </Button>
-          )} */}
+          {/* )}  */}
         </div>
 
         {/* Banner Grid */}
@@ -241,9 +237,9 @@ const handleDelete = async (id) => {
 
                   <p className="text-gray-600 mt-2">{banner.subtitle}</p>
 
-                  <button className="mt-3 px-4 py-2 bg-blue-600 text-white rounded">
+                  {/* <button className="mt-3 px-4 py-2 bg-blue-600 text-white rounded">
                     {banner.buttonText}
-                  </button>
+                  </button> */}
 
                   <div className="flex gap-2 mt-4">
                     <Button
