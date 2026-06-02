@@ -14,182 +14,133 @@ import {
   getToken,
 } from '../../../../services/FetchNodeServices';
 
+const ITEMS_PER_PAGE = 12;
+
 export default function BannersManagement() {
   const [banners, setBanners] = useState([]);
   const [showAddModal, setShowAddModal] = useState(false);
   const [editingBanner, setEditingBanner] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
 
-  const emptyForm = {
-    title: '',
-    subtitle: '',
-    buttonText: '',
-    image: null,
-  };
+  const totalPages = Math.ceil(banners.length / ITEMS_PER_PAGE);
+  const paginatedBanners = banners.slice(
+    (currentPage - 1) * ITEMS_PER_PAGE,
+    currentPage * ITEMS_PER_PAGE,
+  );
 
+  const emptyForm = { title: '', subtitle: '', buttonText: '', image: null };
   const [formData, setFormData] = useState(emptyForm);
-  /** Reset Form */
+
   const resetForm = () => {
     setFormData(emptyForm);
     setEditingBanner(null);
   };
 
-  /** Fetch All Banners */
- const fetchBanners = async () => {
-   try {
-     setIsLoading(true);
-      console.log('TOKEN =>', getToken());
-
-     const response = await getData('banner/all');
-
-     if (response?.success) {
-       setBanners(response.banners || []);
-     }
-   } catch (error) {
-     toast.error('Failed to load banners');
-   } finally {
-     setIsLoading(false);
-   }
- };
-
- useEffect(() => {
-   fetchBanners();
- }, []);
+  const fetchBanners = async () => {
+    try {
+      setIsLoading(true);
+      const response = await getData('banner/all');
+      if (response?.success) {
+        setBanners(response.banners || []);
+        setCurrentPage(1);
+      }
+    } catch (error) {
+      toast.error('Failed to load banners');
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   useEffect(() => {
     fetchBanners();
   }, []);
 
-  /** Submit Form (Add / Edit) */
- const handleSubmit = async (e) => {
-   e.preventDefault();
-
-   try {
-     const data = new FormData();
-
-     data.append('title', formData.title);
-     data.append('subtitle', formData.subtitle);
-     data.append('buttonText', formData.buttonText);
-
-     if (formData.image instanceof File) {
-       data.append('image', formData.image);
-     }
-
-     let response;
-
-     if (editingBanner) {
-       response = await patchData(`banner/update/${editingBanner._id}`, data);
-     } else {
-       response = await postData('banner/create', data);
-     }
-
-     if (response?.success) {
-       toast.success(
-         editingBanner
-           ? 'Banner Updated Successfully'
-           : 'Banner Created Successfully',
-       );
-
-       setFormData(emptyForm);
-       setEditingBanner(null);
-       setShowAddModal(false);
-
-       fetchBanners();
-     }
-   } catch (error) {
-     toast.error('Something went wrong');
-   }
- };
-
-  /** Edit Banner */
-const handleEdit = (banner) => {
-  setEditingBanner(banner);
-
-  setFormData({
-    title: banner.title || '',
-    subtitle: banner.subtitle || '',
-    buttonText: banner.buttonText || '',
-    image: banner.image || '',
-  });
-
-  setShowAddModal(true);
-};
-
-  /** Delete Banner (local only, you can add API call here) */
-const handleDelete = async (id) => {
-   console.log('TOKEN =>', getToken());
-  const result = await Swal.fire({
-    title: 'Delete Banner?',
-    text: 'This action cannot be undone',
-    icon: 'warning',
-    showCancelButton: true,
-  });
-
-  if (!result.isConfirmed) return;
-
-  try {
-    
-    const response = await deleteData(`banner/delete/${id}`);
-
-    if (response?.success) {
-      toast.success('Banner Deleted');
-      fetchBanners();
-    }
-  } catch (error) {
-    toast.error('Delete Failed');
-  }
-};
-
-  /** Toggle Status */
-  const toggleStatus = async (bannerId, banner) => {
-    const updatedStatus = !banner.isActive;
-
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
-      const response = await postData('api/banner/change-status', {
-        bannerId: bannerId,
-        isActive: updatedStatus,
-      });
+      const data = new FormData();
+      data.append('title', formData.title);
+      data.append('subtitle', formData.subtitle);
+      data.append('buttonText', formData.buttonText);
+      if (formData.image instanceof File) data.append('image', formData.image);
 
-      if (response.success === true) {
-        const updatedProducts = banners.map((banner) => {
-          if (banner._id === bannerId) {
-            return { ...banner, isActive: updatedStatus };
-          }
-          return banner;
-        });
-        setBanners(updatedProducts);
-        toast.success('Banner status updated successfully');
+      let response;
+      if (editingBanner) {
+        response = await patchData(`banner/update/${editingBanner._id}`, data);
+      } else {
+        response = await postData('banner/create', data);
+      }
+
+      if (response?.success) {
+        toast.success(
+          editingBanner
+            ? 'Banner Updated Successfully'
+            : 'Banner Created Successfully',
+        );
+        resetForm();
+        setShowAddModal(false);
+        fetchBanners();
       }
     } catch (error) {
-      toast.error('Error updating Banner status');
-      console.error('Error updating Banner status:', error);
+      toast.error('Something went wrong');
     }
   };
-  const dateFormat = (date) => {
-    const options = { year: 'numeric', month: 'long', day: 'numeric' };
-    const formattedDate = new Date(date).toLocaleDateString('en-US', options);
-    return formattedDate;
+
+  const handleEdit = (banner) => {
+    setEditingBanner(banner);
+    setFormData({
+      title: banner.title || '',
+      subtitle: banner.subtitle || '',
+      buttonText: banner.buttonText || '',
+      image: banner.image || '',
+    });
+    setShowAddModal(true);
   };
 
-  // const fetchRoles = async () => {
-  //   try {
-  //     const response = await postData('api/adminRole/get-single-role-by-role', {
-  //       role: user?.role,
-  //     });
-  //     console.log(
-  //       'response.data:==>response.data:==>',
-  //       response?.data[0]?.permissions,
-  //     );
-  //     setPermiton(response?.data[0]?.permissions?.banners);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
+  const handleDelete = async (id) => {
+    const result = await Swal.fire({
+      title: 'Delete Banner?',
+      text: 'This action cannot be undone',
+      icon: 'warning',
+      showCancelButton: true,
+    });
+    if (!result.isConfirmed) return;
+    try {
+      const response = await deleteData(`banner/delete/${id}`);
+      if (response?.success) {
+        toast.success('Banner Deleted');
+        fetchBanners();
+      }
+    } catch (error) {
+      toast.error('Delete Failed');
+    }
+  };
 
-  // useEffect(() => {
-  //   fetchRoles();
-  // }, [user?.role]);
-  // console.log('hhhbanners:==>', banners);
+  // Pagination helper — shows max 5 page buttons with ellipsis
+  const getPageNumbers = () => {
+    if (totalPages <= 5)
+      return Array.from({ length: totalPages }, (_, i) => i + 1);
+    if (currentPage <= 3) return [1, 2, 3, 4, '...', totalPages];
+    if (currentPage >= totalPages - 2)
+      return [
+        1,
+        '...',
+        totalPages - 3,
+        totalPages - 2,
+        totalPages - 1,
+        totalPages,
+      ];
+    return [
+      1,
+      '...',
+      currentPage - 1,
+      currentPage,
+      currentPage + 1,
+      '...',
+      totalPages,
+    ];
+  };
 
   return (
     <AdminLayout>
@@ -205,61 +156,127 @@ const handleDelete = async (id) => {
               Manage promotional banners and advertisements
             </p>
           </div>
-           {/* {permiton?.write && ( */}
-            <Button
-              onClick={() => {
-               resetForm();
-               setShowAddModal(true);
-              }}
-              className="bg-blue-600 hover:bg-blue-700 text-white flex items-center space-x-2"
-            >
-              <i className="ri-add-line"></i>
-              <span>Add Banner</span>
-            </Button>
-          {/* )}  */}
+          <Button
+            onClick={() => {
+              resetForm();
+              setShowAddModal(true);
+            }}
+            className="bg-blue-600 hover:bg-blue-700 text-white flex items-center space-x-2"
+          >
+            <i className="ri-add-line"></i>
+            <span>Add Banner</span>
+          </Button>
         </div>
 
-        {/* Banner Grid */}
-        {banners.length === 0 ? (
-          <p className="text-gray-500">No banners found.</p>
-        ) : (
-          <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
-            {banners.map((banner) => (
-              <Card key={banner._id} className="overflow-hidden">
-                <img
-                  src={banner.image}
-                  alt={banner.title}
-                  className="w-full h-52 object-cover"
-                />
-
-                <div className="p-4">
-                  <h3 className="font-bold text-lg">{banner.title}</h3>
-
-                  <p className="text-gray-600 mt-2">{banner.subtitle}</p>
-
-                  {/* <button className="mt-3 px-4 py-2 bg-blue-600 text-white rounded">
-                    {banner.buttonText}
-                  </button> */}
-
-                  <div className="flex gap-2 mt-4">
-                    <Button
-                      onClick={() => handleEdit(banner)}
-                      className="flex-1 bg-blue-600 text-white"
-                    >
-                      Edit
-                    </Button>
-
-                    <Button
-                      onClick={() => handleDelete(banner._id)}
-                      className="flex-1 bg-red-600 text-white"
-                    >
-                      Delete
-                    </Button>
-                  </div>
-                </div>
-              </Card>
-            ))}
+        {/* Loading */}
+        {isLoading && (
+          <div className="flex justify-center items-center py-20">
+            <p className="text-gray-500">Loading banners...</p>
           </div>
+        )}
+
+        {/* Empty */}
+        {!isLoading && banners.length === 0 && (
+          <p className="text-gray-500">No banners found.</p>
+        )}
+
+        {/* Banner Grid */}
+        {!isLoading && banners.length > 0 && (
+          <>
+            <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
+              {paginatedBanners.map((banner) => (
+                <Card key={banner._id} className="overflow-hidden">
+                  <img
+                    src={banner.image}
+                    alt={banner.title}
+                    className="w-full h-52 object-cover"
+                  />
+                  <div className="p-4">
+                    <h3 className="font-bold text-lg">{banner.title}</h3>
+                    <p className="text-gray-600 mt-2">{banner.subtitle}</p>
+                    <div className="flex gap-2 mt-4">
+                      <Button
+                        onClick={() => handleEdit(banner)}
+                        className="flex-1 bg-blue-600 text-white"
+                      >
+                        Edit
+                      </Button>
+                      <Button
+                        onClick={() => handleDelete(banner._id)}
+                        className="flex-1 bg-red-600 text-white"
+                      >
+                        Delete
+                      </Button>
+                    </div>
+                  </div>
+                </Card>
+              ))}
+            </div>
+
+            {/* Pagination */}
+            {totalPages > 1 && (
+              <div className="mt-8 flex flex-col items-center gap-3">
+                {/* Page info */}
+                <p className="text-sm text-gray-500">
+                  Showing{' '}
+                  <span className="font-medium text-gray-700">
+                    {(currentPage - 1) * ITEMS_PER_PAGE + 1}–
+                    {Math.min(currentPage * ITEMS_PER_PAGE, banners.length)}
+                  </span>{' '}
+                  of{' '}
+                  <span className="font-medium text-gray-700">
+                    {banners.length}
+                  </span>{' '}
+                  banners
+                </p>
+
+                {/* Buttons */}
+                <div className="flex items-center gap-1">
+                  {/* Prev */}
+                  <button
+                    onClick={() => setCurrentPage((p) => p - 1)}
+                    disabled={currentPage === 1}
+                    className="px-3 py-1.5 rounded-lg border text-sm font-medium hover:bg-gray-100 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                  >
+                    ← Prev
+                  </button>
+
+                  {/* Page numbers */}
+                  {getPageNumbers().map((page, idx) =>
+                    page === '...' ? (
+                      <span
+                        key={`ellipsis-${idx}`}
+                        className="px-2 py-1.5 text-gray-400 text-sm"
+                      >
+                        ...
+                      </span>
+                    ) : (
+                      <button
+                        key={page}
+                        onClick={() => setCurrentPage(page)}
+                        className={`px-3 py-1.5 rounded-lg border text-sm font-medium transition-colors ${
+                          currentPage === page
+                            ? 'bg-blue-600 text-white border-blue-600'
+                            : 'hover:bg-gray-100'
+                        }`}
+                      >
+                        {page}
+                      </button>
+                    ),
+                  )}
+
+                  {/* Next */}
+                  <button
+                    onClick={() => setCurrentPage((p) => p + 1)}
+                    disabled={currentPage === totalPages}
+                    className="px-3 py-1.5 rounded-lg border text-sm font-medium hover:bg-gray-100 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+                  >
+                    Next →
+                  </button>
+                </div>
+              </div>
+            )}
+          </>
         )}
 
         {/* Add/Edit Modal */}
@@ -285,15 +302,11 @@ const handleDelete = async (id) => {
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div>
                     <label>Title</label>
-
                     <input
                       type="text"
                       value={formData.title}
                       onChange={(e) =>
-                        setFormData({
-                          ...formData,
-                          title: e.target.value,
-                        })
+                        setFormData({ ...formData, title: e.target.value })
                       }
                       className="w-full border rounded-lg p-2"
                       required
@@ -302,15 +315,11 @@ const handleDelete = async (id) => {
 
                   <div>
                     <label>Subtitle</label>
-
                     <input
                       type="text"
                       value={formData.subtitle}
                       onChange={(e) =>
-                        setFormData({
-                          ...formData,
-                          subtitle: e.target.value,
-                        })
+                        setFormData({ ...formData, subtitle: e.target.value })
                       }
                       className="w-full border rounded-lg p-2"
                     />
@@ -318,15 +327,11 @@ const handleDelete = async (id) => {
 
                   <div>
                     <label>Button Text</label>
-
                     <input
                       type="text"
                       value={formData.buttonText}
                       onChange={(e) =>
-                        setFormData({
-                          ...formData,
-                          buttonText: e.target.value,
-                        })
+                        setFormData({ ...formData, buttonText: e.target.value })
                       }
                       className="w-full border rounded-lg p-2"
                     />
@@ -334,7 +339,6 @@ const handleDelete = async (id) => {
 
                   <div>
                     <label>Banner Image</label>
-
                     {formData.image && typeof formData.image === 'string' && (
                       <img
                         src={formData.image}
@@ -342,7 +346,6 @@ const handleDelete = async (id) => {
                         className="h-32 w-full object-cover rounded mb-2"
                       />
                     )}
-
                     <input
                       type="file"
                       accept="image/*"
@@ -362,14 +365,12 @@ const handleDelete = async (id) => {
                       type="button"
                       onClick={() => {
                         setShowAddModal(false);
-                        setEditingBanner(null);
-                        setFormData(emptyForm);
+                        resetForm();
                       }}
                       className="flex-1"
                     >
                       Cancel
                     </Button>
-
                     <Button
                       type="submit"
                       className="flex-1 bg-blue-600 text-white"

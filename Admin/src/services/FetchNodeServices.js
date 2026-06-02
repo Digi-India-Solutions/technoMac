@@ -36,9 +36,10 @@ const getData = async (url) => {
 
 const patchData = async (url, body) => {
   try {
-    const response = await axios.patch(`${serverURL}/${url}`, body, {
+    const response = await axios.put(`${serverURL}/${url}`, body, {
       headers: {
         Authorization: `Bearer ${getToken()}`,
+        'Content-Type': 'multipart/form-data',
       },
     });
 

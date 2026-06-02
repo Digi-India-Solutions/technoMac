@@ -10,20 +10,21 @@ const adminAuth = async (req, res, next) => {
       });
     }
 
-    const token = authHeader.startsWith('Bearer ')
-      ? authHeader.split(' ')[1]
-      : authHeader;
+    let token;
 
-    const decoded = jwt.verify(
-      token,
-      process.env.JWT_SECRET, // <-- yahan change karo
-    );
+    if (authHeader.startsWith('Bearer ')) {
+      token = authHeader.split(' ')[1];
+    } else {
+      token = authHeader;
+    }
+
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
     req.admin = decoded;
 
     next();
   } catch (error) {
-    console.log('JWT ERROR =>', error.message);
+    console.log(error);
 
     return res.status(401).json({
       message: error.message,
