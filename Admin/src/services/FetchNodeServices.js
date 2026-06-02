@@ -1,0 +1,67 @@
+import axios from 'axios';
+
+const serverURL = 'http://localhost:8000/api';
+
+const getToken = () => {
+  const admin = JSON.parse(sessionStorage.getItem('Admin'));
+
+  return admin?.token;
+};
+
+const postData = async (url, body) => {
+  try {
+    const response = await axios.post(`${serverURL}/${url}`, body, {
+      headers: {
+        Authorization: `Bearer ${getToken()}`,
+      },
+    });
+
+    return response.data;
+  } catch (e) {
+    console.log(e);
+    return null;
+  }
+};
+
+const getData = async (url) => {
+  try {
+    const response = await axios.get(`${serverURL}/${url}`);
+
+    return response.data;
+  } catch (e) {
+    console.log(e);
+    return null;
+  }
+};
+
+const patchData = async (url, body) => {
+  try {
+    const response = await axios.patch(`${serverURL}/${url}`, body, {
+      headers: {
+        Authorization: `Bearer ${getToken()}`,
+      },
+    });
+
+    return response.data;
+  } catch (e) {
+    console.log(e);
+    return null;
+  }
+};
+
+const deleteData = async (url) => {
+  try {
+    const response = await axios.delete(`${serverURL}/${url}`, {
+      headers: {
+        Authorization: `Bearer ${getToken()}`,
+      },
+    });
+
+    return response.data;
+  } catch (e) {
+    console.log(e);
+    return null;
+  }
+};
+
+export { serverURL, postData, getData, patchData, deleteData, getToken };
