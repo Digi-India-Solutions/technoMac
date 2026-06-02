@@ -2,35 +2,36 @@ const Banner = require('../models/Banner');
 const cloudinary = require('../config/cloudinary');
 
 // CREATE BANNER
+// CREATE BANNER
 exports.createBanner = async (req, res) => {
   try {
     const { title, subtitle, buttonText } = req.body;
 
-    // upload image to cloudinary
-    const result = await cloudinary.uploader.upload(req.file.path);
+    if (!req.file) {
+      return res.status(400).json({ message: 'Image is required' });
+    }
 
-    // save in mongodb
+    // ✅ upload from buffer (memoryStorage)
+    const result = await new Promise((resolve, reject) => {
+      cloudinary.uploader
+        .upload_stream({ folder: 'banners' }, (error, result) => {
+          if (error) reject(error);
+          else resolve(result);
+        })
+        .end(req.file.buffer);
+    });
+
     const banner = await Banner.create({
       title,
-
       subtitle,
-
       buttonText,
-
       image: result.secure_url,
     });
 
-    res.status(201).json({
-      success: true,
-
-      banner,
-    });
-  } 
-  catch (error) {
-     console.log(error);
-    res.status(500).json({
-      message: error.message,
-    });
+    res.status(201).json({ success: true, banner });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: error.message });
   }
 };
 
@@ -71,17 +72,33 @@ exports.deleteBanner = async (req, res) => {
 // UPDATE BANNER
 exports.updateBanner = async (req, res) => {
   try {
-    const banner = await Banner.findByIdAndUpdate(req.params.id, req.body, {
+    const updateData = {
+      title: req.body.title,
+      subtitle: req.body.subtitle,
+      buttonText: req.body.buttonText,
+    };
+
+    if (req.file) {
+      // Upload from buffer instead of file path
+      const result = await new Promise((resolve, reject) => {
+        cloudinary.uploader
+          .upload_stream({ folder: 'banners' }, (error, result) => {
+            if (error) reject(error);
+            else resolve(result);
+          })
+          .end(req.file.buffer); // ← use buffer, not path
+      });
+
+      updateData.image = result.secure_url;
+    }
+
+    const banner = await Banner.findByIdAndUpdate(req.params.id, updateData, {
       new: true,
     });
 
-    res.status(200).json({
-      success: true,
-      banner,
-    });
+    res.status(200).json({ success: true, banner });
   } catch (error) {
-    res.status(500).json({
-      message: error.message,
-    });
+    console.log(error);
+    res.status(500).json({ message: error.message });
   }
 };

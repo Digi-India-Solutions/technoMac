@@ -1,30 +1,22 @@
+const dotenv = require('dotenv');
+dotenv.config();
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
-const dotenv = require('dotenv');
-dotenv.config();
 const cors = require('cors');
 const adminRoute = require('./routes/admin');
 const bannerRoute = require('./routes/banner');
 const ContactRoute = require('./routes/Contact');
 const faqRoute = require('./routes/faq');
-const {
-  categoryRouter,
-} = require('./routes/category');
-const {
-  subCategoryRouter,
-} = require('./routes/subCategory');
-const {
-  productRouter,
-} = require('./routes/Product');
+const { categoryRouter } = require('./routes/category');
+const { subCategoryRouter } = require('./routes/subCategory');
+const { productRouter } = require('./routes/Product');
 const warrantyRoute = require('./routes/Warrenty');
 
+const dns = require('dns');
 
-
-const dns = require("dns");
-
-dns.setDefaultResultOrder("ipv4first");
-dns.setServers(["8.8.8.8", "8.8.4.4",]);
+dns.setDefaultResultOrder('ipv4first');
+dns.setServers(['8.8.8.8', '8.8.4.4']);
 
 mongoose
   .connect(process.env.MONGO_URI)
@@ -46,7 +38,6 @@ app.use('/api/sub-category', subCategoryRouter);
 app.use('/api/product', productRouter);
 app.use('/api/warranty', warrantyRoute);
 app.use('/api/faq', faqRoute);
- 
 
 const PORT = process.env.PORT || 5000;
 

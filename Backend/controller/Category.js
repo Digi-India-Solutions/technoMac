@@ -1,22 +1,47 @@
 const { Category } = require('../models/Category');
+const cloudinary = require('../config/cloudinary');
 
-// ── CREATE ──────────────────────────────────────────────────────
 exports.createCategory = async (req, res) => {
   try {
     const { name, description } = req.body;
-    const image = req.file ? req.file.path : ''; // multer se image
 
     const existing = await Category.findOne({ name });
-    if (existing)
-      return res.status(400).json({ message: 'Category already exists' });
 
-    const category = await Category.create({ name, description, image });
+    if (existing) {
+      return res.status(400).json({
+        message: 'Category already exists',
+      });
+    }
 
-    res
-      .status(201)
-      .json({ success: true, message: 'Category created', data: category });
+    let imageUrl = '';
+
+    if (req.file) {
+      const result = await new Promise((resolve, reject) => {
+        cloudinary.uploader
+          .upload_stream({ folder: 'categories' }, (error, result) => {
+            if (error) reject(error);
+            else resolve(result);
+          })
+          .end(req.file.buffer);
+      });
+
+      imageUrl = result.secure_url;
+    }
+
+    const category = await Category.create({
+      name,
+      description,
+      image: imageUrl,
+    });
+
+    res.status(201).json({
+      success: true,
+      data: category,
+    });
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.status(500).json({
+      message: error.message,
+    });
   }
 };
 
@@ -49,24 +74,52 @@ exports.getCategoryById = async (req, res) => {
 exports.updateCategory = async (req, res) => {
   try {
     const { name, description, isActive } = req.body;
-    const image = req.file ? req.file.path : undefined;
 
-    const updateData = { name, description, isActive };
-    if (image) updateData.image = image;
+    const updateData = {
+      name,
+      description,
+      isActive,
+    };
+
+    // New image upload to Cloudinary
+    if (req.file) {
+      const result = await new Promise((resolve, reject) => {
+        cloudinary.uploader
+          .upload_stream({ folder: 'categories' }, (error, result) => {
+            if (error) reject(error);
+            else resolve(result);
+          })
+          .end(req.file.buffer);
+      });
+
+      updateData.image = result.secure_url;
+    }
 
     const category = await Category.findByIdAndUpdate(
       req.params.id,
       updateData,
-      { new: true },
+      {
+        new: true,
+      },
     );
-    if (!category)
-      return res.status(404).json({ message: 'Category not found' });
 
-    res
-      .status(200)
-      .json({ success: true, message: 'Category updated', data: category });
+    if (!category) {
+      return res.status(404).json({
+        message: 'Category not found',
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      message: 'Category updated',
+      data: category,
+    });
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    console.log(error);
+
+    res.status(500).json({
+      message: error.message,
+    });
   }
 };
 

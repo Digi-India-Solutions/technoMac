@@ -22,6 +22,6 @@ router.get('/all', getAllBanner);
 router.delete('/delete/:id', adminAuth, deleteBanner);
 
 // UPDATE
-router.patch('/update/:id', adminAuth, updateBanner);
+router.put('/update/:id', adminAuth, upload.single('image'), updateBanner);
 
 module.exports = router;
