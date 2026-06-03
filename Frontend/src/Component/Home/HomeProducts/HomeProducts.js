@@ -8,6 +8,8 @@ import image4 from "../../../../Images/product4.jpg";
 import image5 from "../../../../Images/product5.jpg";
 import image6 from "../../../../Images/product6.jpg";
 import Image from "next/image";
+import { useEffect, useState } from "react";
+import { getData } from "../../../services/FetchNodeServices";
 
 const products = [
 
@@ -50,6 +52,39 @@ const products = [
 ];
 
 export default function HomeProducts() {
+  const [category, setCategory] = useState([])
+  const [loading, setLoading] = useState(false)
+
+  const fetchAllCategory = async () => {
+    try {
+      // ✅ Remove leading slash — getData likely prepends serverURL + "/"
+      const response = await getData("category/");
+      console.log("categoryResponse=>", response)
+      if (response.success === true) {
+        // console.log("SSSS==>response", category)
+        // ✅ Map API response to the shape our UI expects
+        const mapped = response.data.map((item) => ({
+          image: item.imageUrl || item.image || item.category_image,
+          name: item.title || item.name || "",
+          desc: item.desc || item.description || item.subtitle || "",
+          isRemote: item.isActive || true, // flag to use <img> instead of next/image for remote URLs
+        }));
+        setCategory(mapped);
+      }
+      // If empty or null → keep static fallback already in state
+    } catch (e) {
+      console.error("Category fetch failed, using static fallback:", e?.message);
+      // ✅ Static Category already set as default — nothing extra needed
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // ✅ useEffect instead of useState
+  useEffect(() => {
+    fetchAllCategory();
+  }, []);
+  // console.log("SSSS==>response", category)
 
   return (
 
@@ -82,7 +117,7 @@ export default function HomeProducts() {
 
         <div className="row">
 
-          {products.map((item) => (
+          {category.map((item) => (
 
             <div
               className="col-lg-3 col-md-6 col-6 mb-4"
@@ -131,6 +166,6 @@ export default function HomeProducts() {
 
     </section>
 
-    
+
   );
 }

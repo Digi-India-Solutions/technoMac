@@ -1,16 +1,9 @@
-// middleware/upload.js
+// middleware/multer.js
 const multer = require('multer');
 const path = require('path');
 
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, 'uploads/'); // folder — pehle se exist karna chahiye
-  },
-  filename: (req, file, cb) => {
-    const unique = Date.now() + '-' + Math.round(Math.random() * 1e9);
-    cb(null, unique + path.extname(file.originalname));
-  },
-});
+// ✅ memoryStorage — file stays in RAM as buffer
+const storage = multer.memoryStorage();
 
 const fileFilter = (req, file, cb) => {
   const allowed = /jpeg|jpg|png|webp/;
@@ -21,8 +14,7 @@ const fileFilter = (req, file, cb) => {
 };
 
 module.exports = multer({
-  storage,
+  storage, // ← memoryStorage, no diskStorage
   fileFilter,
   limits: { fileSize: 5 * 1024 * 1024 },
 });
-// max 5MB per image
