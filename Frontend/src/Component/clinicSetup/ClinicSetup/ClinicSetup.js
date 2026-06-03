@@ -1,16 +1,11 @@
+"use client";
 import styles from "./ClinicSetup.module.css";
-
 import Image from "next/image";
-
-import {
-  FaCheckCircle,
-  FaArrowRight,
-} from "react-icons/fa";
-
+import { FaCheckCircle, FaArrowRight, } from "react-icons/fa";
 import setupImage from "../../../../Images/about-image.png";
-
+import { useState } from "react";
+import Link from "next/link";
 const services = [
-
   "Complete Dental Clinic Planning",
   "Single Chair & Multi Chair Setup",
   "Equipment Selection Guidance",
@@ -48,7 +43,85 @@ const process = [
 
 ];
 
+const chairOptions = [
+
+  {
+    name: "Basic Dental Chair",
+    price: 120000,
+  },
+
+  {
+    name: "Planet Chair",
+    price: 145000,
+  },
+
+  {
+    name: "Unicorn Flare Dental Chair",
+    price: 135000,
+  },
+
+  {
+    name: "Anthos A3",
+    price: 1050000,
+  },
+
+  {
+    name: "S500 Chair",
+    price: 560000,
+  },
+
+  {
+    name: "Premium Smart Chair",
+    price: 850000,
+  },
+
+];
+
+
+
 export default function ClinicSetup() {
+  const [patients, setPatients] = useState(10);
+
+  const [avgRevenue, setAvgRevenue] = useState(1500);
+
+  const [workingDays, setWorkingDays] = useState(22);
+
+  /* CALCULATIONS */
+
+  const dailyRevenue =
+    patients * avgRevenue;
+
+  const monthlyRevenue =
+    dailyRevenue * workingDays;
+
+  const monthlyPatients =
+    patients * workingDays;
+
+  const targetBudget =
+    monthlyRevenue * 3;
+
+  /* FIND CLOSEST CHAIRS */
+
+  const suggestedChairs =
+    [...chairOptions]
+      .sort((a, b) => {
+
+        return (
+          Math.abs(
+            a.price - targetBudget
+          ) -
+
+          Math.abs(
+            b.price - targetBudget
+          )
+        );
+      })
+      .filter(
+        (chair) =>
+          chair.price <= targetBudget * 1.5
+      )
+
+      .slice(0, 2);
 
   return (
 
@@ -495,10 +568,318 @@ export default function ClinicSetup() {
             </p>
 
             <button>
-
-              Book Consultation
-
+            <Link className="text-white text-decoration-none" href="/contact">Book Consultation</Link>
             </button>
+
+          </div>
+
+        </div>
+
+        {/* ROI CALCULATOR */}
+
+        <div className={styles.calculatorSection}>
+
+          <div className={styles.sectionHeading}>
+            <h2>
+              Dental Chair ROI
+              Calculator
+            </h2>
+
+            <p>
+              stimate monthly revenue and see two <b> closest chair options </b> for a budget of <b> 3× monthly revenue.</b>
+            </p>
+
+          </div>
+
+          {/* TOP CONTROLS */}
+
+          <div className="row">
+
+            {/* PATIENTS */}
+
+            <div className="col-lg-4 col-6 mb-4">
+
+              <div className={styles.calcCard}>
+
+                <h4>
+                  Patients Treated Per Day
+                </h4>
+
+                <div className={styles.rangeTop}>
+
+                  <span>
+                    Range: 1-30
+                  </span>
+
+                  <input
+                    type="number"
+                    value={patients}
+                    onChange={(e) =>
+                      setPatients(
+                        Number(e.target.value)
+                      )
+                    }
+                  />
+
+                </div>
+
+                <input
+                  type="range"
+                  min="1"
+                  max="30"
+                  value={patients}
+                  onChange={(e) =>
+                    setPatients(
+                      Number(e.target.value)
+                    )
+                  }
+                  className={styles.rangeInput}
+                />
+
+              </div>
+
+            </div>
+
+            {/* REVENUE */}
+
+            <div className="col-lg-4 col-6 mb-4">
+
+              <div className={styles.calcCard}>
+
+                <h4>
+                  Avg Revenue Per Patient
+                </h4>
+
+                <div className={styles.rangeTop}>
+
+                  <span>
+                    ₹500 - ₹20,000
+                  </span>
+
+                  <input
+                    type="number"
+                    value={avgRevenue}
+                    onChange={(e) =>
+                      setAvgRevenue(
+                        Number(e.target.value)
+                      )
+                    }
+                  />
+
+                </div>
+
+                <input
+                  type="range"
+                  min="500"
+                  max="20000"
+                  step="500"
+                  value={avgRevenue}
+                  onChange={(e) =>
+                    setAvgRevenue(
+                      Number(e.target.value)
+                    )
+                  }
+                  className={styles.rangeInput}
+                />
+
+              </div>
+
+            </div>
+
+            {/* DAYS */}
+
+            <div className="col-lg-4 col-6 mb-4">
+
+              <div className={styles.calcCard}>
+
+                <h4>
+                  Working Days Per Month
+                </h4>
+
+                <div className={styles.rangeTop}>
+
+                  <span>
+                    Range: 15-30
+                  </span>
+
+                  <input
+                    type="number"
+                    value={workingDays}
+                    onChange={(e) =>
+                      setWorkingDays(
+                        Number(e.target.value)
+                      )
+                    }
+                  />
+
+                </div>
+
+                <input
+                  type="range"
+                  min="15"
+                  max="30"
+                  value={workingDays}
+                  onChange={(e) =>
+                    setWorkingDays(
+                      Number(e.target.value)
+                    )
+                  }
+                  className={styles.rangeInput}
+                />
+
+              </div>
+
+            </div>
+
+          </div>
+
+          {/* RESULT */}
+
+          <div className={styles.resultCard}>
+
+            <div className={styles.resultTop}>
+
+              <div>
+
+                <span>
+                  Estimated Monthly Revenue
+                </span>
+
+                <h2>
+                  ₹
+                  {monthlyRevenue.toLocaleString("en-IN")}
+                </h2>
+
+                <p>
+                  {patients} patients/day × ₹
+                  {avgRevenue} × {workingDays}
+                  days
+                </p>
+
+              </div>
+
+            </div>
+
+            {/* STATS */}
+
+            <div className="row">
+
+              <div className="col-md-4 col-6 mb-3">
+
+                <div className={styles.statsCard}>
+
+                  <span>
+                    Daily Revenue
+                  </span>
+
+                  <h4>
+                    ₹
+                    {dailyRevenue.toLocaleString("en-IN")}
+                  </h4>
+
+                </div>
+
+              </div>
+
+              <div className="col-md-4 col-6 mb-3">
+
+                <div className={styles.statsCard}>
+
+                  <span>
+                    Patients / Month
+                  </span>
+
+                  <h4>
+                    {monthlyPatients}
+                  </h4>
+
+                </div>
+
+              </div>
+
+              <div className="col-md-4 col-6 mb-3">
+
+                <div className={styles.statsCard}>
+
+                  <span>
+                    Avg Ticket
+                  </span>
+
+                  <h4>
+                    ₹
+                    {avgRevenue}
+                  </h4>
+
+                </div>
+
+              </div>
+
+            </div>
+
+            {/* BUDGET */}
+
+            <div className="row mt-4">
+
+              <div className="col-lg-4 mb-4">
+
+                <div className={styles.budgetCard}>
+
+                  <span>
+                    3× Monthly Revenue
+                  </span>
+
+                  <h3>
+                    ₹
+                    {targetBudget.toLocaleString("en-IN")}
+                  </h3>
+
+                </div>
+
+              </div>
+
+              {suggestedChairs.map(
+                (chair, index) => (
+
+                  <div
+                    className="col-lg-4 mb-4"
+                    key={index}
+                  >
+
+                    <div className={styles.suggestCard}>
+
+                      <span>
+                        Suggested Chair
+                      </span>
+
+                      <h4>
+                        {chair.name}
+                      </h4>
+
+                      <p>
+
+                        Price: ₹
+                        {chair.price.toLocaleString("en-IN")}
+
+                      </p>
+
+                      <small>
+
+                        Difference to budget:
+                        ₹
+                        {Math.abs(
+                          targetBudget - chair.price
+                        ).toLocaleString("en-IN")}
+
+                      </small>
+
+                    </div>
+
+                  </div>
+
+                )
+              )}
+
+            </div>
 
           </div>
 

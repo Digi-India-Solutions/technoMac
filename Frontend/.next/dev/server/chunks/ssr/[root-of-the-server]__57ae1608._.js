@@ -286,7 +286,7 @@ function ContactPage() {
         }
     };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("section", {
-        className: "allSections",
+        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$Component$2f$contact$2f$ContactPage$2f$ContactPage$2e$module$2e$css__$5b$ssr$5d$__$28$css__module$29$__["default"].contactSection,
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
             className: "container",
             children: [
@@ -294,7 +294,7 @@ function ContactPage() {
                     pageName: "Contact Us"
                 }, void 0, false, {
                     fileName: "[project]/src/Component/contact/ContactPage/ContactPage.js",
-                    lineNumber: 111,
+                    lineNumber: 108,
                     columnNumber: 17
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
@@ -310,21 +310,21 @@ function ContactPage() {
                                         children: "Get In Touch"
                                     }, void 0, false, {
                                         fileName: "[project]/src/Component/contact/ContactPage/ContactPage.js",
-                                        lineNumber: 121,
+                                        lineNumber: 114,
                                         columnNumber: 29
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("h2", {
                                         children: "Let's Build Your Perfect Dental Clinic"
                                     }, void 0, false, {
                                         fileName: "[project]/src/Component/contact/ContactPage/ContactPage.js",
-                                        lineNumber: 123,
+                                        lineNumber: 116,
                                         columnNumber: 29
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("p", {
                                         children: "Connect with TECHNOMAC for premium dental equipment, clinic setup solutions and healthcare support."
                                     }, void 0, false, {
                                         fileName: "[project]/src/Component/contact/ContactPage/ContactPage.js",
-                                        lineNumber: 127,
+                                        lineNumber: 120,
                                         columnNumber: 29
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
@@ -334,12 +334,12 @@ function ContactPage() {
                                                 className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$Component$2f$contact$2f$ContactPage$2f$ContactPage$2e$module$2e$css__$5b$ssr$5d$__$28$css__module$29$__["default"].icon,
                                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$ssr$5d$__$28$ecmascript$29$__["FaPhoneAlt"], {}, void 0, false, {
                                                     fileName: "[project]/src/Component/contact/ContactPage/ContactPage.js",
-                                                    lineNumber: 138,
+                                                    lineNumber: 131,
                                                     columnNumber: 62
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/Component/contact/ContactPage/ContactPage.js",
-                                                lineNumber: 138,
+                                                lineNumber: 131,
                                                 columnNumber: 33
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
@@ -348,14 +348,14 @@ function ContactPage() {
                                                         children: "Phone Number"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/Component/contact/ContactPage/ContactPage.js",
-                                                        lineNumber: 142,
+                                                        lineNumber: 135,
                                                         columnNumber: 37
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("p", {
                                                         children: "Sales Dept: +91-8448825572, +91-9268825571,+91-9599090411"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/Component/contact/ContactPage/ContactPage.js",
-                                                        lineNumber: 144,
+                                                        lineNumber: 137,
                                                         columnNumber: 37
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("p", {
@@ -366,25 +366,25 @@ function ContactPage() {
                                                                 children: "+91 9311125574"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/Component/contact/ContactPage/ContactPage.js",
-                                                                lineNumber: 149,
+                                                                lineNumber: 142,
                                                                 columnNumber: 67
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/Component/contact/ContactPage/ContactPage.js",
-                                                        lineNumber: 148,
+                                                        lineNumber: 141,
                                                         columnNumber: 37
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/Component/contact/ContactPage/ContactPage.js",
-                                                lineNumber: 140,
+                                                lineNumber: 133,
                                                 columnNumber: 33
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/Component/contact/ContactPage/ContactPage.js",
-                                        lineNumber: 136,
+                                        lineNumber: 129,
                                         columnNumber: 29
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
@@ -394,12 +394,12 @@ function ContactPage() {
                                                 className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$Component$2f$contact$2f$ContactPage$2f$ContactPage$2e$module$2e$css__$5b$ssr$5d$__$28$css__module$29$__["default"].icon,
                                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$ssr$5d$__$28$ecmascript$29$__["FaEnvelope"], {}, void 0, false, {
                                                     fileName: "[project]/src/Component/contact/ContactPage/ContactPage.js",
-                                                    lineNumber: 163,
+                                                    lineNumber: 156,
                                                     columnNumber: 37
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/Component/contact/ContactPage/ContactPage.js",
-                                                lineNumber: 162,
+                                                lineNumber: 155,
                                                 columnNumber: 33
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
@@ -408,7 +408,7 @@ function ContactPage() {
                                                         children: "Email Address"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/Component/contact/ContactPage/ContactPage.js",
-                                                        lineNumber: 168,
+                                                        lineNumber: 161,
                                                         columnNumber: 37
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("a", {
@@ -416,19 +416,19 @@ function ContactPage() {
                                                         children: "info@technomac.com"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/Component/contact/ContactPage/ContactPage.js",
-                                                        lineNumber: 172,
+                                                        lineNumber: 165,
                                                         columnNumber: 37
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/Component/contact/ContactPage/ContactPage.js",
-                                                lineNumber: 166,
+                                                lineNumber: 159,
                                                 columnNumber: 33
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/Component/contact/ContactPage/ContactPage.js",
-                                        lineNumber: 160,
+                                        lineNumber: 153,
                                         columnNumber: 29
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
@@ -438,12 +438,12 @@ function ContactPage() {
                                                 className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$Component$2f$contact$2f$ContactPage$2f$ContactPage$2e$module$2e$css__$5b$ssr$5d$__$28$css__module$29$__["default"].icon,
                                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$ssr$5d$__$28$ecmascript$29$__["FaMapMarkerAlt"], {}, void 0, false, {
                                                     fileName: "[project]/src/Component/contact/ContactPage/ContactPage.js",
-                                                    lineNumber: 185,
+                                                    lineNumber: 178,
                                                     columnNumber: 37
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/Component/contact/ContactPage/ContactPage.js",
-                                                lineNumber: 184,
+                                                lineNumber: 177,
                                                 columnNumber: 33
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
@@ -452,37 +452,37 @@ function ContactPage() {
                                                         children: "Office Address"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/Component/contact/ContactPage/ContactPage.js",
-                                                        lineNumber: 190,
+                                                        lineNumber: 183,
                                                         columnNumber: 37
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("p", {
                                                         children: "Plot no.-88, Pocket- L, Sector 1, Bawana Industrial Area, DSIIDC Sub-city, New Delhi-110039, India"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/Component/contact/ContactPage/ContactPage.js",
-                                                        lineNumber: 194,
+                                                        lineNumber: 187,
                                                         columnNumber: 37
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/Component/contact/ContactPage/ContactPage.js",
-                                                lineNumber: 188,
+                                                lineNumber: 181,
                                                 columnNumber: 33
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/Component/contact/ContactPage/ContactPage.js",
-                                        lineNumber: 182,
+                                        lineNumber: 175,
                                         columnNumber: 29
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/Component/contact/ContactPage/ContactPage.js",
-                                lineNumber: 119,
+                                lineNumber: 112,
                                 columnNumber: 25
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/Component/contact/ContactPage/ContactPage.js",
-                            lineNumber: 117,
+                            lineNumber: 110,
                             columnNumber: 21
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
@@ -493,24 +493,22 @@ function ContactPage() {
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
                                         className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$Component$2f$contact$2f$ContactPage$2f$ContactPage$2e$module$2e$css__$5b$ssr$5d$__$28$css__module$29$__["default"].formHeader,
                                         children: [
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("span", {
-                                                children: "Contact Form"
-                                            }, void 0, false, {
-                                                fileName: "[project]/src/Component/contact/ContactPage/ContactPage.js",
-                                                lineNumber: 213,
-                                                columnNumber: 33
-                                            }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("h3", {
                                                 children: "Send Inquiry"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/Component/contact/ContactPage/ContactPage.js",
-                                                lineNumber: 214,
+                                                lineNumber: 206,
+                                                columnNumber: 33
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("hr", {}, void 0, false, {
+                                                fileName: "[project]/src/Component/contact/ContactPage/ContactPage.js",
+                                                lineNumber: 207,
                                                 columnNumber: 33
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/Component/contact/ContactPage/ContactPage.js",
-                                        lineNumber: 212,
+                                        lineNumber: 205,
                                         columnNumber: 29
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("form", {
@@ -529,7 +527,7 @@ function ContactPage() {
                                                                     children: "Full Name"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/Component/contact/ContactPage/ContactPage.js",
-                                                                    lineNumber: 221,
+                                                                    lineNumber: 214,
                                                                     columnNumber: 45
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("input", {
@@ -540,7 +538,7 @@ function ContactPage() {
                                                                     placeholder: "Enter your name"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/Component/contact/ContactPage/ContactPage.js",
-                                                                    lineNumber: 222,
+                                                                    lineNumber: 215,
                                                                     columnNumber: 45
                                                                 }, this),
                                                                 errors.fullName && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("span", {
@@ -548,18 +546,18 @@ function ContactPage() {
                                                                     children: errors.fullName
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/Component/contact/ContactPage/ContactPage.js",
-                                                                    lineNumber: 223,
+                                                                    lineNumber: 216,
                                                                     columnNumber: 65
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/Component/contact/ContactPage/ContactPage.js",
-                                                            lineNumber: 220,
+                                                            lineNumber: 213,
                                                             columnNumber: 41
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/Component/contact/ContactPage/ContactPage.js",
-                                                        lineNumber: 219,
+                                                        lineNumber: 212,
                                                         columnNumber: 37
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
@@ -571,7 +569,7 @@ function ContactPage() {
                                                                     children: "Phone Number"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/Component/contact/ContactPage/ContactPage.js",
-                                                                    lineNumber: 229,
+                                                                    lineNumber: 222,
                                                                     columnNumber: 45
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("input", {
@@ -582,7 +580,7 @@ function ContactPage() {
                                                                     placeholder: "Enter phone number"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/Component/contact/ContactPage/ContactPage.js",
-                                                                    lineNumber: 230,
+                                                                    lineNumber: 223,
                                                                     columnNumber: 45
                                                                 }, this),
                                                                 errors.phoneNumber && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("span", {
@@ -590,18 +588,18 @@ function ContactPage() {
                                                                     children: errors.phoneNumber
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/Component/contact/ContactPage/ContactPage.js",
-                                                                    lineNumber: 231,
+                                                                    lineNumber: 224,
                                                                     columnNumber: 68
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/Component/contact/ContactPage/ContactPage.js",
-                                                            lineNumber: 228,
+                                                            lineNumber: 221,
                                                             columnNumber: 41
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/Component/contact/ContactPage/ContactPage.js",
-                                                        lineNumber: 227,
+                                                        lineNumber: 220,
                                                         columnNumber: 37
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
@@ -613,7 +611,7 @@ function ContactPage() {
                                                                     children: "Email Address"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/Component/contact/ContactPage/ContactPage.js",
-                                                                    lineNumber: 237,
+                                                                    lineNumber: 230,
                                                                     columnNumber: 45
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("input", {
@@ -624,7 +622,7 @@ function ContactPage() {
                                                                     placeholder: "Enter email address"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/Component/contact/ContactPage/ContactPage.js",
-                                                                    lineNumber: 238,
+                                                                    lineNumber: 231,
                                                                     columnNumber: 45
                                                                 }, this),
                                                                 errors.email && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("span", {
@@ -632,18 +630,18 @@ function ContactPage() {
                                                                     children: errors.email
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/Component/contact/ContactPage/ContactPage.js",
-                                                                    lineNumber: 239,
+                                                                    lineNumber: 232,
                                                                     columnNumber: 62
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/Component/contact/ContactPage/ContactPage.js",
-                                                            lineNumber: 236,
+                                                            lineNumber: 229,
                                                             columnNumber: 41
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/Component/contact/ContactPage/ContactPage.js",
-                                                        lineNumber: 235,
+                                                        lineNumber: 228,
                                                         columnNumber: 37
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
@@ -655,7 +653,7 @@ function ContactPage() {
                                                                     children: "Product Interest"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/Component/contact/ContactPage/ContactPage.js",
-                                                                    lineNumber: 245,
+                                                                    lineNumber: 238,
                                                                     columnNumber: 45
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("input", {
@@ -666,7 +664,7 @@ function ContactPage() {
                                                                     placeholder: "Dental Chair"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/Component/contact/ContactPage/ContactPage.js",
-                                                                    lineNumber: 246,
+                                                                    lineNumber: 239,
                                                                     columnNumber: 45
                                                                 }, this),
                                                                 errors.productInterest && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("span", {
@@ -674,18 +672,18 @@ function ContactPage() {
                                                                     children: errors.productInterest
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/Component/contact/ContactPage/ContactPage.js",
-                                                                    lineNumber: 247,
+                                                                    lineNumber: 240,
                                                                     columnNumber: 72
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/Component/contact/ContactPage/ContactPage.js",
-                                                            lineNumber: 244,
+                                                            lineNumber: 237,
                                                             columnNumber: 41
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/Component/contact/ContactPage/ContactPage.js",
-                                                        lineNumber: 242,
+                                                        lineNumber: 235,
                                                         columnNumber: 37
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
@@ -697,7 +695,7 @@ function ContactPage() {
                                                                     children: "Message"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/Component/contact/ContactPage/ContactPage.js",
-                                                                    lineNumber: 252,
+                                                                    lineNumber: 245,
                                                                     columnNumber: 45
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("textarea", {
@@ -708,7 +706,7 @@ function ContactPage() {
                                                                     placeholder: "Write your message..."
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/Component/contact/ContactPage/ContactPage.js",
-                                                                    lineNumber: 253,
+                                                                    lineNumber: 246,
                                                                     columnNumber: 45
                                                                 }, this),
                                                                 errors.message && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("span", {
@@ -716,24 +714,24 @@ function ContactPage() {
                                                                     children: errors.message
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/Component/contact/ContactPage/ContactPage.js",
-                                                                    lineNumber: 254,
+                                                                    lineNumber: 247,
                                                                     columnNumber: 64
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/Component/contact/ContactPage/ContactPage.js",
-                                                            lineNumber: 251,
+                                                            lineNumber: 244,
                                                             columnNumber: 41
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/Component/contact/ContactPage/ContactPage.js",
-                                                        lineNumber: 250,
+                                                        lineNumber: 243,
                                                         columnNumber: 37
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/Component/contact/ContactPage/ContactPage.js",
-                                                lineNumber: 218,
+                                                lineNumber: 211,
                                                 columnNumber: 33
                                             }, this),
                                             errors.api && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("p", {
@@ -741,7 +739,7 @@ function ContactPage() {
                                                 children: errors.api
                                             }, void 0, false, {
                                                 fileName: "[project]/src/Component/contact/ContactPage/ContactPage.js",
-                                                lineNumber: 258,
+                                                lineNumber: 251,
                                                 columnNumber: 48
                                             }, this),
                                             successMsg && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("p", {
@@ -749,7 +747,7 @@ function ContactPage() {
                                                 children: successMsg
                                             }, void 0, false, {
                                                 fileName: "[project]/src/Component/contact/ContactPage/ContactPage.js",
-                                                lineNumber: 261,
+                                                lineNumber: 254,
                                                 columnNumber: 48
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("div", {
@@ -761,7 +759,7 @@ function ContactPage() {
                                                         children: loading ? 'Send Inquiry...' : 'Send Inquiry'
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/Component/contact/ContactPage/ContactPage.js",
-                                                        lineNumber: 265,
+                                                        lineNumber: 258,
                                                         columnNumber: 37
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])("a", {
@@ -771,54 +769,54 @@ function ContactPage() {
                                                         children: [
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$externals$5d2f$react$2f$jsx$2d$dev$2d$runtime__$5b$external$5d$__$28$react$2f$jsx$2d$dev$2d$runtime$2c$__cjs$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$ssr$5d$__$28$ecmascript$29$__["FaWhatsapp"], {}, void 0, false, {
                                                                 fileName: "[project]/src/Component/contact/ContactPage/ContactPage.js",
-                                                                lineNumber: 267,
+                                                                lineNumber: 260,
                                                                 columnNumber: 41
                                                             }, this),
                                                             "WhatsApp"
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/src/Component/contact/ContactPage/ContactPage.js",
-                                                        lineNumber: 266,
+                                                        lineNumber: 259,
                                                         columnNumber: 37
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/Component/contact/ContactPage/ContactPage.js",
-                                                lineNumber: 264,
+                                                lineNumber: 257,
                                                 columnNumber: 33
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/Component/contact/ContactPage/ContactPage.js",
-                                        lineNumber: 216,
+                                        lineNumber: 209,
                                         columnNumber: 29
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/Component/contact/ContactPage/ContactPage.js",
-                                lineNumber: 211,
+                                lineNumber: 204,
                                 columnNumber: 25
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/Component/contact/ContactPage/ContactPage.js",
-                            lineNumber: 210,
+                            lineNumber: 203,
                             columnNumber: 21
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/Component/contact/ContactPage/ContactPage.js",
-                    lineNumber: 113,
+                    lineNumber: 109,
                     columnNumber: 17
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/src/Component/contact/ContactPage/ContactPage.js",
-            lineNumber: 109,
+            lineNumber: 107,
             columnNumber: 13
         }, this)
     }, void 0, false, {
         fileName: "[project]/src/Component/contact/ContactPage/ContactPage.js",
-        lineNumber: 108,
+        lineNumber: 106,
         columnNumber: 9
     }, this);
 }

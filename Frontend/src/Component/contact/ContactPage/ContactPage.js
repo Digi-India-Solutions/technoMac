@@ -102,18 +102,11 @@ export default function ContactPage() {
         }
     };
 
-
     return (
-
-        <section className="allSections">
+        <section className={styles.contactSection}>
             <div className="container">
-
                 <Breadcrumb pageName="Contact Us" />
-
                 <div className="row">
-
-                    {/* LEFT */}
-
                     <div className="col-lg-5 mb-4">
 
                         <div className={styles.contactInfo}>
@@ -210,8 +203,8 @@ export default function ContactPage() {
                     <div className="col-lg-7">
                         <div className={styles.formCard}>
                             <div className={styles.formHeader}>
-                                <span>Contact Form</span>
                                 <h3>Send Inquiry</h3>
+                                <hr />
                             </div>
                             <form onSubmit={handleSubmit} noValidate>
 
