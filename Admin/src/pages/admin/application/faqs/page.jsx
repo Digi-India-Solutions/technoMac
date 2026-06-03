@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import AdminLayout from '../../../../components/feature/AdminLayout';
 import Card from '../../../../components/base/Card';
 import Button from '../../../../components/base/Button';
-import { getData, patchData, postData, updateFaq } from '../../../../services/FetchNodeServices';
+import { deleteData, getData, patchData, postData, updateFaq } from '../../../../services/FetchNodeServices';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Swal from 'sweetalert2';
@@ -129,7 +129,7 @@ export default function FAQsManagement() {
 
     if (confirm.isConfirmed) {
       try {
-        const res = await getData(`faq/delete-faq/${id}`);
+        const res = await deleteData(`faq/${id}`);
         if (res.success) {
           toast.success('FAQ deleted successfully');
           fetchFaqs();

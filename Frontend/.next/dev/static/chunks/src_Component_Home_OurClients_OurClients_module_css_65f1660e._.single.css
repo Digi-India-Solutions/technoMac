@@ -1,0 +1,124 @@
+/* [project]/src/Component/Home/OurClients/OurClients.module.css [client] (css) */
+.OurClients-module__APLnUW__clientSection {
+  background: linear-gradient(#fff, #f8f8f8);
+  padding: 20px 0 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.OurClients-module__APLnUW__glow {
+  filter: blur(90px);
+  background: radial-gradient(circle, #e5393514, #0000 70%);
+  width: 450px;
+  height: 450px;
+  position: absolute;
+  top: -180px;
+  right: -150px;
+}
+
+.OurClients-module__APLnUW__heading {
+  text-align: center;
+  z-index: 2;
+  margin: auto auto 20px;
+  position: relative;
+}
+
+.OurClients-module__APLnUW__heading span {
+  color: var(--theme-color);
+  background: #e5393514;
+  border-radius: 50px;
+  margin-bottom: 10px;
+  padding: 10px 20px;
+  font-size: 12px;
+  font-weight: 800;
+  display: inline-block;
+}
+
+.OurClients-module__APLnUW__heading h2 {
+  color: #111;
+  margin-bottom: 5px;
+  font-size: 28px;
+  font-weight: 900;
+}
+
+.OurClients-module__APLnUW__heading p {
+  color: #666;
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+.OurClients-module__APLnUW__clientCard {
+  background: #fff;
+  border: 1px solid #0000000a;
+  border-radius: 18px;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  transition: all .4s;
+  display: flex;
+  box-shadow: 0 15px 35px #0000000d;
+}
+
+.OurClients-module__APLnUW__clientCard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 22px 45px #00000014;
+}
+
+.OurClients-module__APLnUW__clientLogo {
+  object-fit: contain;
+  border-radius: 18px;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  transition: all .4s;
+}
+
+.OurClients-module__APLnUW__clientCard:hover .OurClients-module__APLnUW__clientLogo {
+  transform: scale(1.05);
+}
+
+@media (width <= 991px) {
+  .OurClients-module__APLnUW__heading h2 {
+    font-size: 46px;
+  }
+
+  .OurClients-module__APLnUW__clientCard {
+    height: 150px;
+  }
+}
+
+@media (width <= 576px) {
+  .OurClients-module__APLnUW__clientLogo {
+    object-fit: fill;
+  }
+
+  .OurClients-module__APLnUW__clientSection {
+    padding: 30px 0;
+  }
+
+  .OurClients-module__APLnUW__heading {
+    margin-bottom: 40px;
+  }
+
+  .OurClients-module__APLnUW__heading h2 {
+    font-size: 18px;
+  }
+
+  .OurClients-module__APLnUW__heading p {
+    font-size: 15px;
+  }
+
+  .OurClients-module__APLnUW__clientCard {
+    border-radius: 20px;
+    height: 120px;
+    padding: 10px;
+  }
+
+  .OurClients-module__APLnUW__clientLogo {
+    border-radius: 20px;
+    max-width: 130px;
+    height: 100px;
+  }
+}
+
+/*# sourceMappingURL=src_Component_Home_OurClients_OurClients_module_css_65f1660e._.single.css.map*/

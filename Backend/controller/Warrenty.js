@@ -1,5 +1,5 @@
 const { Warranty } = require('../models/Warranty');
-
+const cloudinary = require('../config/cloudinary');
 
 exports.registerWarranty = async (req, res) => {
   try {
@@ -19,7 +19,19 @@ exports.registerWarranty = async (req, res) => {
     } = req.body;
 
     // Image multer se aayegi
-    const productImage = req.file ? req.file.path : '';
+    let productImage = req.file ? req.file.path : '';
+    if (req.file) {
+      const result = await new Promise((resolve, reject) => {
+        cloudinary.uploader
+          .upload_stream({ folder: 'productImage' }, (error, result) => {
+            if (error) reject(error);
+            else resolve(result);
+          })
+          .end(req.file.buffer);
+      });
+
+      productImage = result.secure_url;
+    }
 
     // Same serial number dobara register nahi hona chahiye
     const existing = await Warranty.findOne({ serialNumber });

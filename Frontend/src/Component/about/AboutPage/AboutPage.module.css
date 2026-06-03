@@ -1,0 +1,251 @@
+.aboutPage {
+  overflow: hidden;
+}
+
+/* HERO */
+
+.aboutHero {
+ padding: 20px 0 0px;
+  text-align: center;
+  background: linear-gradient(
+    180deg,
+    #fff5f6,
+    #f7f5f4
+  );
+}
+
+.tag {
+  display: inline-block;
+  background: #ffe7ea;
+  color: #ff4d5a;
+  padding: 12px 22px;
+  border-radius: 50px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.heroContent h1 {
+  font-size: 40px;
+  font-weight: 800;
+  line-height: 1.1;
+  color: #111;
+  margin-bottom: 20px;
+}
+
+.heroContent p {
+  font-size: 22px;
+  color: #666;
+}
+
+/* INTRO */
+
+.aboutIntro {
+ padding: 70px 0;
+}
+
+.introContent h2 {
+  margin-bottom: 10px;
+    font-size: 22px;
+    font-weight: 800;
+}
+
+.introContent p {
+  font-size: 17px;
+  line-height: 1.9;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.introImage img {
+  width: 100%;
+  border-radius: 30px;
+}
+
+/* WHY */
+
+.whySection {
+ padding: 70px 0;
+  background: #fff;
+}
+
+.sectionHeading {
+  text-align: center;
+  margin-bottom: 70px;
+}
+
+.sectionHeading span {
+  color: #ff4d5a;
+  font-weight: 600;
+}
+
+.sectionHeading h2 {
+  font-size: 40px;
+  font-weight: 800;
+  margin-top: 15px;
+}
+
+.featureCard {
+  background: #fff;
+  border-radius: 28px;
+  padding: 40px;
+  height: 100%;
+  transition: 0.4s;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+}
+
+.featureCard:hover {
+  transform: translateY(-8px);
+}
+
+.iconBox {
+  width: 80px;
+  height: 80px;
+  background: #ff4d5a;
+  border-radius: 22px;
+  color: #fff;
+  font-size: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+
+.featureCard h3 {
+  font-size: 28px;
+  margin-bottom: 18px;
+}
+
+.featureCard p {
+  color: #666;
+  line-height: 1.8;
+}
+
+/* PRODUCTS */
+
+.productSection {
+ padding: 70px 0;
+}
+
+.productGrid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 25px;
+}
+
+.productItem {
+  background: #fff;
+  border-radius: 22px;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  transition: 0.3s;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.05);
+}
+
+.productItem:hover {
+  transform: translateY(-5px);
+}
+
+.productItem svg {
+  color: #ff4d5a;
+  font-size: 22px;
+}
+
+/* COMMITMENT */
+
+.commitmentSection {
+ padding: 0px 0;
+}
+
+.commitmentBox {
+  background: linear-gradient(
+    135deg,
+    #ff4d5a,
+    #ff7b85
+  );
+  padding: 80px;
+  border-radius: 40px;
+  text-align: center;
+  color: #fff;
+}
+
+.commitmentBox span {
+  font-weight: 600;
+}
+
+.commitmentBox h2 {
+  font-size: 60px;
+  font-weight: 800;
+  margin: 25px 0;
+}
+
+.commitmentBox p {
+  font-size: 18px;
+  line-height: 1.9;
+  max-width: 900px;
+  margin: auto;
+  margin-bottom: 20px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width: 991px) {
+
+  .heroContent h1,
+  .introContent h2,
+  .sectionHeading h2,
+  .commitmentBox h2 {
+    font-size: 42px;
+  }
+
+  .aboutIntro,
+  .whySection,
+  .productSection,
+  .commitmentSection {
+    padding: 50px 0;
+  }
+
+  .introContent {
+    margin-bottom: 40px;
+  }
+
+  .productGrid {
+    grid-template-columns: repeat(2,1fr);
+  }
+
+  .commitmentBox {
+    padding: 50px 30px;
+  }
+}
+
+@media(max-width: 576px) {
+
+  .aboutHero {
+ padding: 60px 0 0px;
+  }
+
+  .heroContent h1,
+  .introContent h2,
+  .sectionHeading h2,
+  .commitmentBox h2 {
+    font-size: 18px;
+  }
+
+  .heroContent p,
+  .commitmentBox p {
+    font-size: 16px;
+  }
+
+  .productGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .featureCard {
+    padding: 30px;
+  }
+
+  .commitmentBox {
+    border-radius: 24px;
+  }
+}
