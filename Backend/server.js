@@ -29,6 +29,7 @@ mongoose
 app.use('/uploads', express.static('uploads'));
 app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.use('/api/admin', adminRoute);
 app.use('/api/banner', bannerRoute);

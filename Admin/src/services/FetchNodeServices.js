@@ -50,6 +50,22 @@ const patchData = async (url, body) => {
   }
 };
 
+// FAQsManagement.jsx mein — import ke neeche add karo
+const updateFaq = async (url, body) => {
+  try {
+    const response = await axios.put(`${serverURL}/${url}`, body, {
+      headers: {
+        Authorization: `Bearer ${getToken()}`,
+        'Content-Type': 'application/json', // ✅ JSON
+      },
+    });
+    return response.data;
+  } catch (e) {
+    console.log(e);
+    return null;
+  }
+};
+
 const deleteData = async (url) => {
   try {
     const response = await axios.delete(`${serverURL}/${url}`, {
@@ -65,4 +81,4 @@ const deleteData = async (url) => {
   }
 };
 
-export { serverURL, postData, getData, patchData, deleteData, getToken };
+export { serverURL, postData, getData, patchData, deleteData, getToken, updateFaq };
