@@ -300,3 +300,35 @@
     font-size: 15px;
   }
 }
+
+.inputError input {
+  border-color: #e53e3e !important;
+}
+
+.errorText {
+  color: #e53e3e;
+  font-size: 12px;
+  margin-top: 4px;
+  display: block;
+  padding-left: 4px;
+}
+
+.apiError {
+  color: #e53e3e;
+  font-size: 13px;
+  margin-top: 8px;
+  text-align: center;
+}
+
+.successMsg {
+  color: #38a169;
+  font-size: 13px;
+  margin-top: 8px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.submitBtn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}

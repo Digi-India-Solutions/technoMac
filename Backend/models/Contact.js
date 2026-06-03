@@ -19,7 +19,7 @@ const ContactSchema = new mongoose.Schema(
 
     productInterest: {
       type: String,
-      required: true,
+      // required: true,
     },
 
     message: {

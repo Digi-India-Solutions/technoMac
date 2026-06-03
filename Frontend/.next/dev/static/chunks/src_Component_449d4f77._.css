@@ -2025,6 +2025,38 @@
   }
 }
 
+.EnquirySection-module__PNJkUq__inputError input {
+  border-color: #e53e3e !important;
+}
+
+.EnquirySection-module__PNJkUq__errorText {
+  color: #e53e3e;
+  margin-top: 4px;
+  padding-left: 4px;
+  font-size: 12px;
+  display: block;
+}
+
+.EnquirySection-module__PNJkUq__apiError {
+  color: #e53e3e;
+  text-align: center;
+  margin-top: 8px;
+  font-size: 13px;
+}
+
+.EnquirySection-module__PNJkUq__successMsg {
+  color: #38a169;
+  text-align: center;
+  margin-top: 8px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.EnquirySection-module__PNJkUq__submitBtn:disabled {
+  opacity: .7;
+  cursor: not-allowed;
+}
+
 /* [project]/src/Component/Home/HeroBanner/HeroBanner.module.css [client] (css) */
 .HeroBanner-module__gompBq__heroSection {
   position: relative;

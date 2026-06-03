@@ -3099,6 +3099,7 @@ function HomeProducts() {
                 // console.log("SSSS==>response", category)
                 // ✅ Map API response to the shape our UI expects
                 const mapped = response.data.map((item)=>({
+                        _id: item._id,
                         image: item.imageUrl || item.image || item.category_image,
                         name: item.title || item.name || "",
                         desc: item.desc || item.description || item.subtitle || "",
@@ -3133,27 +3134,27 @@ function HomeProducts() {
                             children: "Our Products"
                         }, void 0, false, {
                             fileName: "[project]/src/Component/Home/HomeProducts/HomeProducts.js",
-                            lineNumber: 99,
+                            lineNumber: 100,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
                             children: "Advanced Dental Equipment Solutions"
                         }, void 0, false, {
                             fileName: "[project]/src/Component/Home/HomeProducts/HomeProducts.js",
-                            lineNumber: 103,
+                            lineNumber: 104,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                             children: "Explore premium dental healthcare products designed for modern clinics and professionals."
                         }, void 0, false, {
                             fileName: "[project]/src/Component/Home/HomeProducts/HomeProducts.js",
-                            lineNumber: 108,
+                            lineNumber: 109,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/Component/Home/HomeProducts/HomeProducts.js",
-                    lineNumber: 97,
+                    lineNumber: 98,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3173,12 +3174,12 @@ function HomeProducts() {
                                             alt: item.name
                                         }, void 0, false, {
                                             fileName: "[project]/src/Component/Home/HomeProducts/HomeProducts.js",
-                                            lineNumber: 136,
+                                            lineNumber: 137,
                                             columnNumber: 19
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/Component/Home/HomeProducts/HomeProducts.js",
-                                        lineNumber: 134,
+                                        lineNumber: 135,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3188,47 +3189,47 @@ function HomeProducts() {
                                                 children: item.name
                                             }, void 0, false, {
                                                 fileName: "[project]/src/Component/Home/HomeProducts/HomeProducts.js",
-                                                lineNumber: 147,
+                                                lineNumber: 148,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                 children: "Explore Products"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/Component/Home/HomeProducts/HomeProducts.js",
-                                                lineNumber: 151,
+                                                lineNumber: 152,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/Component/Home/HomeProducts/HomeProducts.js",
-                                        lineNumber: 145,
+                                        lineNumber: 146,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/Component/Home/HomeProducts/HomeProducts.js",
-                                lineNumber: 127,
+                                lineNumber: 128,
                                 columnNumber: 15
                             }, this)
-                        }, item.id, false, {
+                        }, item._id, false, {
                             fileName: "[project]/src/Component/Home/HomeProducts/HomeProducts.js",
-                            lineNumber: 122,
+                            lineNumber: 123,
                             columnNumber: 13
                         }, this))
                 }, void 0, false, {
                     fileName: "[project]/src/Component/Home/HomeProducts/HomeProducts.js",
-                    lineNumber: 118,
+                    lineNumber: 119,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/src/Component/Home/HomeProducts/HomeProducts.js",
-            lineNumber: 93,
+            lineNumber: 94,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/src/Component/Home/HomeProducts/HomeProducts.js",
-        lineNumber: 91,
+        lineNumber: 92,
         columnNumber: 5
     }, this);
 }
@@ -3243,13 +3244,17 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
 "[project]/src/Component/Home/EnquirySection/EnquirySection.module.css [client] (css module)", ((__turbopack_context__) => {
 
 __turbopack_context__.v({
+  "apiError": "EnquirySection-module__PNJkUq__apiError",
   "content": "EnquirySection-module__PNJkUq__content",
   "enquiryCard": "EnquirySection-module__PNJkUq__enquiryCard",
   "enquirySection": "EnquirySection-module__PNJkUq__enquirySection",
+  "errorText": "EnquirySection-module__PNJkUq__errorText",
   "form": "EnquirySection-module__PNJkUq__form",
   "formWrapper": "EnquirySection-module__PNJkUq__formWrapper",
+  "inputError": "EnquirySection-module__PNJkUq__inputError",
   "inputGroup": "EnquirySection-module__PNJkUq__inputGroup",
   "submitBtn": "EnquirySection-module__PNJkUq__submitBtn",
+  "successMsg": "EnquirySection-module__PNJkUq__successMsg",
 });
 }),
 "[project]/src/Component/Home/EnquirySection/EnquirySection.js [client] (ecmascript)", ((__turbopack_context__) => {
@@ -3260,12 +3265,107 @@ __turbopack_context__.s([
     ()=>EnquirySection
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/react/jsx-dev-runtime.js [client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/react/index.js [client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$Component$2f$Home$2f$EnquirySection$2f$EnquirySection$2e$module$2e$css__$5b$client$5d$__$28$css__module$29$__ = __turbopack_context__.i("[project]/src/Component/Home/EnquirySection/EnquirySection.module.css [client] (css module)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/react-icons/fa/index.mjs [client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$services$2f$FetchNodeServices$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/services/FetchNodeServices.js [client] (ecmascript)"); // ✅ import
+;
+var _s = __turbopack_context__.k.signature();
+;
 ;
 ;
 ;
 function EnquirySection() {
+    _s();
+    const [form, setForm] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])({
+        name: "",
+        message: "",
+        email: "",
+        phone: ""
+    });
+    const [errors, setErrors] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])({});
+    const [loading, setLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    const [successMsg, setSuccessMsg] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])("");
+    // ─── Handle Input Change ───────────────────────────────────────────────────
+    const handleChange = (e)=>{
+        const { name, value } = e.target;
+        setForm((prev)=>({
+                ...prev,
+                [name]: value
+            }));
+        // ✅ Clear error on type
+        if (errors[name]) {
+            setErrors((prev)=>({
+                    ...prev,
+                    [name]: ""
+                }));
+        }
+    };
+    // ─── Validation ────────────────────────────────────────────────────────────
+    const validate = ()=>{
+        const newErrors = {};
+        if (!form.name.trim()) {
+            newErrors.name = "Name is required";
+        }
+        if (!form.email.trim()) {
+            newErrors.email = "Email is required";
+        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
+            newErrors.email = "Enter a valid email";
+        }
+        if (!form.phone.trim()) {
+            newErrors.phone = "Phone is required";
+        } else if (!/^[6-9]\d{9}$/.test(form.phone)) {
+            newErrors.phone = "Enter a valid 10-digit phone number";
+        }
+        if (!form.message.trim()) {
+            newErrors.message = "Message is required";
+        }
+        return newErrors;
+    };
+    // ─── Handle Submit ─────────────────────────────────────────────────────────
+    const handleSubmit = async (e)=>{
+        e.preventDefault();
+        const validationErrors = validate();
+        if (Object.keys(validationErrors).length > 0) {
+            setErrors(validationErrors);
+            return;
+        }
+        // ✅ Payload
+        const payload = {
+            fullName: form.name.trim(),
+            email: form.email.trim(),
+            phoneNumber: form.phone.trim(),
+            message: form.message.trim()
+        };
+        console.log("Enquiry Payload =>", payload);
+        setLoading(true);
+        setSuccessMsg("");
+        try {
+            const response = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$services$2f$FetchNodeServices$2e$js__$5b$client$5d$__$28$ecmascript$29$__["postData"])("contact/create", payload);
+            console.log("Enquiry Response =>", response);
+            if (response?.success === true) {
+                setSuccessMsg("Thank you! We'll get back to you soon.");
+                setForm({
+                    name: "",
+                    email: "",
+                    phone: "",
+                    message: ""
+                }); // ✅ reset
+                setErrors({});
+            } else {
+                setErrors({
+                    api: response?.message || "Something went wrong. Please try again."
+                });
+            }
+        } catch (e) {
+            console.error("Enquiry submit failed:", e?.message);
+            setErrors({
+                api: "Server error. Please try again later."
+            });
+        } finally{
+            setLoading(false);
+        }
+    };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
         className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$Component$2f$Home$2f$EnquirySection$2f$EnquirySection$2e$module$2e$css__$5b$client$5d$__$28$css__module$29$__["default"].enquirySection,
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3280,196 +3380,268 @@ function EnquirySection() {
                                 children: "QUICK SUPPORT"
                             }, void 0, false, {
                                 fileName: "[project]/src/Component/Home/EnquirySection/EnquirySection.js",
-                                lineNumber: 24,
+                                lineNumber: 100,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
                                 children: "Stay Connected With TECHNOMAC"
                             }, void 0, false, {
                                 fileName: "[project]/src/Component/Home/EnquirySection/EnquirySection.js",
-                                lineNumber: 28,
+                                lineNumber: 101,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                 children: "Get product updates, dental equipment offers and latest healthcare innovations."
                             }, void 0, false, {
                                 fileName: "[project]/src/Component/Home/EnquirySection/EnquirySection.js",
-                                lineNumber: 33,
+                                lineNumber: 102,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/Component/Home/EnquirySection/EnquirySection.js",
-                        lineNumber: 22,
+                        lineNumber: 99,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$Component$2f$Home$2f$EnquirySection$2f$EnquirySection$2e$module$2e$css__$5b$client$5d$__$28$css__module$29$__["default"].formWrapper,
                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
                             className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$Component$2f$Home$2f$EnquirySection$2f$EnquirySection$2e$module$2e$css__$5b$client$5d$__$28$css__module$29$__["default"].form,
+                            onSubmit: handleSubmit,
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "row",
                                     children: [
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             className: "col-md-6",
-                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$Component$2f$Home$2f$EnquirySection$2f$EnquirySection$2e$module$2e$css__$5b$client$5d$__$28$css__module$29$__["default"].inputGroup,
-                                                children: [
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$client$5d$__$28$ecmascript$29$__["FaUser"], {}, void 0, false, {
-                                                        fileName: "[project]/src/Component/Home/EnquirySection/EnquirySection.js",
-                                                        lineNumber: 55,
-                                                        columnNumber: 21
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                                                        type: "text",
-                                                        placeholder: "Name*"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/src/Component/Home/EnquirySection/EnquirySection.js",
-                                                        lineNumber: 57,
-                                                        columnNumber: 21
-                                                    }, this)
-                                                ]
-                                            }, void 0, true, {
-                                                fileName: "[project]/src/Component/Home/EnquirySection/EnquirySection.js",
-                                                lineNumber: 53,
-                                                columnNumber: 19
-                                            }, this)
-                                        }, void 0, false, {
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    className: `${__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$Component$2f$Home$2f$EnquirySection$2f$EnquirySection$2e$module$2e$css__$5b$client$5d$__$28$css__module$29$__["default"].inputGroup} ${errors.name ? __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$Component$2f$Home$2f$EnquirySection$2f$EnquirySection$2e$module$2e$css__$5b$client$5d$__$28$css__module$29$__["default"].inputError : ""}`,
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$client$5d$__$28$ecmascript$29$__["FaUser"], {}, void 0, false, {
+                                                            fileName: "[project]/src/Component/Home/EnquirySection/EnquirySection.js",
+                                                            lineNumber: 116,
+                                                            columnNumber: 21
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                                                            type: "text",
+                                                            name: "name",
+                                                            placeholder: "Name*",
+                                                            value: form.name,
+                                                            onChange: handleChange
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/Component/Home/EnquirySection/EnquirySection.js",
+                                                            lineNumber: 117,
+                                                            columnNumber: 21
+                                                        }, this)
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/src/Component/Home/EnquirySection/EnquirySection.js",
+                                                    lineNumber: 115,
+                                                    columnNumber: 19
+                                                }, this),
+                                                errors.name && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                    className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$Component$2f$Home$2f$EnquirySection$2f$EnquirySection$2e$module$2e$css__$5b$client$5d$__$28$css__module$29$__["default"].errorText,
+                                                    children: errors.name
+                                                }, void 0, false, {
+                                                    fileName: "[project]/src/Component/Home/EnquirySection/EnquirySection.js",
+                                                    lineNumber: 126,
+                                                    columnNumber: 21
+                                                }, this)
+                                            ]
+                                        }, void 0, true, {
                                             fileName: "[project]/src/Component/Home/EnquirySection/EnquirySection.js",
-                                            lineNumber: 51,
+                                            lineNumber: 114,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             className: "col-md-6",
-                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$Component$2f$Home$2f$EnquirySection$2f$EnquirySection$2e$module$2e$css__$5b$client$5d$__$28$css__module$29$__["default"].inputGroup,
-                                                children: [
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$client$5d$__$28$ecmascript$29$__["FaEnvelope"], {}, void 0, false, {
-                                                        fileName: "[project]/src/Component/Home/EnquirySection/EnquirySection.js",
-                                                        lineNumber: 72,
-                                                        columnNumber: 21
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                                                        type: "email",
-                                                        placeholder: "Email*"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/src/Component/Home/EnquirySection/EnquirySection.js",
-                                                        lineNumber: 74,
-                                                        columnNumber: 21
-                                                    }, this)
-                                                ]
-                                            }, void 0, true, {
-                                                fileName: "[project]/src/Component/Home/EnquirySection/EnquirySection.js",
-                                                lineNumber: 70,
-                                                columnNumber: 19
-                                            }, this)
-                                        }, void 0, false, {
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    className: `${__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$Component$2f$Home$2f$EnquirySection$2f$EnquirySection$2e$module$2e$css__$5b$client$5d$__$28$css__module$29$__["default"].inputGroup} ${errors.email ? __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$Component$2f$Home$2f$EnquirySection$2f$EnquirySection$2e$module$2e$css__$5b$client$5d$__$28$css__module$29$__["default"].inputError : ""}`,
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$client$5d$__$28$ecmascript$29$__["FaEnvelope"], {}, void 0, false, {
+                                                            fileName: "[project]/src/Component/Home/EnquirySection/EnquirySection.js",
+                                                            lineNumber: 133,
+                                                            columnNumber: 21
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                                                            type: "email",
+                                                            name: "email",
+                                                            placeholder: "Email*",
+                                                            value: form.email,
+                                                            onChange: handleChange
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/Component/Home/EnquirySection/EnquirySection.js",
+                                                            lineNumber: 134,
+                                                            columnNumber: 21
+                                                        }, this)
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/src/Component/Home/EnquirySection/EnquirySection.js",
+                                                    lineNumber: 132,
+                                                    columnNumber: 19
+                                                }, this),
+                                                errors.email && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                    className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$Component$2f$Home$2f$EnquirySection$2f$EnquirySection$2e$module$2e$css__$5b$client$5d$__$28$css__module$29$__["default"].errorText,
+                                                    children: errors.email
+                                                }, void 0, false, {
+                                                    fileName: "[project]/src/Component/Home/EnquirySection/EnquirySection.js",
+                                                    lineNumber: 143,
+                                                    columnNumber: 21
+                                                }, this)
+                                            ]
+                                        }, void 0, true, {
                                             fileName: "[project]/src/Component/Home/EnquirySection/EnquirySection.js",
-                                            lineNumber: 68,
+                                            lineNumber: 131,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             className: "col-md-6",
-                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$Component$2f$Home$2f$EnquirySection$2f$EnquirySection$2e$module$2e$css__$5b$client$5d$__$28$css__module$29$__["default"].inputGroup,
-                                                children: [
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$client$5d$__$28$ecmascript$29$__["FaPhoneAlt"], {}, void 0, false, {
-                                                        fileName: "[project]/src/Component/Home/EnquirySection/EnquirySection.js",
-                                                        lineNumber: 89,
-                                                        columnNumber: 21
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                                                        type: "text",
-                                                        placeholder: "Phone*"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/src/Component/Home/EnquirySection/EnquirySection.js",
-                                                        lineNumber: 91,
-                                                        columnNumber: 21
-                                                    }, this)
-                                                ]
-                                            }, void 0, true, {
-                                                fileName: "[project]/src/Component/Home/EnquirySection/EnquirySection.js",
-                                                lineNumber: 87,
-                                                columnNumber: 19
-                                            }, this)
-                                        }, void 0, false, {
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    className: `${__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$Component$2f$Home$2f$EnquirySection$2f$EnquirySection$2e$module$2e$css__$5b$client$5d$__$28$css__module$29$__["default"].inputGroup} ${errors.phone ? __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$Component$2f$Home$2f$EnquirySection$2f$EnquirySection$2e$module$2e$css__$5b$client$5d$__$28$css__module$29$__["default"].inputError : ""}`,
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$client$5d$__$28$ecmascript$29$__["FaPhoneAlt"], {}, void 0, false, {
+                                                            fileName: "[project]/src/Component/Home/EnquirySection/EnquirySection.js",
+                                                            lineNumber: 150,
+                                                            columnNumber: 21
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                                                            type: "text",
+                                                            name: "phone",
+                                                            placeholder: "Phone*",
+                                                            value: form.phone,
+                                                            onChange: handleChange,
+                                                            maxLength: 10
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/Component/Home/EnquirySection/EnquirySection.js",
+                                                            lineNumber: 151,
+                                                            columnNumber: 21
+                                                        }, this)
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/src/Component/Home/EnquirySection/EnquirySection.js",
+                                                    lineNumber: 149,
+                                                    columnNumber: 19
+                                                }, this),
+                                                errors.phone && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                    className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$Component$2f$Home$2f$EnquirySection$2f$EnquirySection$2e$module$2e$css__$5b$client$5d$__$28$css__module$29$__["default"].errorText,
+                                                    children: errors.phone
+                                                }, void 0, false, {
+                                                    fileName: "[project]/src/Component/Home/EnquirySection/EnquirySection.js",
+                                                    lineNumber: 161,
+                                                    columnNumber: 21
+                                                }, this)
+                                            ]
+                                        }, void 0, true, {
                                             fileName: "[project]/src/Component/Home/EnquirySection/EnquirySection.js",
-                                            lineNumber: 85,
+                                            lineNumber: 148,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             className: "col-md-6",
-                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$Component$2f$Home$2f$EnquirySection$2f$EnquirySection$2e$module$2e$css__$5b$client$5d$__$28$css__module$29$__["default"].inputGroup,
-                                                children: [
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$client$5d$__$28$ecmascript$29$__["FaPaperPlane"], {}, void 0, false, {
-                                                        fileName: "[project]/src/Component/Home/EnquirySection/EnquirySection.js",
-                                                        lineNumber: 106,
-                                                        columnNumber: 21
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                                                        type: "text",
-                                                        placeholder: "Message"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/src/Component/Home/EnquirySection/EnquirySection.js",
-                                                        lineNumber: 108,
-                                                        columnNumber: 21
-                                                    }, this)
-                                                ]
-                                            }, void 0, true, {
-                                                fileName: "[project]/src/Component/Home/EnquirySection/EnquirySection.js",
-                                                lineNumber: 104,
-                                                columnNumber: 19
-                                            }, this)
-                                        }, void 0, false, {
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    className: `${__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$Component$2f$Home$2f$EnquirySection$2f$EnquirySection$2e$module$2e$css__$5b$client$5d$__$28$css__module$29$__["default"].inputGroup} ${errors.message ? __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$Component$2f$Home$2f$EnquirySection$2f$EnquirySection$2e$module$2e$css__$5b$client$5d$__$28$css__module$29$__["default"].inputError : ""}`,
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$client$5d$__$28$ecmascript$29$__["FaPaperPlane"], {}, void 0, false, {
+                                                            fileName: "[project]/src/Component/Home/EnquirySection/EnquirySection.js",
+                                                            lineNumber: 168,
+                                                            columnNumber: 21
+                                                        }, this),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                                                            type: "text",
+                                                            name: "message",
+                                                            placeholder: "Message*",
+                                                            value: form.message,
+                                                            onChange: handleChange
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/Component/Home/EnquirySection/EnquirySection.js",
+                                                            lineNumber: 169,
+                                                            columnNumber: 21
+                                                        }, this)
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/src/Component/Home/EnquirySection/EnquirySection.js",
+                                                    lineNumber: 167,
+                                                    columnNumber: 19
+                                                }, this),
+                                                errors.message && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                    className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$Component$2f$Home$2f$EnquirySection$2f$EnquirySection$2e$module$2e$css__$5b$client$5d$__$28$css__module$29$__["default"].errorText,
+                                                    children: errors.message
+                                                }, void 0, false, {
+                                                    fileName: "[project]/src/Component/Home/EnquirySection/EnquirySection.js",
+                                                    lineNumber: 178,
+                                                    columnNumber: 21
+                                                }, this)
+                                            ]
+                                        }, void 0, true, {
                                             fileName: "[project]/src/Component/Home/EnquirySection/EnquirySection.js",
-                                            lineNumber: 102,
+                                            lineNumber: 166,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/Component/Home/EnquirySection/EnquirySection.js",
-                                    lineNumber: 47,
+                                    lineNumber: 111,
                                     columnNumber: 15
+                                }, this),
+                                errors.api && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                    className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$Component$2f$Home$2f$EnquirySection$2f$EnquirySection$2e$module$2e$css__$5b$client$5d$__$28$css__module$29$__["default"].apiError,
+                                    children: errors.api
+                                }, void 0, false, {
+                                    fileName: "[project]/src/Component/Home/EnquirySection/EnquirySection.js",
+                                    lineNumber: 186,
+                                    columnNumber: 17
+                                }, this),
+                                successMsg && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                    className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$Component$2f$Home$2f$EnquirySection$2f$EnquirySection$2e$module$2e$css__$5b$client$5d$__$28$css__module$29$__["default"].successMsg,
+                                    children: successMsg
+                                }, void 0, false, {
+                                    fileName: "[project]/src/Component/Home/EnquirySection/EnquirySection.js",
+                                    lineNumber: 191,
+                                    columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                     type: "submit",
                                     className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$Component$2f$Home$2f$EnquirySection$2f$EnquirySection$2e$module$2e$css__$5b$client$5d$__$28$css__module$29$__["default"].submitBtn,
-                                    children: "Submit Enquiry →"
+                                    disabled: loading,
+                                    children: loading ? "Submitting..." : "Submit Enquiry →"
                                 }, void 0, false, {
                                     fileName: "[project]/src/Component/Home/EnquirySection/EnquirySection.js",
-                                    lineNumber: 121,
+                                    lineNumber: 195,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/Component/Home/EnquirySection/EnquirySection.js",
-                            lineNumber: 45,
+                            lineNumber: 110,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/Component/Home/EnquirySection/EnquirySection.js",
-                        lineNumber: 43,
+                        lineNumber: 109,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/Component/Home/EnquirySection/EnquirySection.js",
-                lineNumber: 18,
+                lineNumber: 96,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/src/Component/Home/EnquirySection/EnquirySection.js",
-            lineNumber: 16,
+            lineNumber: 95,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/src/Component/Home/EnquirySection/EnquirySection.js",
-        lineNumber: 14,
+        lineNumber: 94,
         columnNumber: 5
     }, this);
 }
+_s(EnquirySection, "P3MhTVraQPiDtBcH/fGesBEGa1M=");
 _c = EnquirySection;
 var _c;
 __turbopack_context__.k.register(_c, "EnquirySection");
@@ -3634,10 +3806,8 @@ function HeroBanner() {
     const fetchAllBanners = async ()=>{
         try {
             // ✅ Remove leading slash — getData likely prepends serverURL + "/"
-            // const response = await getData("banner/all");
-            console.log("SSSS==>response", response);
+            const response = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$services$2f$FetchNodeServices$2e$js__$5b$client$5d$__$28$ecmascript$29$__["getData"])("banner/all");
             if (response.success === true) {
-                // console.log("SSSS==>response", banners)
                 // ✅ Map API response to the shape our UI expects
                 const mapped = response.banners.map((item)=>({
                         image: item.imageUrl || item.image || item.banner_image,
@@ -3691,14 +3861,14 @@ function HeroBanner() {
                                 className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$Component$2f$Home$2f$HeroBanner$2f$HeroBanner$2e$module$2e$css__$5b$client$5d$__$28$css__module$29$__["default"].bannerImage
                             }, void 0, false, {
                                 fileName: "[project]/src/Component/Home/HeroBanner/HeroBanner.js",
-                                lineNumber: 108,
+                                lineNumber: 106,
                                 columnNumber: 15
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$Component$2f$Home$2f$HeroBanner$2f$HeroBanner$2e$module$2e$css__$5b$client$5d$__$28$css__module$29$__["default"].overlay
                             }, void 0, false, {
                                 fileName: "[project]/src/Component/Home/HeroBanner/HeroBanner.js",
-                                lineNumber: 118,
+                                lineNumber: 116,
                                 columnNumber: 15
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3710,21 +3880,21 @@ function HeroBanner() {
                                             children: "TECHNOMAC DENTAL"
                                         }, void 0, false, {
                                             fileName: "[project]/src/Component/Home/HeroBanner/HeroBanner.js",
-                                            lineNumber: 126,
+                                            lineNumber: 124,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
                                             children: item.title
                                         }, void 0, false, {
                                             fileName: "[project]/src/Component/Home/HeroBanner/HeroBanner.js",
-                                            lineNumber: 130,
+                                            lineNumber: 128,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                             children: item.desc
                                         }, void 0, false, {
                                             fileName: "[project]/src/Component/Home/HeroBanner/HeroBanner.js",
-                                            lineNumber: 134,
+                                            lineNumber: 132,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3736,13 +3906,13 @@ function HeroBanner() {
                                                         "Explore Products",
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$client$5d$__$28$ecmascript$29$__["FaArrowRight"], {}, void 0, false, {
                                                             fileName: "[project]/src/Component/Home/HeroBanner/HeroBanner.js",
-                                                            lineNumber: 148,
+                                                            lineNumber: 146,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/Component/Home/HeroBanner/HeroBanner.js",
-                                                    lineNumber: 142,
+                                                    lineNumber: 140,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -3750,45 +3920,45 @@ function HeroBanner() {
                                                     children: "Book Demo"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/Component/Home/HeroBanner/HeroBanner.js",
-                                                    lineNumber: 152,
+                                                    lineNumber: 150,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/Component/Home/HeroBanner/HeroBanner.js",
-                                            lineNumber: 140,
+                                            lineNumber: 138,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/Component/Home/HeroBanner/HeroBanner.js",
-                                    lineNumber: 124,
+                                    lineNumber: 122,
                                     columnNumber: 17
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/Component/Home/HeroBanner/HeroBanner.js",
-                                lineNumber: 122,
+                                lineNumber: 120,
                                 columnNumber: 15
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/Component/Home/HeroBanner/HeroBanner.js",
-                        lineNumber: 104,
+                        lineNumber: 102,
                         columnNumber: 13
                     }, this)
                 }, index, false, {
                     fileName: "[project]/src/Component/Home/HeroBanner/HeroBanner.js",
-                    lineNumber: 102,
+                    lineNumber: 100,
                     columnNumber: 11
                 }, this))
         }, void 0, false, {
             fileName: "[project]/src/Component/Home/HeroBanner/HeroBanner.js",
-            lineNumber: 83,
+            lineNumber: 81,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/src/Component/Home/HeroBanner/HeroBanner.js",
-        lineNumber: 81,
+        lineNumber: 79,
         columnNumber: 5
     }, this);
 }

@@ -64,6 +64,7 @@ export default function HomeProducts() {
         // console.log("SSSS==>response", category)
         // ✅ Map API response to the shape our UI expects
         const mapped = response.data.map((item) => ({
+          _id: item._id,
           image: item.imageUrl || item.image || item.category_image,
           name: item.title || item.name || "",
           desc: item.desc || item.description || item.subtitle || "",
@@ -121,7 +122,7 @@ export default function HomeProducts() {
 
             <div
               className="col-lg-3 col-md-6 col-6 mb-4"
-              key={item.id}
+              key={item._id}
             >
 
               <Link

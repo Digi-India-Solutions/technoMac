@@ -49,10 +49,8 @@ export default function HeroBanner() {
   const fetchAllBanners = async () => {
     try {
       // ✅ Remove leading slash — getData likely prepends serverURL + "/"
-      // const response = await getData("banner/all");
-      console.log("SSSS==>response", response)
+      const response = await getData("banner/all");
       if (response.success === true) {
-        // console.log("SSSS==>response", banners)
         // ✅ Map API response to the shape our UI expects
         const mapped = response.banners.map((item) => ({
           image: item.imageUrl || item.image || item.banner_image,
