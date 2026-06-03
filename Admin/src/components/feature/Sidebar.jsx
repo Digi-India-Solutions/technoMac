@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { postData } from '../../services/FetchNodeServices';
 
 export default function Sidebar({ isOpen, onClose, isDarkMode }) {
-  const [expandedItems, setExpandedItems] = useState({});
+const [expandedItems, setExpandedItems] = useState({});
   const [permissions, setPermissions] = useState({});
   const [user, setUser] = useState(JSON.parse(sessionStorage.getItem("JeansUser")));
   const location = useLocation();
@@ -25,6 +25,16 @@ export default function Sidebar({ isOpen, onClose, isDarkMode }) {
     if (user?.role) fetchRoles();
   }, [user?.role]);
 
+
+  useEffect(() => {
+    const index = menuItems.findIndex(
+      (item) => item.title === 'System Management',
+    );
+    if (index !== -1) {
+      setExpandedItems({ [index]: true });
+    }
+  }, [permissions]);
+
   const toggleExpanded = (index) => {
     setExpandedItems((prev) => ({
       ...prev,
@@ -32,10 +42,16 @@ export default function Sidebar({ isOpen, onClose, isDarkMode }) {
     }));
   };
 
-  const handleNavigation = (path) => {
-    navigate(path);
-    if (window.innerWidth < 1024) onClose();
-  };
+const handleNavigation = (path) => {
+  console.log('CLICKED');
+  console.log('Width:', window.innerWidth);
+
+  navigate(path);
+
+  if (window.innerWidth < 768) {
+    onClose();
+  }
+};
 
   // Build menu dynamically based on permissions
   const menuItems = [
@@ -198,7 +214,7 @@ export default function Sidebar({ isOpen, onClose, isDarkMode }) {
                                 onClick={() => handleNavigation(child.path)}
                                 className={`w-full text-left px-3 py-2 text-sm rounded-lg transition-colors ${
                                   location.pathname === child.path
-                                    ? 'bg-blue-100 text-blue-200'
+                                    ? 'bg-blue-100 text-blue-700'
                                     : isDarkMode
                                       ? 'text-gray-400 hover:bg-gray-700 hover:text-gray-200'
                                       : 'bg-blue-50 hover:text-blue-500 rounded-3xl'

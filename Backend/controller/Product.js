@@ -1,4 +1,5 @@
-const { Cloudenary } = require('../config/cloudinary');
+
+const cloudinary = require('../config/cloudinary');
 const { Product } = require('../models/Product');
 
 // ── CREATE ──────────────────────────────────────────────────────
@@ -19,21 +20,21 @@ exports.createProduct = async (req, res) => {
     // Multiple images — multer array se
    let images = [];
 
-   if (req.files && req.files.length > 0) {
-     images = await Promise.all(
-       req.files.map(
-         (file) =>
-           new Promise((resolve, reject) => {
-             cloudinary.uploader
-               .upload_stream({ folder: 'products' }, (error, result) => {
-                 if (error) reject(error);
-                 else resolve(result.secure_url);
-               })
-               .end(file.buffer);
-           }),
-       ),
-     );
-   }
+if (req.files && req.files.length > 0) {
+  images = await Promise.all(
+    req.files.map(
+      (file) =>
+        new Promise((resolve, reject) => {
+          cloudinary.uploader
+            .upload_stream({ folder: 'products' }, (error, result) => {
+              if (error) reject(error);
+              else resolve(result.secure_url);
+            })
+            .end(file.buffer);
+        }),
+    ),
+  );
+}
 
     // specifications JSON string se parse karo (form-data mein string aata hai)
     let parsedSpecs = [];
@@ -166,12 +167,12 @@ if (req.files && req.files.length > 0) {
     req.files.map(
       (file) =>
         new Promise((resolve, reject) => {
-          cloudinary.uploader
-            .upload_stream({ folder: 'products' }, (error, result) => {
-              if (error) reject(error);
-              else resolve(result.secure_url);
-            })
-            .end(file.buffer);
+        cloudinary.uploader
+          .upload_stream({ folder: 'products' }, (error, result) => {
+            if (error) reject(error);
+            else resolve(result.secure_url);
+          })
+          .end(file.buffer);
         }),
     ),
   );
