@@ -1,11 +1,7 @@
-import { useState } from "react";
-
-import {
-  FaPlus,
-  FaMinus,
-} from "react-icons/fa";
-
+import { useEffect, useState } from "react";
+import { FaPlus, FaMinus, } from "react-icons/fa";
 import styles from "./FAQSection.module.css";
+import { getData } from "../../../services/FetchNodeServices";
 
 const faqData = [
 
@@ -47,9 +43,34 @@ const faqData = [
 ];
 
 export default function FAQSection() {
+  const [faq, setFaq] = useState([])
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [loading, setLoading] = useState(false)
 
-  const [activeIndex, setActiveIndex] =
-    useState(0);
+  const fetchAllFaq = async () => {
+    try {
+      // ✅ Remove leading slash — getData likely prepends serverURL + "/"
+      const response = await getData("faq/");
+      console.log("categoryResponse=>", response)
+      if (response.success === true) {
+        // console.log("SSSS==>response", category)
+        // ✅ Map API response to the shape our UI expects
+        setFaq(response.data);
+      }
+      // If empty or null → keep static fallback already in state
+    } catch (e) {
+      console.error("Category fetch failed, using static fallback:", e?.message);
+      // ✅ Static Category already set as default — nothing extra needed
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // ✅ useEffect instead of useState
+  useEffect(() => {
+    fetchAllFaq();
+  }, []);
+  // console.log("SSSS==>response", category)
 
   const toggleFAQ = (index) => {
 
@@ -108,14 +129,13 @@ export default function FAQSection() {
 
             <div className={styles.faqWrapper}>
 
-              {faqData.map((item, index) => (
+              {faq.map((item, index) => (
 
                 <div
-                  className={`${styles.faqItem} ${
-                    activeIndex === index
-                      ? styles.active
-                      : ""
-                  }`}
+                  className={`${styles.faqItem} ${activeIndex === index
+                    ? styles.active
+                    : ""
+                    }`}
                   key={index}
                 >
 

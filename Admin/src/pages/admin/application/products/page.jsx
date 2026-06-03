@@ -71,30 +71,36 @@ export default function ProductsManagement() {
     }
   };
 
-  // ── GET /product/by-category/:id → populate subCategory dropdown ─
-  const fetchSubCategoriesByCategory = async (categoryId) => {
-    if (!categoryId) {
-      setSubCategoriesList([]);
-      return;
-    }
-    try {
-      const res = await getData(`product/by-category/${categoryId}`);
-      if (res?.success) {
-        // Extract unique subcategories from products of this category
-        const seen = new Map();
-        (res.data || []).forEach((p) => {
-          const id = p.subCategory?._id || p.subCategory;
-          const name = p.subCategory?.name;
-          if (id && name && !seen.has(id)) seen.set(id, { _id: id, name });
-        });
-        setSubCategoriesList([...seen.values()]);
-      } else {
-        toast.error(res?.message || 'Failed to fetch subcategories');
-      }
-    } catch {
-      toast.error('Failed to load subcategories');
+  const fetchCategories = async () => {
+    const res = await getData('category');
+
+    if (res?.success) {
+      setCategoryList(res.data);
     }
   };
+
+
+
+  // ── GET /product/by-category/:id → populate subCategory dropdown ─
+const fetchSubCategoriesByCategory = async (categoryId) => {
+  if (!categoryId) {
+    setSubCategoriesList([]);
+    return;
+  }
+
+  try {
+    const res = await getData(`sub-category/by-category/${categoryId}`);
+
+    console.log('SubCategory API Response:', res);
+
+    if (res?.success) {
+      setSubCategoriesList(res.data || []);
+    }
+  } catch (error) {
+    console.log(error);
+    toast.error('Failed to load subcategories');
+  }
+};
 
   // ── Image handlers ────────────────────────────────────────────
   const handleFileUpload = (e) => {
@@ -239,12 +245,14 @@ export default function ProductsManagement() {
   };
 
   // ── Effects ───────────────────────────────────────────────────
-  useEffect(() => {
-    fetchProducts();
-  }, []);
+ useEffect(() => {
+   fetchProducts();
+   fetchCategories();
+ }, []);
 
   // When category changes in form → fetch subcategories via by-category route
   useEffect(() => {
+     console.log('Category Changed:', formData.category);
     if (formData.category) fetchSubCategoriesByCategory(formData.category);
     else {
       setSubCategoriesList([]);
@@ -551,12 +559,13 @@ export default function ProductsManagement() {
                       <div className="relative">
                         <select
                           value={formData.category}
-                          onChange={(e) =>
+                          onChange={(e) =>{
+                          console.log("Selected Category:", e.target.value);
                             setFormData({
                               ...formData,
                               category: e.target.value,
                               subCategory: '',
-                            })
+                            })}
                           }
                           className="w-full px-3 py-2 pr-8 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 appearance-none"
                           required

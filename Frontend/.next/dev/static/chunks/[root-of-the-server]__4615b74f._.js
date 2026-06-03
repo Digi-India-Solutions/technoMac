@@ -3995,8 +3995,10 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/react/index.js [client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/react-icons/fa/index.mjs [client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$Component$2f$Home$2f$FAQSection$2f$FAQSection$2e$module$2e$css__$5b$client$5d$__$28$css__module$29$__ = __turbopack_context__.i("[project]/src/Component/Home/FAQSection/FAQSection.module.css [client] (css module)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$services$2f$FetchNodeServices$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/services/FetchNodeServices.js [client] (ecmascript)");
 ;
 var _s = __turbopack_context__.k.signature();
+;
 ;
 ;
 ;
@@ -4024,7 +4026,34 @@ const faqData = [
 ];
 function FAQSection() {
     _s();
+    const [faq, setFaq] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])([]);
     const [activeIndex, setActiveIndex] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])(0);
+    const [loading, setLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    const fetchAllFaq = async ()=>{
+        try {
+            // ✅ Remove leading slash — getData likely prepends serverURL + "/"
+            const response = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$services$2f$FetchNodeServices$2e$js__$5b$client$5d$__$28$ecmascript$29$__["getData"])("faq/");
+            console.log("categoryResponse=>", response);
+            if (response.success === true) {
+                // console.log("SSSS==>response", category)
+                // ✅ Map API response to the shape our UI expects
+                setFaq(response.data);
+            }
+        // If empty or null → keep static fallback already in state
+        } catch (e) {
+            console.error("Category fetch failed, using static fallback:", e?.message);
+        // ✅ Static Category already set as default — nothing extra needed
+        } finally{
+            setLoading(false);
+        }
+    };
+    // ✅ useEffect instead of useState
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "FAQSection.useEffect": ()=>{
+            fetchAllFaq();
+        }
+    }["FAQSection.useEffect"], []);
+    // console.log("SSSS==>response", category)
     const toggleFAQ = (index)=>{
         if (activeIndex === index) {
             setActiveIndex(null);
@@ -4039,7 +4068,7 @@ function FAQSection() {
                 className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$Component$2f$Home$2f$FAQSection$2f$FAQSection$2e$module$2e$css__$5b$client$5d$__$28$css__module$29$__["default"].glow
             }, void 0, false, {
                 fileName: "[project]/src/Component/Home/FAQSection/FAQSection.js",
-                lineNumber: 69,
+                lineNumber: 90,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4056,46 +4085,46 @@ function FAQSection() {
                                         children: "FAQ'S"
                                     }, void 0, false, {
                                         fileName: "[project]/src/Component/Home/FAQSection/FAQSection.js",
-                                        lineNumber: 81,
+                                        lineNumber: 102,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
                                         children: "Frequently Asked Questions"
                                     }, void 0, false, {
                                         fileName: "[project]/src/Component/Home/FAQSection/FAQSection.js",
-                                        lineNumber: 85,
+                                        lineNumber: 106,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                         children: "Everything you need to know about TECHNOMAC dental healthcare products and services."
                                     }, void 0, false, {
                                         fileName: "[project]/src/Component/Home/FAQSection/FAQSection.js",
-                                        lineNumber: 90,
+                                        lineNumber: 111,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                         children: "Contact Support"
                                     }, void 0, false, {
                                         fileName: "[project]/src/Component/Home/FAQSection/FAQSection.js",
-                                        lineNumber: 97,
+                                        lineNumber: 118,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/Component/Home/FAQSection/FAQSection.js",
-                                lineNumber: 79,
+                                lineNumber: 100,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/Component/Home/FAQSection/FAQSection.js",
-                            lineNumber: 77,
+                            lineNumber: 98,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: "col-lg-7",
                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$Component$2f$Home$2f$FAQSection$2f$FAQSection$2e$module$2e$css__$5b$client$5d$__$28$css__module$29$__["default"].faqWrapper,
-                                children: faqData.map((item, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                children: faq.map((item, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         className: `${__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$Component$2f$Home$2f$FAQSection$2f$FAQSection$2e$module$2e$css__$5b$client$5d$__$28$css__module$29$__["default"].faqItem} ${activeIndex === index ? __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$Component$2f$Home$2f$FAQSection$2f$FAQSection$2e$module$2e$css__$5b$client$5d$__$28$css__module$29$__["default"].active : ""}`,
                                         children: [
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4106,29 +4135,29 @@ function FAQSection() {
                                                         children: item.question
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/Component/Home/FAQSection/FAQSection.js",
-                                                        lineNumber: 131,
+                                                        lineNumber: 151,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                         className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$Component$2f$Home$2f$FAQSection$2f$FAQSection$2e$module$2e$css__$5b$client$5d$__$28$css__module$29$__["default"].icon,
                                                         children: activeIndex === index ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$client$5d$__$28$ecmascript$29$__["FaMinus"], {}, void 0, false, {
                                                             fileName: "[project]/src/Component/Home/FAQSection/FAQSection.js",
-                                                            lineNumber: 140,
+                                                            lineNumber: 160,
                                                             columnNumber: 25
                                                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$client$5d$__$28$ecmascript$29$__["FaPlus"], {}, void 0, false, {
                                                             fileName: "[project]/src/Component/Home/FAQSection/FAQSection.js",
-                                                            lineNumber: 142,
+                                                            lineNumber: 162,
                                                             columnNumber: 25
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/Component/Home/FAQSection/FAQSection.js",
-                                                        lineNumber: 135,
+                                                        lineNumber: 155,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/Component/Home/FAQSection/FAQSection.js",
-                                                lineNumber: 124,
+                                                lineNumber: 144,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4137,49 +4166,49 @@ function FAQSection() {
                                                     children: item.answer
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/Component/Home/FAQSection/FAQSection.js",
-                                                    lineNumber: 155,
+                                                    lineNumber: 175,
                                                     columnNumber: 21
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/Component/Home/FAQSection/FAQSection.js",
-                                                lineNumber: 151,
+                                                lineNumber: 171,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, index, true, {
                                         fileName: "[project]/src/Component/Home/FAQSection/FAQSection.js",
-                                        lineNumber: 113,
+                                        lineNumber: 134,
                                         columnNumber: 17
                                     }, this))
                             }, void 0, false, {
                                 fileName: "[project]/src/Component/Home/FAQSection/FAQSection.js",
-                                lineNumber: 109,
+                                lineNumber: 130,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/Component/Home/FAQSection/FAQSection.js",
-                            lineNumber: 107,
+                            lineNumber: 128,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/Component/Home/FAQSection/FAQSection.js",
-                    lineNumber: 73,
+                    lineNumber: 94,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/Component/Home/FAQSection/FAQSection.js",
-                lineNumber: 71,
+                lineNumber: 92,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/Component/Home/FAQSection/FAQSection.js",
-        lineNumber: 65,
+        lineNumber: 86,
         columnNumber: 5
     }, this);
 }
-_s(FAQSection, "rd+5N/MkYjuYD0I+B+MlySxQysU=");
+_s(FAQSection, "0W56u4TUbjWGym60Tnm/VHchY90=");
 _c = FAQSection;
 var _c;
 __turbopack_context__.k.register(_c, "FAQSection");
