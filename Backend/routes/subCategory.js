@@ -10,12 +10,13 @@ const {
 } = require('../controller/Subcategory');
 // ✅ Ye line add karo file ke top mein
 const upload = require('../middleware/multer');
+const adminAuth = require('../middleware/adminAuth');
 
-subCategoryRouter.post('/', upload.single('image'), createSubCategory);
-subCategoryRouter.get('/', getAllSubCategories);
+subCategoryRouter.post('/', adminAuth, upload.single('image'), createSubCategory);
+subCategoryRouter.get('/', adminAuth, getAllSubCategories);
 subCategoryRouter.get('/by-category/:categoryId', getSubCategoriesByCategory); // ← important
 subCategoryRouter.get('/:id', getSubCategoryById);
-subCategoryRouter.put('/:id', upload.single('image'), updateSubCategory);
+subCategoryRouter.put('/:id', adminAuth, upload.single('image'), updateSubCategory);
 subCategoryRouter.delete('/:id', deleteSubCategory);
 
 module.exports.subCategoryRouter = subCategoryRouter;

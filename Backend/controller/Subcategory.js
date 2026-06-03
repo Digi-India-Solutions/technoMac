@@ -1,27 +1,43 @@
-const { SubCategory } = require('../models/Category');
-
+const { SubCategory } = require('../models/Subcategory ');
+const cloudinary = require('../config/cloudinary');
 // ── CREATE ──────────────────────────────────────────────────────
 exports.createSubCategory = async (req, res) => {
   try {
     const { name, category, description } = req.body;
-    const image = req.file ? req.file.path : '';
+
+    let imageUrl = '';
+
+    if (req.file) {
+      const result = await new Promise((resolve, reject) => {
+        cloudinary.uploader
+          .upload_stream({ folder: 'subcategories' }, (error, result) => {
+            if (error) reject(error);
+            else resolve(result);
+          })
+          .end(req.file.buffer);
+      });
+
+      imageUrl = result.secure_url;
+    }
 
     const subCategory = await SubCategory.create({
       name,
-      category, // Category ka ObjectId
+      category,
       description,
-      image,
+      image: imageUrl,
     });
 
-    res
-      .status(201)
-      .json({
-        success: true,
-        message: 'SubCategory created',
-        data: subCategory,
-      });
+    res.status(201).json({
+      success: true,
+      message: 'SubCategory created',
+      data: subCategory,
+    });
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    console.log(error);
+
+    res.status(500).json({
+      message: error.message,
+    });
   }
 };
 
@@ -72,28 +88,52 @@ exports.getSubCategoryById = async (req, res) => {
 exports.updateSubCategory = async (req, res) => {
   try {
     const { name, category, description, isActive } = req.body;
-    const image = req.file ? req.file.path : undefined;
 
-    const updateData = { name, category, description, isActive };
-    if (image) updateData.image = image;
+    const updateData = {
+      name,
+      category,
+      description,
+      isActive,
+    };
+
+    if (req.file) {
+      const result = await new Promise((resolve, reject) => {
+        cloudinary.uploader
+          .upload_stream({ folder: 'subcategories' }, (error, result) => {
+            if (error) reject(error);
+            else resolve(result);
+          })
+          .end(req.file.buffer);
+      });
+
+      updateData.image = result.secure_url;
+    }
 
     const subCategory = await SubCategory.findByIdAndUpdate(
       req.params.id,
       updateData,
-      { new: true },
+      {
+        new: true,
+      },
     );
-    if (!subCategory)
-      return res.status(404).json({ message: 'SubCategory not found' });
 
-    res
-      .status(200)
-      .json({
-        success: true,
-        message: 'SubCategory updated',
-        data: subCategory,
+    if (!subCategory) {
+      return res.status(404).json({
+        message: 'SubCategory not found',
       });
+    }
+
+    res.status(200).json({
+      success: true,
+      message: 'SubCategory updated',
+      data: subCategory,
+    });
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    console.log(error);
+
+    res.status(500).json({
+      message: error.message,
+    });
   }
 };
 
