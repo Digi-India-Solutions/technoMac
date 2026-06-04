@@ -1,0 +1,403 @@
+.heroSection {
+  position: relative;
+  overflow: hidden;
+}
+
+/* SWIPER */
+
+.heroSwiper {
+  width: 100%;
+}
+
+/* BANNER */
+
+.bannerItem {
+
+  position: relative;
+
+  width: 100%;
+
+  height: 82vh;
+
+  min-height: 620px;
+
+  display: flex;
+
+  align-items: center;
+
+  overflow: hidden;
+}
+
+/* IMAGE */
+
+.bannerImage {
+
+  object-fit: cover;
+
+  animation:
+    zoomEffect 8s ease-in-out infinite;
+}
+
+/* OVERLAY */
+
+.overlay {
+
+  position: absolute;
+
+  width: 100%;
+  height: 100%;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0,0,0,0.82) 0%,
+      rgba(0,0,0,0.45) 45%,
+      rgba(0,0,0,0.15) 100%
+    );
+
+  z-index: 1;
+}
+
+/* CONTENT */
+
+.bannerContent {
+
+  position: relative;
+
+  z-index: 2;
+
+  max-width: 650px;
+
+  color: #fff;
+
+  animation:
+    contentUp 1.2s ease;
+}
+
+/* TAG */
+
+.bannerContent span {
+
+  display: inline-block;
+
+  background:
+    rgba(229,57,53,0.16);
+
+  color: #ff6b6b;
+
+  padding: 10px 22px;
+
+  border-radius: 50px;
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  margin-bottom: 22px;
+
+  backdrop-filter: blur(12px);
+}
+
+/* TITLE */
+
+.bannerContent h1 {
+
+  font-size: 68px;
+
+  font-weight: 900;
+
+  line-height: 1.05;
+
+  margin-bottom: 22px;
+}
+
+/* DESC */
+
+.bannerContent p {
+
+  font-size: 17px;
+
+  line-height: 1.9;
+
+  color: rgba(255,255,255,0.78);
+
+  margin-bottom: 35px;
+
+  max-width: 580px;
+}
+
+/* BUTTONS */
+
+.buttonGroup {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 18px;
+
+  flex-wrap: wrap;
+}
+
+/* BUTTON */
+
+.primaryBtn,
+.secondaryBtn {
+
+  height: 58px;
+
+  border: none;
+
+  padding: 0 28px;
+
+  border-radius: 16px;
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  transition: 0.4s ease;
+}
+
+.primaryBtn {
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--theme-color),
+      #ff6b6b
+    );
+
+  color: #fff;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  box-shadow:
+    0 15px 35px rgba(229,57,53,0.25);
+}
+
+.secondaryBtn {
+
+  background:
+    rgba(255,255,255,0.10);
+
+  color: #fff;
+
+  backdrop-filter: blur(10px);
+}
+
+.primaryBtn:hover,
+.secondaryBtn:hover {
+
+  transform: translateY(-4px);
+}
+
+/* SCROLL */
+
+.scrollBtn {
+
+  margin-top: 45px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  color: rgba(255,255,255,0.7);
+
+  font-size: 14px;
+
+  font-weight: 600;
+}
+
+/* MOUSE */
+
+.mouse {
+
+  width: 34px;
+  height: 54px;
+
+  border:
+    2px solid rgba(255,255,255,0.4);
+
+  border-radius: 30px;
+
+  display: flex;
+
+  justify-content: center;
+
+  padding-top: 10px;
+}
+
+/* WHEEL */
+
+.wheel {
+
+  width: 5px;
+  height: 12px;
+
+  border-radius: 10px;
+
+  background: #ff6b6b;
+
+  animation:
+    wheelMove 1.5s infinite;
+}
+
+/* PAGINATION */
+
+.heroSwiper :global(.swiper-pagination) {
+
+  bottom: 30px !important;
+}
+
+.heroSwiper :global(.swiper-pagination-bullet) {
+
+  width: 12px;
+  height: 12px;
+
+  background: rgba(255,255,255,0.5);
+
+  opacity: 1;
+}
+
+.heroSwiper :global(.swiper-pagination-bullet-active) {
+
+  background: var(--theme-color);
+
+  width: 35px;
+
+  border-radius: 20px;
+}
+
+/* ANIMATION */
+
+@keyframes zoomEffect {
+
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.08);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes contentUp {
+
+  from {
+
+    opacity: 0;
+
+    transform:
+      translateY(40px);
+  }
+
+  to {
+
+    opacity: 1;
+
+    transform:
+      translateY(0);
+  }
+}
+
+@keyframes wheelMove {
+
+  0% {
+
+    opacity: 1;
+
+    transform: translateY(0);
+  }
+
+  100% {
+
+    opacity: 0;
+
+    transform: translateY(16px);
+  }
+}
+
+/* RESPONSIVE */
+
+@media(max-width: 991px) {
+
+  .bannerItem {
+
+    height: 70vh;
+
+    min-height: 560px;
+  }
+
+  .bannerContent {
+    padding-top: 40px;
+    text-align: center;
+
+    margin: auto;
+  }
+
+  .bannerContent h1 {
+
+    font-size: 48px;
+  }
+
+  .bannerContent p {
+
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .buttonGroup,
+  .scrollBtn {
+
+    justify-content: center;
+  }
+}
+
+@media(max-width: 576px) {
+
+  .bannerItem {
+
+    height: 50vh;
+
+    min-height: 400px;
+  }
+
+  .bannerContent h1 {
+    margin-bottom: 10px;
+    font-size: 22px;
+  }
+
+  .bannerContent p {
+    margin-bottom: 10px;
+    font-size: 12px;
+  }
+
+  .buttonGroup {
+
+    flex-direction: column;
+  }
+
+  .primaryBtn,
+  .secondaryBtn {
+
+    width: 100%;
+
+    justify-content: center;
+  }
+
+  .scrollBtn {
+
+    margin-top: 35px;
+  }
+}

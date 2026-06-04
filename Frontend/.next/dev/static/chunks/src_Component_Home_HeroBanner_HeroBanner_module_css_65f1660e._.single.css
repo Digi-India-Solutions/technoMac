@@ -1,0 +1,246 @@
+/* [project]/src/Component/Home/HeroBanner/HeroBanner.module.css [client] (css) */
+.HeroBanner-module__gompBq__heroSection {
+  position: relative;
+  overflow: hidden;
+}
+
+.HeroBanner-module__gompBq__heroSwiper {
+  width: 100%;
+}
+
+.HeroBanner-module__gompBq__bannerItem {
+  align-items: center;
+  width: 100%;
+  height: 82vh;
+  min-height: 620px;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+
+.HeroBanner-module__gompBq__bannerImage {
+  object-fit: cover;
+  animation: 8s ease-in-out infinite HeroBanner-module__gompBq__zoomEffect;
+}
+
+.HeroBanner-module__gompBq__overlay {
+  z-index: 1;
+  background: linear-gradient(90deg, #000000d1 0%, #00000073 45%, #00000026 100%);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.HeroBanner-module__gompBq__bannerContent {
+  z-index: 2;
+  color: #fff;
+  max-width: 650px;
+  animation: 1.2s HeroBanner-module__gompBq__contentUp;
+  position: relative;
+}
+
+.HeroBanner-module__gompBq__bannerContent span {
+  color: #ff6b6b;
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  background: #e5393529;
+  border-radius: 50px;
+  margin-bottom: 22px;
+  padding: 10px 22px;
+  font-size: 13px;
+  font-weight: 700;
+  display: inline-block;
+}
+
+.HeroBanner-module__gompBq__bannerContent h1 {
+  margin-bottom: 22px;
+  font-size: 68px;
+  font-weight: 900;
+  line-height: 1.05;
+}
+
+.HeroBanner-module__gompBq__bannerContent p {
+  color: #ffffffc7;
+  max-width: 580px;
+  margin-bottom: 35px;
+  font-size: 17px;
+  line-height: 1.9;
+}
+
+.HeroBanner-module__gompBq__buttonGroup {
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 18px;
+  display: flex;
+}
+
+.HeroBanner-module__gompBq__primaryBtn, .HeroBanner-module__gompBq__secondaryBtn {
+  border: none;
+  border-radius: 16px;
+  height: 58px;
+  padding: 0 28px;
+  font-size: 14px;
+  font-weight: 700;
+  transition: all .4s;
+}
+
+.HeroBanner-module__gompBq__primaryBtn {
+  background: linear-gradient(135deg, var(--theme-color), #ff6b6b);
+  color: #fff;
+  align-items: center;
+  gap: 10px;
+  display: flex;
+  box-shadow: 0 15px 35px #e5393540;
+}
+
+.HeroBanner-module__gompBq__secondaryBtn {
+  color: #fff;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  background: #ffffff1a;
+}
+
+.HeroBanner-module__gompBq__primaryBtn:hover, .HeroBanner-module__gompBq__secondaryBtn:hover {
+  transform: translateY(-4px);
+}
+
+.HeroBanner-module__gompBq__scrollBtn {
+  color: #ffffffb3;
+  align-items: center;
+  gap: 14px;
+  margin-top: 45px;
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+}
+
+.HeroBanner-module__gompBq__mouse {
+  border: 2px solid #fff6;
+  border-radius: 30px;
+  justify-content: center;
+  width: 34px;
+  height: 54px;
+  padding-top: 10px;
+  display: flex;
+}
+
+.HeroBanner-module__gompBq__wheel {
+  background: #ff6b6b;
+  border-radius: 10px;
+  width: 5px;
+  height: 12px;
+  animation: 1.5s infinite HeroBanner-module__gompBq__wheelMove;
+}
+
+.HeroBanner-module__gompBq__heroSwiper .swiper-pagination {
+  bottom: 30px !important;
+}
+
+.HeroBanner-module__gompBq__heroSwiper .swiper-pagination-bullet {
+  opacity: 1;
+  background: #ffffff80;
+  width: 12px;
+  height: 12px;
+}
+
+.HeroBanner-module__gompBq__heroSwiper .swiper-pagination-bullet-active {
+  background: var(--theme-color);
+  border-radius: 20px;
+  width: 35px;
+}
+
+@keyframes HeroBanner-module__gompBq__zoomEffect {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.08);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes HeroBanner-module__gompBq__contentUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes HeroBanner-module__gompBq__wheelMove {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+}
+
+@media (width <= 991px) {
+  .HeroBanner-module__gompBq__bannerItem {
+    height: 70vh;
+    min-height: 560px;
+  }
+
+  .HeroBanner-module__gompBq__bannerContent {
+    text-align: center;
+    margin: auto;
+    padding-top: 40px;
+  }
+
+  .HeroBanner-module__gompBq__bannerContent h1 {
+    font-size: 48px;
+  }
+
+  .HeroBanner-module__gompBq__bannerContent p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .HeroBanner-module__gompBq__buttonGroup, .HeroBanner-module__gompBq__scrollBtn {
+    justify-content: center;
+  }
+}
+
+@media (width <= 576px) {
+  .HeroBanner-module__gompBq__bannerItem {
+    height: 50vh;
+    min-height: 400px;
+  }
+
+  .HeroBanner-module__gompBq__bannerContent h1 {
+    margin-bottom: 10px;
+    font-size: 22px;
+  }
+
+  .HeroBanner-module__gompBq__bannerContent p {
+    margin-bottom: 10px;
+    font-size: 12px;
+  }
+
+  .HeroBanner-module__gompBq__buttonGroup {
+    flex-direction: column;
+  }
+
+  .HeroBanner-module__gompBq__primaryBtn, .HeroBanner-module__gompBq__secondaryBtn {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .HeroBanner-module__gompBq__scrollBtn {
+    margin-top: 35px;
+  }
+}
+
+/*# sourceMappingURL=src_Component_Home_HeroBanner_HeroBanner_module_css_65f1660e._.single.css.map*/

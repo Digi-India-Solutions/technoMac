@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 10, "column": 0}, "map": {"version":3,"sources":["file:///E:/digi%20india/github-technomac/technoMac/Frontend/src/pages/_app.js"],"sourcesContent":["import \"bootstrap/dist/css/bootstrap.min.css\";\nimport \"swiper/css\";\nimport \"aos/dist/aos.css\";\nimport \"../../styles/globals.css\";\n/* SWIPER CSS */\nimport \"swiper/css\";\nimport \"swiper/css/navigation\";\nexport default function App({ Component, pageProps }) {\n  return\n  <>\n  <EnquiryPopup />\n  <Component {...pageProps} />;\n  \n  </>\n\n}"],"names":[],"mappings":";;;;;;;;;;;;AAOe,SAAS,IAAI,EAAE,SAAS,EAAE,SAAS,EAAE;IAClD;;;AAOF","debugId":null}}]
+}
