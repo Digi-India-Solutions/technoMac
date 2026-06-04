@@ -20,10 +20,6 @@ const ProductSchema = new mongoose.Schema(
       ref: 'SubCategory', // sub category
       required: true,
     },
-    description: {
-      type: String,
-      default: '',
-    },
     price: {
       type: Number,
       default: 0,
@@ -37,14 +33,34 @@ const ProductSchema = new mongoose.Schema(
         type: String, // multiple images array
       },
     ],
+    model: {
+      type: String,
+      required: true,
+      unique: true,
+      trim: true,
+      index: true,
+    },
+    description: {
+      type: String,
+      required: true,
+      trim: true,
+    },
     stock: {
       type: Number,
       default: 0,
     },
     specifications: [
       {
-        key: { type: String }, // e.g. "Sensor Size"
-        value: { type: String }, // e.g. "Size 2"
+        key: { type: String },
+        value: { type: String },
+      },
+    ],
+
+    // ✅ NEW
+    features: [
+      {
+        type: String, // e.g. "Fully Automatic System"
+        trim: true,
       },
     ],
     isActive: {

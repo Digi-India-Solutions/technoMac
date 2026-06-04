@@ -105,7 +105,7 @@ export default function ProductDetails() {
                 </div>
               </div>
             </div>
-            
+
           </div>
           <div className="col-lg-7">
             <div className={styles.content}>
@@ -118,53 +118,36 @@ export default function ProductDetails() {
               <p className={styles.description}>
                 {product?.description}
               </p>
-              <div className={styles.sectionBox}>
-                <h3>
-                  Salient Features
-                </h3>
-                <ul>
-                  <li>
-                    <FaCheckCircle />
-                    Fully Automatic System
-                  </li>
-                  <li>
-                    <FaCheckCircle />
-                    Advanced Sterilization
-                  </li>
-                  <li>
-                    <FaCheckCircle />
-                    Compact Modern Design
-                  </li>
-                  <li>
-                    <FaCheckCircle />
-                    Dentist Recommended
-                  </li>
-                </ul>
-              </div>
+          
+              {Array.isArray(product?.features) &&
+                product.features.length > 0 && (
+                  <div className={styles.sectionBox}>
+                    <h3>Salient Features</h3>
+                    <ul>
+                      {product.features.map((feature, index) => (
+                        <li key={index}>
+                          <FaCheckCircle />
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
 
-              <div className={styles.sectionBox}>
-                <h3>
-                  Technical Specifications
-                </h3>
-                <div className={styles.specGrid}>
-                  <div>
-                    <span>Capacity</span>
-                    <p>12-15 Liters</p>
+              {Array.isArray(product?.specifications) &&
+                product.specifications.length > 0 && (
+                  <div className={styles.sectionBox}>
+                    <h3>Technical Specifications</h3>
+                    <div className={styles.specGrid}>
+                      {product.specifications.map((spec, index) => (
+                        <div key={index}>
+                          <span>{spec.label || spec.key}</span>
+                          <p>{spec.value}</p>
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                  <div>
-                    <span>Voltage</span>
-                    <p>230V</p>
-                  </div>
-                  <div>
-                    <span>Power</span>
-                    <p>1000W</p>
-                  </div>
-                  <div>
-                    <span>Material</span>
-                    <p>Stainless Steel</p>
-                  </div>
-                </div>
-              </div>
+                )}
 
               <div className={styles.buttonGroup}>
                 <button className={styles.primaryBtn}>

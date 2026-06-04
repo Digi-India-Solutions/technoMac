@@ -255,3 +255,41 @@
     font-size: 30px;
   }
 }
+
+
+.inputError input,
+.inputError textarea {
+  border-color: #e53e3e !important;
+}
+
+.errorText {
+  color: #e53e3e;
+  font-size: 11px;
+  margin-top: 3px;
+  display: block;
+  padding-left: 2px;
+}
+
+.apiError {
+  color: #e53e3e;
+  font-size: 12px;
+  text-align: center;
+  margin: 8px 0;
+}
+
+.successMsg {
+  background: #f0fff4;
+  border: 1px solid #38a169;
+  color: #38a169;
+  border-radius: 8px;
+  padding: 14px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+  margin: 12px 0;
+}
+
+.submitBtn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
