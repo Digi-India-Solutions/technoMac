@@ -55,84 +55,97 @@ const handleNavigation = (path) => {
 
   // Build menu dynamically based on permissions
   const menuItems = [
-    ...(permissions?.dashboard?.read || user?.role === 'Super Admin' ? [{ title: 'Dashboard', icon: 'ri-dashboard-line', path: '/admin/dashboard', }] : []),
+    ...(permissions?.dashboard?.read || user?.role === 'Super Admin'
+      ? [
+          {
+            title: 'Dashboard',
+            icon: 'ri-dashboard-line',
+            path: '/admin/dashboard',
+          },
+        ]
+      : []),
     {
       title: 'System Management',
       icon: 'ri-settings-3-line',
       children: [
         // ...(permissions?.banners?.read ? [
-          { title: 'Banners', path: '/admin/application/banners' },
+        { title: 'Banners', path: '/admin/application/banners' },
         // ] : []),
         // ...(permissions?.categories?.read ? [
-          { title: 'Categories', path: '/admin/application/categories' },
+        { title: 'Categories', path: '/admin/application/categories' },
         // ] : []),
         // ...(permissions?.categories?.read ? [
-          { title: 'Sub-Categories', path: '/admin/application/subcategories' },
+        { title: 'Sub-Categories', path: '/admin/application/subcategories' },
         // ] : []),
         // ...(permissions?.products?.read ? [
-          { title: 'Products', path: '/admin/application/products' },
+        { title: 'Products', path: '/admin/application/products' },
+        { title: 'Certificate', path: '/admin/application/certificate' },
         // ] : []),
         // ...(permissions?.products?.read ? [
-          // { title: 'Sub-Products', path: '/admin/application/sub-products' },
+        // { title: 'Sub-Products', path: '/admin/application/sub-products' },
         // ] : []),
         // ...(permissions?.sizes?.read ? [
-          // { title: 'Sizes', path: '/admin/application/sizes' },
+        // { title: 'Sizes', path: '/admin/application/sizes' },
         // ] : []),
         // ...(permissions?.coupons?.read ? [
-          // { title: 'Coupons', path: '/admin/application/coupons' },
+        // { title: 'Coupons', path: '/admin/application/coupons' },
         // ] : []),
         // ...(permissions?.videos?.read ? [
-          // { title: 'Videos', path: '/admin/application/videos' },
+        // { title: 'Videos', path: '/admin/application/videos' },
         // ] : []),
         // ...(permissions?.carts?.read ? [
-          // { title: 'Cart', path: '/admin/application/cart' },
+        // { title: 'Cart', path: '/admin/application/cart' },
         // ] : []),
         // ...(permissions?.wishlists?.read ? [
-          // { title: 'Wishlist', path: '/admin/application/wishlist' },
+        // { title: 'Wishlist', path: '/admin/application/wishlist' },
         // ] : []),
         // ...(permissions?.clientRewards?.read ? [
-          // { title: 'Client Rewards', path: '/admin/application/rewards' },
+        // { title: 'Client Rewards', path: '/admin/application/rewards' },
         // ] : []),
         // ...(permissions?.notifications?.read ? [
-          // { title: 'Warranties', path: '/admin/application/notifications' },
-          { title: 'Warranties', path: '/admin/application/warranties' },
+        // { title: 'Warranties', path: '/admin/application/notifications' },
         // ] : []),
         // ...(permissions?.FAQs?.read ? [
-          { title: 'FAQs', path: '/admin/application/faqs' },
-        
+
         // ] : []),
       ],
     },
     // ...(permissions?.orders?.read ? [
-      // { title: 'Order Management', icon: 'ri-shopping-bag-line', path: '/admin/orders', },
+    // { title: 'Order Management', icon: 'ri-shopping-bag-line', path: '/admin/orders', },
     // ] : []),
     // ...(permissions?.deletOrders?.read ? [
-      // { title: 'Deleted Order', icon: 'ri-shopping-bag-line', path: '/admin/orders', },
+    // { title: 'Deleted Order', icon: 'ri-shopping-bag-line', path: '/admin/orders', },
     // ] : []),
     // ...(permissions?.sales?.read ? [
-      // { title: 'Sales & Reports', icon: 'ri-bar-chart-line', path: '/admin/sales', },
+    // { title: 'Sales & Reports', icon: 'ri-bar-chart-line', path: '/admin/sales', },
     // ] : []),
     // ...(permissions?.returns?.read ? [
-      // { title: 'Return & Challan', icon: 'ri-exchange-line', path: '/admin/returns', },
+    // { title: 'Return & Challan', icon: 'ri-exchange-line', path: '/admin/returns', },
     // ] : []),
     // ...(permissions?.userManagement?.read ? [
-      // { title: 'User Management', icon: 'ri-user-settings-line', path: '/admin/users', },
+    // { title: 'User Management', icon: 'ri-user-settings-line', path: '/admin/users', },
     // ] : []),
     // ...(permissions?.admins?.read || user?.role === 'Super Admin' ? [
-      // { title: 'Admin & Staff Roles', icon: 'ri-shield-user-line', path: '/admin/user-roles', },
+    // { title: 'Admin & Staff Roles', icon: 'ri-shield-user-line', path: '/admin/user-roles', },
     // ] : []),
     // ...(permissions?.marketing?.read ? [{ title: 'Marketing', icon: 'ri-megaphone-line', path: '/admin/marketing', }] : []),
     // ...(permissions?.enquiries?.read ? [
-      { title: 'Enquiries', icon: 'ri-question-answer-line', path: '/admin/enquiries', },
+    {
+      title: 'Enquiries',
+      icon: 'ri-question-answer-line',
+      path: '/admin/enquiries',
+    },
+    { title: 'Warranties', path: '/admin/application/warranties' },
     // ] : []),
     // ...(permissions?.catalogueUpload?.read ? [
-      // { title: 'Catalogue Upload', icon: 'ri-file-pdf-line', path: '/admin/catalogue', },
+    // { title: 'Catalogue Upload', icon: 'ri-file-pdf-line', path: '/admin/catalogue', },
+    { title: 'FAQs', path: '/admin/application/faqs' },
     // ] : []),
     //  ...(permissions?.recycledOrder?.read || user?.role === 'Super Admin' ? [
-      // { title: 'Recycled Order', icon: 'ri-recycle-line', path: '/admin/recycledOrder', },
+    // { title: 'Recycled Order', icon: 'ri-recycle-line', path: '/admin/recycledOrder', },
     // ] : []),
     //  ...(permissions?.recycledOrder?.read || user?.role === 'Super Admin' ? [
-      // { title: 'Term And Condition', icon: 'ri-recycle-line', path: '/admin/term-and-condition', },
+    // { title: 'Term And Condition', icon: 'ri-recycle-line', path: '/admin/term-and-condition', },
     // ] : []),
   ];
   console.log("GGGGGGGG:=>", permissions)
