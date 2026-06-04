@@ -23,6 +23,7 @@ import CouponsManagement from "../pages/admin/application/coupons/page";
 import BannersManagement from "../pages/admin/application/banners/page";
 import VideosManagement from "../pages/admin/application/videos/page";
 import WarrantiesManagement from "../pages/admin/application/warranties/page";
+import CertificaManagement from '../pages/admin/application/certificate/page.jsx';
 import RewardsManagement from "../pages/admin/application/rewards/page";
 import FaqsManagement from "../pages/admin/application/faqs/page";
 import Login from "../components/auth/Login";
@@ -74,6 +75,7 @@ const routes: RouteObject[] = [
           { path: 'banners', element: <BannersManagement /> },
           { path: 'videos', element: <VideosManagement /> },
           { path: 'warranties', element: <WarrantiesManagement /> },
+          { path: 'certificate', element: <CertificaManagement /> },
           // { path: "notifications", element: <NotificationsManagement /> },
           { path: 'rewards', element: <RewardsManagement /> },
           { path: 'faqs', element: <FaqsManagement /> },
