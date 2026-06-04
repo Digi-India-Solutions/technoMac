@@ -22,7 +22,7 @@ import SizesManagement from "../pages/admin/application/sizes/page";
 import CouponsManagement from "../pages/admin/application/coupons/page";
 import BannersManagement from "../pages/admin/application/banners/page";
 import VideosManagement from "../pages/admin/application/videos/page";
-import NotificationsManagement from "../pages/admin/application/notifications/page";
+import WarrantiesManagement from "../pages/admin/application/warranties/page";
 import RewardsManagement from "../pages/admin/application/rewards/page";
 import FaqsManagement from "../pages/admin/application/faqs/page";
 import Login from "../components/auth/Login";
@@ -37,57 +37,56 @@ const CatalogueUpload = lazy(() => import('../pages/admin/catalogue/page'));
 
 const routes: RouteObject[] = [
   // ✅ Public routes
-  { path: "/", element: <HomePage /> },
-  { path: "/login", element: <Login /> },
-  { path: "/admin/reset-password/:token", element: <ResetPassword /> },
+  { path: '/', element: <HomePage /> },
+  { path: '/login', element: <Login /> },
+  { path: '/admin/reset-password/:token', element: <ResetPassword /> },
 
   // ✅ Protected admin routes — auth checked inside ProtectedRoute
   {
-    path: "/admin",
+    path: '/admin',
     element: <ProtectedRoute />, // ← wraps all admin routes
     children: [
-      { path: "", element: <AdminDashboard /> },
-      { path: "dashboard", element: <AdminDashboard /> },
-      { path: "orders", element: <OrdersManagement /> },
-      { path: "recycledOrder", element: <RecycledOrderManagement /> },
-      { path: "returns", element: <ReturnsAndChallan /> },
-      { path: "sales", element: <SalesReports /> },
-      { path: "marketing", element: <MarketingPage /> },
-      { path: "enquiries", element: <EnquiriesPage /> },
-      { path: "user-roles", element: <UserRolesManagement /> },
-      { path: "users", element: <UsersManagement /> },
-      { path: "catalogue", element: <CatalogueUpload /> },
-      { path: "term-and-condition", element: <TermAndCondition /> },
-      { path: "blank_page", element: <BlankPage /> },
-
-
+      { path: '', element: <AdminDashboard /> },
+      { path: 'dashboard', element: <AdminDashboard /> },
+      { path: 'orders', element: <OrdersManagement /> },
+      { path: 'recycledOrder', element: <RecycledOrderManagement /> },
+      { path: 'returns', element: <ReturnsAndChallan /> },
+      { path: 'sales', element: <SalesReports /> },
+      { path: 'marketing', element: <MarketingPage /> },
+      { path: 'enquiries', element: <EnquiriesPage /> },
+      { path: 'user-roles', element: <UserRolesManagement /> },
+      { path: 'users', element: <UsersManagement /> },
+      { path: 'catalogue', element: <CatalogueUpload /> },
+      { path: 'term-and-condition', element: <TermAndCondition /> },
+      { path: 'blank_page', element: <BlankPage /> },
 
       {
-        path: "application",
+        path: 'application',
         children: [
-          { path: "categories", element: <CategoriesManagement /> },
-          { path: "subcategories", element: <SubCategoriesManagement /> },
-          { path: "products", element: <ProductsManagement /> },
-          { path: "sub-products", element: <SubProductsManagement /> },
-          { path: "cart", element: <CartsManagement /> },
-          { path: "wishlist", element: <WishlistManagement /> },
-          { path: "sizes", element: <SizesManagement /> },
-          { path: "coupons", element: <CouponsManagement /> },
-          { path: "banners", element: <BannersManagement /> },
-          { path: "videos", element: <VideosManagement /> },
-          { path: "notifications", element: <NotificationsManagement /> },
-          { path: "rewards", element: <RewardsManagement /> },
-          { path: "faqs", element: <FaqsManagement /> },
+          { path: 'categories', element: <CategoriesManagement /> },
+          { path: 'subcategories', element: <SubCategoriesManagement /> },
+          { path: 'products', element: <ProductsManagement /> },
+          { path: 'sub-products', element: <SubProductsManagement /> },
+          { path: 'cart', element: <CartsManagement /> },
+          { path: 'wishlist', element: <WishlistManagement /> },
+          { path: 'sizes', element: <SizesManagement /> },
+          { path: 'coupons', element: <CouponsManagement /> },
+          { path: 'banners', element: <BannersManagement /> },
+          { path: 'videos', element: <VideosManagement /> },
+          { path: 'warranties', element: <WarrantiesManagement /> },
+          // { path: "notifications", element: <NotificationsManagement /> },
+          { path: 'rewards', element: <RewardsManagement /> },
+          { path: 'faqs', element: <FaqsManagement /> },
         ],
       },
       {
-        path: "challan",
-        children: [{ path: "create", element: <ChallanCreate /> }],
+        path: 'challan',
+        children: [{ path: 'create', element: <ChallanCreate /> }],
       },
     ],
   },
 
-  { path: "*", element: <NotFound /> },
+  { path: '*', element: <NotFound /> },
 ];
 
 export default routes;

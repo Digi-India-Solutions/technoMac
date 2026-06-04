@@ -35,11 +35,33 @@ exports.registerWarranty = async (req, res) => {
 
     // Same serial number dobara register nahi hona chahiye
     const existing = await Warranty.findOne({ serialNumber });
+
     if (existing) {
       return res.status(400).json({
         success: false,
         message: 'This serial number is already registered.',
       });
+    }
+
+    let productImage = '';
+
+    // Cloudinary Buffer Upload
+    if (req.file) {
+      const uploadResult = await new Promise((resolve, reject) => {
+        cloudinary.uploader
+          .upload_stream(
+            {
+              folder: 'warranty',
+            },
+            (error, result) => {
+              if (error) reject(error);
+              else resolve(result);
+            },
+          )
+          .end(req.file.buffer);
+      });
+
+      productImage = uploadResult.secure_url;
     }
 
     const warranty = await Warranty.create({
@@ -64,7 +86,10 @@ exports.registerWarranty = async (req, res) => {
       data: warranty,
     });
   } catch (error) {
-    res.status(500).json({ success: false, message: error.message });
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
   }
 };
 

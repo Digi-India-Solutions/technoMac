@@ -29,7 +29,7 @@ export default function BannersManagement() {
     currentPage * ITEMS_PER_PAGE,
   );
 
-  const emptyForm = { title: '', subtitle: '', buttonText: '', image: null };
+  const emptyForm = { title: '', subtitle: '', image: null };
   const [formData, setFormData] = useState(emptyForm);
 
   const resetForm = () => {
@@ -62,7 +62,7 @@ export default function BannersManagement() {
       const data = new FormData();
       data.append('title', formData.title);
       data.append('subtitle', formData.subtitle);
-      data.append('buttonText', formData.buttonText);
+      // data.append('buttonText', formData.buttonText);
       if (formData.image instanceof File) data.append('image', formData.image);
 
       let response;
@@ -325,7 +325,7 @@ export default function BannersManagement() {
                     />
                   </div>
 
-                  <div>
+                  {/* <div>
                     <label>Button Text</label>
                     <input
                       type="text"
@@ -335,7 +335,7 @@ export default function BannersManagement() {
                       }
                       className="w-full border rounded-lg p-2"
                     />
-                  </div>
+                  </div> */}
 
                   <div>
                     <label>Banner Image</label>
