@@ -2224,7 +2224,7 @@ function ProductPage() {
                     pageName: "Products"
                 }, void 0, false, {
                     fileName: "[project]/src/Component/products/ProductPage/ProductPage.js",
-                    lineNumber: 29,
+                    lineNumber: 23,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2234,27 +2234,27 @@ function ProductPage() {
                             children: "TECHNOMAC PRODUCTS"
                         }, void 0, false, {
                             fileName: "[project]/src/Component/products/ProductPage/ProductPage.js",
-                            lineNumber: 35,
+                            lineNumber: 29,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
                             children: "Explore Our Dental Equipment"
                         }, void 0, false, {
                             fileName: "[project]/src/Component/products/ProductPage/ProductPage.js",
-                            lineNumber: 39,
+                            lineNumber: 33,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                             children: "Discover premium dental healthcare products and modern clinic equipment trusted by professionals across India."
                         }, void 0, false, {
                             fileName: "[project]/src/Component/products/ProductPage/ProductPage.js",
-                            lineNumber: 44,
+                            lineNumber: 38,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/Component/products/ProductPage/ProductPage.js",
-                    lineNumber: 33,
+                    lineNumber: 27,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2266,12 +2266,12 @@ function ProductPage() {
                         onChange: (e)=>setSearch(e.target.value)
                     }, void 0, false, {
                         fileName: "[project]/src/Component/products/ProductPage/ProductPage.js",
-                        lineNumber: 57,
+                        lineNumber: 51,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/Component/products/ProductPage/ProductPage.js",
-                    lineNumber: 55,
+                    lineNumber: 49,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2282,12 +2282,12 @@ function ProductPage() {
                                 item: item
                             }, void 0, false, {
                                 fileName: "[project]/src/Component/products/ProductPage/ProductPage.js",
-                                lineNumber: 81,
+                                lineNumber: 75,
                                 columnNumber: 17
                             }, this)
                         }, item.id, false, {
                             fileName: "[project]/src/Component/products/ProductPage/ProductPage.js",
-                            lineNumber: 76,
+                            lineNumber: 70,
                             columnNumber: 15
                         }, this)) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "col-12",
@@ -2298,41 +2298,41 @@ function ProductPage() {
                                     children: "No Products Found"
                                 }, void 0, false, {
                                     fileName: "[project]/src/Component/products/ProductPage/ProductPage.js",
-                                    lineNumber: 93,
+                                    lineNumber: 87,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                     children: "Try searching another dental product."
                                 }, void 0, false, {
                                     fileName: "[project]/src/Component/products/ProductPage/ProductPage.js",
-                                    lineNumber: 97,
+                                    lineNumber: 91,
                                     columnNumber: 17
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/Component/products/ProductPage/ProductPage.js",
-                            lineNumber: 91,
+                            lineNumber: 85,
                             columnNumber: 15
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/Component/products/ProductPage/ProductPage.js",
-                        lineNumber: 89,
+                        lineNumber: 83,
                         columnNumber: 13
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/Component/products/ProductPage/ProductPage.js",
-                    lineNumber: 70,
+                    lineNumber: 64,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/src/Component/products/ProductPage/ProductPage.js",
-            lineNumber: 25,
+            lineNumber: 19,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/src/Component/products/ProductPage/ProductPage.js",
-        lineNumber: 23,
+        lineNumber: 17,
         columnNumber: 5
     }, this);
 }

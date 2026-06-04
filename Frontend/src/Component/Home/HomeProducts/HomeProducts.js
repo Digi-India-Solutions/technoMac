@@ -126,7 +126,7 @@ export default function HomeProducts() {
             >
 
               <Link
-                href="/products"
+                href={{ pathname: "/products", query: { category: item?._id } }}
                 className={styles.productCard}
               >
 

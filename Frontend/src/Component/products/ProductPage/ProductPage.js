@@ -1,11 +1,7 @@
 import { useState } from "react";
-
 import products from "../../../../Data/products";
-
 import ProductCard from "../ProductCard/ProductCard";
-
 import styles from "./ProductPage.module.css";
-
 import Breadcrumb from "../../common/Breadcrumb/Breadcrumb";
 
 export default function ProductPage() {
@@ -13,9 +9,7 @@ export default function ProductPage() {
   const [search, setSearch] = useState("");
 
   const filteredProducts = products.filter((item) =>
-    item.name
-      .toLowerCase()
-      .includes(search.toLowerCase())
+    item.name.toLowerCase().includes(search.toLowerCase())
   );
 
   return (

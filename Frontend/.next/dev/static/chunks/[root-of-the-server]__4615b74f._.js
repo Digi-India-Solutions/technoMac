@@ -3162,7 +3162,12 @@ function HomeProducts() {
                     children: category.map((item)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: "col-lg-3 col-md-6 col-6 mb-4",
                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$link$2e$js__$5b$client$5d$__$28$ecmascript$29$__["default"], {
-                                href: "/products",
+                                href: {
+                                    pathname: "/products",
+                                    query: {
+                                        category: item?._id
+                                    }
+                                },
                                 className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$Component$2f$Home$2f$HomeProducts$2f$HomeProducts$2e$module$2e$css__$5b$client$5d$__$28$css__module$29$__["default"].productCard,
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {

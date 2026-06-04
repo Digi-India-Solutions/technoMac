@@ -30,8 +30,8 @@
       "static/chunks/src_pages__app_2da965e7._.js",
       "static/chunks/turbopack-src_pages__app_2cd17ee1._.js"
     ],
-    "/certificates": [
-      "static/chunks/[root-of-the-server]__b6888b6e._.js",
+    "/catalogue": [
+      "static/chunks/[root-of-the-server]__d841a429._.js",
       "static/chunks/node_modules_next_dist_compiled_3e12a2ad._.js",
       "static/chunks/node_modules_next_dist_shared_lib_fe7e72ad._.js",
       "static/chunks/node_modules_next_dist_client_9b1b49db._.js",
@@ -42,13 +42,29 @@
       "static/chunks/node_modules_react-icons_lib_7cd2a28b._.js",
       "static/chunks/node_modules_axios_lib_e0bf4723._.js",
       "static/chunks/node_modules_f1be3ba2._.js",
-      "static/chunks/src_Component_9d116626._.css",
-      "static/chunks/src_pages_certificates_2da965e7._.js",
-      "static/chunks/turbopack-src_pages_certificates_1f089d86._.js"
+      "static/chunks/src_Component_e9f63477._.css",
+      "static/chunks/src_pages_catalogue_2da965e7._.js",
+      "static/chunks/turbopack-src_pages_catalogue_d9f367e5._.js"
+    ],
+    "/clinic-setup": [
+      "static/chunks/[root-of-the-server]__f5e8dd29._.js",
+      "static/chunks/node_modules_next_dist_compiled_3e12a2ad._.js",
+      "static/chunks/node_modules_next_dist_shared_lib_4534cb8c._.js",
+      "static/chunks/node_modules_next_dist_client_45e9549c._.js",
+      "static/chunks/node_modules_next_dist_6024eba3._.js",
+      "static/chunks/node_modules_next_d6a2c7a7._.js",
+      "static/chunks/node_modules_react-dom_4411d9bd._.js",
+      "static/chunks/node_modules_react-icons_fa_index_mjs_c19690bf._.js",
+      "static/chunks/node_modules_react-icons_lib_7cd2a28b._.js",
+      "static/chunks/node_modules_axios_lib_e0bf4723._.js",
+      "static/chunks/node_modules_f1be3ba2._.js",
+      "static/chunks/src_Component_902dc263._.css",
+      "static/chunks/src_pages_clinic-setup_2da965e7._.js",
+      "static/chunks/turbopack-src_pages_clinic-setup_f2d4b678._.js"
     ],
     "/contact": [
-      "static/chunks/[root-of-the-server]__eb62d839._.js",
-      "static/chunks/node_modules_next_dist_compiled_3e12a2ad._.js",
+      "static/chunks/[root-of-the-server]__89c1fd6c._.js",
+      "static/chunks/node_modules_next_dist_compiled_ad506013._.js",
       "static/chunks/node_modules_next_dist_shared_lib_fe7e72ad._.js",
       "static/chunks/node_modules_next_dist_client_9b1b49db._.js",
       "static/chunks/node_modules_next_dist_6024eba3._.js",
@@ -60,7 +76,7 @@
       "static/chunks/node_modules_f1be3ba2._.js",
       "static/chunks/src_Component_2bdf0f3d._.css",
       "static/chunks/src_pages_contact_2da965e7._.js",
-      "static/chunks/turbopack-src_pages_contact_d6ce3cf7._.js"
+      "static/chunks/turbopack-src_pages_contact_6afa4bb0._.js"
     ],
     "/product/[slug]": [
       "static/chunks/[root-of-the-server]__f8abf54b._.js",
@@ -112,8 +128,8 @@
       "static/chunks/turbopack-src_pages_updates_f07c9c48._.js"
     ],
     "/warranty-registration": [
-      "static/chunks/[root-of-the-server]__37575efd._.js",
-      "static/chunks/node_modules_next_dist_compiled_3e12a2ad._.js",
+      "static/chunks/[root-of-the-server]__c89612b0._.js",
+      "static/chunks/node_modules_next_dist_compiled_ad506013._.js",
       "static/chunks/node_modules_next_dist_shared_lib_fe7e72ad._.js",
       "static/chunks/node_modules_next_dist_client_9b1b49db._.js",
       "static/chunks/node_modules_next_dist_6024eba3._.js",
@@ -125,7 +141,7 @@
       "static/chunks/node_modules_f1be3ba2._.js",
       "static/chunks/src_Component_64c79407._.css",
       "static/chunks/src_pages_warranty-registration_2da965e7._.js",
-      "static/chunks/turbopack-src_pages_warranty-registration_c3c7a0e9._.js"
+      "static/chunks/turbopack-src_pages_warranty-registration_c00b749d._.js"
     ]
   },
   "devFiles": [],
