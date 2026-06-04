@@ -1,7 +1,7 @@
 const Catalogue = require('../models/Catalogue');
 const cloudinary = require('../config/cloudinary');
 
-// ── Helper: upload buffer to Cloudinary ───────────────────────
+// ── Helper: upload buffer to Cloudinary ──────────────────────────
 const uploadToCloudinary = (buffer, options) =>
   new Promise((resolve, reject) => {
     cloudinary.uploader
@@ -12,34 +12,32 @@ const uploadToCloudinary = (buffer, options) =>
       .end(buffer);
   });
 
-// ── CREATE ────────────────────────────────────────────────────
+// ── CREATE ───────────────────────────────────────────────────────
 // POST /api/catalogue/create
-// Body (multipart): title, description, image (file), pdfFile (file, optional)
+// multipart: title, description, image (required), pdfFile (optional)
 exports.createCatalogue = async (req, res) => {
   try {
     const { title, description } = req.body;
 
-    // image required
-    const imageFile = req.files?.image?.[0];
-    if (!imageFile) {
-      return res
-        .status(400)
-        .json({ success: false, message: 'Cover image is required' });
+    // Cover image is required
+    if (!req.files?.image?.[0]) {
+      return res.status(400).json({
+        success: false,
+        message: 'Cover image is required',
+      });
     }
 
     // Upload cover image
-    const imageResult = await uploadToCloudinary(imageFile.buffer, {
+    const imageResult = await uploadToCloudinary(req.files.image[0].buffer, {
       folder: 'catalogues/images',
     });
 
-    // Upload PDF (optional)
+    // Upload PDF if provided
     let pdfUrl = '';
-    const pdfFile = req.files?.pdfFile?.[0];
-    if (pdfFile) {
-      const pdfResult = await uploadToCloudinary(pdfFile.buffer, {
+    if (req.files?.pdfFile?.[0]) {
+      const pdfResult = await uploadToCloudinary(req.files.pdfFile[0].buffer, {
         folder: 'catalogues/pdfs',
-        resource_type: 'raw',
-        format: 'pdf',
+        resource_type: 'raw', // required for non-image files
       });
       pdfUrl = pdfResult.secure_url;
     }
@@ -51,164 +49,125 @@ exports.createCatalogue = async (req, res) => {
       pdfFile: pdfUrl,
     });
 
-    res
-      .status(201)
-      .json({ success: true, message: 'Catalogue created', data: catalogue });
+    res.status(201).json({
+      success: true,
+      message: 'Catalogue created successfully',
+      data: catalogue,
+    });
   } catch (error) {
-    console.error('createCatalogue error:', error);
+    console.error(error);
     res.status(500).json({ success: false, message: error.message });
   }
 };
 
-// ── GET ALL ───────────────────────────────────────────────────
+// ── GET ALL ──────────────────────────────────────────────────────
 // GET /api/catalogue/all
 exports.getAllCatalogues = async (req, res) => {
   try {
     const catalogues = await Catalogue.find().sort({ createdAt: -1 });
-    res
-      .status(200)
-      .json({ success: true, count: catalogues.length, data: catalogues });
-  } catch (error) {
-    console.error('getAllCatalogues error:', error);
-    res.status(500).json({ success: false, message: error.message });
-  }
-};
 
-// ── GET ALL ACTIVE (for frontend/customer side) ───────────────
-// GET /api/catalogue/active
-exports.getActiveCatalogues = async (req, res) => {
-  try {
-    const catalogues = await Catalogue.find({ isActive: true }).sort({
-      createdAt: -1,
+    res.status(200).json({
+      success: true,
+      count: catalogues.length,
+      data: catalogues,
     });
-    res
-      .status(200)
-      .json({ success: true, count: catalogues.length, data: catalogues });
   } catch (error) {
-    console.error('getActiveCatalogues error:', error);
     res.status(500).json({ success: false, message: error.message });
   }
 };
 
-// ── GET SINGLE ────────────────────────────────────────────────
+// ── GET SINGLE ───────────────────────────────────────────────────
 // GET /api/catalogue/:id
 exports.getCatalogueById = async (req, res) => {
   try {
     const catalogue = await Catalogue.findById(req.params.id);
+
     if (!catalogue) {
-      return res
-        .status(404)
-        .json({ success: false, message: 'Catalogue not found' });
+      return res.status(404).json({
+        success: false,
+        message: 'Catalogue not found',
+      });
     }
+
     res.status(200).json({ success: true, data: catalogue });
   } catch (error) {
-    console.error('getCatalogueById error:', error);
     res.status(500).json({ success: false, message: error.message });
   }
 };
 
-// ── UPDATE ────────────────────────────────────────────────────
+// ── UPDATE ───────────────────────────────────────────────────────
 // PUT /api/catalogue/:id
-// Body (multipart): title?, description?, image? (file), pdfFile? (file), isActive?
+// multipart: title?, description?, image? (optional), pdfFile? (optional)
 exports.updateCatalogue = async (req, res) => {
   try {
     const catalogue = await Catalogue.findById(req.params.id);
+
     if (!catalogue) {
-      return res
-        .status(404)
-        .json({ success: false, message: 'Catalogue not found' });
+      return res.status(404).json({
+        success: false,
+        message: 'Catalogue not found',
+      });
     }
 
-    const { title, description, isActive } = req.body;
+    const updateData = {
+      title: req.body.title || catalogue.title,
+      description: req.body.description || catalogue.description,
+    };
 
-    // Update image if new one uploaded
-    let imageUrl = catalogue.image;
-    const imageFile = req.files?.image?.[0];
-    if (imageFile) {
-      const imageResult = await uploadToCloudinary(imageFile.buffer, {
+    // New cover image uploaded → replace
+    if (req.files?.image?.[0]) {
+      const imageResult = await uploadToCloudinary(req.files.image[0].buffer, {
         folder: 'catalogues/images',
       });
-      imageUrl = imageResult.secure_url;
+      updateData.image = imageResult.secure_url;
     }
 
-    // Update PDF if new one uploaded
-    let pdfUrl = catalogue.pdfFile;
-    const pdfFile = req.files?.pdfFile?.[0];
-    if (pdfFile) {
-      const pdfResult = await uploadToCloudinary(pdfFile.buffer, {
+    // New PDF uploaded → replace
+    if (req.files?.pdfFile?.[0]) {
+      const pdfResult = await uploadToCloudinary(req.files.pdfFile[0].buffer, {
         folder: 'catalogues/pdfs',
         resource_type: 'raw',
-        format: 'pdf',
       });
-      pdfUrl = pdfResult.secure_url;
+      updateData.pdfFile = pdfResult.secure_url;
     }
 
     const updated = await Catalogue.findByIdAndUpdate(
       req.params.id,
-      {
-        title: title || catalogue.title,
-        description: description || catalogue.description,
-        image: imageUrl,
-        pdfFile: pdfUrl,
-        ...(isActive !== undefined && {
-          isActive: isActive === 'true' || isActive === true,
-        }),
-      },
+      updateData,
       { new: true, runValidators: true },
     );
 
-    res
-      .status(200)
-      .json({ success: true, message: 'Catalogue updated', data: updated });
-  } catch (error) {
-    console.error('updateCatalogue error:', error);
-    res.status(500).json({ success: false, message: error.message });
-  }
-};
-
-// ── TOGGLE STATUS ─────────────────────────────────────────────
-// PATCH /api/catalogue/:id/toggle-status
-exports.toggleStatus = async (req, res) => {
-  try {
-    const catalogue = await Catalogue.findById(req.params.id);
-    if (!catalogue) {
-      return res
-        .status(404)
-        .json({ success: false, message: 'Catalogue not found' });
-    }
-
-    catalogue.isActive = !catalogue.isActive;
-    await catalogue.save();
-
     res.status(200).json({
       success: true,
-      message: `Catalogue ${catalogue.isActive ? 'activated' : 'deactivated'}`,
-      data: catalogue,
+      message: 'Catalogue updated successfully',
+      data: updated,
     });
   } catch (error) {
-    console.error('toggleStatus error:', error);
+    console.error(error);
     res.status(500).json({ success: false, message: error.message });
   }
 };
 
-// ── DELETE ────────────────────────────────────────────────────
+// ── DELETE ───────────────────────────────────────────────────────
 // DELETE /api/catalogue/:id
 exports.deleteCatalogue = async (req, res) => {
   try {
     const catalogue = await Catalogue.findById(req.params.id);
+
     if (!catalogue) {
-      return res
-        .status(404)
-        .json({ success: false, message: 'Catalogue not found' });
+      return res.status(404).json({
+        success: false,
+        message: 'Catalogue not found',
+      });
     }
 
     await Catalogue.findByIdAndDelete(req.params.id);
 
-    res
-      .status(200)
-      .json({ success: true, message: 'Catalogue deleted successfully' });
+    res.status(200).json({
+      success: true,
+      message: 'Catalogue deleted successfully',
+    });
   } catch (error) {
-    console.error('deleteCatalogue error:', error);
     res.status(500).json({ success: false, message: error.message });
   }
 };

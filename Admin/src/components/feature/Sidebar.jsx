@@ -79,7 +79,7 @@ const handleNavigation = (path) => {
         // ] : []),
         // ...(permissions?.products?.read ? [
         { title: 'Products', path: '/admin/application/products' },
-        { title: 'Certificate', path: '/admin/application/certificate' },
+
         // ] : []),
         // ...(permissions?.products?.read ? [
         // { title: 'Sub-Products', path: '/admin/application/sub-products' },
@@ -136,6 +136,8 @@ const handleNavigation = (path) => {
       path: '/admin/enquiries',
     },
     { title: 'Warranties', path: '/admin/application/warranties' },
+    { title: 'Certificate', path: '/admin/application/certificate' },
+    { title: 'Catalogue', path: '/admin/application/catalogue' },
     // ] : []),
     // ...(permissions?.catalogueUpload?.read ? [
     // { title: 'Catalogue Upload', icon: 'ri-file-pdf-line', path: '/admin/catalogue', },
