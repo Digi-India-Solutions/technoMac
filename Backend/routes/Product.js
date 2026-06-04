@@ -9,6 +9,7 @@ const {
   getFeaturedProducts,
   updateProduct,
   deleteProduct,
+  searchProducts,
 } = require('../controller/Product');
 const upload = require('../middleware/multer');
 const adminAuth = require('../middleware/adminAuth');
@@ -18,6 +19,7 @@ productRouter.get('/', getAllProducts);
 productRouter.get('/featured', getFeaturedProducts);
 productRouter.get('/by-category/:categoryId', getProductsByCategory);
 productRouter.get('/by-subcategory/:subCategoryId', getProductsBySubCategory);
+productRouter.get('/search',  searchProducts);
 productRouter.get('/:id', getProductById);
 productRouter.put('/:id', adminAuth, upload.array('images', 10), updateProduct);
 productRouter.delete('/:id', deleteProduct);

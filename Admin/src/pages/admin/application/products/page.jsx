@@ -26,20 +26,31 @@ export default function ProductsManagement() {
   const [subCategoriesList, setSubCategoriesList] = useState([]); // subcategories for selected category
   const [showAddModal, setShowAddModal] = useState(false);
   const [editingProduct, setEditingProduct] = useState(null);
-  const [filters, setFilters] = useState({ search: '' });
   const [isLoading, setIsLoading] = useState(false);
   const fileInputRef = useRef(null);
 
+  const [filters, setFilters] = useState({
+    search: '',
+    category: '',
+    subCategory: '',
+    minPrice: '',
+    maxPrice: '',
+  });
+
   const emptyForm = {
     name: '',
-    category: '', // _id  (used for by-category filter)
-    subCategory: '', // _id  (used for by-subcategory filter)
+    model: '',
+    description: '',
+    category: '',
+    subCategory: '',
     price: '',
     discountPrice: '',
     stock: '',
     isFeatured: false,
     isActive: true,
     images: [],
+    features: [],
+    specifications: [],
   };
   const [formData, setFormData] = useState(emptyForm);
   const [uploadedFiles, setUploadedFiles] = useState([]);
@@ -53,14 +64,10 @@ export default function ProductsManagement() {
         const data = res.data || [];
         setProducts(data);
 
-        // Build unique category list from fetched products (no extra API needed)
-        const seen = new Map();
-        data.forEach((p) => {
-          const id = p.category?._id || p.category;
-          const name = p.category?.name;
-          if (id && name && !seen.has(id)) seen.set(id, { _id: id, name });
-        });
-        setCategoryList([...seen.values()]);
+        // ❌ YE POORA BLOCK HATA DO (seen.Map wala)
+        // const seen = new Map();
+        // data.forEach((p) => { ... });
+        // setCategoryList([...seen.values()]);   // ← YEH OVERRIDE KARTA THA
       } else {
         toast.error(res?.message || 'Failed to fetch products');
       }
@@ -71,36 +78,68 @@ export default function ProductsManagement() {
     }
   };
 
+  const searchProducts = async () => {
+    try {
+      setIsLoading(true);
+
+      const params = new URLSearchParams();
+
+      if (filters.search) params.append('q', filters.search);
+      if (filters.category) params.append('category', filters.category);
+      if (filters.subCategory)
+        params.append('subCategory', filters.subCategory);
+      if (filters.minPrice) params.append('minPrice', filters.minPrice); // ✅ fix
+      if (filters.maxPrice) params.append('maxPrice', filters.maxPrice); // ✅ fix
+
+      if (!params.toString()) {
+        fetchProducts();
+        return;
+      }
+
+      const res = await getData(`product/search?${params.toString()}`);
+
+      if (res?.success) {
+        setProducts(res.data || []);
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error('Search failed');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   const fetchCategories = async () => {
     const res = await getData('category');
 
+    console.log('Category API Response:', res);
+
     if (res?.success) {
+      console.log('Category Data =>', res.data);
       setCategoryList(res.data);
     }
   };
 
-
-
   // ── GET /product/by-category/:id → populate subCategory dropdown ─
-const fetchSubCategoriesByCategory = async (categoryId) => {
-  if (!categoryId) {
-    setSubCategoriesList([]);
-    return;
-  }
-
-  try {
-    const res = await getData(`sub-category/by-category/${categoryId}`);
-
-    console.log('SubCategory API Response:', res);
-
-    if (res?.success) {
-      setSubCategoriesList(res.data || []);
+  const fetchSubCategoriesByCategory = async (categoryId) => {
+    if (!categoryId) {
+      setSubCategoriesList([]);
+      return;
     }
-  } catch (error) {
-    console.log(error);
-    toast.error('Failed to load subcategories');
-  }
-};
+
+    try {
+      const res = await getData(`sub-category/by-category/${categoryId}`);
+
+      console.log('SubCategory API Response:', res);
+
+      if (res?.success) {
+        setSubCategoriesList(res.data || []);
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error('Failed to load subcategories');
+    }
+  };
 
   // ── Image handlers ────────────────────────────────────────────
   const handleFileUpload = (e) => {
@@ -133,7 +172,11 @@ const fetchSubCategoriesByCategory = async (categoryId) => {
   // ── Build FormData (field names match controller) ─────────────
   const buildFD = () => {
     const fd = new FormData();
+
     fd.append('name', formData.name);
+    fd.append('model', formData.model);
+    fd.append('description', formData.description);
+
     fd.append('category', formData.category);
     fd.append('subCategory', formData.subCategory);
     fd.append('price', formData.price);
@@ -141,7 +184,15 @@ const fetchSubCategoriesByCategory = async (categoryId) => {
     fd.append('stock', formData.stock || '');
     fd.append('isFeatured', String(formData.isFeatured));
     fd.append('isActive', String(formData.isActive));
-    uploadedFiles.forEach((file) => fd.append('images', file)); // multer field: 'images'
+
+    // ✅ Features — simple array
+    fd.append('features', JSON.stringify(formData.features));
+
+    // ✅ Specifications — [{key, value}] array
+    fd.append('specifications', JSON.stringify(formData.specifications));
+
+    uploadedFiles.forEach((file) => fd.append('images', file));
+
     return fd;
   };
 
@@ -189,6 +240,8 @@ const fetchSubCategoriesByCategory = async (categoryId) => {
     const catId = product.category?._id || product.category || '';
     setFormData({
       name: product.name || '',
+      model: product.model || '',
+      description: product.description || '',
       category: catId,
       subCategory: product.subCategory?._id || product.subCategory || '',
       price: product.price?.toString() || '',
@@ -197,6 +250,8 @@ const fetchSubCategoriesByCategory = async (categoryId) => {
       isFeatured: product.isFeatured || false,
       isActive: product.isActive ?? true,
       images: product.images || [],
+      features: product.features || [], // ✅
+      specifications: product.specifications || [], // ✅
     });
     if (catId) fetchSubCategoriesByCategory(catId);
     setShowAddModal(true);
@@ -245,14 +300,19 @@ const fetchSubCategoriesByCategory = async (categoryId) => {
   };
 
   // ── Effects ───────────────────────────────────────────────────
- useEffect(() => {
-   fetchProducts();
-   fetchCategories();
- }, []);
+  useEffect(() => {
+    // console.log('categoryList State =>', categoryList);
+    fetchProducts();
+    fetchCategories();
+  }, []);
+
+  useEffect(() => {
+    // console.log('Updated categoryList =>', categoryList);
+  }, [categoryList]);
 
   // When category changes in form → fetch subcategories via by-category route
   useEffect(() => {
-     console.log('Category Changed:', formData.category);
+    // console.log('Category Changed:', formData.category);
     if (formData.category) fetchSubCategoriesByCategory(formData.category);
     else {
       setSubCategoriesList([]);
@@ -260,12 +320,22 @@ const fetchSubCategoriesByCategory = async (categoryId) => {
     }
   }, [formData.category]);
 
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      searchProducts();
+    }, 500);
+
+    return () => clearTimeout(timeout);
+  }, [
+    filters.search,
+    filters.category,
+    filters.subCategory,
+    filters.minPrice,
+    filters.maxPrice,
+  ]);
+
   // ── Client-side search filter ─────────────────────────────────
-  const displayed = products.filter(
-    (p) =>
-      !filters.search ||
-      p.name?.toLowerCase().includes(filters.search.toLowerCase()),
-  );
+  const displayed = products;
 
   // ── JSX ───────────────────────────────────────────────────────
   return (
@@ -292,17 +362,108 @@ const fetchSubCategoriesByCategory = async (categoryId) => {
 
         {/* Search Filter */}
         <Card className="mb-6">
-          <div className="p-4">
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              Search
-            </label>
-            <input
-              type="text"
-              placeholder="Search by product name..."
-              value={filters.search}
-              onChange={(e) => setFilters({ search: e.target.value })}
-              className="w-full md:w-80 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 text-sm"
-            />
+          <div className="p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {/* Search */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Search
+              </label>
+              <input
+                type="text"
+                placeholder="Search by name or model..."
+                value={filters.search}
+                onChange={(e) =>
+                  setFilters((prev) => ({ ...prev, search: e.target.value }))
+                }
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg"
+              />
+            </div>
+
+            {/* Category */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Category
+              </label>
+              <select
+                value={filters.category}
+                onChange={(e) => {
+                  setFilters((prev) => ({
+                    ...prev,
+                    category: e.target.value,
+                    subCategory: '',
+                  }));
+                  fetchSubCategoriesByCategory(e.target.value);
+                }}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg"
+              >
+                <option value="">All Categories</option>
+                {categoryList.map((cat) => (
+                  <option key={cat._id} value={cat._id}>
+                    {cat.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            {/* Sub Category */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Sub Category
+              </label>
+              <select
+                value={filters.subCategory}
+                onChange={(e) =>
+                  setFilters((prev) => ({
+                    ...prev,
+                    subCategory: e.target.value,
+                  }))
+                }
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg"
+              >
+                <option value="">All Sub Categories</option>
+                {subCategoriesList.map((sub) => (
+                  <option key={sub._id} value={sub._id}>
+                    {sub.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            {/* Price Range */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Price Range (₹)
+              </label>
+              <div className="flex items-center gap-2">
+                <input
+                  type="number"
+                  placeholder="Min"
+                  value={filters.minPrice}
+                  onChange={(e) =>
+                    setFilters((prev) => ({
+                      ...prev,
+                      minPrice: e.target.value,
+                    }))
+                  }
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg"
+                  min="0"
+                />
+                <span className="text-gray-400">—</span>
+                <input
+                  type="number"
+                  placeholder="Max"
+                  value={filters.maxPrice}
+                  onChange={(e) =>
+                    setFilters((prev) => ({
+                      ...prev,
+                      maxPrice: e.target.value,
+                    }))
+                  }
+                  className="w-full px-3 py-2 border border-gray-300 rounded-lg"
+                  min="0"
+                />
+              </div>
+            </div>
           </div>
         </Card>
 
@@ -346,6 +507,13 @@ const fetchSubCategoriesByCategory = async (categoryId) => {
                     <h3 className="font-semibold text-gray-900 mb-1">
                       {product.name}
                     </h3>
+                    <p className="text-sm text-gray-500">
+                      Model: {product.model}
+                    </p>
+
+                    <p className="text-sm text-gray-600 mt-2 line-clamp-2">
+                      {product.description}
+                    </p>
                     <p className="text-sm text-gray-500 mb-3">
                       {product.category?.name}
                       {product.subCategory?.name
@@ -550,6 +718,41 @@ const fetchSubCategoriesByCategory = async (categoryId) => {
                     />
                   </div>
 
+                  {/* Model */}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Model *
+                    </label>
+                    <input
+                      type="text"
+                      value={formData.model}
+                      onChange={(e) =>
+                        setFormData({ ...formData, model: e.target.value })
+                      }
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                      required
+                    />
+                  </div>
+
+                  {/* Description */}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Description *
+                    </label>
+                    <textarea
+                      rows={4}
+                      value={formData.description}
+                      onChange={(e) =>
+                        setFormData({
+                          ...formData,
+                          description: e.target.value,
+                        })
+                      }
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+                      required
+                    />
+                  </div>
+
                   {/* Category — built from existing products via GET /product */}
                   <div className="grid grid-cols-2 gap-4">
                     <div>
@@ -559,23 +762,30 @@ const fetchSubCategoriesByCategory = async (categoryId) => {
                       <div className="relative">
                         <select
                           value={formData.category}
-                          onChange={(e) =>{
-                          console.log("Selected Category:", e.target.value);
+                          onChange={(e) => {
+                            console.log('Selected Category:', e.target.value);
                             setFormData({
                               ...formData,
                               category: e.target.value,
                               subCategory: '',
-                            })}
-                          }
+                            });
+                          }}
                           className="w-full px-3 py-2 pr-8 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 appearance-none"
                           required
                         >
+                          <p>Total Categories: {categoryList.length}</p>
+
+                          <pre>{JSON.stringify(categoryList, null, 2)}</pre>
                           <option value="">Select Category</option>
-                          {categoryList.map((cat) => (
-                            <option key={cat._id} value={cat._id}>
-                              {cat.name}
-                            </option>
-                          ))}
+                          {categoryList.map((cat) => {
+                            console.log('Category Item =>', cat);
+
+                            return (
+                              <option key={cat._id} value={cat._id}>
+                                {cat.name}
+                              </option>
+                            );
+                          })}
                         </select>
                         <i className="ri-arrow-down-s-line absolute right-2 top-1/2 -translate-y-1/2 text-gray-400"></i>
                       </div>
@@ -664,6 +874,156 @@ const fetchSubCategoriesByCategory = async (categoryId) => {
                       className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
                       min="0"
                     />
+                  </div>
+
+                  {/* ── FEATURES ── */}
+                  <div>
+                    <div className="flex justify-between items-center mb-2">
+                      <label className="block text-sm font-medium text-gray-700">
+                        Salient Features
+                      </label>
+                      <button
+                        type="button"
+                        onClick={() =>
+                          setFormData((prev) => ({
+                            ...prev,
+                            features: [...prev.features, ''],
+                          }))
+                        }
+                        className="text-sm text-blue-600 hover:text-blue-800 flex items-center gap-1"
+                      >
+                        <i className="ri-add-circle-line"></i> Add Feature
+                      </button>
+                    </div>
+
+                    {formData.features.length === 0 && (
+                      <p className="text-xs text-gray-400 italic">
+                        No features added yet.
+                      </p>
+                    )}
+
+                    <div className="space-y-2">
+                      {formData.features.map((feat, idx) => (
+                        <div key={idx} className="flex items-center gap-2">
+                          <span className="text-red-500">
+                            <i className="ri-checkbox-circle-fill"></i>
+                          </span>
+                          <input
+                            type="text"
+                            value={feat}
+                            placeholder={`Feature ${idx + 1}`}
+                            onChange={(e) => {
+                              const updated = [...formData.features];
+                              updated[idx] = e.target.value;
+                              setFormData((prev) => ({
+                                ...prev,
+                                features: updated,
+                              }));
+                            }}
+                            className="flex-1 px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500"
+                          />
+                          <button
+                            type="button"
+                            onClick={() =>
+                              setFormData((prev) => ({
+                                ...prev,
+                                features: prev.features.filter(
+                                  (_, i) => i !== idx,
+                                ),
+                              }))
+                            }
+                            className="text-red-400 hover:text-red-600"
+                          >
+                            <i className="ri-delete-bin-line"></i>
+                          </button>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* ── SPECIFICATIONS ── */}
+                  <div>
+                    <div className="flex justify-between items-center mb-2">
+                      <label className="block text-sm font-medium text-gray-700">
+                        Technical Specifications
+                      </label>
+                      <button
+                        type="button"
+                        onClick={() =>
+                          setFormData((prev) => ({
+                            ...prev,
+                            specifications: [
+                              ...prev.specifications,
+                              { key: '', value: '' },
+                            ],
+                          }))
+                        }
+                        className="text-sm text-blue-600 hover:text-blue-800 flex items-center gap-1"
+                      >
+                        <i className="ri-add-circle-line"></i> Add Spec
+                      </button>
+                    </div>
+
+                    {formData.specifications.length === 0 && (
+                      <p className="text-xs text-gray-400 italic">
+                        No specifications added yet.
+                      </p>
+                    )}
+
+                    <div className="space-y-2">
+                      {formData.specifications.map((spec, idx) => (
+                        <div key={idx} className="flex items-center gap-2">
+                          <input
+                            type="text"
+                            value={spec.key}
+                            placeholder="Label (e.g. Capacity)"
+                            onChange={(e) => {
+                              const updated = [...formData.specifications];
+                              updated[idx] = {
+                                ...updated[idx],
+                                key: e.target.value,
+                              };
+                              setFormData((prev) => ({
+                                ...prev,
+                                specifications: updated,
+                              }));
+                            }}
+                            className="flex-1 px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500"
+                          />
+                          <input
+                            type="text"
+                            value={spec.value}
+                            placeholder="Value (e.g. 12-15 Liters)"
+                            onChange={(e) => {
+                              const updated = [...formData.specifications];
+                              updated[idx] = {
+                                ...updated[idx],
+                                value: e.target.value,
+                              };
+                              setFormData((prev) => ({
+                                ...prev,
+                                specifications: updated,
+                              }));
+                            }}
+                            className="flex-1 px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500"
+                          />
+                          <button
+                            type="button"
+                            onClick={() =>
+                              setFormData((prev) => ({
+                                ...prev,
+                                specifications: prev.specifications.filter(
+                                  (_, i) => i !== idx,
+                                ),
+                              }))
+                            }
+                            className="text-red-400 hover:text-red-600"
+                          >
+                            <i className="ri-delete-bin-line"></i>
+                          </button>
+                        </div>
+                      ))}
+                    </div>
                   </div>
 
                   {/* isFeatured + isActive */}
