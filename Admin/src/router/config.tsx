@@ -78,6 +78,7 @@ const routes: RouteObject[] = [
           { path: 'warranties', element: <WarrantiesManagement /> },
           { path: 'certificate', element: <CertificaManagement /> },
           { path: 'catalogue', element: <CatalogueManagement /> },
+          
           // { path: "notifications", element: <NotificationsManagement /> },
           { path: 'rewards', element: <RewardsManagement /> },
           { path: 'faqs', element: <FaqsManagement /> },
