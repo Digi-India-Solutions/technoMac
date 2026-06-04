@@ -1,35 +1,70 @@
 import Link from "next/link";
-import {  FaCheckCircle, FaFilePdf, FaWhatsapp} from "react-icons/fa";
-import { Swiper,SwiperSlide,} from "swiper/react";
+import { FaCheckCircle, FaFilePdf, FaWhatsapp } from "react-icons/fa";
+import { Swiper, SwiperSlide, } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import products from "../../../../Data/products";
 import styles from "./ProductDetails.module.css";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Breadcrumb from "../../common/Breadcrumb/Breadcrumb";
+import { useSearchParams } from "next/navigation";
+import { getData } from "../../../services/FetchNodeServices";
 
-export default function ProductDetails({ product }) {
-  const relatedProducts = products.filter(
-    (item) => item.slug !== product.slug
-  );
+export default function ProductDetails() {
+  const searchParams = useSearchParams()
+  const productId = searchParams.get("productId");
+  const [search, setSearch] = useState("");
+  const [product, setProduct] = useState({})
+  const [relatedProducts, setRelatedProducts] = useState([])
+  const [activeImage, setActiveImage] = useState('');
 
-  const galleryImages = product.images || [
-    product.image,
-    product.image,
-    product.image,
-    product.image,
-    product.image,
-    product.image,
-  ];
+  const fetchProductById = async () => {
+    try {
+      let response = await getData(`product/${productId}`)
+      console.log("RESPONSE==>aa", response)
+      if (response.success === true) {
+        setProduct(response?.data)
+        setActiveImage(response?.data?.images[0])
+      }
+    } catch (e) {
+      console.log(e)
+    }
+  }
 
-  const [activeImage, setActiveImage] =
-    useState(galleryImages[0]);
+  const fetchProductBycategoryId = async () => {
+    try {
+      let responses = await getData(`product/by-category/${product?.category?._id}`)
+      console.log("RESPONSE==>aacategory", responses)
+      if (responses.success === true) {
+        setRelatedProducts(responses.data)
+      }
+    } catch (e) {
+      console.log(e)
+    }
+  }
 
+  useEffect(() => {
+    fetchProductById()
+    if (product?.category?._id) {
+      fetchProductBycategoryId()
+    }
+  }, [productId, product?.category?._id])
+
+  console.log("RESPONSE==>aa", product.images)
+
+  const galleryImages =
+    Array.isArray(product.images) && product.images.length > 0
+      ? product.images
+      : product.image
+        ? [product.image]
+        : [];
+
+  const filterRelatedProducts = relatedProducts.filter((item) => item?._id !== product?._id)
   return (
 
     <section className="allSections">
       <div className="container">
-        <Breadcrumb pageName={product.name} />
+        <Breadcrumb pageName={product?.name} />
 
         <div className="row">
           <div className="col-lg-5">
@@ -37,7 +72,7 @@ export default function ProductDetails({ product }) {
               <div className={styles.mainImage}>
                 <Image
                   src={activeImage}
-                  alt={product.name}
+                  alt={product?.name}
                   width={600}
                   height={500}
                   className={styles.mainProductImage}
@@ -70,17 +105,18 @@ export default function ProductDetails({ product }) {
                 </div>
               </div>
             </div>
+            
           </div>
           <div className="col-lg-7">
             <div className={styles.content}>
               <span className={styles.category}>
-                {product.category}
+                {product?.category?.name}
               </span>
               <h1>
-                {product.name}
+                {product?.name}
               </h1>
               <p className={styles.description}>
-                {product.description}
+                {product?.description}
               </p>
               <div className={styles.sectionBox}>
                 <h3>
@@ -105,6 +141,7 @@ export default function ProductDetails({ product }) {
                   </li>
                 </ul>
               </div>
+
               <div className={styles.sectionBox}>
                 <h3>
                   Technical Specifications
@@ -128,6 +165,7 @@ export default function ProductDetails({ product }) {
                   </div>
                 </div>
               </div>
+
               <div className={styles.buttonGroup}>
                 <button className={styles.primaryBtn}>
                   <FaWhatsapp />
@@ -167,26 +205,26 @@ export default function ProductDetails({ product }) {
               },
             }}
           >
-            {relatedProducts.map((item) => (
+            {filterRelatedProducts?.map((item) => (
               <SwiperSlide key={item.id}>
                 <div className={styles.relatedCard}>
                   <div className="globalProductCard">
                     <Image
-                      src={item.image}
+                      src={item.images[0]}
                       alt={item.name}
                       width={250}
                       height={200}
                     />
                     <span>
-                      {item.category}
+                      {item?.category?.name}
                     </span>
                     <h3>
                       {item.name}
                     </h3>
                     <p>
-                      {item.description}
+                      {item?.description}
                     </p>
-                    <Link href={`/product/${item.slug}`}>
+                    <Link href={`/product/${item?.name}?productId=${item._id}`}>
                       <button>
                         View Details
                       </button>

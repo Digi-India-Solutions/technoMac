@@ -2,11 +2,14 @@
   "/": "pages/index.js",
   "/_app": "pages/_app.js",
   "/_document": "pages/_document.js",
+  "/_error": "pages/_error.js",
   "/catalogue": "pages/catalogue.js",
+  "/certificates": "pages/certificates.js",
   "/clinic-setup": "pages/clinic-setup.js",
   "/contact": "pages/contact.js",
   "/product/[slug]": "pages/product/[slug].js",
   "/products": "pages/products.js",
   "/updates": "pages/updates.js",
+  "/updates/[slug]": "pages/updates/[slug].js",
   "/warranty-registration": "pages/warranty-registration.js"
 }

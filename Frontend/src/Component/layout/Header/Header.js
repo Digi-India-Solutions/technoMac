@@ -528,7 +528,8 @@ export default function Header() {
                         ) : subCategories.length > 0 ? (
                           subCategories.map((sub) => (
                             <Link
-                              href={`/products?category=${activeCategory?._id}&sub=${sub._id}`}
+                            // category=${activeCategory?._id}&
+                              href={`/products?sub=${sub._id}`}
                               key={sub._id}
                             >
                               {/* ✅ adjust field name to match your API */}

@@ -1,0 +1,257 @@
+.overlay {
+
+  position: fixed;
+
+  inset: 0;
+
+  background:
+    rgba(0,0,0,0.6);
+
+  z-index: 99999;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 20px;
+
+  animation:
+    fadeIn 0.4s ease;
+}
+
+/* POPUP */
+
+.popup {
+
+  position: relative;
+
+  width: 100%;
+
+  max-width: 450px;
+
+  background: #fff;
+
+  border-radius: 34px;
+
+  padding: 20px;
+
+  animation:
+    popupShow 0.45s ease;
+
+  box-shadow:
+    0 25px 60px rgba(0,0,0,0.2);
+}
+
+/* CLOSE */
+
+.closeBtn {
+
+  position: absolute;
+
+  top: 18px;
+  right: 18px;
+
+  width: 42px;
+  height: 42px;
+
+  border: none;
+
+  border-radius: 50%;
+
+  background: #f3f3f3;
+
+  cursor: pointer;
+
+  transition: 0.3s ease;
+}
+
+.closeBtn:hover {
+
+  background: #e53935;
+
+  color: #fff;
+}
+
+/* TAG */
+
+.tag {
+
+  display: inline-block;
+
+  background:
+    rgba(229,57,53,0.08);
+
+  color: #e53935;
+
+  padding: 10px 18px;
+
+  border-radius: 50px;
+
+  font-size: 13px;
+
+  font-weight: 800;
+
+  margin-bottom: 18px;
+}
+
+/* TEXT */
+
+.popup h2 {
+
+  font-size: 22px;
+
+  font-weight: 900;
+
+  margin-bottom: 5px;
+
+  color: #111;
+}
+
+.popup p {
+
+  color: #666;
+
+  line-height: 1.8;
+
+  margin-bottom: 10px;
+}
+
+/* INPUT */
+
+.inputBox {
+
+  position: relative;
+
+  margin-bottom: 18px;
+}
+
+.inputBox svg {
+
+  position: absolute;
+
+  top: 12px;
+  left: 18px;
+
+  color: #999;
+}
+
+.inputBox input,
+.inputBox textarea {
+  width: 100%;
+  border:1px solid #e5e5e5;
+  border-radius: 10px;
+  padding-left: 42px;
+  font-size: 15px;
+  transition: 0.3s ease;
+}
+
+.inputBox input {
+
+  height: 40px;
+}
+
+.inputBox textarea {
+  padding-top: 8px;
+  height: 40px;
+  resize: none;
+}
+
+.inputBox input:focus,
+.inputBox textarea:focus {
+
+  outline: none;
+
+  border-color: #e53935;
+
+  box-shadow:
+    0 0 0 4px rgba(229,57,53,0.08);
+}
+
+/* BUTTON */
+
+.submitBtn {
+
+  width: 100%;
+
+  height: 60px;
+
+  border: none;
+
+  border-radius: 18px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #e53935,
+      #ff6b6b
+    );
+
+  color: #fff;
+
+  font-size: 16px;
+
+  font-weight: 800;
+
+  margin-top: 10px;
+
+  transition: 0.3s ease;
+}
+
+.submitBtn:hover {
+
+  transform:
+    translateY(-3px);
+}
+
+/* ANIMATION */
+
+@keyframes popupShow {
+
+  from {
+
+    opacity: 0;
+
+    transform:
+      scale(0.85)
+      translateY(40px);
+  }
+
+  to {
+
+    opacity: 1;
+
+    transform:
+      scale(1)
+      translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+
+  from {
+
+    opacity: 0;
+  }
+
+  to {
+
+    opacity: 1;
+  }
+}
+
+/* MOBILE */
+
+@media(max-width:576px){
+
+  .popup {
+
+    padding: 28px;
+  }
+
+  .popup h2 {
+
+    font-size: 30px;
+  }
+}

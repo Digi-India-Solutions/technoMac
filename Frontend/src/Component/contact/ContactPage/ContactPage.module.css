@@ -1,5 +1,5 @@
 .contactSection {
-  padding: 40px 0 80px;
+  padding: 100px 0 0px;
 }
 
 /* LEFT */
@@ -14,7 +14,7 @@
 
   border-radius: 30px;
 
-  padding: 45px;
+  padding: 30px;
 
   height: 100%;
 
@@ -71,7 +71,7 @@
 
 .contactInfo h2 {
 
-  font-size: 40px;
+  font-size: 28px;
 
   font-weight: 800;
 
@@ -90,9 +90,9 @@
 
   color: #cfcfcf;
 
-  line-height: 1.9;
+  line-height: 1.4;
 
-  margin-bottom: 35px;
+  margin-bottom: 20px;
 
   position: relative;
 
@@ -118,10 +118,10 @@
 
 .icon {
 
-  min-width: 55px;
-  height: 55px;
+  min-width: 50px;
+  height: 50px;
 
-  border-radius: 16px;
+  border-radius: 10px;
 
   background:
     rgba(255,255,255,0.08);
@@ -162,9 +162,9 @@
 
   background: #fff;
 
-  border-radius: 30px;
+  border-radius: 20px;
 
-  padding: 45px;
+  padding: 30px;
 
   box-shadow:
     0 10px 40px rgba(0,0,0,0.05);
@@ -181,24 +181,24 @@
 
 .formHeader h3 {
 
-  font-size: 44px;
+  font-size: 28px;
 
   font-weight: 800;
 
-  margin: 15px 0 35px;
+  margin: 0px 0 20px;
 }
 
 /* INPUT */
 
 .inputGroup {
-  margin-bottom: 25px;
+  margin-bottom: 15px;
 }
 
 .inputGroup label {
 
   display: block;
-
-  margin-bottom: 10px;
+  font-size: 14px;
+  margin-bottom: 5px;
 
   font-weight: 600;
 
@@ -209,17 +209,11 @@
 .inputGroup textarea {
 
   width: 100%;
-
   border: 1px solid #e5e5e5;
-
-  border-radius: 16px;
-
-  padding: 16px 18px;
-
+  border-radius: 10px;
+  padding: 10px 20px;
   outline: none;
-
   transition: 0.3s;
-
   background: #fafafa;
 }
 
@@ -304,7 +298,7 @@
 }
 
   .contactSection {
-    padding: 30px 0 60px;
+    padding: 90px 0 0px;
   }
 
   .contactInfo,

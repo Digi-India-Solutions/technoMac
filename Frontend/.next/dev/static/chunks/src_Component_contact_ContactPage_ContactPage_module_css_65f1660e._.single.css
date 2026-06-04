@@ -1,13 +1,13 @@
 /* [project]/src/Component/contact/ContactPage/ContactPage.module.css [client] (css) */
 .ContactPage-module__86eg3a__contactSection {
-  padding: 40px 0 80px;
+  padding: 100px 0 0;
 }
 
 .ContactPage-module__86eg3a__contactInfo {
   background: linear-gradient(135deg, #111, #1b1b1b);
   border-radius: 30px;
   height: 100%;
-  padding: 45px;
+  padding: 30px;
   position: relative;
   overflow: hidden;
 }
@@ -41,7 +41,7 @@
   color: #fff;
   z-index: 2;
   margin-bottom: 20px;
-  font-size: 40px;
+  font-size: 28px;
   font-weight: 800;
   line-height: 1.1;
   position: relative;
@@ -50,8 +50,8 @@
 .ContactPage-module__86eg3a__contactInfo p {
   color: #cfcfcf;
   z-index: 2;
-  margin-bottom: 35px;
-  line-height: 1.9;
+  margin-bottom: 20px;
+  line-height: 1.4;
   position: relative;
 }
 
@@ -67,11 +67,11 @@
 .ContactPage-module__86eg3a__icon {
   color: #ff4d5a;
   background: #ffffff14;
-  border-radius: 16px;
+  border-radius: 10px;
   justify-content: center;
   align-items: center;
-  min-width: 55px;
-  height: 55px;
+  min-width: 50px;
+  height: 50px;
   font-size: 20px;
   display: flex;
 }
@@ -90,8 +90,8 @@
 
 .ContactPage-module__86eg3a__formCard {
   background: #fff;
-  border-radius: 30px;
-  padding: 45px;
+  border-radius: 20px;
+  padding: 30px;
   box-shadow: 0 10px 40px #0000000d;
 }
 
@@ -101,18 +101,19 @@
 }
 
 .ContactPage-module__86eg3a__formHeader h3 {
-  margin: 15px 0 35px;
-  font-size: 44px;
+  margin: 0 0 20px;
+  font-size: 28px;
   font-weight: 800;
 }
 
 .ContactPage-module__86eg3a__inputGroup {
-  margin-bottom: 25px;
+  margin-bottom: 15px;
 }
 
 .ContactPage-module__86eg3a__inputGroup label {
   color: #111;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
+  font-size: 14px;
   font-weight: 600;
   display: block;
 }
@@ -120,10 +121,10 @@
 .ContactPage-module__86eg3a__inputGroup input, .ContactPage-module__86eg3a__inputGroup textarea {
   background: #fafafa;
   border: 1px solid #e5e5e5;
-  border-radius: 16px;
+  border-radius: 10px;
   outline: none;
   width: 100%;
-  padding: 16px 18px;
+  padding: 10px 20px;
   transition: all .3s;
 }
 
@@ -180,7 +181,7 @@
   }
 
   .ContactPage-module__86eg3a__contactSection {
-    padding: 30px 0 60px;
+    padding: 90px 0 0;
   }
 
   .ContactPage-module__86eg3a__contactInfo, .ContactPage-module__86eg3a__formCard {

@@ -6,18 +6,18 @@ import ProductDetails from "../../Component/products/ProductDetails/ProductDetai
 
 export default function ProductDetailPage() {
 
-  const router = useRouter();
-  const { slug } = router.query;
-  const product = products.find(
-    (item) => item.slug === slug
-  );
+  // const router = useRouter();
+  // const { slug } = router.query;
+  // const product = products.find(
+  //   (item) => item.slug === slug
+  // );
 
-  if (!product) return null;
+  // if (!product) return null;
 
   return (
     <Layout>
 
-      <ProductDetails product={product} />
+      <ProductDetails  />
 
     </Layout>
   );

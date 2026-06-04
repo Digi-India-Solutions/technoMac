@@ -2,7 +2,7 @@
 
   position: relative;
 
-  padding: 150px 0 100px;
+  padding: 100px 0 10px;
 
   background:
     linear-gradient(180deg,
@@ -36,7 +36,7 @@
 
 .heroWrapper {
 
-  margin-bottom: 100px;
+  margin-bottom: 40px;
 }
 
 /* CONTENT */
@@ -44,7 +44,7 @@
 .content span {
 
   display: inline-block;
-
+  margin-bottom: 0.5rem;
   background:
     rgba(229, 57, 53, 0.10);
 
@@ -54,7 +54,7 @@
 
   border-radius: 50px;
 
-  font-size: 13px;
+  font-size: 12px;
 
   font-weight: 700;
 
@@ -62,14 +62,14 @@
 }
 
 .content h1 {
-  font-size: 40px;
+  font-size: 22px;
   font-weight: 900;
 
-  line-height: 1.05;
+  line-height: 1;
 
   color: #111;
-
-  margin-bottom: 24px;
+  margin-top: 1rem;
+  margin-bottom: 5px;
 }
 
 .content p {
@@ -80,7 +80,7 @@
 
   line-height: 1.9;
 
-  margin-bottom: 35px;
+  margin-bottom: 10px;
 }
 
 /* FEATURES */
@@ -91,9 +91,9 @@
 
   flex-direction: column;
 
-  gap: 18px;
+  gap: 0px;
 
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .featureItem {
@@ -132,13 +132,13 @@
 .primaryBtn,
 .secondaryBtn {
 
-  height: 60px;
+  height: 40px;
 
   border: none;
 
   padding: 0 28px;
 
-  border-radius: 18px;
+  border-radius: 10px;
 
   font-weight: 700;
 
@@ -276,7 +276,7 @@
 
   text-align: center;
 
-  margin-bottom: 60px;
+  margin-bottom: 20px;
 }
 
 .sectionHeading span {
@@ -292,7 +292,7 @@
 
   border-radius: 50px;
 
-  font-size: 13px;
+  font-size: 12px;
 
   font-weight: 700;
 
@@ -301,7 +301,7 @@
 
 .sectionHeading h2 {
 
-  font-size: 40px;
+  font-size: 28px;
 
   font-weight: 900;
 }
@@ -314,7 +314,7 @@
 
   border-radius: 30px;
 
-  padding: 35px;
+  padding: 20px;
 
   height: 100%;
 
@@ -331,39 +331,26 @@
 }
 
 .number {
-
-  width: 70px;
-  height: 70px;
-
-  border-radius: 20px;
-
-  background:
-    linear-gradient(135deg,
-      var(--theme-color),
-      #ff6b6b);
-
+  background: linear-gradient(135deg, var(--theme-color), #ff6b6b);
   color: #fff;
-
-  display: flex;
-
-  align-items: center;
-
+  border-radius: 10px;
   justify-content: center;
-
-  font-size: 24px;
-
-  font-weight: 800;
-
+  align-items: center;
+  width: 50px;
+  height: 50px;
   margin-bottom: 22px;
+  font-size: 20px;
+  font-weight: 800;
+  display: flex;
 }
 
 .processCard h4 {
 
-  font-size: 28px;
+  font-size: 18px;
 
   font-weight: 800;
 
-  margin-bottom: 15px;
+  margin-bottom: 5px;
 }
 
 .processCard p {
@@ -377,16 +364,16 @@
 
 .solutionSection {
 
-  margin-bottom: 100px;
+  margin-bottom: 40px;
 }
 
 .solutionCard {
 
   background: #fff;
 
-  border-radius: 30px;
+  border-radius: 20px;
 
-  padding: 35px;
+  padding: 20px;
 
   height: 100%;
 
@@ -407,11 +394,9 @@
 
 .solutionCard h3 {
 
-  font-size: 22px;
-
+  font-size: 20px;
   font-weight: 800;
-
-  margin-bottom: 18px;
+  margin-bottom: 10px;
 }
 
 .solutionCard p {
@@ -425,7 +410,7 @@
 
 .includeSection {
 
-  margin-bottom: 100px;
+  margin-bottom: 30px;
 }
 
 .includeImage img {
@@ -448,22 +433,19 @@
 
   border-radius: 50px;
 
-  font-size: 13px;
+  font-size: 12px;
 
   font-weight: 700;
 
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .includeContent h2 {
 
-  font-size: 40px;
-
+  font-size: 28px;
   font-weight: 900;
-
   line-height: 1.1;
-
-  margin-bottom: 22px;
+  margin-bottom: 10px;
 }
 
 .includeContent p {
@@ -482,19 +464,15 @@
   grid-template-columns:
     repeat(2, 1fr);
 
-  gap: 18px;
+  gap: 10px;
 }
 
 .includeList div {
-
   background: #fff;
-
-  padding: 15px;
-
-  border-radius: 18px;
-
+  padding: 6px 12px;
+  font-size: 14px;
+  border-radius: 10px;
   font-weight: 600;
-
   box-shadow:
     0 10px 25px rgba(0, 0, 0, 0.04);
 }
@@ -503,7 +481,7 @@
 
 .equipmentSection {
 
-  margin-bottom: 100px;
+  margin-bottom: 40px;
 }
 
 .equipmentCard {
@@ -515,7 +493,7 @@
 
   border-radius: 28px;
 
-  height: 220px;
+  height: 150px;
 
   display: flex;
 
@@ -544,7 +522,7 @@
 
 .equipmentCard h4 {
 
-  font-size: 28px;
+  font-size: 22px;
 
   font-weight: 800;
 
@@ -558,11 +536,6 @@
 
 /* CTA */
 
-.ctaSection {
-
-  margin-top: 50px;
-}
-
 .ctaCard {
 
   background:
@@ -572,7 +545,7 @@
 
   border-radius: 40px;
 
-  padding: 70px;
+  padding: 30px;
 
   text-align: center;
 
@@ -603,7 +576,7 @@
 
 .ctaCard h2 {
 
-  font-size: 64px;
+  font-size: 22px;
 
   font-weight: 900;
 
@@ -613,13 +586,8 @@
 }
 
 .ctaCard p {
-
-  max-width: 750px;
-
-  margin: auto auto 35px;
-
+  margin: auto auto 30px;
   color: rgba(255, 255, 255, 0.7);
-
   line-height: 1.9;
 }
 
@@ -650,6 +618,216 @@
   transform:
     translateY(-4px);
 }
+
+/* =========================
+   ROI CALCULATOR
+========================= */
+
+.calculatorSection {
+  margin-top: 40px;
+}
+
+/* CARD */
+
+.calcCard {
+
+  background: #fff;
+
+  padding: 30px;
+
+  border-radius: 24px;
+
+  box-shadow:
+    0 10px 35px rgba(0, 0, 0, 0.05);
+
+  height: 100%;
+}
+
+.calcCard h4 {
+
+  font-size: 20px;
+
+  font-weight: 700;
+
+  margin-bottom: 20px;
+}
+
+/* TOP */
+
+.rangeTop {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 15px;
+
+  margin-bottom: 20px;
+}
+
+.rangeTop span {
+
+  font-size: 13px;
+
+  color: #777;
+}
+
+.rangeTop input {
+
+  width: 100px;
+
+  height: 50px;
+
+  border:
+    1px solid #ddd;
+
+  border-radius: 14px;
+
+  padding: 0 15px;
+
+  outline: none;
+}
+
+/* RANGE */
+
+.rangeInput {
+
+  width: 100%;
+
+  accent-color: #e53935;
+}
+
+/* RESULT */
+
+.resultCard {
+
+  background: #fff;
+
+  border-radius: 30px;
+
+  padding: 20px;
+
+  margin-top: 0px;
+
+  box-shadow:
+    0 15px 40px rgba(0, 0, 0, 0.05);
+}
+
+.resultTop span {
+
+  color: #777;
+
+  font-size: 16px;
+}
+
+.resultTop h2 {
+
+  font-size: 40px;
+
+  font-weight: 900;
+
+  color: var(--theme-color);
+
+  margin: 12px 0;
+}
+
+.resultTop p {
+
+  color: #666;
+}
+
+/* STATS */
+
+.statsCard {
+
+  background: #f8f8f8;
+
+  border-radius: 20px;
+
+  padding: 25px;
+}
+
+.statsCard span {
+
+  color: #777;
+
+  font-size: 14px;
+}
+
+.statsCard h4 {
+
+  margin-top: 12px;
+
+  font-size: 30px;
+
+  font-weight: 800;
+}
+
+/* BUDGET */
+
+.budgetCard,
+.suggestCard {
+
+  background: #f8f8f8;
+
+  border-radius: 22px;
+
+  padding: 20px;
+
+  height: 100%;
+}
+
+.budgetCard span,
+.suggestCard span {
+
+  color: #777;
+
+  font-size: 14px;
+}
+
+.budgetCard h3 {
+
+  margin-top: 14px;
+
+  font-size: 30px;
+
+  font-weight: 900;
+
+  color: #111;
+}
+
+.suggestCard h4 {
+
+  margin: 14px 0;
+
+  font-size: 18px;
+
+  font-weight: 800;
+
+  color: var(--theme-color);
+}
+
+.suggestCard p {
+
+  margin: 0;
+
+  color: #555;
+}
+
+.suggestCard small {
+
+  display: block;
+
+  margin-top: 10px;
+
+  color: #777;
+
+  font-size: 13px;
+}
+
+/* MOBILE */
 
 /* RESPONSIVE */
 
@@ -682,6 +860,43 @@
 
 @media(max-width: 576px) {
 
+  .statsCard {
+    padding: 15px;
+  }
+
+  .calcCard h4 {
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+
+  .calcCard {
+    padding: 10px;
+  }
+
+  .includeImage img {
+    margin-bottom: 1rem;
+  }
+
+  .resultCard {
+    border-radius: 20px;
+    padding: 15px;
+  }
+
+  .resultTop h2 {
+
+    font-size: 38px;
+  }
+
+  .statsCard h4 {
+
+    font-size: 24px;
+  }
+
+  .budgetCard h3 {
+
+    font-size: 30px;
+  }
+
   .solutionCard {
     padding: 15px;
   }
@@ -710,7 +925,7 @@
 
   .content span,
   .includeContent span {
-    margin-top: 1rem;
+    margin-top: 0rem;
     padding: 6px 12px;
     font-size: 12px;
     margin-bottom: 10px;
@@ -719,7 +934,7 @@
 
   .setupSection {
 
-    padding: 80px 0 0px;
+    padding: 90px 0 0px;
   }
 
   .content h1 {
@@ -781,8 +996,8 @@
   }
 
   .solutionSection,
-  .includeSection,.equipmentSection
- {
+  .includeSection,
+  .equipmentSection {
     margin-bottom: 0px;
   }
 
@@ -810,29 +1025,31 @@
   }
 
   .equipmentCard {
-  border-radius: 20px;
-  height: 150px;
-  background:var(--theme-color);
-  color: white;
-}
+    border-radius: 20px;
+    height: 150px;
+    background: var(--theme-color);
+    color: white;
+  }
+
   .equipmentCard h4 {
-  font-size: 18px;
+    font-size: 18px;
 
-}
+  }
 
-.ctaCard {
-  padding: 20px;
-}
-.ctaCard h2 {
-  font-size: 22px;
-  font-weight: 800;
-  margin-bottom: 20px;
-}
+  .ctaCard {
+    padding: 20px;
+  }
 
-.ctaCard button {
+  .ctaCard h2 {
+    font-size: 22px;
+    font-weight: 800;
+    margin-bottom: 20px;
+  }
 
-  height: 50px;
-  padding: 0 30px;
-}
+  .ctaCard button {
+
+    height: 50px;
+    padding: 0 30px;
+  }
 
 }

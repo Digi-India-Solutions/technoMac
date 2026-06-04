@@ -11,7 +11,7 @@ export default function ProductCard({ item }) {
       <div className={styles.imageBox}>
 
         <Image
-          src={item.image}
+          src={item.image || item.images[0]}
           alt={item.name}
           width={500}
           height={300}
@@ -21,19 +21,19 @@ export default function ProductCard({ item }) {
 
       <div className={styles.content}>
 
-        <span>
-          {item.category}
+        <span >
+          {item?.category?.name}
         </span>
 
         <h3>
-          {item.name}
+          {item?.name}
         </h3>
 
         <p>
-          {item.description}
+          {item?.description}
         </p>
 
-        <Link href={`/product/${item.slug}`}>
+        <Link href={`/product/${item.name}?productId=${item._id}`}>
 
           <button>
             View Details

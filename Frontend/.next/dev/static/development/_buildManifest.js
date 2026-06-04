@@ -2,8 +2,14 @@ self.__BUILD_MANIFEST = {
   "/": [
     "static/chunks/pages/index.js"
   ],
+  "/_error": [
+    "static/chunks/pages/_error.js"
+  ],
   "/catalogue": [
     "static/chunks/pages/catalogue.js"
+  ],
+  "/certificates": [
+    "static/chunks/pages/certificates.js"
   ],
   "/clinic-setup": [
     "static/chunks/pages/clinic-setup.js"
@@ -19,6 +25,9 @@ self.__BUILD_MANIFEST = {
   ],
   "/updates": [
     "static/chunks/pages/updates.js"
+  ],
+  "/updates/[slug]": [
+    "static/chunks/pages/updates/[slug].js"
   ],
   "/warranty-registration": [
     "static/chunks/pages/warranty-registration.js"
