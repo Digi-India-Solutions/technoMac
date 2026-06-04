@@ -1,0 +1,1055 @@
+.setupSection {
+
+  position: relative;
+
+  padding: 100px 0 10px;
+
+  background:
+    linear-gradient(180deg,
+      #f8f8f8,
+      #ffffff);
+
+  overflow: hidden;
+}
+
+/* GLOW */
+
+.glow {
+
+  position: absolute;
+
+  width: 500px;
+  height: 500px;
+
+  background:
+    radial-gradient(circle,
+      rgba(229, 57, 53, 0.10),
+      transparent 70%);
+
+  top: -200px;
+  right: -150px;
+
+  filter: blur(90px);
+}
+
+/* HERO */
+
+.heroWrapper {
+
+  margin-bottom: 40px;
+}
+
+/* CONTENT */
+
+.content span {
+
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  background:
+    rgba(229, 57, 53, 0.10);
+
+  color: var(--theme-color);
+
+  padding: 10px 18px;
+
+  border-radius: 50px;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  /* margin-bottom: 22px; */
+}
+
+.content h1 {
+  font-size: 22px;
+  font-weight: 900;
+
+  line-height: 1;
+
+  color: #111;
+  margin-top: 1rem;
+  margin-bottom: 5px;
+}
+
+.content p {
+
+  color: #666;
+
+  font-size: 16px;
+
+  line-height: 1.9;
+
+  margin-bottom: 10px;
+}
+
+/* FEATURES */
+
+.featureList {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 0px;
+
+  margin-bottom: 10px;
+}
+
+.featureItem {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  font-weight: 600;
+
+  color: #222;
+}
+
+.featureItem svg {
+
+  color: var(--theme-color);
+
+  font-size: 18px;
+}
+
+/* BUTTONS */
+
+.buttonGroup {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 18px;
+
+  flex-wrap: wrap;
+}
+
+.primaryBtn,
+.secondaryBtn {
+
+  height: 40px;
+
+  border: none;
+
+  padding: 0 28px;
+
+  border-radius: 10px;
+
+  font-weight: 700;
+
+  transition: 0.4s ease;
+}
+
+.primaryBtn {
+
+  background:
+    linear-gradient(135deg,
+      var(--theme-color),
+      #ff6b6b);
+
+  color: #fff;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  box-shadow:
+    0 15px 35px rgba(229, 57, 53, 0.20);
+}
+
+.secondaryBtn {
+
+  background: #111;
+
+  color: #fff;
+}
+
+.primaryBtn:hover,
+.secondaryBtn:hover {
+
+  transform: translateY(-4px);
+}
+
+/* IMAGE */
+
+.imageWrapper {
+
+  position: relative;
+
+  text-align: center;
+}
+
+.setupImage {
+
+  width: 100%;
+  height: 100%;
+  border-radius: 36px;
+
+  box-shadow:
+    0 20px 45px rgba(0, 0, 0, 0.10);
+}
+
+/* FLOAT CARD */
+
+.floatingCard {
+
+  position: absolute;
+
+  bottom: 30px;
+  left: 30px;
+
+  background: #fff;
+
+  padding: 22px 26px;
+
+  border-radius: 24px;
+
+  box-shadow:
+    0 15px 35px rgba(0, 0, 0, 0.10);
+}
+
+.floatingCard h4 {
+
+  font-size: 34px;
+
+  font-weight: 900;
+
+  color: var(--theme-color);
+
+  margin-bottom: 5px;
+}
+
+.floatingCard p {
+
+  margin: 0;
+
+  color: #555;
+}
+
+/* ABOUT */
+
+.aboutSection {
+
+  margin-bottom: 100px;
+}
+
+.aboutCard {
+
+  background: #fff;
+
+  padding: 40px;
+
+  border-radius: 30px;
+
+  height: 100%;
+
+  box-shadow:
+    0 15px 35px rgba(0, 0, 0, 0.05);
+}
+
+.aboutCard h3 {
+
+  font-size: 34px;
+
+  font-weight: 800;
+
+  margin-bottom: 18px;
+}
+
+.aboutCard p {
+
+  color: #666;
+
+  line-height: 1.9;
+}
+
+/* PROCESS */
+
+.sectionHeading {
+
+  text-align: center;
+
+  margin-bottom: 20px;
+}
+
+.sectionHeading span {
+
+  display: inline-block;
+
+  background:
+    rgba(229, 57, 53, 0.10);
+
+  color: var(--theme-color);
+
+  padding: 10px 18px;
+
+  border-radius: 50px;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  margin-bottom: 18px;
+}
+
+.sectionHeading h2 {
+
+  font-size: 28px;
+
+  font-weight: 900;
+}
+
+/* PROCESS CARD */
+
+.processCard {
+
+  background: #fff;
+
+  border-radius: 30px;
+
+  padding: 20px;
+
+  height: 100%;
+
+  transition: 0.4s ease;
+
+  box-shadow:
+    0 15px 35px rgba(0, 0, 0, 0.05);
+}
+
+.processCard:hover {
+
+  transform:
+    translateY(-8px);
+}
+
+.number {
+  background: linear-gradient(135deg, var(--theme-color), #ff6b6b);
+  color: #fff;
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  margin-bottom: 22px;
+  font-size: 20px;
+  font-weight: 800;
+  display: flex;
+}
+
+.processCard h4 {
+
+  font-size: 18px;
+
+  font-weight: 800;
+
+  margin-bottom: 5px;
+}
+
+.processCard p {
+
+  color: #666;
+
+  line-height: 1.8;
+}
+
+/* SOLUTIONS */
+
+.solutionSection {
+
+  margin-bottom: 40px;
+}
+
+.solutionCard {
+
+  background: #fff;
+
+  border-radius: 20px;
+
+  padding: 20px;
+
+  height: 100%;
+
+  transition: 0.4s ease;
+
+  box-shadow:
+    0 15px 35px rgba(0, 0, 0, 0.05);
+}
+
+.solutionCard:hover {
+
+  transform:
+    translateY(-8px);
+
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+.solutionCard h3 {
+
+  font-size: 20px;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.solutionCard p {
+
+  color: #666;
+
+  line-height: 1.9;
+}
+
+/* INCLUDE */
+
+.includeSection {
+
+  margin-bottom: 30px;
+}
+
+.includeImage img {
+
+  width: 100%;
+  height: 100%;
+  border-radius: 36px;
+}
+
+.includeContent span {
+
+  display: inline-block;
+
+  background:
+    rgba(229, 57, 53, 0.10);
+
+  color: var(--theme-color);
+
+  padding: 10px 18px;
+
+  border-radius: 50px;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  margin-bottom: 10px;
+}
+
+.includeContent h2 {
+
+  font-size: 28px;
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: 10px;
+}
+
+.includeContent p {
+
+  color: #666;
+
+  line-height: 1.9;
+
+  margin-bottom: 10px;
+}
+
+.includeList {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, 1fr);
+
+  gap: 10px;
+}
+
+.includeList div {
+  background: #fff;
+  padding: 6px 12px;
+  font-size: 14px;
+  border-radius: 10px;
+  font-weight: 600;
+  box-shadow:
+    0 10px 25px rgba(0, 0, 0, 0.04);
+}
+
+/* EQUIPMENT */
+
+.equipmentSection {
+
+  margin-bottom: 40px;
+}
+
+.equipmentCard {
+
+  background:
+    linear-gradient(135deg,
+      #ffffff,
+      #f8f8f8);
+
+  border-radius: 28px;
+
+  height: 150px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  text-align: center;
+
+  transition: 0.4s ease;
+
+  box-shadow:
+    0 15px 35px rgba(0, 0, 0, 0.05);
+}
+
+.equipmentCard:hover {
+
+  transform:
+    translateY(-8px);
+
+  background:
+    linear-gradient(135deg,
+      var(--theme-color),
+      #ff6b6b);
+}
+
+.equipmentCard h4 {
+
+  font-size: 22px;
+
+  font-weight: 800;
+
+  transition: 0.4s ease;
+}
+
+.equipmentCard:hover h4 {
+
+  color: #fff;
+}
+
+/* CTA */
+
+.ctaCard {
+
+  background:
+    linear-gradient(135deg,
+      #111,
+      #1d1d1d);
+
+  border-radius: 40px;
+
+  padding: 30px;
+
+  text-align: center;
+
+  position: relative;
+
+  overflow: hidden;
+}
+
+.ctaCard span {
+
+  display: inline-block;
+
+  background:
+    rgba(229, 57, 53, 0.15);
+
+  color: #ff6b6b;
+
+  padding: 10px 18px;
+
+  border-radius: 50px;
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  margin-bottom: 22px;
+}
+
+.ctaCard h2 {
+
+  font-size: 22px;
+
+  font-weight: 900;
+
+  color: #fff;
+
+  margin-bottom: 20px;
+}
+
+.ctaCard p {
+  margin: auto auto 30px;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.9;
+}
+
+.ctaCard button {
+
+  height: 62px;
+
+  border: none;
+
+  padding: 0 35px;
+
+  border-radius: 18px;
+
+  background:
+    linear-gradient(135deg,
+      var(--theme-color),
+      #ff6b6b);
+
+  color: #fff;
+
+  font-weight: 700;
+
+  transition: 0.4s ease;
+}
+
+.ctaCard button:hover {
+
+  transform:
+    translateY(-4px);
+}
+
+/* =========================
+   ROI CALCULATOR
+========================= */
+
+.calculatorSection {
+  margin-top: 40px;
+}
+
+/* CARD */
+
+.calcCard {
+
+  background: #fff;
+
+  padding: 30px;
+
+  border-radius: 24px;
+
+  box-shadow:
+    0 10px 35px rgba(0, 0, 0, 0.05);
+
+  height: 100%;
+}
+
+.calcCard h4 {
+
+  font-size: 20px;
+
+  font-weight: 700;
+
+  margin-bottom: 20px;
+}
+
+/* TOP */
+
+.rangeTop {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 15px;
+
+  margin-bottom: 20px;
+}
+
+.rangeTop span {
+
+  font-size: 13px;
+
+  color: #777;
+}
+
+.rangeTop input {
+
+  width: 100px;
+
+  height: 50px;
+
+  border:
+    1px solid #ddd;
+
+  border-radius: 14px;
+
+  padding: 0 15px;
+
+  outline: none;
+}
+
+/* RANGE */
+
+.rangeInput {
+
+  width: 100%;
+
+  accent-color: #e53935;
+}
+
+/* RESULT */
+
+.resultCard {
+
+  background: #fff;
+
+  border-radius: 30px;
+
+  padding: 20px;
+
+  margin-top: 0px;
+
+  box-shadow:
+    0 15px 40px rgba(0, 0, 0, 0.05);
+}
+
+.resultTop span {
+
+  color: #777;
+
+  font-size: 16px;
+}
+
+.resultTop h2 {
+
+  font-size: 40px;
+
+  font-weight: 900;
+
+  color: var(--theme-color);
+
+  margin: 12px 0;
+}
+
+.resultTop p {
+
+  color: #666;
+}
+
+/* STATS */
+
+.statsCard {
+
+  background: #f8f8f8;
+
+  border-radius: 20px;
+
+  padding: 25px;
+}
+
+.statsCard span {
+
+  color: #777;
+
+  font-size: 14px;
+}
+
+.statsCard h4 {
+
+  margin-top: 12px;
+
+  font-size: 30px;
+
+  font-weight: 800;
+}
+
+/* BUDGET */
+
+.budgetCard,
+.suggestCard {
+
+  background: #f8f8f8;
+
+  border-radius: 22px;
+
+  padding: 20px;
+
+  height: 100%;
+}
+
+.budgetCard span,
+.suggestCard span {
+
+  color: #777;
+
+  font-size: 14px;
+}
+
+.budgetCard h3 {
+
+  margin-top: 14px;
+
+  font-size: 30px;
+
+  font-weight: 900;
+
+  color: #111;
+}
+
+.suggestCard h4 {
+
+  margin: 14px 0;
+
+  font-size: 18px;
+
+  font-weight: 800;
+
+  color: var(--theme-color);
+}
+
+.suggestCard p {
+
+  margin: 0;
+
+  color: #555;
+}
+
+.suggestCard small {
+
+  display: block;
+
+  margin-top: 10px;
+
+  color: #777;
+
+  font-size: 13px;
+}
+
+/* MOBILE */
+
+/* RESPONSIVE */
+
+@media(max-width: 991px) {
+
+  .setupSection {
+
+    padding: 130px 0 80px;
+  }
+
+  .heroWrapper {
+    margin-bottom: 70px;
+  }
+
+  .content {
+
+    margin-bottom: 50px;
+  }
+
+  .content h1 {
+
+    font-size: 52px;
+  }
+
+  .sectionHeading h2 {
+
+    font-size: 44px;
+  }
+}
+
+@media(max-width: 576px) {
+
+  .statsCard {
+    padding: 15px;
+  }
+
+  .calcCard h4 {
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+
+  .calcCard {
+    padding: 10px;
+  }
+
+  .includeImage img {
+    margin-bottom: 1rem;
+  }
+
+  .resultCard {
+    border-radius: 20px;
+    padding: 15px;
+  }
+
+  .resultTop h2 {
+
+    font-size: 38px;
+  }
+
+  .statsCard h4 {
+
+    font-size: 24px;
+  }
+
+  .budgetCard h3 {
+
+    font-size: 30px;
+  }
+
+  .solutionCard {
+    padding: 15px;
+  }
+
+
+  .sectionHeading {
+    margin-bottom: 20px;
+    margin-top: 2rem;
+  }
+
+
+  .heroWrapper {
+    margin-bottom: 20px;
+  }
+
+
+  .buttonGroup {
+    gap: 10px;
+  }
+
+  .featureList {
+    gap: 0px;
+    margin-bottom: 10px;
+  }
+
+
+  .content span,
+  .includeContent span {
+    margin-top: 0rem;
+    padding: 6px 12px;
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+
+
+  .setupSection {
+
+    padding: 90px 0 0px;
+  }
+
+  .content h1 {
+    margin-bottom: 10px;
+    font-size: 20px;
+  }
+
+  .content p {
+    line-height: 1.6;
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+
+  .buttonGroup {
+    /* border-radius: 10px;
+    height: 40px; */
+    flex-direction: column;
+  }
+
+  .primaryBtn,
+  .secondaryBtn {
+    border-radius: 10px;
+    height: 40px;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .floatingCard {
+    left: 15px;
+    bottom: 15px;
+    padding: 18px 20px;
+  }
+
+  .sectionHeading h2,
+  .includeContent h2 {
+
+    font-size: 18px;
+  }
+
+  .aboutCard,
+  .processCard {
+
+    padding: 15px;
+  }
+
+  .aboutCard h3,
+  .processCard h4 {
+    font-size: 18px;
+  }
+
+  .solutionCard h3 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+
+  .solutionCard p {
+    font-size: 12px;
+  }
+
+  .solutionSection,
+  .includeSection,
+  .equipmentSection {
+    margin-bottom: 0px;
+  }
+
+  .includeList div {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .includeList {
+    gap: 6px;
+  }
+
+  .number {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  .processCard p {
+    font-size: 12px;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .equipmentCard {
+    border-radius: 20px;
+    height: 150px;
+    background: var(--theme-color);
+    color: white;
+  }
+
+  .equipmentCard h4 {
+    font-size: 18px;
+
+  }
+
+  .ctaCard {
+    padding: 20px;
+  }
+
+  .ctaCard h2 {
+    font-size: 22px;
+    font-weight: 800;
+    margin-bottom: 20px;
+  }
+
+  .ctaCard button {
+
+    height: 50px;
+    padding: 0 30px;
+  }
+
+}

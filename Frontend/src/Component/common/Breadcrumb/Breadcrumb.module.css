@@ -1,0 +1,35 @@
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.breadcrumb a {
+  text-decoration: none;
+  color: var(--theme-color);
+  font-size: 15px;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.breadcrumb a:hover {
+  color: #111;
+}
+
+.breadcrumb span {
+  color: #999;
+}
+
+.breadcrumb p {
+  margin: 0;
+  color: #666;
+  font-size: 15px;
+}
+
+@media(max-width: 576px) {
+  .breadcrumb {
+    display: none;
+  }
+}

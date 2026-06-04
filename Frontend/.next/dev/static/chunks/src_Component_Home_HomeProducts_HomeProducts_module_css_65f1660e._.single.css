@@ -1,0 +1,282 @@
+/* [project]/src/Component/Home/HomeProducts/HomeProducts.module.css [client] (css) */
+.HomeProducts-module__-UqUwG__productSection {
+  background: linear-gradient(#fff 0%, #f6f7fb 100%);
+  padding: 30px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.HomeProducts-module__-UqUwG__productSection:before {
+  content: "";
+  filter: blur(80px);
+  background: radial-gradient(circle, #e539351a, #0000 70%);
+  width: 500px;
+  height: 500px;
+  position: absolute;
+  top: -220px;
+  left: -160px;
+}
+
+.HomeProducts-module__-UqUwG__productSection:after {
+  content: "";
+  filter: blur(80px);
+  background: radial-gradient(circle, #0000000d, #0000 70%);
+  width: 420px;
+  height: 420px;
+  position: absolute;
+  bottom: -200px;
+  right: -120px;
+}
+
+.HomeProducts-module__-UqUwG__sectionHeader {
+  text-align: center;
+  z-index: 2;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.HomeProducts-module__-UqUwG__sectionHeader span {
+  color: var(--theme-color);
+  letter-spacing: .5px;
+  background: #e539351a;
+  border-radius: 50px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 22px;
+  padding: 10px 22px;
+  font-size: 14px;
+  font-weight: 700;
+  display: inline-flex;
+}
+
+.HomeProducts-module__-UqUwG__sectionHeader h2 {
+  color: #111;
+  margin-bottom: 24px;
+  font-size: 40px;
+  font-weight: 900;
+  line-height: .5;
+}
+
+.HomeProducts-module__-UqUwG__sectionHeader p {
+  color: #666;
+  max-width: 760px;
+  margin: auto;
+  font-size: 17px;
+  line-height: 1.9;
+}
+
+.HomeProducts-module__-UqUwG__productCard {
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  background: linear-gradient(145deg, #fffffffa, #f5f5f5eb);
+  border: 1px solid #ffffffb3;
+  border-radius: 36px;
+  height: 100%;
+  padding: 20px;
+  text-decoration: none;
+  transition: all .5s;
+  display: block;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 15px 45px #0000000d;
+}
+
+.HomeProducts-module__-UqUwG__productCard:after {
+  content: "";
+  background: linear-gradient(90deg, var(--theme-color), #ff7b7b);
+  width: 100%;
+  height: 6px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.HomeProducts-module__-UqUwG__productCard:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 30px 60px #0000001f;
+}
+
+.HomeProducts-module__-UqUwG__productCard:before {
+  content: "";
+  background: radial-gradient(circle, #e5393524, #0000 70%);
+  border-radius: 50%;
+  width: 280px;
+  height: 280px;
+  transition: all .5s;
+  position: absolute;
+  top: -100px;
+  right: -100px;
+}
+
+.HomeProducts-module__-UqUwG__productCard:hover:before {
+  transform: scale(1.3);
+}
+
+.HomeProducts-module__-UqUwG__imageWrapper {
+  z-index: 2;
+  background: linear-gradient(145deg, #fafafa, #fff);
+  border-radius: 28px;
+  justify-content: center;
+  align-items: center;
+  height: 220px;
+  margin-bottom: 10px;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset 0 8px 18px #ffffffe6, inset 0 -8px 18px #00000008;
+}
+
+.HomeProducts-module__-UqUwG__imageWrapper:before {
+  content: "";
+  z-index: 1;
+  background: var(--theme-color) 14;
+  border-radius: 50%;
+  width: 400px;
+  height: 400px;
+  position: absolute;
+}
+
+.HomeProducts-module__-UqUwG__imageWrapper img {
+  z-index: 2;
+  object-fit: cover;
+  border-radius: 27px;
+  width: 200px;
+  max-width: 200px;
+  height: 200px;
+  transition: all .5s;
+  position: relative;
+}
+
+.HomeProducts-module__-UqUwG__productCard:hover .HomeProducts-module__-UqUwG__imageWrapper img {
+  transform: scale(1.1)rotate(-3deg);
+}
+
+.HomeProducts-module__-UqUwG__cardContent {
+  z-index: 2;
+  position: relative;
+}
+
+.HomeProducts-module__-UqUwG__cardContent:before {
+  content: "TECHNOMAC";
+  color: var(--theme-color);
+  letter-spacing: 1px;
+  background: var(--theme-color) 1a;
+  border-radius: 50px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5px;
+  padding: 6px 12px;
+  font-size: 10px;
+  font-weight: 800;
+  display: inline-flex;
+}
+
+.HomeProducts-module__-UqUwG__cardContent h3 {
+  color: #111;
+  margin-bottom: 5px;
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.HomeProducts-module__-UqUwG__cardContent span {
+  color: #111;
+  align-items: center;
+  gap: 12px;
+  font-size: 12px;
+  font-weight: 700;
+  transition: all .4s;
+  display: inline-flex;
+}
+
+.HomeProducts-module__-UqUwG__cardContent span:after {
+  content: "↗";
+  background: linear-gradient(135deg, var(--theme-color), #ff6b6b);
+  color: #fff;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  font-size: 16px;
+  transition: all .4s;
+  display: flex;
+}
+
+.HomeProducts-module__-UqUwG__productCard:hover .HomeProducts-module__-UqUwG__cardContent span {
+  color: var(--theme-color);
+  letter-spacing: .5px;
+}
+
+.HomeProducts-module__-UqUwG__productCard:hover .HomeProducts-module__-UqUwG__cardContent span:after {
+  transform: rotate(45deg)scale(1.12);
+}
+
+@media (width <= 991px) {
+  .HomeProducts-module__-UqUwG__productSection {
+    padding: 80px 0;
+  }
+
+  .HomeProducts-module__-UqUwG__sectionHeader h2 {
+    font-size: 46px;
+  }
+
+  .HomeProducts-module__-UqUwG__imageWrapper {
+    height: 220px;
+  }
+}
+
+@media (width <= 576px) {
+  .HomeProducts-module__-UqUwG__cardContent:before {
+    padding: 2px 6px;
+    font-size: 6px;
+    font-weight: 700;
+  }
+
+  .HomeProducts-module__-UqUwG__cardContent span:after {
+    width: 20px;
+    height: 20px;
+  }
+
+  .HomeProducts-module__-UqUwG__cardContent span {
+    font-size: 8px;
+    font-weight: 500;
+  }
+
+  .HomeProducts-module__-UqUwG__productSection {
+    padding: 30px 0;
+  }
+
+  .HomeProducts-module__-UqUwG__sectionHeader {
+    margin-bottom: 45px;
+  }
+
+  .HomeProducts-module__-UqUwG__sectionHeader h2 {
+    margin-bottom: 10px;
+    font-size: 14px;
+  }
+
+  .HomeProducts-module__-UqUwG__sectionHeader p {
+    font-size: 12px;
+  }
+
+  .HomeProducts-module__-UqUwG__productCard {
+    border-radius: 26px;
+    padding: 12px;
+  }
+
+  .HomeProducts-module__-UqUwG__imageWrapper {
+    border-radius: 22px;
+    height: 120px;
+  }
+
+  .HomeProducts-module__-UqUwG__imageWrapper img {
+    height: 120px;
+  }
+
+  .HomeProducts-module__-UqUwG__cardContent h3 {
+    font-size: 12px;
+  }
+}
+
+/*# sourceMappingURL=src_Component_Home_HomeProducts_HomeProducts_module_css_65f1660e._.single.css.map*/

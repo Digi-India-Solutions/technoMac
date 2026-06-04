@@ -18,7 +18,22 @@ exports.registerWarranty = async (req, res) => {
       dealerAddress,
     } = req.body;
 
-    // Duplicate serial check
+    // Image multer se aayegi
+    let productImage = req.file ? req.file.path : '';
+    if (req.file) {
+      const result = await new Promise((resolve, reject) => {
+        cloudinary.uploader
+          .upload_stream({ folder: 'productImage' }, (error, result) => {
+            if (error) reject(error);
+            else resolve(result);
+          })
+          .end(req.file.buffer);
+      });
+
+      productImage = result.secure_url;
+    }
+
+    // Same serial number dobara register nahi hona chahiye
     const existing = await Warranty.findOne({ serialNumber });
 
     if (existing) {

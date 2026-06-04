@@ -1,0 +1,38 @@
+/* [project]/src/Component/common/Breadcrumb/Breadcrumb.module.css [client] (css) */
+.Breadcrumb-module__f5-L5G__breadcrumb {
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 30px;
+  display: flex;
+}
+
+.Breadcrumb-module__f5-L5G__breadcrumb a {
+  color: var(--theme-color);
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all .3s;
+}
+
+.Breadcrumb-module__f5-L5G__breadcrumb a:hover {
+  color: #111;
+}
+
+.Breadcrumb-module__f5-L5G__breadcrumb span {
+  color: #999;
+}
+
+.Breadcrumb-module__f5-L5G__breadcrumb p {
+  color: #666;
+  margin: 0;
+  font-size: 15px;
+}
+
+@media (width <= 576px) {
+  .Breadcrumb-module__f5-L5G__breadcrumb {
+    display: none;
+  }
+}
+
+/*# sourceMappingURL=src_Component_common_Breadcrumb_Breadcrumb_module_css_65f1660e._.single.css.map*/
