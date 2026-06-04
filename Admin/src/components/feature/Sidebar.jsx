@@ -80,6 +80,7 @@ const handleNavigation = (path) => {
         // ...(permissions?.products?.read ? [
         { title: 'Products', path: '/admin/application/products' },
         { title: 'Certificate', path: '/admin/application/certificate' },
+        { title: 'Catalogue', path: '/admin/application/catalogue' },
         // ] : []),
         // ...(permissions?.products?.read ? [
         // { title: 'Sub-Products', path: '/admin/application/sub-products' },

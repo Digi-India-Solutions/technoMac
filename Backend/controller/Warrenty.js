@@ -43,7 +43,7 @@ exports.registerWarranty = async (req, res) => {
       });
     }
 
-    let productImage = '';
+    
 
     // Cloudinary Buffer Upload
     if (req.file) {
