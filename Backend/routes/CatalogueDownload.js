@@ -28,9 +28,7 @@ router.get(
   CatalogueDownloadController.getDownloadsByCatalogue,
 );
 
-// =========================
-// Catalogue APIs
-// =========================
+
 
 // Get all catalogues
 router.get('/catalogues/all', CatalogueDownloadController.getAllCatalogues);
