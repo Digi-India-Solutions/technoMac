@@ -2042,6 +2042,10 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$imag
 var __TURBOPACK__imported__module__$5b$project$5d2f$Images$2f$certificate$2e$jpg$2e$mjs__$7b$__IMAGE__$3d3e$__$225b$project$5d2f$Images$2f$certificate$2e$jpg__$28$static__in__ecmascript$2922$__$7d$__$5b$client$5d$__$28$structured__image__object__with__data__url$2c$__ecmascript$29$__ = __turbopack_context__.i('[project]/Images/certificate.jpg.mjs { IMAGE => "[project]/Images/certificate.jpg (static in ecmascript)" } [client] (structured image object with data url, ecmascript)');
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/react-icons/fa/index.mjs [client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$Component$2f$common$2f$Breadcrumb$2f$Breadcrumb$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/Component/common/Breadcrumb/Breadcrumb.js [client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/react/index.js [client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$services$2f$FetchNodeServices$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/services/FetchNodeServices.js [client] (ecmascript)");
+;
+var _s = __turbopack_context__.k.signature();
 ;
 ;
 ;
@@ -2053,33 +2057,34 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$Component$2f$common$2
 ;
 ;
 ;
-const certificates = [
-    {
-        image: __TURBOPACK__imported__module__$5b$project$5d2f$Images$2f$certificate$2e$jpg$2e$mjs__$7b$__IMAGE__$3d3e$__$225b$project$5d2f$Images$2f$certificate$2e$jpg__$28$static__in__ecmascript$2922$__$7d$__$5b$client$5d$__$28$structured__image__object__with__data__url$2c$__ecmascript$29$__["default"],
-        title: "ISO Certification"
-    },
-    {
-        image: __TURBOPACK__imported__module__$5b$project$5d2f$Images$2f$certificate$2e$jpg$2e$mjs__$7b$__IMAGE__$3d3e$__$225b$project$5d2f$Images$2f$certificate$2e$jpg__$28$static__in__ecmascript$2922$__$7d$__$5b$client$5d$__$28$structured__image__object__with__data__url$2c$__ecmascript$29$__["default"],
-        title: "Quality Assurance"
-    },
-    {
-        image: __TURBOPACK__imported__module__$5b$project$5d2f$Images$2f$certificate$2e$jpg$2e$mjs__$7b$__IMAGE__$3d3e$__$225b$project$5d2f$Images$2f$certificate$2e$jpg__$28$static__in__ecmascript$2922$__$7d$__$5b$client$5d$__$28$structured__image__object__with__data__url$2c$__ecmascript$29$__["default"],
-        title: "Medical Equipment Approval"
-    },
-    {
-        image: __TURBOPACK__imported__module__$5b$project$5d2f$Images$2f$certificate$2e$jpg$2e$mjs__$7b$__IMAGE__$3d3e$__$225b$project$5d2f$Images$2f$certificate$2e$jpg__$28$static__in__ecmascript$2922$__$7d$__$5b$client$5d$__$28$structured__image__object__with__data__url$2c$__ecmascript$29$__["default"],
-        title: "Safety Standard Certificate"
-    },
-    {
-        image: __TURBOPACK__imported__module__$5b$project$5d2f$Images$2f$certificate$2e$jpg$2e$mjs__$7b$__IMAGE__$3d3e$__$225b$project$5d2f$Images$2f$certificate$2e$jpg__$28$static__in__ecmascript$2922$__$7d$__$5b$client$5d$__$28$structured__image__object__with__data__url$2c$__ecmascript$29$__["default"],
-        title: "Dental Equipment Certification"
-    },
-    {
-        image: __TURBOPACK__imported__module__$5b$project$5d2f$Images$2f$certificate$2e$jpg$2e$mjs__$7b$__IMAGE__$3d3e$__$225b$project$5d2f$Images$2f$certificate$2e$jpg__$28$static__in__ecmascript$2922$__$7d$__$5b$client$5d$__$28$structured__image__object__with__data__url$2c$__ecmascript$29$__["default"],
-        title: "Healthcare Excellence"
-    }
-];
+;
 function CertificatePage() {
+    _s();
+    const [certificate, setCertificate] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])([]);
+    const [loading, setLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    const fetchAllCertificate = async ()=>{
+        try {
+            // ✅ Remove leading slash — getData likely prepends serverURL + "/"
+            const response = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$services$2f$FetchNodeServices$2e$js__$5b$client$5d$__$28$ecmascript$29$__["getData"])("certificate/all");
+            console.log("Certificate Response=>", response);
+            if (response.success === true) {
+                setCertificate(response.data);
+            }
+        // If empty or null → keep static fallback already in state
+        } catch (e) {
+            console.error("Certificate fetch failed, using static fallback:", e?.message);
+        // ✅ Static Category already set as default — nothing extra needed
+        } finally{
+            setLoading(false);
+        }
+    };
+    // ✅ useEffect instead of useState
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "CertificatePage.useEffect": ()=>{
+            fetchAllCertificate();
+        }
+    }["CertificatePage.useEffect"], []);
+    // console.log("SSSS==>response", category)
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
         className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$Component$2f$certificate$2f$CertificatePage$2f$CertificatePage$2e$module$2e$css__$5b$client$5d$__$28$css__module$29$__["default"].certificateSection,
         children: [
@@ -2087,7 +2092,7 @@ function CertificatePage() {
                 className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$Component$2f$certificate$2f$CertificatePage$2f$CertificatePage$2e$module$2e$css__$5b$client$5d$__$28$css__module$29$__["default"].glow
             }, void 0, false, {
                 fileName: "[project]/src/Component/certificate/CertificatePage/CertificatePage.js",
-                lineNumber: 61,
+                lineNumber: 55,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2097,7 +2102,7 @@ function CertificatePage() {
                         pageName: "Certificates"
                     }, void 0, false, {
                         fileName: "[project]/src/Component/certificate/CertificatePage/CertificatePage.js",
-                        lineNumber: 65,
+                        lineNumber: 59,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2107,27 +2112,27 @@ function CertificatePage() {
                                 children: "TECHNOMAC CERTIFICATIONS"
                             }, void 0, false, {
                                 fileName: "[project]/src/Component/certificate/CertificatePage/CertificatePage.js",
-                                lineNumber: 71,
+                                lineNumber: 65,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
                                 children: "Trusted & Certified Excellence"
                             }, void 0, false, {
                                 fileName: "[project]/src/Component/certificate/CertificatePage/CertificatePage.js",
-                                lineNumber: 75,
+                                lineNumber: 69,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                 children: "TECHNOMAC follows strict healthcare quality standards and certified manufacturing processes to ensure premium dental equipment reliability, safety and performance."
                             }, void 0, false, {
                                 fileName: "[project]/src/Component/certificate/CertificatePage/CertificatePage.js",
-                                lineNumber: 80,
+                                lineNumber: 74,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/Component/certificate/CertificatePage/CertificatePage.js",
-                        lineNumber: 69,
+                        lineNumber: 63,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2140,32 +2145,32 @@ function CertificatePage() {
                                     children: [
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$client$5d$__$28$ecmascript$29$__["FaAward"], {}, void 0, false, {
                                             fileName: "[project]/src/Component/certificate/CertificatePage/CertificatePage.js",
-                                            lineNumber: 99,
+                                            lineNumber: 93,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
                                             children: "Certified Quality"
                                         }, void 0, false, {
                                             fileName: "[project]/src/Component/certificate/CertificatePage/CertificatePage.js",
-                                            lineNumber: 101,
+                                            lineNumber: 95,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                             children: "High quality certified dental healthcare products."
                                         }, void 0, false, {
                                             fileName: "[project]/src/Component/certificate/CertificatePage/CertificatePage.js",
-                                            lineNumber: 105,
+                                            lineNumber: 99,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/Component/certificate/CertificatePage/CertificatePage.js",
-                                    lineNumber: 97,
+                                    lineNumber: 91,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/Component/certificate/CertificatePage/CertificatePage.js",
-                                lineNumber: 95,
+                                lineNumber: 89,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2175,32 +2180,32 @@ function CertificatePage() {
                                     children: [
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$client$5d$__$28$ecmascript$29$__["FaShieldAlt"], {}, void 0, false, {
                                             fileName: "[project]/src/Component/certificate/CertificatePage/CertificatePage.js",
-                                            lineNumber: 118,
+                                            lineNumber: 112,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
                                             children: "Trusted Standards"
                                         }, void 0, false, {
                                             fileName: "[project]/src/Component/certificate/CertificatePage/CertificatePage.js",
-                                            lineNumber: 120,
+                                            lineNumber: 114,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                             children: "Products tested with international safety standards."
                                         }, void 0, false, {
                                             fileName: "[project]/src/Component/certificate/CertificatePage/CertificatePage.js",
-                                            lineNumber: 124,
+                                            lineNumber: 118,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/Component/certificate/CertificatePage/CertificatePage.js",
-                                    lineNumber: 116,
+                                    lineNumber: 110,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/Component/certificate/CertificatePage/CertificatePage.js",
-                                lineNumber: 114,
+                                lineNumber: 108,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2210,43 +2215,43 @@ function CertificatePage() {
                                     children: [
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$client$5d$__$28$ecmascript$29$__["FaCheckCircle"], {}, void 0, false, {
                                             fileName: "[project]/src/Component/certificate/CertificatePage/CertificatePage.js",
-                                            lineNumber: 137,
+                                            lineNumber: 131,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
                                             children: "Reliable Support"
                                         }, void 0, false, {
                                             fileName: "[project]/src/Component/certificate/CertificatePage/CertificatePage.js",
-                                            lineNumber: 139,
+                                            lineNumber: 133,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                             children: "Supporting modern clinics with trusted technology."
                                         }, void 0, false, {
                                             fileName: "[project]/src/Component/certificate/CertificatePage/CertificatePage.js",
-                                            lineNumber: 143,
+                                            lineNumber: 137,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/Component/certificate/CertificatePage/CertificatePage.js",
-                                    lineNumber: 135,
+                                    lineNumber: 129,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/Component/certificate/CertificatePage/CertificatePage.js",
-                                lineNumber: 133,
+                                lineNumber: 127,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/Component/certificate/CertificatePage/CertificatePage.js",
-                        lineNumber: 93,
+                        lineNumber: 87,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "row",
-                        children: certificates.map((item, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        children: certificate.map((item, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "col-lg-4 col-md-6 mb-5",
                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$Component$2f$certificate$2f$CertificatePage$2f$CertificatePage$2e$module$2e$css__$5b$client$5d$__$28$css__module$29$__["default"].certificateCard,
@@ -2258,20 +2263,22 @@ function CertificatePage() {
                                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$client$5d$__$28$ecmascript$29$__["default"], {
                                                     src: item.image,
                                                     alt: item.title,
+                                                    width: 1000,
+                                                    height: 420,
                                                     className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$Component$2f$certificate$2f$CertificatePage$2f$CertificatePage$2e$module$2e$css__$5b$client$5d$__$28$css__module$29$__["default"].certificateImage
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/Component/certificate/CertificatePage/CertificatePage.js",
-                                                    lineNumber: 173,
+                                                    lineNumber: 167,
                                                     columnNumber: 21
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/Component/certificate/CertificatePage/CertificatePage.js",
-                                                lineNumber: 171,
+                                                lineNumber: 165,
                                                 columnNumber: 19
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/Component/certificate/CertificatePage/CertificatePage.js",
-                                            lineNumber: 169,
+                                            lineNumber: 163,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2281,51 +2288,52 @@ function CertificatePage() {
                                                     children: item.title
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/Component/certificate/CertificatePage/CertificatePage.js",
-                                                    lineNumber: 187,
+                                                    lineNumber: 183,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                     children: "Verified Certificate"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/Component/certificate/CertificatePage/CertificatePage.js",
-                                                    lineNumber: 191,
+                                                    lineNumber: 187,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/Component/certificate/CertificatePage/CertificatePage.js",
-                                            lineNumber: 185,
+                                            lineNumber: 181,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/Component/certificate/CertificatePage/CertificatePage.js",
-                                    lineNumber: 165,
+                                    lineNumber: 159,
                                     columnNumber: 15
                                 }, this)
                             }, index, false, {
                                 fileName: "[project]/src/Component/certificate/CertificatePage/CertificatePage.js",
-                                lineNumber: 160,
+                                lineNumber: 154,
                                 columnNumber: 13
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/src/Component/certificate/CertificatePage/CertificatePage.js",
-                        lineNumber: 156,
+                        lineNumber: 150,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/Component/certificate/CertificatePage/CertificatePage.js",
-                lineNumber: 63,
+                lineNumber: 57,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/Component/certificate/CertificatePage/CertificatePage.js",
-        lineNumber: 57,
+        lineNumber: 51,
         columnNumber: 5
     }, this);
 }
+_s(CertificatePage, "t4gyy9hVUR2i7CniX+lbSOX3Tkk=");
 _c = CertificatePage;
 var _c;
 __turbopack_context__.k.register(_c, "CertificatePage");

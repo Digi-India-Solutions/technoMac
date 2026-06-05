@@ -15,43 +15,37 @@ import {
   FaCheckCircle,
 } from "react-icons/fa";
 import Breadcrumb from "../../common/Breadcrumb/Breadcrumb";
+import { useEffect, useState } from "react";
+import { getData } from "../../../services/FetchNodeServices";
 
-const certificates = [
-
-  {
-    image: certificate1,
-    title: "ISO Certification",
-  },
-
-  {
-    image: certificate2,
-    title: "Quality Assurance",
-  },
-
-  {
-    image: certificate3,
-    title: "Medical Equipment Approval",
-  },
-
-  {
-    image: certificate4,
-    title: "Safety Standard Certificate",
-  },
-
-  {
-    image: certificate5,
-    title: "Dental Equipment Certification",
-  },
-
-  {
-    image: certificate6,
-    title: "Healthcare Excellence",
-  },
-
-];
 
 export default function CertificatePage() {
+  const [certificate, setCertificate] = useState([])
+  const [loading, setLoading] = useState(false)
 
+  const fetchAllCertificate = async () => {
+    try {
+      // ✅ Remove leading slash — getData likely prepends serverURL + "/"
+      const response = await getData("certificate/all");
+      console.log("Certificate Response=>", response)
+      if (response.success === true) {
+
+        setCertificate(response.data);
+      }
+      // If empty or null → keep static fallback already in state
+    } catch (e) {
+      console.error("Certificate fetch failed, using static fallback:", e?.message);
+      // ✅ Static Category already set as default — nothing extra needed
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // ✅ useEffect instead of useState
+  useEffect(() => {
+    fetchAllCertificate();
+  }, []);
+  // console.log("SSSS==>response", category)
   return (
 
     <section className={styles.certificateSection}>
@@ -155,7 +149,7 @@ export default function CertificatePage() {
 
         <div className="row">
 
-          {certificates.map((item, index) => (
+          {certificate.map((item, index) => (
 
             <div
               className="col-lg-4 col-md-6 mb-5"
@@ -173,6 +167,8 @@ export default function CertificatePage() {
                     <Image
                       src={item.image}
                       alt={item.title}
+                      width={1000}
+                      height={420}
                       className={styles.certificateImage}
                     />
 

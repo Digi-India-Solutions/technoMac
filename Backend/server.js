@@ -12,6 +12,7 @@ const { categoryRouter } = require('./routes/category');
 const { subCategoryRouter } = require('./routes/subCategory');
 const { productRouter } = require('./routes/Product');
 const warrantyRoute = require('./routes/Warrenty');
+const certificateRoute = require('./routes/certificate');
 
 const dns = require('dns');
 
@@ -39,6 +40,7 @@ app.use('/api/sub-category', subCategoryRouter);
 app.use('/api/product', productRouter);
 app.use('/api/warranty', warrantyRoute);
 app.use('/api/faq', faqRoute);
+app.use('/api/certificate', certificateRoute);
 
 const PORT = process.env.PORT || 5000;
 
