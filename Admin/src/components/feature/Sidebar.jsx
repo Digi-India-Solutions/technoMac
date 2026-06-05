@@ -131,9 +131,14 @@ const handleNavigation = (path) => {
     // ...(permissions?.marketing?.read ? [{ title: 'Marketing', icon: 'ri-megaphone-line', path: '/admin/marketing', }] : []),
     // ...(permissions?.enquiries?.read ? [
     {
-      title: 'Enquiries',
+      title: 'enquiries',
       icon: 'ri-question-answer-line',
       path: '/admin/enquiries',
+    },
+    {
+      title: 'CatalogueDownload',
+      icon: 'ri-question-answer-line',
+      path: '/admin/application/CatalogueDownloadsManagement',
     },
     { title: 'Warranties', path: '/admin/application/warranties' },
     { title: 'Certificate', path: '/admin/application/certificate' },
