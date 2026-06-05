@@ -1,23 +1,47 @@
-import { useState } from "react";
-
+import { useEffect, useState } from "react";
 import products from "../../../../Data/products";
-
 import ProductCard from "../ProductCard/ProductCard";
-
 import styles from "./ProductPage.module.css";
-
 import Breadcrumb from "../../common/Breadcrumb/Breadcrumb";
+import { useSearchParams } from "next/navigation";
+import { getData } from "../../../services/FetchNodeServices";
 
 export default function ProductPage() {
-
+  const searchParams = useSearchParams()
+  const categoryId = searchParams.get("category");
+  const subCategoryId = searchParams.get("sub");
   const [search, setSearch] = useState("");
+  const [product, setProduct] = useState([])
 
-  const filteredProducts = products.filter((item) =>
-    item.name
-      .toLowerCase()
-      .includes(search.toLowerCase())
+  const filteredProducts = product.filter((item) =>
+    item.name.toLowerCase().includes(search.toLowerCase())
   );
 
+  const fetchProductByCategory = async () => {
+    try {
+      let response
+      if (subCategoryId) {
+        response = await getData(`product/by-subcategory/${subCategoryId}`)
+      } else if (categoryId) {
+        response = await getData(`product/by-category/${categoryId}`)
+      }else{
+         response = await getData(`product/`)
+      }
+
+      console.log("RESPONSE==>aa", response)
+      if (response.success === true) {
+        setProduct(response.data)
+      }
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
+  useEffect(() => {
+      fetchProductByCategory()
+  }, [categoryId, subCategoryId])
+
+  console.log("filteredProducts", filteredProducts)
   return (
 
     <section className={styles.productPage}>
@@ -75,7 +99,7 @@ export default function ProductPage() {
 
               <div
                 className="col-lg-4 col-md-6 col-6 mb-4"
-                key={item.id}
+                key={item._id}
               >
 
                 <ProductCard item={item} />

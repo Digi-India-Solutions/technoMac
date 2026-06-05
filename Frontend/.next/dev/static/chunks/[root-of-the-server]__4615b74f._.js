@@ -1705,7 +1705,8 @@ function Header() {
                                                                             lineNumber: 527,
                                                                             columnNumber: 27
                                                                         }, this) : subCategories.length > 0 ? subCategories.map((sub)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$link$2e$js__$5b$client$5d$__$28$ecmascript$29$__["default"], {
-                                                                                href: `/products?category=${activeCategory?._id}&sub=${sub._id}`,
+                                                                                // category=${activeCategory?._id}&
+                                                                                href: `/products?sub=${sub._id}`,
                                                                                 children: sub.name || sub.title || sub.subCategoryName
                                                                             }, sub._id, false, {
                                                                                 fileName: "[project]/src/Component/layout/Header/Header.js",
@@ -1716,7 +1717,7 @@ function Header() {
                                                                             children: "No subcategories found"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/Component/layout/Header/Header.js",
-                                                                            lineNumber: 540,
+                                                                            lineNumber: 541,
                                                                             columnNumber: 29
                                                                         }, this)
                                                                     }, void 0, false, {
@@ -1747,7 +1748,7 @@ function Header() {
                                                 children: "Certificates"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/Component/layout/Header/Header.js",
-                                                lineNumber: 549,
+                                                lineNumber: 550,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$link$2e$js__$5b$client$5d$__$28$ecmascript$29$__["default"], {
@@ -1755,7 +1756,7 @@ function Header() {
                                                 children: "Catalogue"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/Component/layout/Header/Header.js",
-                                                lineNumber: 550,
+                                                lineNumber: 551,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$link$2e$js__$5b$client$5d$__$28$ecmascript$29$__["default"], {
@@ -1763,7 +1764,7 @@ function Header() {
                                                 children: "Clinic Setup"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/Component/layout/Header/Header.js",
-                                                lineNumber: 551,
+                                                lineNumber: 552,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$link$2e$js__$5b$client$5d$__$28$ecmascript$29$__["default"], {
@@ -1771,7 +1772,7 @@ function Header() {
                                                 children: "New Updates"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/Component/layout/Header/Header.js",
-                                                lineNumber: 552,
+                                                lineNumber: 553,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$link$2e$js__$5b$client$5d$__$28$ecmascript$29$__["default"], {
@@ -1779,7 +1780,7 @@ function Header() {
                                                 children: "Contact Us"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/Component/layout/Header/Header.js",
-                                                lineNumber: 553,
+                                                lineNumber: 554,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1787,12 +1788,12 @@ function Header() {
                                                 onClick: ()=>setMenuOpen(false),
                                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$client$5d$__$28$ecmascript$29$__["FaTimes"], {}, void 0, false, {
                                                     fileName: "[project]/src/Component/layout/Header/Header.js",
-                                                    lineNumber: 556,
+                                                    lineNumber: 557,
                                                     columnNumber: 19
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/Component/layout/Header/Header.js",
-                                                lineNumber: 555,
+                                                lineNumber: 556,
                                                 columnNumber: 17
                                             }, this)
                                         ]
@@ -1811,12 +1812,12 @@ function Header() {
                                                     children: "Extend Warranty"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/Component/layout/Header/Header.js",
-                                                    lineNumber: 563,
+                                                    lineNumber: 564,
                                                     columnNumber: 19
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/Component/layout/Header/Header.js",
-                                                lineNumber: 562,
+                                                lineNumber: 563,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1824,7 +1825,7 @@ function Header() {
                                                 children: "Pay Now"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/Component/layout/Header/Header.js",
-                                                lineNumber: 565,
+                                                lineNumber: 566,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1832,18 +1833,18 @@ function Header() {
                                                 onClick: ()=>setMenuOpen(true),
                                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$client$5d$__$28$ecmascript$29$__["FaBars"], {}, void 0, false, {
                                                     fileName: "[project]/src/Component/layout/Header/Header.js",
-                                                    lineNumber: 567,
+                                                    lineNumber: 568,
                                                     columnNumber: 19
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/Component/layout/Header/Header.js",
-                                                lineNumber: 566,
+                                                lineNumber: 567,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/Component/layout/Header/Header.js",
-                                        lineNumber: 561,
+                                        lineNumber: 562,
                                         columnNumber: 15
                                     }, this)
                                 ]
@@ -1873,7 +1874,7 @@ function Header() {
                 onClick: ()=>setMenuOpen(false)
             }, void 0, false, {
                 fileName: "[project]/src/Component/layout/Header/Header.js",
-                lineNumber: 578,
+                lineNumber: 579,
                 columnNumber: 9
             }, this)
         ]
@@ -3162,7 +3163,12 @@ function HomeProducts() {
                     children: category.map((item)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: "col-lg-3 col-md-6 col-6 mb-4",
                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$link$2e$js__$5b$client$5d$__$28$ecmascript$29$__["default"], {
-                                href: "/products",
+                                href: {
+                                    pathname: "/products",
+                                    query: {
+                                        category: item?._id
+                                    }
+                                },
                                 className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$Component$2f$Home$2f$HomeProducts$2f$HomeProducts$2e$module$2e$css__$5b$client$5d$__$28$css__module$29$__["default"].productCard,
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {

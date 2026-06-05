@@ -1,10 +1,10 @@
 __turbopack_load_page_chunks__("/product/[slug]", [
   "static/chunks/[root-of-the-server]__f8abf54b._.js",
   "static/chunks/node_modules_next_dist_compiled_3e12a2ad._.js",
-  "static/chunks/node_modules_next_dist_shared_lib_fe7e72ad._.js",
-  "static/chunks/node_modules_next_dist_client_9b1b49db._.js",
-  "static/chunks/node_modules_next_dist_6024eba3._.js",
-  "static/chunks/node_modules_next_75d914f1._.js",
+  "static/chunks/node_modules_next_dist_shared_lib_c644b97f._.js",
+  "static/chunks/node_modules_next_dist_client_1cde2f58._.js",
+  "static/chunks/node_modules_next_dist_ded74e06._.js",
+  "static/chunks/node_modules_next_fde7a6a8._.js",
   "static/chunks/node_modules_react-dom_4411d9bd._.js",
   "static/chunks/node_modules_react-icons_fa_index_mjs_c19690bf._.js",
   "static/chunks/node_modules_react-icons_lib_7cd2a28b._.js",
@@ -13,5 +13,5 @@ __turbopack_load_page_chunks__("/product/[slug]", [
   "static/chunks/node_modules_f1be3ba2._.js",
   "static/chunks/src_Component_80b7f8fc._.css",
   "static/chunks/src_pages_product_[slug]_2da965e7.js",
-  "static/chunks/turbopack-src_pages_product_[slug]_5fa20dd0.js"
+  "static/chunks/turbopack-src_pages_product_[slug]_7ca739ff.js"
 ])

@@ -6,7 +6,7 @@
   "rootMainFiles": [],
   "pages": {
     "/clinic-setup": [
-      "static/chunks/[root-of-the-server]__f5e8dd29._.js",
+      "static/chunks/[root-of-the-server]__7e7ff3ed._.js",
       "static/chunks/node_modules_next_dist_compiled_3e12a2ad._.js",
       "static/chunks/node_modules_next_dist_shared_lib_4534cb8c._.js",
       "static/chunks/node_modules_next_dist_client_45e9549c._.js",
@@ -19,7 +19,7 @@
       "static/chunks/node_modules_f1be3ba2._.js",
       "static/chunks/src_Component_902dc263._.css",
       "static/chunks/src_pages_clinic-setup_2da965e7._.js",
-      "static/chunks/turbopack-src_pages_clinic-setup_f2d4b678._.js"
+      "static/chunks/turbopack-src_pages_clinic-setup_6caa47f7._.js"
     ]
   },
   "ampFirstPages": []

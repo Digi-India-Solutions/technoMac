@@ -43,27 +43,6 @@ exports.registerWarranty = async (req, res) => {
       });
     }
 
-    
-
-    // Cloudinary Buffer Upload
-    if (req.file) {
-      const uploadResult = await new Promise((resolve, reject) => {
-        cloudinary.uploader
-          .upload_stream(
-            {
-              folder: 'warranty',
-            },
-            (error, result) => {
-              if (error) reject(error);
-              else resolve(result);
-            },
-          )
-          .end(req.file.buffer);
-      });
-
-      productImage = uploadResult.secure_url;
-    }
-
     const warranty = await Warranty.create({
       email,
       customerName,

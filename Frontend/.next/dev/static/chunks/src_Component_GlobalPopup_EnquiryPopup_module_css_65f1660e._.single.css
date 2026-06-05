@@ -150,4 +150,40 @@
   }
 }
 
+.EnquiryPopup-module__zregZa__inputError input, .EnquiryPopup-module__zregZa__inputError textarea {
+  border-color: #e53e3e !important;
+}
+
+.EnquiryPopup-module__zregZa__errorText {
+  color: #e53e3e;
+  margin-top: 3px;
+  padding-left: 2px;
+  font-size: 11px;
+  display: block;
+}
+
+.EnquiryPopup-module__zregZa__apiError {
+  color: #e53e3e;
+  text-align: center;
+  margin: 8px 0;
+  font-size: 12px;
+}
+
+.EnquiryPopup-module__zregZa__successMsg {
+  color: #38a169;
+  text-align: center;
+  background: #f0fff4;
+  border: 1px solid #38a169;
+  border-radius: 8px;
+  margin: 12px 0;
+  padding: 14px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.EnquiryPopup-module__zregZa__submitBtn:disabled {
+  opacity: .7;
+  cursor: not-allowed;
+}
+
 /*# sourceMappingURL=src_Component_GlobalPopup_EnquiryPopup_module_css_65f1660e._.single.css.map*/
