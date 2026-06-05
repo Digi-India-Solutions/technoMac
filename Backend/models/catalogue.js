@@ -4,25 +4,21 @@ const CatalogueSchema = new mongoose.Schema(
   {
     title: {
       type: String,
-      required: [true, 'Title is required'],
+      required: true,
       trim: true,
     },
     description: {
       type: String,
-      required: [true, 'Description is required'],
+      required: true,
       trim: true,
     },
     image: {
-      type: String,
-      required: [true, 'Cover image is required'],
+      type: String, // Cloudinary URL (cover image)
+      required: true,
     },
     pdfFile: {
-      type: String,
+      type: String, // Cloudinary URL (raw PDF)
       default: '',
-    },
-    isActive: {
-      type: Boolean,
-      default: true,
     },
   },
   { timestamps: true },

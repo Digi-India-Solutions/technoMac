@@ -2,36 +2,6 @@ self.__BUILD_MANIFEST = {
   "/": [
     "static/chunks/pages/index.js"
   ],
-  "/_error": [
-    "static/chunks/pages/_error.js"
-  ],
-  "/catalogue": [
-    "static/chunks/pages/catalogue.js"
-  ],
-  "/certificates": [
-    "static/chunks/pages/certificates.js"
-  ],
-  "/clinic-setup": [
-    "static/chunks/pages/clinic-setup.js"
-  ],
-  "/contact": [
-    "static/chunks/pages/contact.js"
-  ],
-  "/product/[slug]": [
-    "static/chunks/pages/product/[slug].js"
-  ],
-  "/products": [
-    "static/chunks/pages/products.js"
-  ],
-  "/updates": [
-    "static/chunks/pages/updates.js"
-  ],
-  "/updates/[slug]": [
-    "static/chunks/pages/updates/[slug].js"
-  ],
-  "/warranty-registration": [
-    "static/chunks/pages/warranty-registration.js"
-  ],
   "__rewrites": {
     "afterFiles": [],
     "beforeFiles": [],

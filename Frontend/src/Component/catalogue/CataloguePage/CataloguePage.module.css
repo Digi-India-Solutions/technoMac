@@ -462,3 +462,186 @@
     font-size: 12px;
   }
 }
+
+
+/* SUCCESS STATE */
+.successState {
+  text-align: center;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+.successIcon {
+  font-size: 52px;
+  color: #38a169;
+}
+.spinnerIcon {
+  font-size: 48px;
+  color: #0066cc;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.successState h3 {
+  font-size: 20px;
+  color: #1a1a2e;
+  margin: 0;
+}
+.successState p {
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+}
+.successHint {
+  font-size: 13px !important;
+  color: #888 !important;
+}
+
+/* ✅ Fallback link if browser blocked download */
+.fallbackLink {
+  display: inline-block;
+  margin-top: 8px;
+  color: #0066cc;
+  font-size: 13px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.fallbackLink:hover { color: #0052a3; }
+
+/* SELECTED BADGE */
+.selectedBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #f0f6ff;
+  color: #0066cc;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  margin: 8px 0;
+}
+
+/* BUTTON SPINNER */
+.btnSpinner {
+  animation: spin 1s linear infinite;
+  display: inline-block;
+}
+
+/* PREVIEW BUTTON — icon only */
+.previewBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 12px;
+  background: #f0f6ff;
+  color: #0066cc;
+  border: 1px solid #0066cc;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+.previewBtn:hover { background: #0066cc; color: #fff; }
+
+/* IMAGE WRAPPER */
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  border-radius: 10px 10px 0 0;
+}
+.catalogueImage { object-fit: cover; }
+
+/* PDF BADGE */
+.pdfBadge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #e53e3e;
+  color: #fff;
+  font-size: 11px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 600;
+}
+
+/* CARD BUTTONS */
+.cardButtons {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+.downloadBtn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px;
+  background: #0066cc;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.downloadBtn:hover { background: #0052a3; }
+
+/* ERRORS */
+.inputError input { border-color: #e53e3e !important; }
+.errorText { color: #e53e3e; font-size: 11px; margin-top: 3px; display: block; }
+.apiError  { color: #e53e3e; font-size: 13px; text-align: center; margin: 8px 0; }
+
+/* SUBMIT */
+.submitBtn {
+  width: 100%;
+  padding: 14px;
+  background: #0066cc;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+  transition: background 0.2s;
+}
+.submitBtn:hover    { background: #0052a3; }
+.submitBtn:disabled { opacity: 0.7; cursor: not-allowed; }
+
+/* SKELETON */
+.skeletonCard { background: #f5f5f5; border-radius: 12px; overflow: hidden; }
+.skeletonImage, .skeletonLine, .skeletonLineShort, .skeletonBtn {
+  background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+.skeletonImage     { width: 100%; height: 200px; }
+.skeletonLine      { height: 16px; width: 80%; margin: 14px auto 8px; border-radius: 4px; }
+.skeletonLineShort { height: 12px; width: 60%; margin: 0 auto 12px; border-radius: 4px; }
+.skeletonBtn       { height: 36px; width: 80%; margin: 0 auto 16px; border-radius: 6px; }
+@keyframes shimmer {
+  0%   { background-position:  200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* STATES */
+.errorState { text-align: center; padding: 60px 20px; color: #e53e3e; }
+.retryBtn   { margin-top: 12px; padding: 10px 24px; background: #0066cc; color: #fff; border: none; border-radius: 6px; cursor: pointer; }
+.emptyState { text-align: center; padding: 60px 20px; color: #999; }
+.emptyState svg { font-size: 48px; margin-bottom: 12px; color: #ccc; display: block; margin: 0 auto 12px; }
