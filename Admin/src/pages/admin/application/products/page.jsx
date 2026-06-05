@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import AdminLayout from '../../../../components/feature/AdminLayout';
 import Card from '../../../../components/base/Card';
 import Button from '../../../../components/base/Button';
+import BydefaultImg from '../../../images/landing_doctors.png';
 import {
   getData,
   postData,
@@ -320,7 +321,17 @@ export default function ProductsManagement() {
     }
   }, [formData.category]);
 
+  // ✅ YAHI LAGAO
   useEffect(() => {
+    const hasFilter =
+      filters.search ||
+      filters.category ||
+      filters.subCategory ||
+      filters.minPrice ||
+      filters.maxPrice;
+
+    if (!hasFilter) return; // koi filter nahi → kuch mat karo
+
     const timeout = setTimeout(() => {
       searchProducts();
     }, 500);
@@ -333,7 +344,6 @@ export default function ProductsManagement() {
     filters.minPrice,
     filters.maxPrice,
   ]);
-
   // ── Client-side search filter ─────────────────────────────────
   const displayed = products;
 
@@ -481,8 +491,9 @@ export default function ProductsManagement() {
                   <div className="relative">
                     <img
                       src={
-                        product.images?.[0] ||
-                        'https://via.placeholder.com/300x200?text=No+Image'
+                        product.images?.length > 0
+                          ? product.images[0]
+                          : BydefaultImg
                       }
                       alt={product.name}
                       className="w-full h-48 object-cover"
@@ -602,8 +613,9 @@ export default function ProductsManagement() {
                               <img
                                 className="h-10 w-10 rounded object-cover"
                                 src={
-                                  product.images?.[0] ||
-                                  'https://via.placeholder.com/100?text=No'
+                                  product.images?.length > 0
+                                    ? product.images[0]
+                                    : BydefaultImg
                                 }
                                 alt={product.name}
                               />

@@ -17,6 +17,7 @@ import SubCategoriesManagement from "../pages/admin/application/subcategories/pa
 import ProductsManagement from "../pages/admin/application/products/page";
 import SubProductsManagement from "../pages/admin/application/sub-products/page";
 import UsersManagement from "../pages/admin/users/page";
+import CatalogueDownloadsManagement from '../pages/admin/CatalogueDownload/page';
 import WishlistManagement from "../pages/admin/application/wishlist/page";
 import SizesManagement from "../pages/admin/application/sizes/page";
 import CouponsManagement from "../pages/admin/application/coupons/page";
@@ -78,8 +79,11 @@ const routes: RouteObject[] = [
           { path: 'warranties', element: <WarrantiesManagement /> },
           { path: 'certificate', element: <CertificaManagement /> },
           { path: 'catalogue', element: <CatalogueManagement /> },
+          {
+            path: 'CatalogueDownloadsManagement',
+            element: <CatalogueDownloadsManagement />,
+          },
 
-          
           // { path: "notifications", element: <NotificationsManagement /> },
           { path: 'rewards', element: <RewardsManagement /> },
           { path: 'faqs', element: <FaqsManagement /> },

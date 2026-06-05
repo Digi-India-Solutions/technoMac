@@ -988,13 +988,13 @@ export default function WarrantiesManagement() {
                 ))}
 
                 <div className="flex space-x-3 mt-4">
-                  <Button
+                  {/* <Button
                     onClick={() => openStatusModal(selectedWarranty)}
                     className="flex-1 bg-yellow-500 text-white hover:bg-yellow-600"
                   >
                     <i className="ri-edit-line mr-2"></i>
                     Update Status
-                  </Button>
+                  </Button> */}
                   <Button
                     onClick={() => handleDelete(selectedWarranty._id)}
                     className="bg-red-100 text-red-600 hover:bg-red-200 px-4"

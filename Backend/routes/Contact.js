@@ -14,7 +14,7 @@ const adminAuth = require('../middleware/adminAuth');
 router.post('/create', createContact);
 
 // Admin Only
-router.get('/all', adminAuth, getAllContacts);  
+router.get('/all',  getAllContacts);  
 
 router.delete('/delete/:id', adminAuth, deleteContact);
 
