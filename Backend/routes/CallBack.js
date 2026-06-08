@@ -13,7 +13,7 @@ const {
 } = require('../controller/CallBack');
 
 // ── PUBLIC (Frontend) ──────────────────────────────────────────
-// POST   /api/callback        →  submit a call back request
+// POST   /api/callback        
 router.post('/', createCallBack);
 
 // ── ADMIN ──────────────────────────────────────────────────────
