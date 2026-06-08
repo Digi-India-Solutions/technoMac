@@ -34,9 +34,7 @@ exports.createClient = async (req, res) => {
         if (req.file) {
             const result = await uploadToCloudinary(req.file.buffer);
             imageUrl = result.secure_url;
-        }else if (req.body.image) {
-          imageUrl = req.body.image;   // direct URL passed in JSON body
-      }
+        }
 
         const client = await Client.create({
             name,
@@ -122,8 +120,6 @@ exports.updateClient = async (req, res) => {
         if (req.file) {
             const result = await uploadToCloudinary(req.file.buffer);
             updateData.image = result.secure_url;
-        }else if (req.body.image) {
-          updateData.image = req.body.image;   // direct URL passed in JSON body
         }
 
         const client = await Client.findByIdAndUpdate(req.params.id, updateData, { new: true });
