@@ -365,7 +365,7 @@ export default function Header() {
   const [categories, setCategories] = useState([]);       // all categories from API
   const [activeCategory, setActiveCategory] = useState(null); // currently hovered category object
   const [subCategories, setSubCategories] = useState([]); // subcategories of active category
-  
+
   // ✅ Cache: { [categoryId]: [subCategory, ...] } — avoids re-fetching on re-hover
   const [subCategoryCache, setSubCategoryCache] = useState({});
 
@@ -502,11 +502,10 @@ export default function Header() {
                         categories.map((item) => (
                           <div
                             key={item._id}
-                            className={`${styles.categoryItem} ${
-                              activeCategory?._id === item._id
+                            className={`${styles.categoryItem} ${activeCategory?._id === item._id
                                 ? styles.activeCategory
                                 : ""
-                            }`}
+                              }`}
                             onMouseEnter={() => setActiveCategory(item)}
                           >
                             {/* ✅ use correct field — adjust if your API returns different name */}
@@ -528,7 +527,7 @@ export default function Header() {
                         ) : subCategories.length > 0 ? (
                           subCategories.map((sub) => (
                             <Link
-                            // category=${activeCategory?._id}&
+                              // category=${activeCategory?._id}&
                               href={`/products?sub=${sub._id}`}
                               key={sub._id}
                             >
@@ -563,7 +562,10 @@ export default function Header() {
                 <Link href="/warranty-registration">
                   <button className={styles.warrantyBtn}>Extend Warranty</button>
                 </Link>
-                <button className={styles.quoteBtn}>Pay Now</button>
+                <a href="https://razorpay.com/">
+                  <button className={styles.quoteBtn}>Pay Now</button>
+                </a>
+
                 <button className={styles.mobileBtn} onClick={() => setMenuOpen(true)}>
                   <FaBars />
                 </button>

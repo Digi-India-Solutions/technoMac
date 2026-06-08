@@ -61,8 +61,8 @@ export default function ProductPage() {
           </span>
 
           <h1>
-            Explore Our
-            Dental Equipment
+             
+            {`Explore Our ${filteredProducts[0]?.category?.name ? filteredProducts[0]?.category?.name:'Dental Equipment'}`}
           </h1>
 
           <p>

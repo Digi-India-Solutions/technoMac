@@ -10,19 +10,19 @@ import EnquirySection from "../Component/Home/EnquirySection/EnquirySection";
 import HeroBanner from "../Component/Home/HeroBanner/HeroBanner";
 import FAQSection from "../Component/Home/FAQSection/FAQSection";
 import OurClients from "../Component/Home/OurClients/OurClients";
+import AdvancedDentalEquipment from "../Component/Home/AdvancedDentalEquipment/AdvancedDentalEquipment";
 
 export default function Home() {
 
   return (
     <Layout>
       <HeroBanner />
-      <section className="hero-section">
-
+       {/* <section className="hero-section">
         <div className="container">
 
           <div className="row align-items-center">
 
-            {/* Left */}
+            // Left 
             <div className="col-lg-6">
 
               <div className="hero-content">
@@ -49,7 +49,7 @@ export default function Home() {
 
             </div>
 
-            {/* Right */}
+            // Right 
             <div className="col-lg-6">
 
               <div className="hero-image">
@@ -67,8 +67,8 @@ export default function Home() {
           </div>
 
         </div>
-
-      </section>
+      </section> */}
+      <AdvancedDentalEquipment />
       <HomeProducts />
       <TrustSection />
       {/* <div className={styles.commitmentSection}>

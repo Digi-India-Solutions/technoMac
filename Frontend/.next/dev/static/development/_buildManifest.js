@@ -8,11 +8,23 @@ self.__BUILD_MANIFEST = {
   "/catalogue": [
     "static/chunks/pages/catalogue.js"
   ],
+  "/contact": [
+    "static/chunks/pages/contact.js"
+  ],
+  "/product/[slug]": [
+    "static/chunks/pages/product/[slug].js"
+  ],
+  "/products": [
+    "static/chunks/pages/products.js"
+  ],
   "/updates": [
     "static/chunks/pages/updates.js"
   ],
   "/updates/[slug]": [
     "static/chunks/pages/updates/[slug].js"
+  ],
+  "/warranty-registration": [
+    "static/chunks/pages/warranty-registration.js"
   ],
   "__rewrites": {
     "afterFiles": [],
