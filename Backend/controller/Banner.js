@@ -77,6 +77,24 @@ exports.deleteBanner = async (req, res) => {
   }
 };
 
+exports.getBannerByCategory = async (req, res) => {
+  try {
+    const banners = await Banner.find({
+      categoryId: req.params.categoryId,
+      isActive: true,
+    }).populate('categoryId');
+
+    res.status(200).json({
+      success: true,
+      banners,
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: error.message,
+    });
+  }
+};
+
 // UPDATE BANNER
 exports.updateBanner = async (req, res) => {
   try {
@@ -86,6 +104,13 @@ exports.updateBanner = async (req, res) => {
       subtitle: req.body.subtitle,
       buttonText: req.body.buttonText,
     };
+
+    if (!req.body.categoryId) {
+      return res.status(400).json({
+        success: false,
+        message: 'Category is required',
+      });
+    }
 
     if (req.file) {
       // Upload from buffer instead of file path
