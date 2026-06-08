@@ -17,9 +17,8 @@ const catalogueRoute = require('./routes/Catalogue');
 const catelogurDownloadRoute = require('./routes/CatalogueDownload');
 const newUpdateRoutes = require('./routes/newUpdate');
 const subscriberRoute = require('./routes/Subscriber');
-const ReviewsRoute = require('./routes/Testimonial');
-
-
+const testimonialRoute = require('./routes/Testimonial');
+const clientRoute = require('./routes/Client');
 
 const dns = require('dns');
 
@@ -52,7 +51,8 @@ app.use('/api/catalogue', catalogueRoute);
 app.use('/api/catalogueDownload', catelogurDownloadRoute);
 app.use('/api/newupdate', newUpdateRoutes);
 app.use('/api/subscribe', subscriberRoute);
-app.use('/api/Review', ReviewsRoute);
+app.use('/api/testimonial', testimonialRoute);
+app.use('/api/client', clientRoute);
 
 const PORT = process.env.PORT || 5000;
 
