@@ -9,10 +9,11 @@ const {
     getCallBackById,
     updateCallBackStatus,
     deleteCallBack,
+    updateCallBack,
 } = require('../controller/CallBack');
 
 // ── PUBLIC (Frontend) ──────────────────────────────────────────
-// POST   /api/callback        →  submit a call back request
+// POST   /api/callback        
 router.post('/', createCallBack);
 
 // ── ADMIN ──────────────────────────────────────────────────────
@@ -24,6 +25,9 @@ router.get('/:id', adminAuth, getCallBackById);
 
 // PATCH  /api/callback/:id/status  →  update status (pending/contacted/closed)
 router.patch('/:id/status', adminAuth, updateCallBackStatus);
+
+// PUT    /api/callback/:id         →  update all details of a request
+router.put('/:id', adminAuth, updateCallBack);
 
 // DELETE /api/callback/:id   →  delete a request permanently
 router.delete('/:id', adminAuth, deleteCallBack);

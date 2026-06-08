@@ -96,7 +96,9 @@ exports.createCallBack = async (req, res) => {
         </body>
         </html>`;
 
-        await sendEmail(email, '✅ Your Call Back Request - Technomac', userEmailHtml);
+        sendEmail(email, '✅ Your Call Back Request - Technomac', userEmailHtml).catch(err => {
+            console.error('Error sending user email:', err);
+        });
 
         // ── Email to ADMIN ─────────────────────────────────────
         const adminEmailHtml = `
@@ -175,7 +177,9 @@ exports.createCallBack = async (req, res) => {
         </body>
         </html>`;
 
-        await sendEmail(process.env.EMAIL_USER, `📞 New Call Back Request from ${name}`, adminEmailHtml);
+        sendEmail(process.env.EMAIL_USER, `📞 New Call Back Request from ${name}`, adminEmailHtml).catch(err => {
+            console.error('Error sending admin email:', err);
+        });
 
         res.status(201).json({
             success: true,
@@ -272,3 +276,49 @@ exports.deleteCallBack = async (req, res) => {
         res.status(500).json({ success: false, message: error.message });
     }
 };
+
+// ─────────────────────────────────────────────────────────────
+// UPDATE ALL FIELDS  →  PUT /api/callback/:id
+// Admin Panel: update details of a callback request
+// ─────────────────────────────────────────────────────────────
+exports.updateCallBack = async (req, res) => {
+    try {
+        const { name, country, state, mobileNumber, email, date, time, description, status } = req.body;
+
+        const updatedData = {};
+        if (name !== undefined) updatedData.name = name;
+        if (country !== undefined) updatedData.country = country;
+        if (state !== undefined) updatedData.state = state;
+        if (mobileNumber !== undefined) updatedData.mobileNumber = mobileNumber;
+        if (email !== undefined) updatedData.email = email;
+        if (date !== undefined) updatedData.date = date;
+        if (time !== undefined) updatedData.time = time;
+        if (description !== undefined) updatedData.description = description;
+        if (status !== undefined) {
+            const allowed = ['pending', 'contacted', 'closed'];
+            if (!allowed.includes(status)) {
+                return res.status(400).json({ success: false, message: 'Invalid status value' });
+            }
+            updatedData.status = status;
+        }
+
+        const callBack = await CallBack.findByIdAndUpdate(
+            req.params.id,
+            updatedData,
+            { new: true, runValidators: true }
+        );
+
+        if (!callBack) {
+            return res.status(404).json({ success: false, message: 'Call back request not found' });
+        }
+
+        res.status(200).json({
+            success: true,
+            message: 'Call back request updated successfully',
+            data: callBack
+        });
+    } catch (error) {
+        res.status(500).json({ success: false, message: error.message });
+    }
+};
+
