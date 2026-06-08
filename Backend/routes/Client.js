@@ -20,21 +20,21 @@ router.get('/all', getAllClients);
 
 // ── ADMIN ──────────────────────────────────────────────────────
 // GET    /api/client/admin/all          →  fetch ALL clients (incl. inactive)
-router.get('/admin/all', adminAuth, getAllClientsAdmin);
+router.get('/admin/all',  getAllClientsAdmin);
 
 // GET    /api/client/:id                →  fetch single client by ID
-router.get('/:id', adminAuth, getClientById);
+router.get('/:id',  getClientById);
 
 // POST   /api/client/create             →  add a new client (with image upload)
-router.post('/create', adminAuth, upload.single('image'), createClient);
+router.post('/create',  upload.single('image'), createClient);
 
 // PUT    /api/client/update/:id         →  update client details / image
-router.put('/update/:id', adminAuth, upload.single('image'), updateClient);
+router.put('/update/:id',  upload.single('image'), updateClient);
 
 // PATCH  /api/client/toggle/:id         →  toggle isActive (show/hide)
-router.patch('/toggle/:id', adminAuth, toggleClientStatus);
+router.patch('/toggle/:id',  toggleClientStatus);
 
 // DELETE /api/client/delete/:id         →  permanently delete a client
-router.delete('/delete/:id', adminAuth, deleteClient);
+router.delete('/delete/:id',  deleteClient);
 
 module.exports = router;

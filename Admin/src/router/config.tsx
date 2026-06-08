@@ -28,6 +28,7 @@ import CertificaManagement from '../pages/admin/application/certificate/page.jsx
 import CatalogueManagement from '../pages/admin/application/catalogue/page.jsx';
 import RewardsManagement from "../pages/admin/application/rewards/page";
 import FaqsManagement from "../pages/admin/application/faqs/page";
+import ClientManagement from "../pages/admin/application/client/page";
 import SubscribersManagement from '../pages/admin/application/subscription/page';
 import ReviewManagement from '../pages/admin/application/Review/page';
 import Login from "../components/auth/Login";
@@ -93,6 +94,7 @@ const routes: RouteObject[] = [
           { path: 'faqs', element: <FaqsManagement /> },
           { path: 'subscription', element: <SubscribersManagement /> },
           { path: 'review', element: <ReviewManagement /> },
+          { path: 'client', element: <ClientManagement /> },
         ],
       },
       {
