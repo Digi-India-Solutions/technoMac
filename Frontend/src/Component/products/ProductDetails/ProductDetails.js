@@ -118,7 +118,7 @@ export default function ProductDetails() {
               <p className={styles.description}>
                 {product?.description}
               </p>
-          
+
               {Array.isArray(product?.features) &&
                 product.features.length > 0 && (
                   <div className={styles.sectionBox}>
@@ -150,14 +150,24 @@ export default function ProductDetails() {
                 )}
 
               <div className={styles.buttonGroup}>
-                <button className={styles.primaryBtn}>
+                {/* <button className={styles.primaryBtn}>
                   <FaWhatsapp />
                   WhatsApp Inquiry
-                </button>
-                <button className={styles.secondaryBtn}>
+                </button> */}
+                <a href={`https://wa.me/+91${9311125574}?text=${encodeURIComponent("Hello TECHNOMAC, I am interested in your products.")}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ textDecoration:'none'}}
+                >
+                  <button className={styles.primaryBtn}>
+                    <FaWhatsapp />
+                    WhatsApp Inquiry
+                  </button>
+                </a>
+                {/* <button className={styles.secondaryBtn}>
                   <FaFilePdf />
                   Download Brochure
-                </button>
+                </button> */}
               </div>
             </div>
           </div>
