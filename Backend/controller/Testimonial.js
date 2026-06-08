@@ -24,8 +24,6 @@ exports.createTestimonial = async (req, res) => {
       if (req.file) {
           const result = await uploadToCloudinary(req.file.buffer);
           imageUrl = result.secure_url;
-      } else if (req.body.image) {
-          imageUrl = req.body.image;   // direct URL passed in JSON body
       }
 
     const testimonial = await Testimonial.create({
@@ -103,8 +101,6 @@ exports.updateTestimonial = async (req, res) => {
     if (req.file) {
       const result = await uploadToCloudinary(req.file.buffer);
       updateData.image = result.secure_url;
-    } else if (req.body.image) {
-      updateData.image = req.body.image;   // direct URL passed in JSON body
     }
 
     const testimonial = await Testimonial.findByIdAndUpdate(
