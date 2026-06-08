@@ -1,18 +1,41 @@
 const { Testimonial } = require('../models/Testimonial');
+const cloudinary = require('../config/cloudinary');
+
+// ── Helper: upload buffer → Cloudinary ──────────────────────────
+const uploadToCloudinary = (buffer) => {
+  return new Promise((resolve, reject) => {
+    cloudinary.uploader
+      .upload_stream({ folder: 'testimonials' }, (error, result) => {
+        if (error) reject(error);
+        else resolve(result);
+      })
+      .end(buffer);
+  });
+};
 
 // ── CREATE  →  POST /api/testimonial ───────────────────────────
 exports.createTestimonial = async (req, res) => {
   try {
-    const { name, designation, review, rating, order } = req.body;
-    const image = req.file ? req.file.path : '';
+    const { name, description, designation, review, rating, order } = req.body;
+   
+     // Upload image to Cloudinary if a file is sent (multipart/form-data)
+      // OR use the URL string from req.body.image if sent via raw JSON
+      let imageUrl = '';
+      if (req.file) {
+          const result = await uploadToCloudinary(req.file.buffer);
+          imageUrl = result.secure_url;
+      } else if (req.body.image) {
+          imageUrl = req.body.image;   // direct URL passed in JSON body
+      }
 
     const testimonial = await Testimonial.create({
       name,
+      description,
       designation,
       review,
       rating,
       order,
-      image,
+      image :imageUrl,
     });
 
     res
@@ -72,11 +95,17 @@ exports.getTestimonialById = async (req, res) => {
 // ── UPDATE  →  PUT /api/testimonial/:id ─────────────────────────
 exports.updateTestimonial = async (req, res) => {
   try {
-    const { name, designation, review, rating, order, isActive } = req.body;
-    const image = req.file ? req.file.path : undefined;
+    const { name,description, designation, review, rating, order, isActive } = req.body;
+    const updateData = { name, description, designation, review, rating, order, isActive };
 
-    const updateData = { name, designation, review, rating, order, isActive };
-    if (image) updateData.image = image;
+    // Upload new image to Cloudinary if a file is sent (multipart/form-data)
+    // OR use the URL string from req.body.image if sent via raw JSON
+    if (req.file) {
+      const result = await uploadToCloudinary(req.file.buffer);
+      updateData.image = result.secure_url;
+    } else if (req.body.image) {
+      updateData.image = req.body.image;   // direct URL passed in JSON body
+    }
 
     const testimonial = await Testimonial.findByIdAndUpdate(
       req.params.id,

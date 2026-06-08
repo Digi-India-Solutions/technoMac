@@ -7,6 +7,11 @@ const TestimonialSchema = new mongoose.Schema(
       required: true,
       trim: true, // e.g. "Dr. Amit Sharma"
     },
+    description: {
+      type: String,
+      required: true,
+      trim: true,
+    },
     designation: {
       type: String,
       required: true,
@@ -18,7 +23,6 @@ const TestimonialSchema = new mongoose.Schema(
     },
     rating: {
       type: Number,
-      required: true,
       min: 1,
       max: 5,
       default: 5,
