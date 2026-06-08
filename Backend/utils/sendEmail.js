@@ -15,7 +15,7 @@ const transporter = nodemailer.createTransport({
  */
 const sendEmail = async (to, subject, html) => {
   await transporter.sendMail({
-    from: `"Admin Panel" <${process.env.EMAIL_USER}>`,
+    from: `"Technomac" <${process.env.EMAIL_USER}>`,
     to,
     subject,
     html,
