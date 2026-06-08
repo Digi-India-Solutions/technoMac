@@ -328,10 +328,10 @@ import catalogue3 from "../../../../Images/certificate.jpg";
 import catalogue4 from "../../../../Images/certificate.jpg";
 
 const STATIC_CATALOGUES = [
-  { _id: "1", title: "Dental Chair Catalogue",      description: "Premium dental chair collection brochure.",    image: catalogue1, pdfFile: null },
+  { _id: "1", title: "Dental Chair Catalogue", description: "Premium dental chair collection brochure.", image: catalogue1, pdfFile: null },
   { _id: "2", title: "Imaging Equipment Catalogue", description: "Advanced dental imaging solutions brochure.", image: catalogue2, pdfFile: null },
-  { _id: "3", title: "Clinic Setup Catalogue",      description: "Modern dental clinic setup solutions.",        image: catalogue3, pdfFile: null },
-  { _id: "4", title: "Complete Product Catalogue",  description: "Full TECHNOMAC product brochure.",             image: catalogue4, pdfFile: null },
+  { _id: "3", title: "Clinic Setup Catalogue", description: "Modern dental clinic setup solutions.", image: catalogue3, pdfFile: null },
+  { _id: "4", title: "Complete Product Catalogue", description: "Full TECHNOMAC product brochure.", image: catalogue4, pdfFile: null },
 ];
 
 const EMPTY_FORM = { customerName: "", email: "", phoneNumber: "", clinic: "" };
@@ -356,7 +356,7 @@ const downloadPdfFromCloudinary = async (pdfUrl, filename = "catalogue.pdf") => 
 
     // ✅ Create hidden anchor and click it
     const link = document.createElement("a");
-    link.href     = blobUrl;
+    link.href = blobUrl;
     link.download = `${filename}.pdf`;
     document.body.appendChild(link);
     link.click();
@@ -374,16 +374,16 @@ const downloadPdfFromCloudinary = async (pdfUrl, filename = "catalogue.pdf") => 
 };
 
 export default function CataloguePage() {
-  const [catalogues,   setCatalogues]  = useState(STATIC_CATALOGUES);
-  const [loading,      setLoading]     = useState(true);
-  const [error,        setError]       = useState("");
-  const [selectedItem, setSelectedItem]= useState(null);
-  const [openModal,    setOpenModal]   = useState(false);
-  const [form,         setForm]        = useState(EMPTY_FORM);
-  const [formErrors,   setFormErrors]  = useState({});
-  const [formLoading,  setFormLoading] = useState(false);
-  const [downloading,  setDownloading] = useState(false); // ✅ download progress
-  const [successMsg,   setSuccessMsg]  = useState("");
+  const [catalogues, setCatalogues] = useState(STATIC_CATALOGUES);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+  const [selectedItem, setSelectedItem] = useState(null);
+  const [openModal, setOpenModal] = useState(false);
+  const [form, setForm] = useState(EMPTY_FORM);
+  const [formErrors, setFormErrors] = useState({});
+  const [formLoading, setFormLoading] = useState(false);
+  const [downloading, setDownloading] = useState(false); // ✅ download progress
+  const [successMsg, setSuccessMsg] = useState("");
 
   // ─── Fetch Catalogues ──────────────────────────────────────────────────────
   useEffect(() => { fetchAllCatalogues(); }, []);
@@ -438,11 +438,11 @@ export default function CataloguePage() {
   const validate = () => {
     const e = {};
     if (!form.customerName.trim()) e.customerName = "Name is required";
-    if (!form.email.trim())        e.email        = "Email is required";
+    if (!form.email.trim()) e.email = "Email is required";
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) e.email = "Enter a valid email";
-    if (!form.phoneNumber.trim())  e.phoneNumber  = "Phone is required";
+    if (!form.phoneNumber.trim()) e.phoneNumber = "Phone is required";
     else if (!/^[6-9]\d{9}$/.test(form.phoneNumber)) e.phoneNumber = "Enter valid 10-digit number";
-    if (!form.clinic.trim())       e.clinic       = "Clinic / Company is required";
+    if (!form.clinic.trim()) e.clinic = "Clinic / Company is required";
     return e;
   };
 
@@ -456,11 +456,11 @@ export default function CataloguePage() {
     }
 
     const payload = {
-      customerName:  form.customerName.trim(),
-      email:         form.email.trim(),
-      phoneNumber:   form.phoneNumber.trim(),
-      clinic:        form.clinic.trim(),
-      catalogueId:   selectedItem?._id   || "",
+      customerName: form.customerName.trim(),
+      email: form.email.trim(),
+      phoneNumber: form.phoneNumber.trim(),
+      companyName: form.clinic.trim(),
+      catalogueId: selectedItem?._id || "",
       catalogueName: selectedItem?.title || "",
     };
 
@@ -469,7 +469,23 @@ export default function CataloguePage() {
 
     try {
       // ✅ Save lead to backend
-      await postData("catalogue/download-request", payload);
+      const response = await postData("catalogueDownload/create", payload);
+      console.log("response===>", response)
+      if (response.success === true) {
+        // ✅ Trigger actual PDF download
+        if (selectedItem?.pdfFile) {
+          setDownloading(true);
+          setSuccessMsg("Preparing your download...");
+
+          const filename = selectedItem.title?.replace(/\s+/g, "_") || "TECHNOMAC_Catalogue";
+          await downloadPdfFromCloudinary(selectedItem.pdfFile, filename);
+
+          setDownloading(false);
+          setSuccessMsg("Download started successfully!");
+        } else {
+          setSuccessMsg("Thank you! Our team will share the catalogue shortly.");
+        }
+      }
     } catch (err) {
       console.warn("Lead save failed (continuing with download):", err?.message);
       // ✅ Don't block download if API fails
@@ -477,19 +493,7 @@ export default function CataloguePage() {
       setFormLoading(false);
     }
 
-    // ✅ Trigger actual PDF download
-    if (selectedItem?.pdfFile) {
-      setDownloading(true);
-      setSuccessMsg("Preparing your download...");
 
-      const filename = selectedItem.title?.replace(/\s+/g, "_") || "TECHNOMAC_Catalogue";
-      await downloadPdfFromCloudinary(selectedItem.pdfFile, filename);
-
-      setDownloading(false);
-      setSuccessMsg("Download started successfully!");
-    } else {
-      setSuccessMsg("Thank you! Our team will share the catalogue shortly.");
-    }
 
     // Auto close after 3s
     setTimeout(() => handleClose(), 3000);
@@ -642,9 +646,9 @@ export default function CataloguePage() {
             ) : (
               <>
                 {/* MODAL HEADER */}
-                <div className={styles.modalHeading} style={{display:'flex' , justifyContent:'center' , flexDirection:'column',alignItems:'center'}}>
+                <div className={styles.modalHeading} style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center' }}>
                   <span>TECHNOMAC</span>
-                  <h3 style={{fontWeight:'bold'}}>Download Catalogue</h3>
+                  <h3 style={{ fontWeight: 'bold' }}>Download Catalogue</h3>
                   {selectedItem && (
                     <div className={styles.selectedBadge}>
                       <FaFilePdf /> {selectedItem.title}

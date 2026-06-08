@@ -130,6 +130,7 @@ const handleNavigation = (path) => {
     // ] : []),
     // ...(permissions?.marketing?.read ? [{ title: 'Marketing', icon: 'ri-megaphone-line', path: '/admin/marketing', }] : []),
     // ...(permissions?.enquiries?.read ? [
+     { title: 'New Update',icon: 'ri-exchange-line', path: '/admin/new_update' },
     {
       title: 'enquiries',
       icon: 'ri-question-answer-line',
