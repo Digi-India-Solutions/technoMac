@@ -10,7 +10,7 @@ const {
 } = require('../controller/Category');
 
 categoryRouter.post('/', upload.single('image'), createCategory);
-categoryRouter.get('/', getAllCategories);
+categoryRouter.get('/all', getAllCategories);
 categoryRouter.get('/:id', getCategoryById);
 categoryRouter.put('/:id', upload.single('image'), updateCategory);
 categoryRouter.delete('/:id', deleteCategory);
