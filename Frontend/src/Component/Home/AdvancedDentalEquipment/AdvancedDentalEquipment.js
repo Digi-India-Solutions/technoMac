@@ -72,7 +72,7 @@ function CallBackModal({ onClose, productName = "TECHNOMAC Dental Equipment" }) 
             };
             // ─────────────────────────────────────────────────────────
 
-            const res = await postData("callback/create", payload);
+            const res = await postData("callback", payload);
             if (res?.success) {
                 setSubmitted(true);
             } else {
