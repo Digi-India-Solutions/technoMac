@@ -33,10 +33,13 @@ export default function CatalogueDownloadsManagement() {
   // ─── Fetch all catalogues for dropdown ─────────────────────────
   const fetchCatalogues = async () => {
     try {
-      const response = await getData('catalogue');
+      const response = await getData('catalogueDownload');
       console.log('Catalogues response:', response);
       if (response && response.success) {
         setCatalogues(response.data || []);
+        console.log('response', response);
+        console.log('downloads', response.data);
+        console.log('filteredDownloads', filteredDownloads);
       } else {
         console.log('Failed to fetch catalogues:', response?.message);
         setCatalogues([]);
@@ -51,7 +54,7 @@ export default function CatalogueDownloadsManagement() {
   const fetchDownloads = async () => {
     setLoading(true);
     try {
-      const response = await getData('catalogue-download');
+      const response = await getData('catalogueDownload');
       console.log('Downloads response:', response);
       if (response && response.success) {
         setDownloads(response.data || []);
@@ -205,13 +208,13 @@ export default function CatalogueDownloadsManagement() {
               Track and manage all catalogue download requests
             </p>
           </div>
-          <Button
+          {/* <Button
             onClick={() => setShowCreateModal(true)}
             className="bg-blue-600 hover:bg-blue-700 text-white"
           >
             <i className="ri-add-line mr-2"></i>
             Add Download Entry
-          </Button>
+          </Button> */}
         </div>
 
         {/* ── Stats Cards ── */}

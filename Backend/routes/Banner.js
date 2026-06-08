@@ -9,11 +9,17 @@ const {
   getAllBanner,
   deleteBanner,
   updateBanner,
+  getBannerByCategory,
 } = require('../controller/Banner');
 const upload = require('../middleware/multer');
 
 // CREATE
 router.post('/create', adminAuth, upload.single('image'), createBanner);
+
+router.get(
+  '/banner/category/:categoryId', adminAuth,
+  getBannerByCategory,
+);
 
 // GET ALL
 router.get('/all', getAllBanner);
