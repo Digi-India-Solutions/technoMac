@@ -38,6 +38,7 @@ const putFormData = async (url, body) => {
 
 const emptyForm = {
   name: '',
+  description: '',
   designation: '',
   review: '',
   rating: 5,
@@ -88,7 +89,7 @@ export default function ReviewsManagement() {
   const fetchReviews = async () => {
     try {
       setIsLoading(true);
-      const response = await getData('Review/admin/all');
+      const response = await getData('testimonial/admin/all');
       if (response?.success) {
         setReviews(response.data || []);
         setCurrentPage(1);
@@ -127,6 +128,7 @@ export default function ReviewsManagement() {
     try {
       const data = new FormData();
       data.append('name', formData.name);
+      data.append('description', formData.description);
       data.append('designation', formData.designation || '');
       data.append('review', formData.review);
       data.append('rating', formData.rating);
@@ -138,9 +140,9 @@ export default function ReviewsManagement() {
 
       let response;
       if (editingReview) {
-        response = await putFormData(`Review/${editingReview._id}`, data);
+        response = await putFormData(`testimonial/${editingReview._id}`, data);
       } else {
-        response = await postData('Review', data);
+        response = await postData('testimonial', data);
       }
 
       if (response?.success) {
@@ -168,6 +170,7 @@ export default function ReviewsManagement() {
     setEditingReview(review);
     setFormData({
       name: review.name || '',
+      description: review.description || '',
       designation: review.designation || '',
       review: review.review || '',
       rating: review.rating || 5,
@@ -192,7 +195,7 @@ export default function ReviewsManagement() {
     if (!result.isConfirmed) return;
 
     try {
-      const response = await deleteData(`Review/${id}`);
+      const response = await deleteData(`testimonial/${id}`);
       if (response?.success) {
         toast.success('Review deleted');
         fetchReviews();
@@ -603,6 +606,26 @@ export default function ReviewsManagement() {
                         })
                       }
                       className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Description <span className="text-red-500">*</span>
+                    </label>
+
+                    <input
+                      type="text"
+                      placeholder="Enter short description"
+                      value={formData.description}
+                      onChange={(e) =>
+                        setFormData({
+                          ...formData,
+                          description: e.target.value,
+                        })
+                      }
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+                      required
                     />
                   </div>
 
