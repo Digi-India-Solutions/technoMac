@@ -2056,6 +2056,11 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$imag
 var __TURBOPACK__imported__module__$5b$project$5d2f$Data$2f$updates$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Data/updates.js [client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$Component$2f$updates$2f$UpdatesPage$2e$module$2e$css__$5b$client$5d$__$28$css__module$29$__ = __turbopack_context__.i("[project]/src/Component/updates/UpdatesPage.module.css [client] (css module)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/react-icons/fa/index.mjs [client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/react/index.js [client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$services$2f$FetchNodeServices$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/services/FetchNodeServices.js [client] (ecmascript)");
+;
+var _s = __turbopack_context__.k.signature();
+;
 ;
 ;
 ;
@@ -2063,6 +2068,37 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$ico
 ;
 ;
 function UpdatesPage() {
+    _s();
+    const [update, setUpdate] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])([]);
+    const [loading, setLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    const fetchAllNewUpdate = async ()=>{
+        try {
+            // ✅ Remove leading slash — getData likely prepends serverURL + "/"
+            const response = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$services$2f$FetchNodeServices$2e$js__$5b$client$5d$__$28$ecmascript$29$__["getData"])("newupdate/all");
+            console.log("new updates Response=>", response);
+            if (response.success === true) {
+                setUpdate(response?.data);
+            }
+        // If empty or null → keep static fallback already in state
+        } catch (e) {
+            console.error("Category fetch failed, using static fallback:", e?.message);
+        // ✅ Static Category already set as default — nothing extra needed
+        } finally{
+            setLoading(false);
+        }
+    };
+    // ✅ useEffect instead of useState
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "UpdatesPage.useEffect": ()=>{
+            fetchAllNewUpdate();
+        }
+    }["UpdatesPage.useEffect"], []);
+    // console.log("SSSS==>response", category)
+    const formatDate = (dateStr)=>new Date(dateStr).toLocaleDateString("en-IN", {
+            day: "2-digit",
+            month: "short",
+            year: "numeric"
+        });
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
         className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$Component$2f$updates$2f$UpdatesPage$2e$module$2e$css__$5b$client$5d$__$28$css__module$29$__["default"].updateSection,
         children: [
@@ -2070,7 +2106,7 @@ function UpdatesPage() {
                 className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$Component$2f$updates$2f$UpdatesPage$2e$module$2e$css__$5b$client$5d$__$28$css__module$29$__["default"].glow
             }, void 0, false, {
                 fileName: "[project]/src/Component/updates/UpdatesPage.js",
-                lineNumber: 23,
+                lineNumber: 48,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2083,35 +2119,35 @@ function UpdatesPage() {
                                 children: "TECHNOMAC NEWS"
                             }, void 0, false, {
                                 fileName: "[project]/src/Component/updates/UpdatesPage.js",
-                                lineNumber: 31,
+                                lineNumber: 56,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
                                 children: "Latest Updates & Healthcare News"
                             }, void 0, false, {
                                 fileName: "[project]/src/Component/updates/UpdatesPage.js",
-                                lineNumber: 35,
+                                lineNumber: 60,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                 children: "Explore the latest innovations, product launches and modern healthcare technology updates from TECHNOMAC."
                             }, void 0, false, {
                                 fileName: "[project]/src/Component/updates/UpdatesPage.js",
-                                lineNumber: 40,
+                                lineNumber: 65,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/Component/updates/UpdatesPage.js",
-                        lineNumber: 29,
+                        lineNumber: 54,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "row",
-                        children: __TURBOPACK__imported__module__$5b$project$5d2f$Data$2f$updates$2e$js__$5b$client$5d$__$28$ecmascript$29$__["default"].map((item)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        children: update.map((item)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "col-lg-4 col-md-6 mb-4",
                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$link$2e$js__$5b$client$5d$__$28$ecmascript$29$__["default"], {
-                                    href: `/updates/${item.slug}`,
+                                    href: `/updates/${item.subTitle}`,
                                     className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$Component$2f$updates$2f$UpdatesPage$2e$module$2e$css__$5b$client$5d$__$28$css__module$29$__["default"].card,
                                     children: [
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2120,17 +2156,19 @@ function UpdatesPage() {
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$client$5d$__$28$ecmascript$29$__["default"], {
                                                     src: item.image,
                                                     alt: item.title,
+                                                    width: 220,
+                                                    height: 220,
                                                     className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$Component$2f$updates$2f$UpdatesPage$2e$module$2e$css__$5b$client$5d$__$28$css__module$29$__["default"].image
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/Component/updates/UpdatesPage.js",
-                                                    lineNumber: 69,
+                                                    lineNumber: 94,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$Component$2f$updates$2f$UpdatesPage$2e$module$2e$css__$5b$client$5d$__$28$css__module$29$__["default"].overlay
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/Component/updates/UpdatesPage.js",
-                                                    lineNumber: 77,
+                                                    lineNumber: 104,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2138,20 +2176,20 @@ function UpdatesPage() {
                                                     children: [
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$client$5d$__$28$ecmascript$29$__["FaCalendarAlt"], {}, void 0, false, {
                                                             fileName: "[project]/src/Component/updates/UpdatesPage.js",
-                                                            lineNumber: 83,
+                                                            lineNumber: 110,
                                                             columnNumber: 21
                                                         }, this),
-                                                        "18 Aug 2026"
+                                                        formatDate(item.createdAt)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/Component/updates/UpdatesPage.js",
-                                                    lineNumber: 81,
+                                                    lineNumber: 108,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/Component/updates/UpdatesPage.js",
-                                            lineNumber: 67,
+                                            lineNumber: 92,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2162,21 +2200,21 @@ function UpdatesPage() {
                                                     children: [
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$client$5d$__$28$ecmascript$29$__["FaClock"], {}, void 0, false, {
                                                             fileName: "[project]/src/Component/updates/UpdatesPage.js",
-                                                            lineNumber: 99,
+                                                            lineNumber: 126,
                                                             columnNumber: 21
                                                         }, this),
                                                         "5 Min Read"
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/Component/updates/UpdatesPage.js",
-                                                    lineNumber: 97,
+                                                    lineNumber: 124,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
                                                     children: item.title
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/Component/updates/UpdatesPage.js",
-                                                    lineNumber: 107,
+                                                    lineNumber: 134,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2186,7 +2224,7 @@ function UpdatesPage() {
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/Component/updates/UpdatesPage.js",
-                                                    lineNumber: 113,
+                                                    lineNumber: 140,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2195,50 +2233,233 @@ function UpdatesPage() {
                                                         "Read Full Update",
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$client$5d$__$28$ecmascript$29$__["FaArrowRight"], {}, void 0, false, {
                                                             fileName: "[project]/src/Component/updates/UpdatesPage.js",
-                                                            lineNumber: 123,
+                                                            lineNumber: 150,
                                                             columnNumber: 21
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/Component/updates/UpdatesPage.js",
-                                                    lineNumber: 119,
+                                                    lineNumber: 146,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/Component/updates/UpdatesPage.js",
-                                            lineNumber: 93,
+                                            lineNumber: 120,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/Component/updates/UpdatesPage.js",
-                                    lineNumber: 60,
+                                    lineNumber: 85,
                                     columnNumber: 15
                                 }, this)
                             }, item.id, false, {
                                 fileName: "[project]/src/Component/updates/UpdatesPage.js",
-                                lineNumber: 55,
+                                lineNumber: 80,
                                 columnNumber: 13
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/src/Component/updates/UpdatesPage.js",
-                        lineNumber: 51,
+                        lineNumber: 76,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/Component/updates/UpdatesPage.js",
-                lineNumber: 25,
+                lineNumber: 50,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/Component/updates/UpdatesPage.js",
-        lineNumber: 19,
+        lineNumber: 44,
         columnNumber: 5
     }, this);
-}
+} // import Link from "next/link";
+ // import Image from "next/image";
+ // import styles from "./UpdatesPage.module.css";
+ // import { FaArrowRight, FaClock, FaCalendarAlt, FaCheckCircle } from "react-icons/fa";
+ // import { useEffect, useState } from "react";
+ // import { getData } from "../../services/FetchNodeServices";
+ // export default function UpdatesPage() {
+ //   const [updates, setUpdates] = useState([]);
+ //   const [loading, setLoading] = useState(true);
+ //   const fetchAllNewUpdate = async () => {
+ //     setLoading(true);
+ //     try {
+ //       const response = await getData("newupdate/all");
+ //       if (response?.success === true) {
+ //         setUpdates(response.data);
+ //       }
+ //     } catch (e) {
+ //       console.error("Updates fetch failed:", e?.message);
+ //     } finally {
+ //       setLoading(false);
+ //     }
+ //   };
+ //   useEffect(() => {
+ //     fetchAllNewUpdate();
+ //   }, []);
+ //   const formatDate = (dateStr) =>
+ //     new Date(dateStr).toLocaleDateString("en-IN", {
+ //       day: "2-digit",
+ //       month: "short",
+ //       year: "numeric",
+ //     });
+ //   // Skeleton cards shown while loading
+ //   if (loading) {
+ //     return (
+ //       <section className={styles.updateSection}>
+ //         <div className={styles.glow}></div>
+ //         <div className="container">
+ //           <div className={styles.heading}>
+ //             <span>TECHNOMAC NEWS</span>
+ //             <h1>Latest Updates & Healthcare News</h1>
+ //             <p>
+ //               Explore the latest innovations, product launches and modern
+ //               healthcare technology updates from TECHNOMAC.
+ //             </p>
+ //           </div>
+ //           <div className="row">
+ //             {[1, 2, 3].map((i) => (
+ //               <div className="col-lg-4 col-md-6 mb-4" key={i}>
+ //                 <div className={styles.skeleton}></div>
+ //               </div>
+ //             ))}
+ //           </div>
+ //         </div>
+ //       </section>
+ //     );
+ //   }
+ //   if (!loading && updates.length === 0) {
+ //     return (
+ //       <section className={styles.updateSection}>
+ //         <div className={styles.glow}></div>
+ //         <div className="container">
+ //           <div className={styles.heading}>
+ //             <span>TECHNOMAC NEWS</span>
+ //             <h1>Latest Updates & Healthcare News</h1>
+ //           </div>
+ //           <div className={styles.emptyState}>
+ //             <p>No updates available at the moment. Check back soon!</p>
+ //           </div>
+ //         </div>
+ //       </section>
+ //     );
+ //   }
+ //   // First item is featured (hero), rest are normal cards
+ //   const [featured, ...rest] = updates;
+ //   return (
+ //     <section className={styles.updateSection}>
+ //       <div className={styles.glow}></div>
+ //       <div className="container">
+ //         {/* TOP */}
+ //         <div className={styles.heading}>
+ //           <span>TECHNOMAC NEWS</span>
+ //           <h1>Latest Updates & Healthcare News</h1>
+ //           <p>
+ //             Explore the latest innovations, product launches and modern
+ //             healthcare technology updates from TECHNOMAC.
+ //           </p>
+ //         </div>
+ //         {/* ── FEATURED CARD (first item, full-width) ── */}
+ //         <Link
+ //           href={`/updates/${featured._id}`}
+ //           className={styles.featuredCard}
+ //         >
+ //           <div className={styles.featuredImageWrapper}>
+ //             <Image
+ //               src={featured.image}
+ //               alt={featured.title}
+ //               fill
+ //               className={styles.featuredImage}
+ //             />
+ //             <div className={styles.overlay}></div>
+ //             <span className={styles.featuredBadge}>Featured</span>
+ //           </div>
+ //           <div className={styles.featuredContent}>
+ //             <div className={styles.meta}>
+ //               <span><FaCalendarAlt /> {formatDate(featured.createdAt)}</span>
+ //               <span><FaClock /> 5 Min Read</span>
+ //             </div>
+ //             <h2>{featured.title}</h2>
+ //             <p>{featured.description}</p>
+ //             {/* Points */}
+ //             {featured.points?.length > 0 && (
+ //               <ul className={styles.pointsList}>
+ //                 {featured.points.slice(0, 3).map((pt, i) => (
+ //                   <li key={i}>
+ //                     <FaCheckCircle className={styles.checkIcon} />
+ //                     {pt}
+ //                   </li>
+ //                 ))}
+ //               </ul>
+ //             )}
+ //             <div className={styles.readMore}>
+ //               Read Full Update <FaArrowRight />
+ //             </div>
+ //           </div>
+ //         </Link>
+ //         {/* ── GRID CARDS (remaining items) ── */}
+ //         {rest.length > 0 && (
+ //           <div className="row mt-4">
+ //             {rest.map((item) => (
+ //               <div className="col-lg-4 col-md-6 mb-4" key={item._id}>
+ //                 <Link
+ //                   href={`/updates/${item._id}`}
+ //                   className={styles.card}
+ //                 >
+ //                   {/* IMAGE */}
+ //                   <div className={styles.imageWrapper}>
+ //                     <Image
+ //                       src={item.image}
+ //                       alt={item.title}
+ //                       fill
+ //                       className={styles.image}
+ //                     />
+ //                     <div className={styles.overlay}></div>
+ //                     <div className={styles.dateBox}>
+ //                       <FaCalendarAlt />
+ //                       {formatDate(item.createdAt)}
+ //                     </div>
+ //                   </div>
+ //                   {/* CONTENT */}
+ //                   <div className={styles.content}>
+ //                     <div className={styles.time}>
+ //                       <FaClock /> 5 Min Read
+ //                     </div>
+ //                     <h3>{item.title}</h3>
+ //                     <p>
+ //                       {item.description.length > 90
+ //                         ? `${item.description.slice(0, 90)}...`
+ //                         : item.description}
+ //                     </p>
+ //                     {/* Points */}
+ //                     {item.points?.length > 0 && (
+ //                       <ul className={styles.pointsList}>
+ //                         {item.points.slice(0, 2).map((pt, i) => (
+ //                           <li key={i}>
+ //                             <FaCheckCircle className={styles.checkIcon} />
+ //                             {pt}
+ //                           </li>
+ //                         ))}
+ //                       </ul>
+ //                     )}
+ //                     <div className={styles.readMore}>
+ //                       Read Full Update <FaArrowRight />
+ //                     </div>
+ //                   </div>
+ //                 </Link>
+ //               </div>
+ //             ))}
+ //           </div>
+ //         )}
+ //       </div>
+ //     </section>
+ //   );
+ // }
+_s(UpdatesPage, "uNxYX6RHCQUjYhBsGXvoBBJdbLQ=");
 _c = UpdatesPage;
 var _c;
 __turbopack_context__.k.register(_c, "UpdatesPage");

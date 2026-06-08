@@ -15,6 +15,7 @@ const warrantyRoute = require('./routes/Warrenty');
 const certificateRoute = require('./routes/certificate');
 const catalogueRoute = require('./routes/Catalogue');
 const catelogurDownloadRoute = require('./routes/CatalogueDownload');
+const newUpdateRoutes = require('./routes/newUpdate');
 
 const dns = require('dns');
 
@@ -45,6 +46,7 @@ app.use('/api/faq', faqRoute);
 app.use('/api/certificate', certificateRoute);
 app.use('/api/catalogue', catalogueRoute);
 app.use('/api/catalogueDownload', catelogurDownloadRoute);
+app.use('/api/newupdate', newUpdateRoutes);
 
 const PORT = process.env.PORT || 5000;
 

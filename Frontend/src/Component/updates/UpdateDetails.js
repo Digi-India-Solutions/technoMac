@@ -1,5 +1,4 @@
 import Image from "next/image";
-
 import styles from "./UpdateDetails.module.css";
 
 export default function UpdateDetails({
@@ -19,6 +18,8 @@ export default function UpdateDetails({
           <Image
             src={item.image}
             alt={item.title}
+            width={250}
+            height={250}
             className={styles.image}
           />
 
@@ -50,7 +51,7 @@ export default function UpdateDetails({
 
             <ul>
 
-              {item.points.map(
+              {item?.points?.map(
                 (point, index) => (
 
                   <li key={index}>

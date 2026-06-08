@@ -35,6 +35,7 @@ import ChallanCreate from "../pages/admin/challan/create/page";
 import CartsManagement from "../pages/admin/application/cart/page";
 import TermAndCondition from "../pages/admin/termAndCondition/page.jsx";
 import BlankPage from "../pages/admin/blanckPage/page.jsx"
+import NewUpdate from "../pages/admin/newUpdate/page.jsx"
 
 const CatalogueUpload = lazy(() => import('../pages/admin/catalogue/page'));
 
@@ -62,6 +63,7 @@ const routes: RouteObject[] = [
       { path: 'catalogue', element: <CatalogueUpload /> },
       { path: 'term-and-condition', element: <TermAndCondition /> },
       { path: 'blank_page', element: <BlankPage /> },
+      { path: 'new_update', element: <NewUpdate /> },
 
       {
         path: 'application',
