@@ -130,7 +130,11 @@ const handleNavigation = (path) => {
     // ] : []),
     // ...(permissions?.marketing?.read ? [{ title: 'Marketing', icon: 'ri-megaphone-line', path: '/admin/marketing', }] : []),
     // ...(permissions?.enquiries?.read ? [
-     { title: 'New Update',icon: 'ri-exchange-line', path: '/admin/new_update' },
+    {
+      title: 'New Update',
+      icon: 'ri-exchange-line',
+      path: '/admin/new_update',
+    },
     {
       title: 'enquiries',
       icon: 'ri-question-answer-line',
@@ -148,6 +152,8 @@ const handleNavigation = (path) => {
     // ...(permissions?.catalogueUpload?.read ? [
     // { title: 'Catalogue Upload', icon: 'ri-file-pdf-line', path: '/admin/catalogue', },
     { title: 'FAQs', path: '/admin/application/faqs' },
+    { title: 'subscription', path: '/admin/application/subscription' },
+    { title: 'review', path: '/admin/application/review' },
     // ] : []),
     //  ...(permissions?.recycledOrder?.read || user?.role === 'Super Admin' ? [
     // { title: 'Recycled Order', icon: 'ri-recycle-line', path: '/admin/recycledOrder', },

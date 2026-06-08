@@ -111,7 +111,7 @@ export default function ProductsManagement() {
   };
 
   const fetchCategories = async () => {
-    const res = await getData('category');
+    const res = await getData('category/all');
 
     console.log('Category API Response:', res);
 

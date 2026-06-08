@@ -1,9 +1,7 @@
 const express = require('express');
-
 const router = express.Router();
-
 const adminAuth = require('../middleware/adminAuth');
-
+const upload = require('../middleware/multer');
 const {
   createBanner,
   getAllBanner,
@@ -11,23 +9,21 @@ const {
   updateBanner,
   getBannerByCategory,
 } = require('../controller/Banner');
-const upload = require('../middleware/multer');
 
 // CREATE
 router.post('/create', adminAuth, upload.single('image'), createBanner);
 
-router.get(
-  '/banner/category/:categoryId', adminAuth,
-  getBannerByCategory,
-);
-
 // GET ALL
 router.get('/all', getAllBanner);
 
+// GET BY CATEGORY
+router.get('/category/:categoryId', adminAuth, getBannerByCategory);
+
+// UPDATE — support both PUT and PATCH so frontend patchData works
+router.put('/update/:id', adminAuth, upload.single('image'), updateBanner);
+router.patch('/update/:id', adminAuth, upload.single('image'), updateBanner); // FIX: frontend uses patchData (PATCH)
+
 // DELETE
 router.delete('/delete/:id', adminAuth, deleteBanner);
-
-// UPDATE
-router.put('/update/:id', adminAuth, upload.single('image'), updateBanner);
 
 module.exports = router;

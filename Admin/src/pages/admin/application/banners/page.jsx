@@ -5,16 +5,21 @@ import Button from '../../../../components/base/Button';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Swal from 'sweetalert2';
-
 import {
   postData,
   getData,
   patchData,
   deleteData,
-  getToken,
 } from '../../../../services/FetchNodeServices';
 
 const ITEMS_PER_PAGE = 12;
+
+const emptyForm = {
+  categoryId: '',
+  title: '',
+  subtitle: '',
+  image: null,
+};
 
 export default function BannersManagement() {
   const [banners, setBanners] = useState([]);
@@ -22,6 +27,9 @@ export default function BannersManagement() {
   const [editingBanner, setEditingBanner] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
+  const [categories, setCategories] = useState([]);
+  const [formData, setFormData] = useState(emptyForm);
+  const [submitting, setSubmitting] = useState(false);
 
   const totalPages = Math.ceil(banners.length / ITEMS_PER_PAGE);
   const paginatedBanners = banners.slice(
@@ -29,21 +37,22 @@ export default function BannersManagement() {
     currentPage * ITEMS_PER_PAGE,
   );
 
-  const emptyForm = { title: '', subtitle: '', image: null };
-  const [formData, setFormData] = useState(emptyForm);
-
   const resetForm = () => {
     setFormData(emptyForm);
     setEditingBanner(null);
   };
 
+  // ─── Fetch all banners ────────────────────────────────────────────────────
   const fetchBanners = async () => {
     try {
       setIsLoading(true);
+      // FIX: correct API path — app.use('/api/banner') + router.get('/all')
       const response = await getData('banner/all');
       if (response?.success) {
         setBanners(response.banners || []);
         setCurrentPage(1);
+      } else {
+        toast.error(response?.message || 'Failed to load banners');
       }
     } catch (error) {
       toast.error('Failed to load banners');
@@ -52,21 +61,53 @@ export default function BannersManagement() {
     }
   };
 
+  // ─── Fetch categories for dropdown ───────────────────────────────────────
+  const fetchCategories = async () => {
+    try {
+      const response = await getData('category/all');
+       if (response?.success) {
+         setCategories(response.data || []); // ← 'categories' ki jagah 'data'
+       }
+    } catch (error) {
+      console.error('fetchCategories error:', error);
+    }
+  };
+
   useEffect(() => {
     fetchBanners();
+    fetchCategories();
   }, []);
 
+  // ─── Create / Update ──────────────────────────────────────────────────────
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!formData.categoryId) {
+      toast.error('Please select a category');
+      return;
+    }
+    if (!formData.title?.trim()) {
+      toast.error('Please enter a title');
+      return;
+    }
+    if (!editingBanner && !formData.image) {
+      toast.error('Please select an image');
+      return;
+    }
+
+    setSubmitting(true);
     try {
       const data = new FormData();
+      data.append('categoryId', formData.categoryId);
       data.append('title', formData.title);
-      data.append('subtitle', formData.subtitle);
-      // data.append('buttonText', formData.buttonText);
-      if (formData.image instanceof File) data.append('image', formData.image);
+      data.append('subtitle', formData.subtitle || '');
+      if (formData.image instanceof File) {
+        data.append('image', formData.image);
+      }
 
       let response;
       if (editingBanner) {
+        // FIX: backend now supports PATCH /update/:id (patchData works correctly)
         response = await patchData(`banner/update/${editingBanner._id}`, data);
       } else {
         response = await postData('banner/create', data);
@@ -75,49 +116,62 @@ export default function BannersManagement() {
       if (response?.success) {
         toast.success(
           editingBanner
-            ? 'Banner Updated Successfully'
-            : 'Banner Created Successfully',
+            ? 'Banner updated successfully!'
+            : 'Banner created successfully!',
         );
         resetForm();
         setShowAddModal(false);
         fetchBanners();
+      } else {
+        toast.error(response?.message || 'Something went wrong');
       }
     } catch (error) {
+      console.error('handleSubmit error:', error);
       toast.error('Something went wrong');
+    } finally {
+      setSubmitting(false);
     }
   };
 
+  // ─── Edit banner ──────────────────────────────────────────────────────────
   const handleEdit = (banner) => {
     setEditingBanner(banner);
     setFormData({
+      categoryId: banner.categoryId?._id || '',
       title: banner.title || '',
       subtitle: banner.subtitle || '',
-      buttonText: banner.buttonText || '',
-      image: banner.image || '',
+      image: banner.image || null, // existing URL (string), not File
     });
     setShowAddModal(true);
   };
 
+  // ─── Delete banner ────────────────────────────────────────────────────────
   const handleDelete = async (id) => {
     const result = await Swal.fire({
       title: 'Delete Banner?',
       text: 'This action cannot be undone',
       icon: 'warning',
       showCancelButton: true,
+      confirmButtonColor: '#ef4444',
+      cancelButtonColor: '#6b7280',
+      confirmButtonText: 'Yes, delete it',
     });
     if (!result.isConfirmed) return;
+
     try {
       const response = await deleteData(`banner/delete/${id}`);
       if (response?.success) {
-        toast.success('Banner Deleted');
+        toast.success('Banner deleted');
         fetchBanners();
+      } else {
+        toast.error(response?.message || 'Delete failed');
       }
     } catch (error) {
-      toast.error('Delete Failed');
+      toast.error('Delete failed');
     }
   };
 
-  // Pagination helper — shows max 5 page buttons with ellipsis
+  // ─── Pagination helper ────────────────────────────────────────────────────
   const getPageNumbers = () => {
     if (totalPages <= 5)
       return Array.from({ length: totalPages }, (_, i) => i + 1);
@@ -144,9 +198,9 @@ export default function BannersManagement() {
 
   return (
     <AdminLayout>
-      <ToastContainer />
+      <ToastContainer position="top-right" autoClose={3000} />
       <div className="p-6">
-        {/* Header */}
+        {/* ── Header ── */}
         <div className="flex justify-between items-center mb-6">
           <div>
             <h1 className="text-2xl font-bold text-gray-900">
@@ -163,24 +217,31 @@ export default function BannersManagement() {
             }}
             className="bg-blue-600 hover:bg-blue-700 text-white flex items-center space-x-2"
           >
-            <i className="ri-add-line"></i>
-            <span>Add Banner</span>
+            <i className="ri-add-line mr-1"></i>
+            Add Banner
           </Button>
         </div>
 
-        {/* Loading */}
+        {/* ── Loading ── */}
         {isLoading && (
           <div className="flex justify-center items-center py-20">
-            <p className="text-gray-500">Loading banners...</p>
+            <i className="ri-loader-4-line animate-spin text-3xl text-blue-600"></i>
+            <p className="text-gray-500 ml-3">Loading banners...</p>
           </div>
         )}
 
-        {/* Empty */}
+        {/* ── Empty state ── */}
         {!isLoading && banners.length === 0 && (
-          <p className="text-gray-500">No banners found.</p>
+          <div className="text-center py-20 text-gray-400">
+            <i className="ri-image-line text-5xl mb-3 block"></i>
+            <p className="text-lg">No banners found</p>
+            <p className="text-sm mt-1">
+              Click "Add Banner" to create your first banner
+            </p>
+          </div>
         )}
 
-        {/* Banner Grid */}
+        {/* ── Banner Grid ── */}
         {!isLoading && banners.length > 0 && (
           <>
             <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
@@ -192,20 +253,33 @@ export default function BannersManagement() {
                     className="w-full h-52 object-cover"
                   />
                   <div className="p-4">
-                    <h3 className="font-bold text-lg">{banner.title}</h3>
-                    <p className="text-gray-600 mt-2">{banner.subtitle}</p>
+                    <div className="flex items-center gap-2 mb-1">
+                      {banner.categoryId?.name && (
+                        <span className="text-xs bg-blue-100 text-blue-700 px-2 py-0.5 rounded-full">
+                          {banner.categoryId.name}
+                        </span>
+                      )}
+                    </div>
+                    <h3 className="font-bold text-lg text-gray-900">
+                      {banner.title}
+                    </h3>
+                    {banner.subtitle && (
+                      <p className="text-gray-600 text-sm mt-1">
+                        {banner.subtitle}
+                      </p>
+                    )}
                     <div className="flex gap-2 mt-4">
                       <Button
                         onClick={() => handleEdit(banner)}
-                        className="flex-1 bg-blue-600 text-white"
+                        className="flex-1 bg-blue-600 text-white hover:bg-blue-700"
                       >
-                        Edit
+                        <i className="ri-edit-line mr-1"></i> Edit
                       </Button>
                       <Button
                         onClick={() => handleDelete(banner._id)}
-                        className="flex-1 bg-red-600 text-white"
+                        className="flex-1 bg-red-600 text-white hover:bg-red-700"
                       >
-                        Delete
+                        <i className="ri-delete-bin-line mr-1"></i> Delete
                       </Button>
                     </div>
                   </div>
@@ -213,10 +287,9 @@ export default function BannersManagement() {
               ))}
             </div>
 
-            {/* Pagination */}
+            {/* ── Pagination ── */}
             {totalPages > 1 && (
               <div className="mt-8 flex flex-col items-center gap-3">
-                {/* Page info */}
                 <p className="text-sm text-gray-500">
                   Showing{' '}
                   <span className="font-medium text-gray-700">
@@ -229,10 +302,7 @@ export default function BannersManagement() {
                   </span>{' '}
                   banners
                 </p>
-
-                {/* Buttons */}
                 <div className="flex items-center gap-1">
-                  {/* Prev */}
                   <button
                     onClick={() => setCurrentPage((p) => p - 1)}
                     disabled={currentPage === 1}
@@ -240,8 +310,6 @@ export default function BannersManagement() {
                   >
                     ← Prev
                   </button>
-
-                  {/* Page numbers */}
                   {getPageNumbers().map((page, idx) =>
                     page === '...' ? (
                       <span
@@ -264,8 +332,6 @@ export default function BannersManagement() {
                       </button>
                     ),
                   )}
-
-                  {/* Next */}
                   <button
                     onClick={() => setCurrentPage((p) => p + 1)}
                     disabled={currentPage === totalPages}
@@ -279,7 +345,9 @@ export default function BannersManagement() {
           </>
         )}
 
-        {/* Add/Edit Modal */}
+        {/* ════════════════════════════════════════════════════
+            ADD / EDIT MODAL
+        ════════════════════════════════════════════════════ */}
         {showAddModal && (
           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
             <div className="bg-white rounded-lg max-w-md w-full max-h-[90vh] overflow-y-auto">
@@ -293,57 +361,101 @@ export default function BannersManagement() {
                       setShowAddModal(false);
                       resetForm();
                     }}
-                    className="text-gray-400 hover:text-gray-600 w-6 h-6 flex items-center justify-center"
+                    className="text-gray-400 hover:text-gray-600 w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100"
                   >
-                    <i className="ri-close-line"></i>
+                    <i className="ri-close-line text-xl"></i>
                   </button>
                 </div>
 
                 <form onSubmit={handleSubmit} className="space-y-4">
+                  {/* Category */}
                   <div>
-                    <label>Title</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Category <span className="text-red-500">*</span>
+                    </label>
+                    <div className="relative">
+                      <select
+                        value={formData.categoryId}
+                        onChange={(e) =>
+                          setFormData({
+                            ...formData,
+                            categoryId: e.target.value,
+                          })
+                        }
+                        className="w-full px-3 py-2 pr-8 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm appearance-none"
+                        required
+                      >
+                        <option value="">Select a category</option>
+                        {categories.map((item) => (
+                          <option key={item._id} value={item._id}>
+                            {item.name}
+                          </option>
+                        ))}
+                      </select>
+                      <i className="ri-arrow-down-s-line absolute right-2 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"></i>
+                    </div>
+                    {categories.length === 0 && (
+                      <p className="text-xs text-amber-600 mt-1">
+                        No categories found. Please create categories first.
+                      </p>
+                    )}
+                  </div>
+
+                  {/* Title */}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Title <span className="text-red-500">*</span>
+                    </label>
                     <input
                       type="text"
+                      placeholder="Enter banner title"
                       value={formData.title}
                       onChange={(e) =>
                         setFormData({ ...formData, title: e.target.value })
                       }
-                      className="w-full border rounded-lg p-2"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
                       required
                     />
                   </div>
 
+                  {/* Subtitle */}
                   <div>
-                    <label>Subtitle</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Subtitle
+                    </label>
                     <input
                       type="text"
+                      placeholder="Enter banner subtitle (optional)"
                       value={formData.subtitle}
                       onChange={(e) =>
                         setFormData({ ...formData, subtitle: e.target.value })
                       }
-                      className="w-full border rounded-lg p-2"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
                     />
                   </div>
 
-                  {/* <div>
-                    <label>Button Text</label>
-                    <input
-                      type="text"
-                      value={formData.buttonText}
-                      onChange={(e) =>
-                        setFormData({ ...formData, buttonText: e.target.value })
-                      }
-                      className="w-full border rounded-lg p-2"
-                    />
-                  </div> */}
-
+                  {/* Image */}
                   <div>
-                    <label>Banner Image</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Banner Image{' '}
+                      {!editingBanner && (
+                        <span className="text-red-500">*</span>
+                      )}
+                    </label>
+                    {/* Show existing image preview when editing */}
                     {formData.image && typeof formData.image === 'string' && (
                       <img
                         src={formData.image}
-                        alt=""
-                        className="h-32 w-full object-cover rounded mb-2"
+                        alt="Current banner"
+                        className="h-32 w-full object-cover rounded-lg mb-2 border border-gray-200"
+                      />
+                    )}
+                    {/* Show new file preview */}
+                    {formData.image instanceof File && (
+                      <img
+                        src={URL.createObjectURL(formData.image)}
+                        alt="New banner preview"
+                        className="h-32 w-full object-cover rounded-lg mb-2 border border-gray-200"
                       />
                     )}
                     <input
@@ -355,27 +467,43 @@ export default function BannersManagement() {
                           image: e.target.files?.[0] || null,
                         })
                       }
-                      className="w-full border rounded-lg p-2"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm"
                       required={!editingBanner}
                     />
+                    {editingBanner && (
+                      <p className="text-xs text-gray-500 mt-1">
+                        Leave empty to keep the current image
+                      </p>
+                    )}
                   </div>
 
-                  <div className="flex gap-3">
+                  {/* Buttons */}
+                  <div className="flex gap-3 pt-2">
                     <Button
                       type="button"
                       onClick={() => {
                         setShowAddModal(false);
                         resetForm();
                       }}
-                      className="flex-1"
+                      className="flex-1 bg-gray-100 text-gray-700 hover:bg-gray-200"
                     >
                       Cancel
                     </Button>
                     <Button
                       type="submit"
-                      className="flex-1 bg-blue-600 text-white"
+                      disabled={submitting}
+                      className="flex-1 bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                      {editingBanner ? 'Update Banner' : 'Create Banner'}
+                      {submitting ? (
+                        <>
+                          <i className="ri-loader-4-line animate-spin mr-2"></i>
+                          {editingBanner ? 'Updating...' : 'Creating...'}
+                        </>
+                      ) : editingBanner ? (
+                        'Update Banner'
+                      ) : (
+                        'Create Banner'
+                      )}
                     </Button>
                   </div>
                 </form>

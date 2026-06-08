@@ -12,9 +12,9 @@ const router = express.Router();
 router.post('/', createSubscriber);
 
 // GET    /api/subscribe        → get all subscribers (admin panel)
-router.get('/',adminAuth, getAllSubscribers);
+router.get('/', getAllSubscribers);
 
 // DELETE /api/subscribe/:id    
-router.delete('/:id',adminAuth, deleteSubscriber);
+router.delete('/:id', deleteSubscriber);
 
 module.exports = router;
