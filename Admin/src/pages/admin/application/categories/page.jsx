@@ -22,7 +22,7 @@ const DEFAULT_FORM = {
 // ── Axios helpers wired to your actual routes ──────────────────────────────
 const categoryAPI = {
   getAll: () =>
-    axios.get(`${BASE_URL}/category`, {
+    axios.get(`${BASE_URL}/category/all`, {
       headers: { Authorization: `Bearer ${getToken()}` },
     }),
 
