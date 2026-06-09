@@ -154,6 +154,7 @@ const handleNavigation = (path) => {
     { title: 'FAQs', path: '/admin/application/faqs' },
     { title: 'subscription', path: '/admin/application/subscription' },
     { title: 'review', path: '/admin/application/review' },
+    { title: 'client', path: '/admin/application/client' },
     { title: 'CallBack List', path: '/admin/application/callback' },
     // ] : []),
     //  ...(permissions?.recycledOrder?.read || user?.role === 'Super Admin' ? [
