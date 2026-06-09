@@ -1,5 +1,5 @@
 __turbopack_load_page_chunks__("/products", [
-  "static/chunks/[root-of-the-server]__d079b882._.js",
+  "static/chunks/[root-of-the-server]__f7768d33._.js",
   "static/chunks/node_modules_next_dist_compiled_3e12a2ad._.js",
   "static/chunks/node_modules_next_dist_shared_lib_c644b97f._.js",
   "static/chunks/node_modules_next_dist_client_1cde2f58._.js",
@@ -12,5 +12,5 @@ __turbopack_load_page_chunks__("/products", [
   "static/chunks/node_modules_f1be3ba2._.js",
   "static/chunks/src_Component_c8da44b7._.css",
   "static/chunks/src_pages_products_2da965e7._.js",
-  "static/chunks/turbopack-src_pages_products_4686a4d1._.js"
+  "static/chunks/turbopack-src_pages_products_ddbb55fb._.js"
 ])

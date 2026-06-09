@@ -1282,6 +1282,7 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
 "[project]/src/Component/layout/Footer/Footer.module.css [client] (css module)", ((__turbopack_context__) => {
 
 __turbopack_context__.v({
+  "errorMsg": "Footer-module__2tDr4G__errorMsg",
   "footer": "Footer-module__2tDr4G__footer",
   "footerAbout": "Footer-module__2tDr4G__footerAbout",
   "footerBottom": "Footer-module__2tDr4G__footerBottom",
@@ -1294,6 +1295,7 @@ __turbopack_context__.v({
   "newsletterTag": "Footer-module__2tDr4G__newsletterTag",
   "queryBtn": "Footer-module__2tDr4G__queryBtn",
   "socialIcons": "Footer-module__2tDr4G__socialIcons",
+  "successMsg": "Footer-module__2tDr4G__successMsg",
 });
 }),
 "[project]/Images/logo.png (static in ecmascript)", ((__turbopack_context__) => {
@@ -1323,6 +1325,196 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
 "[project]/src/Component/layout/Footer/Footer.js [client] (ecmascript)", ((__turbopack_context__) => {
 "use strict";
 
+// import Link from "next/link";
+// import {
+//   FaPhoneAlt,
+//   FaEnvelope,
+//   FaFacebookF,
+//   FaInstagram,
+//   FaLinkedinIn,
+//   FaYoutube,
+//   FaMapMarkerAlt,
+// } from "react-icons/fa";
+// import styles from "./Footer.module.css";
+// import Image from "next/image";
+// import Logo from "../../../../Images/logo.png";
+// import { useState } from "react";
+// export default function Footer() {
+//   const [email, setEmail] = useState("");
+//   const [status, setStatus] = useState(null); // 'success' | 'error' | 'loading'
+//   const [msg, setMsg] = useState("");
+//   const handleSubscribe = async (e) => {
+//     e.preventDefault();
+//     if (!email.trim() || !/\S+@\S+\.\S+/.test(email)) {
+//       setStatus("error");
+//       setMsg("Please enter a valid email address.");
+//       return;
+//     }
+//     setStatus("loading");
+//     try {
+//       const res = await postData("newsletter/subscribe", { email: email.trim() });
+//       if (res?.success) {
+//         setStatus("success");
+//         setMsg("Thank you for subscribing!");
+//         setEmail("");
+//       } else {
+//         setStatus("error");
+//         setMsg(res?.message || "Subscription failed. Please try again.");
+//       }
+//     } catch {
+//       setStatus("error");
+//       setMsg("Something went wrong. Please try again.");
+//     }
+//   };
+//   return (
+//     <footer className={styles.footer}>
+//       <div className="container">
+//         {/* Top Footer */}
+//         <div className={styles.footerTop}>
+//           <div className="row">
+//             {/* Company Info */}
+//             <div className="col-lg-3 col-md-6 mb-4">
+//               <div className={styles.footerAbout}>
+//                 {/* <h2>
+//                   Dental<span>Loom</span>
+//                 </h2> */}
+//                 <Image src={Logo} alt="DentalLoom Logo" width={150} objectFit="cover" height={50} />
+//                 <p>
+//                   Premium dental healthcare equipment
+//                   supplier providing advanced clinic
+//                   setup solutions and modern dental
+//                   products for professionals.
+//                 </p>
+//                 <div className={styles.socialIcons}>
+//                   <a href="#">
+//                     <FaFacebookF />
+//                   </a>
+//                   <a href="#">
+//                     <FaInstagram />
+//                   </a>
+//                   <a href="#">
+//                     <FaLinkedinIn />
+//                   </a>
+//                   <a href="#">
+//                     <FaYoutube />
+//                   </a>
+//                 </div>
+//               </div>
+//             </div>
+//             {/* Quick Links */}
+//             <div className="col-lg-2 col-md-6 mb-4">
+//               <div className={styles.footerLinks}>
+//                 <h4>
+//                   Quick Links
+//                 </h4>
+//                 <ul>
+//                   <li>
+//                     <Link href="/">
+//                       Home
+//                     </Link>
+//                   </li>
+//                   <li>
+//                     <Link href="/about">
+//                       About
+//                     </Link>
+//                   </li>
+//                   <li>
+//                     <Link href="/updates">
+//                       New Updates
+//                     </Link>
+//                   </li>
+//                   <li>
+//                     <Link href="/blogs">
+//                       Blog
+//                     </Link>
+//                   </li>
+//                   <li>
+//                     <Link href="/products">
+//                       Products
+//                     </Link>
+//                   </li>
+//                   <li>
+//                     <Link href="/contact">
+//                       Contact
+//                     </Link>
+//                   </li>
+//                   <li>
+//                     <Link href="/privacy-policy">
+//                       Privacy Policy
+//                     </Link>
+//                   </li>
+//                 </ul>
+//               </div>
+//             </div>
+//             {/* Contact */}
+//             <div className="col-lg-3 col-md-6 mb-4">
+//               <div className={styles.footerContact}>
+//                 <h4>
+//                   Contact Us
+//                 </h4>
+//                 <ul>
+//                   <li>
+//                     <FaPhoneAlt />
+//                     <a href="tel:+919311125574">
+//                       +91 9311125574
+//                     </a>
+//                   </li>
+//                   <li>
+//                     <FaEnvelope />
+//                     <a href="mailto:info@dentalloom.com">
+//                       info@dentalloom.com
+//                     </a>
+//                   </li>
+//                   <li>
+//                     <FaMapMarkerAlt />
+//                     <span>
+//                       Plot no.-88, Pocket- L, Sector 1, Bawana Industrial Area, DSIIDC Sub-city, New Delhi-110039, India
+//                     </span>
+//                   </li>
+//                 </ul>
+//               </div>
+//             </div>
+//             {/* Newslater */}
+//             <div className="col-lg-4 col-md-6 mb-4">
+//               <div className={styles.newsletterBox}>
+//                 <h4>
+//                   Subscribe to Our
+//                   Newsletter
+//                 </h4>
+//                 <p>
+//                   Get latest dental equipment
+//                   updates, offers and clinic
+//                   setup innovations.
+//                 </p>
+//                 {/* FORM */}
+//                 <form className={styles.newsletterForm}>
+//                   {status === "success" ? (
+//                     <div className={styles.successMsg}>
+//                       <FaCheckCircle />
+//                       {msg}
+//                     </div>
+//                   ) :
+//                     <div className={styles.inputGroup}>
+//                       <input type="email" placeholder="Enter your email" onChange={(e) => setEmail(e.target.value)} required />
+//                       <button type="submit" onClick={handleSubscribe}>Subscrib</button>
+//                     </div>}
+//                 </form>
+//                 {/* BOTTOM TEXT */}
+//                 <small>No spam. Only useful updates. </small>
+//               </div>
+//             </div>
+//           </div>
+//         </div>
+//         {/* Bottom Footer */}
+//         <div className={styles.footerBottom}>
+//           <p>
+//             © 2026 Technomac. All Rights Reserved.
+//           </p>
+//         </div>
+//       </div>
+//     </footer>
+//   );
+// }
 __turbopack_context__.s([
     "default",
     ()=>Footer
@@ -1333,6 +1525,11 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$ico
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$Component$2f$layout$2f$Footer$2f$Footer$2e$module$2e$css__$5b$client$5d$__$28$css__module$29$__ = __turbopack_context__.i("[project]/src/Component/layout/Footer/Footer.module.css [client] (css module)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/image.js [client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Images$2f$logo$2e$png$2e$mjs__$7b$__IMAGE__$3d3e$__$225b$project$5d2f$Images$2f$logo$2e$png__$28$static__in__ecmascript$2922$__$7d$__$5b$client$5d$__$28$structured__image__object__with__data__url$2c$__ecmascript$29$__ = __turbopack_context__.i('[project]/Images/logo.png.mjs { IMAGE => "[project]/Images/logo.png (static in ecmascript)" } [client] (structured image object with data url, ecmascript)');
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/react/index.js [client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$services$2f$FetchNodeServices$2e$js__$5b$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/services/FetchNodeServices.js [client] (ecmascript)"); // ✅ was missing
+;
+var _s = __turbopack_context__.k.signature();
+;
 ;
 ;
 ;
@@ -1340,6 +1537,37 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$Images$2f$logo$2e$png$2e$mjs
 ;
 ;
 function Footer() {
+    _s();
+    const [email, setEmail] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])("");
+    const [status, setStatus] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])(null); // 'success' | 'error' | 'loading'
+    const [msg, setMsg] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$index$2e$js__$5b$client$5d$__$28$ecmascript$29$__["useState"])("");
+    const handleSubscribe = async (e)=>{
+        e.preventDefault();
+        // ✅ Validation
+        if (!email.trim() || !/\S+@\S+\.\S+/.test(email)) {
+            setStatus("error");
+            setMsg("Please enter a valid email address.");
+            return;
+        }
+        setStatus("loading");
+        try {
+            const res = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$services$2f$FetchNodeServices$2e$js__$5b$client$5d$__$28$ecmascript$29$__["postData"])("subscribe/", {
+                email: email.trim()
+            });
+            console.log("res===>", res);
+            if (res?.success) {
+                setStatus("success");
+                setMsg("Thank you for subscribing!");
+                setEmail("");
+            } else {
+                setStatus("error");
+                setMsg(res?.message || "Subscription failed. Please try again.");
+            }
+        } catch  {
+            setStatus("error");
+            setMsg("Something went wrong. Please try again.");
+        }
+    };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("footer", {
         className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$Component$2f$layout$2f$Footer$2f$Footer$2e$module$2e$css__$5b$client$5d$__$28$css__module$29$__["default"].footer,
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1357,20 +1585,22 @@ function Footer() {
                                     children: [
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$image$2e$js__$5b$client$5d$__$28$ecmascript$29$__["default"], {
                                             src: __TURBOPACK__imported__module__$5b$project$5d2f$Images$2f$logo$2e$png$2e$mjs__$7b$__IMAGE__$3d3e$__$225b$project$5d2f$Images$2f$logo$2e$png__$28$static__in__ecmascript$2922$__$7d$__$5b$client$5d$__$28$structured__image__object__with__data__url$2c$__ecmascript$29$__["default"],
-                                            alt: "DentalLoom Logo",
+                                            alt: "TECHNOMAC Logo",
                                             width: 150,
-                                            objectFit: "cover",
-                                            height: 50
+                                            height: 50,
+                                            style: {
+                                                objectFit: "contain"
+                                            }
                                         }, void 0, false, {
                                             fileName: "[project]/src/Component/layout/Footer/Footer.js",
-                                            lineNumber: 38,
+                                            lineNumber: 315,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                             children: "Premium dental healthcare equipment supplier providing advanced clinic setup solutions and modern dental products for professionals."
                                         }, void 0, false, {
                                             fileName: "[project]/src/Component/layout/Footer/Footer.js",
-                                            lineNumber: 40,
+                                            lineNumber: 322,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1378,67 +1608,71 @@ function Footer() {
                                             children: [
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
                                                     href: "#",
+                                                    "aria-label": "Facebook",
                                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$client$5d$__$28$ecmascript$29$__["FaFacebookF"], {}, void 0, false, {
                                                         fileName: "[project]/src/Component/layout/Footer/Footer.js",
-                                                        lineNumber: 50,
-                                                        columnNumber: 21
+                                                        lineNumber: 328,
+                                                        columnNumber: 53
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/Component/layout/Footer/Footer.js",
-                                                    lineNumber: 49,
+                                                    lineNumber: 328,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
                                                     href: "#",
+                                                    "aria-label": "Instagram",
                                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$client$5d$__$28$ecmascript$29$__["FaInstagram"], {}, void 0, false, {
                                                         fileName: "[project]/src/Component/layout/Footer/Footer.js",
-                                                        lineNumber: 54,
-                                                        columnNumber: 21
+                                                        lineNumber: 329,
+                                                        columnNumber: 54
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/Component/layout/Footer/Footer.js",
-                                                    lineNumber: 53,
+                                                    lineNumber: 329,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
                                                     href: "#",
+                                                    "aria-label": "LinkedIn",
                                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$client$5d$__$28$ecmascript$29$__["FaLinkedinIn"], {}, void 0, false, {
                                                         fileName: "[project]/src/Component/layout/Footer/Footer.js",
-                                                        lineNumber: 58,
-                                                        columnNumber: 21
+                                                        lineNumber: 330,
+                                                        columnNumber: 53
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/Component/layout/Footer/Footer.js",
-                                                    lineNumber: 57,
+                                                    lineNumber: 330,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
                                                     href: "#",
+                                                    "aria-label": "YouTube",
                                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$client$5d$__$28$ecmascript$29$__["FaYoutube"], {}, void 0, false, {
                                                         fileName: "[project]/src/Component/layout/Footer/Footer.js",
-                                                        lineNumber: 62,
-                                                        columnNumber: 21
+                                                        lineNumber: 331,
+                                                        columnNumber: 52
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/Component/layout/Footer/Footer.js",
-                                                    lineNumber: 61,
+                                                    lineNumber: 331,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/Component/layout/Footer/Footer.js",
-                                            lineNumber: 47,
+                                            lineNumber: 327,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/Component/layout/Footer/Footer.js",
-                                    lineNumber: 33,
+                                    lineNumber: 314,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/Component/layout/Footer/Footer.js",
-                                lineNumber: 31,
+                                lineNumber: 313,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1450,7 +1684,7 @@ function Footer() {
                                             children: "Quick Links"
                                         }, void 0, false, {
                                             fileName: "[project]/src/Component/layout/Footer/Footer.js",
-                                            lineNumber: 77,
+                                            lineNumber: 339,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
@@ -1461,12 +1695,12 @@ function Footer() {
                                                         children: "Home"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/Component/layout/Footer/Footer.js",
-                                                        lineNumber: 84,
-                                                        columnNumber: 21
+                                                        lineNumber: 341,
+                                                        columnNumber: 23
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/Component/layout/Footer/Footer.js",
-                                                    lineNumber: 83,
+                                                    lineNumber: 341,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
@@ -1475,12 +1709,12 @@ function Footer() {
                                                         children: "About"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/Component/layout/Footer/Footer.js",
-                                                        lineNumber: 90,
-                                                        columnNumber: 21
+                                                        lineNumber: 342,
+                                                        columnNumber: 23
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/Component/layout/Footer/Footer.js",
-                                                    lineNumber: 89,
+                                                    lineNumber: 342,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
@@ -1489,12 +1723,12 @@ function Footer() {
                                                         children: "New Updates"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/Component/layout/Footer/Footer.js",
-                                                        lineNumber: 96,
-                                                        columnNumber: 19
+                                                        lineNumber: 343,
+                                                        columnNumber: 23
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/Component/layout/Footer/Footer.js",
-                                                    lineNumber: 95,
+                                                    lineNumber: 343,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
@@ -1503,12 +1737,12 @@ function Footer() {
                                                         children: "Blog"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/Component/layout/Footer/Footer.js",
-                                                        lineNumber: 102,
-                                                        columnNumber: 19
+                                                        lineNumber: 344,
+                                                        columnNumber: 23
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/Component/layout/Footer/Footer.js",
-                                                    lineNumber: 101,
+                                                    lineNumber: 344,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
@@ -1517,12 +1751,12 @@ function Footer() {
                                                         children: "Products"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/Component/layout/Footer/Footer.js",
-                                                        lineNumber: 108,
-                                                        columnNumber: 21
+                                                        lineNumber: 345,
+                                                        columnNumber: 23
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/Component/layout/Footer/Footer.js",
-                                                    lineNumber: 107,
+                                                    lineNumber: 345,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
@@ -1531,12 +1765,12 @@ function Footer() {
                                                         children: "Contact"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/Component/layout/Footer/Footer.js",
-                                                        lineNumber: 114,
-                                                        columnNumber: 21
+                                                        lineNumber: 346,
+                                                        columnNumber: 23
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/Component/layout/Footer/Footer.js",
-                                                    lineNumber: 113,
+                                                    lineNumber: 346,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
@@ -1545,29 +1779,29 @@ function Footer() {
                                                         children: "Privacy Policy"
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/Component/layout/Footer/Footer.js",
-                                                        lineNumber: 120,
-                                                        columnNumber: 21
+                                                        lineNumber: 347,
+                                                        columnNumber: 23
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/Component/layout/Footer/Footer.js",
-                                                    lineNumber: 119,
+                                                    lineNumber: 347,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/Component/layout/Footer/Footer.js",
-                                            lineNumber: 81,
+                                            lineNumber: 340,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/Component/layout/Footer/Footer.js",
-                                    lineNumber: 75,
+                                    lineNumber: 338,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/Component/layout/Footer/Footer.js",
-                                lineNumber: 73,
+                                lineNumber: 337,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1579,7 +1813,7 @@ function Footer() {
                                             children: "Contact Us"
                                         }, void 0, false, {
                                             fileName: "[project]/src/Component/layout/Footer/Footer.js",
-                                            lineNumber: 136,
+                                            lineNumber: 355,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
@@ -1588,7 +1822,7 @@ function Footer() {
                                                     children: [
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$client$5d$__$28$ecmascript$29$__["FaPhoneAlt"], {}, void 0, false, {
                                                             fileName: "[project]/src/Component/layout/Footer/Footer.js",
-                                                            lineNumber: 141,
+                                                            lineNumber: 358,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
@@ -1596,71 +1830,71 @@ function Footer() {
                                                             children: "+91 9311125574"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/Component/layout/Footer/Footer.js",
-                                                            lineNumber: 142,
+                                                            lineNumber: 359,
                                                             columnNumber: 21
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/Component/layout/Footer/Footer.js",
-                                                    lineNumber: 140,
+                                                    lineNumber: 357,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
                                                     children: [
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$client$5d$__$28$ecmascript$29$__["FaEnvelope"], {}, void 0, false, {
                                                             fileName: "[project]/src/Component/layout/Footer/Footer.js",
-                                                            lineNumber: 147,
+                                                            lineNumber: 362,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
-                                                            href: "mailto:info@dentalloom.com",
-                                                            children: "info@dentalloom.com"
+                                                            href: "mailto:info@technomac.in",
+                                                            children: "info@technomac.in"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/Component/layout/Footer/Footer.js",
-                                                            lineNumber: 148,
+                                                            lineNumber: 363,
                                                             columnNumber: 21
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/Component/layout/Footer/Footer.js",
-                                                    lineNumber: 146,
+                                                    lineNumber: 361,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
                                                     children: [
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$client$5d$__$28$ecmascript$29$__["FaMapMarkerAlt"], {}, void 0, false, {
                                                             fileName: "[project]/src/Component/layout/Footer/Footer.js",
-                                                            lineNumber: 153,
+                                                            lineNumber: 366,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                            children: "Plot no.-88, Pocket- L, Sector 1, Bawana Industrial Area, DSIIDC Sub-city, New Delhi-110039, India"
+                                                            children: "Plot no.-88, Pocket-L, Sector 1, Bawana Industrial Area, DSIIDC Sub-city, New Delhi-110039, India"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/Component/layout/Footer/Footer.js",
-                                                            lineNumber: 154,
+                                                            lineNumber: 367,
                                                             columnNumber: 21
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/Component/layout/Footer/Footer.js",
-                                                    lineNumber: 152,
+                                                    lineNumber: 365,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/Component/layout/Footer/Footer.js",
-                                            lineNumber: 139,
+                                            lineNumber: 356,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/Component/layout/Footer/Footer.js",
-                                    lineNumber: 134,
+                                    lineNumber: 354,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/Component/layout/Footer/Footer.js",
-                                lineNumber: 132,
+                                lineNumber: 353,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1672,104 +1906,149 @@ function Footer() {
                                             children: "Subscribe to Our Newsletter"
                                         }, void 0, false, {
                                             fileName: "[project]/src/Component/layout/Footer/Footer.js",
-                                            lineNumber: 168,
+                                            lineNumber: 379,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                             children: "Get latest dental equipment updates, offers and clinic setup innovations."
                                         }, void 0, false, {
                                             fileName: "[project]/src/Component/layout/Footer/Footer.js",
-                                            lineNumber: 173,
+                                            lineNumber: 380,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
                                             className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$Component$2f$layout$2f$Footer$2f$Footer$2e$module$2e$css__$5b$client$5d$__$28$css__module$29$__["default"].newsletterForm,
-                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$Component$2f$layout$2f$Footer$2f$Footer$2e$module$2e$css__$5b$client$5d$__$28$css__module$29$__["default"].inputGroup,
+                                            onSubmit: handleSubscribe,
+                                            noValidate: true,
+                                            children: status === "success" ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$Component$2f$layout$2f$Footer$2f$Footer$2e$module$2e$css__$5b$client$5d$__$28$css__module$29$__["default"].successMsg,
                                                 children: [
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                                                        type: "email",
-                                                        placeholder: "Enter your email",
-                                                        required: true
-                                                    }, void 0, false, {
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$client$5d$__$28$ecmascript$29$__["FaCheckCircle"], {}, void 0, false, {
                                                         fileName: "[project]/src/Component/layout/Footer/Footer.js",
-                                                        lineNumber: 185,
-                                                        columnNumber: 21
+                                                        lineNumber: 389,
+                                                        columnNumber: 23
                                                     }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                                        type: "submit",
-                                                        children: "Subscribe"
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                        children: msg
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/Component/layout/Footer/Footer.js",
-                                                        lineNumber: 191,
-                                                        columnNumber: 21
+                                                        lineNumber: 390,
+                                                        columnNumber: 23
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/Component/layout/Footer/Footer.js",
-                                                lineNumber: 183,
-                                                columnNumber: 19
-                                            }, this)
+                                                lineNumber: 388,
+                                                columnNumber: 21
+                                            }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["Fragment"], {
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$Component$2f$layout$2f$Footer$2f$Footer$2e$module$2e$css__$5b$client$5d$__$28$css__module$29$__["default"].inputGroup,
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                                                                type: "email",
+                                                                placeholder: "Enter your email",
+                                                                value: email,
+                                                                onChange: (e)=>{
+                                                                    setEmail(e.target.value);
+                                                                    if (status === "error") setStatus(null); // clear error on type
+                                                                },
+                                                                required: true
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/src/Component/layout/Footer/Footer.js",
+                                                                lineNumber: 395,
+                                                                columnNumber: 25
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                                                type: "submit",
+                                                                disabled: status === "loading",
+                                                                children: status === "loading" ? "Subscribing..." : "Subscribe"
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/src/Component/layout/Footer/Footer.js",
+                                                                lineNumber: 405,
+                                                                columnNumber: 25
+                                                            }, this)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/src/Component/layout/Footer/Footer.js",
+                                                        lineNumber: 394,
+                                                        columnNumber: 23
+                                                    }, this),
+                                                    status === "error" && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                        className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$Component$2f$layout$2f$Footer$2f$Footer$2e$module$2e$css__$5b$client$5d$__$28$css__module$29$__["default"].errorMsg,
+                                                        children: msg
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/Component/layout/Footer/Footer.js",
+                                                        lineNumber: 411,
+                                                        columnNumber: 25
+                                                    }, this)
+                                                ]
+                                            }, void 0, true)
                                         }, void 0, false, {
                                             fileName: "[project]/src/Component/layout/Footer/Footer.js",
-                                            lineNumber: 181,
+                                            lineNumber: 386,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("small", {
                                             children: "No spam. Only useful updates."
                                         }, void 0, false, {
                                             fileName: "[project]/src/Component/layout/Footer/Footer.js",
-                                            lineNumber: 203,
+                                            lineNumber: 417,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/Component/layout/Footer/Footer.js",
-                                    lineNumber: 167,
+                                    lineNumber: 378,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/Component/layout/Footer/Footer.js",
-                                lineNumber: 165,
+                                lineNumber: 377,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/Component/layout/Footer/Footer.js",
-                        lineNumber: 27,
+                        lineNumber: 310,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/Component/layout/Footer/Footer.js",
-                    lineNumber: 25,
+                    lineNumber: 309,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$Component$2f$layout$2f$Footer$2f$Footer$2e$module$2e$css__$5b$client$5d$__$28$css__module$29$__["default"].footerBottom,
                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                        children: "© 2026 Technomac. All Rights Reserved."
-                    }, void 0, false, {
+                        children: [
+                            "© ",
+                            new Date().getFullYear(),
+                            " Technomac. All Rights Reserved."
+                        ]
+                    }, void 0, true, {
                         fileName: "[project]/src/Component/layout/Footer/Footer.js",
-                        lineNumber: 220,
+                        lineNumber: 426,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/Component/layout/Footer/Footer.js",
-                    lineNumber: 218,
+                    lineNumber: 425,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/src/Component/layout/Footer/Footer.js",
-            lineNumber: 21,
+            lineNumber: 306,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/src/Component/layout/Footer/Footer.js",
-        lineNumber: 19,
+        lineNumber: 305,
         columnNumber: 5
     }, this);
 }
+_s(Footer, "2CdOHrtibwwY1p4urH3sPwAOfPQ=");
 _c = Footer;
 var _c;
 __turbopack_context__.k.register(_c, "Footer");
@@ -2128,7 +2407,7 @@ function Header() {
             const fetchAllCategory = {
                 "Header.useEffect.fetchAllCategory": async ()=>{
                     try {
-                        const response = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$services$2f$FetchNodeServices$2e$js__$5b$client$5d$__$28$ecmascript$29$__["getData"])("category/");
+                        const response = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$services$2f$FetchNodeServices$2e$js__$5b$client$5d$__$28$ecmascript$29$__["getData"])("category/all");
                         console.log("categoryResponse=>", response);
                         if (response?.success === true && Array.isArray(response.data)) {
                             setCategories(response.data);
@@ -2559,8 +2838,8 @@ function Header() {
                                                 lineNumber: 562,
                                                 columnNumber: 17
                                             }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$link$2e$js__$5b$client$5d$__$28$ecmascript$29$__["default"], {
-                                                href: "/warranty-registration",
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
+                                                href: "https://razorpay.com/",
                                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                                     className: __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$Component$2f$layout$2f$Header$2f$Header$2e$module$2e$css__$5b$client$5d$__$28$css__module$29$__["default"].quoteBtn,
                                                     children: "Pay Now"

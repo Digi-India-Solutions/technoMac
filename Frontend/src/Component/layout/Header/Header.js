@@ -376,7 +376,7 @@ export default function Header() {
   useEffect(() => {
     const fetchAllCategory = async () => {
       try {
-        const response = await getData("category/");
+        const response = await getData("category/all");
         console.log("categoryResponse=>", response);
 
         if (response?.success === true && Array.isArray(response.data)) {
