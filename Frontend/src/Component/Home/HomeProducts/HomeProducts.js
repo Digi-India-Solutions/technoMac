@@ -58,7 +58,7 @@ export default function HomeProducts() {
   const fetchAllCategory = async () => {
     try {
       // ✅ Remove leading slash — getData likely prepends serverURL + "/"
-      const response = await getData("category/");
+      const response = await getData("category/all");
       console.log("categoryResponse=>", response)
       if (response.success === true) {
         // console.log("SSSS==>response", category)

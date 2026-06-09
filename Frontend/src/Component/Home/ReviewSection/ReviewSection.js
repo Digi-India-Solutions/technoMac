@@ -63,7 +63,7 @@ export default function ReviewSection() {
 
   const fetchAllReviews = async () => {
     try {
-      const response = await getData("testimonial/all"); // ✅ fixed endpoint
+      const response = await getData("testimonial/"); // ✅ fixed endpoint
       console.log("Reviews Response=>", response);
 
       if (response?.success === true && response?.data?.length > 0) {
@@ -145,7 +145,7 @@ export default function ReviewSection() {
 
                   {/* REVIEW TEXT — uses `review` field */}
                   <p className={styles.reviewText}>
-                    {item.review || item.description}
+                    {item?.review || item.description}
                   </p>
 
                   {/* USER */}
@@ -154,18 +154,16 @@ export default function ReviewSection() {
                       width={80}
                       height={80}
                       src={
-                        item.image && item.image !== ""
-                          ? item.image          // ✅ Cloudinary URL
+                        item?.image && item?.image !== ""
+                          ? item?.image          // ✅ Cloudinary URL
                           : image1              // ✅ fallback if image is empty string
                       }
-                      alt={item.name}
+                      alt={item?.name}
                       style={{ borderRadius: "50%", objectFit: "cover" }}
                     />
                     <div>
-                      {/* name field */}
-                      <h4>{item.name}</h4>
-                      {/* designation field (was `role` in static data) */}
-                      <span>{item.designation}</span>
+                      <h4>{item?.name}</h4>
+                      <span>{item?.designation}</span>
                     </div>
                   </div>
 

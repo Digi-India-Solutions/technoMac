@@ -9,6 +9,7 @@ import heroImage2 from "../../../../Images/banner2.jpg";
 import heroImage3 from "../../../../Images/banner3.jpg";
 import heroImage4 from "../../../../Images/banner4.jpg";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 // const statice_bannerss = [
 
@@ -54,6 +55,7 @@ export default function HeroBanner() {
         // ✅ Map API response to the shape our UI expects
         const mapped = response.banners.map((item) => ({
           image: item.imageUrl || item.image || item.banner_image,
+          category: item?.categoryId || {},
           title: item.title || item.banner_title || "",
           desc: item.desc || item.description || item.subtitle || "",
           isRemote: item.isActive || true, // flag to use <img> instead of next/image for remote URLs
@@ -73,7 +75,7 @@ export default function HeroBanner() {
   useEffect(() => {
     fetchAllBanners();
   }, []);
-//  console.log("SSSS==>response", banners)
+  console.log("SSSS==>response", banners)
   return (
 
     <section className={styles.heroSection}>
@@ -140,19 +142,28 @@ export default function HeroBanner() {
                     <button
                       className={styles.primaryBtn}
                     >
+                      <Link
+                        href={{ pathname: "/products", query: { category: item?.category?._id } }}
+                        className={styles.productCard}
+                        style={{ textDecoration: "none", color: '#fff' }}
+                      >
+                        Explore Products
 
-                      Explore Products
-
-                      <FaArrowRight />
-
+                        <FaArrowRight />
+                      </Link>
                     </button>
 
                     <button
                       className={styles.secondaryBtn}
+
                     >
-
-                      Book Demo
-
+                      <Link
+                        href={{ pathname: "/contact" }}
+                        className={styles?.productCard}
+                        style={{ textDecoration: "none", color: '#fff' }}
+                      >
+                        Book Demo
+                      </Link>
                     </button>
 
                   </div>
