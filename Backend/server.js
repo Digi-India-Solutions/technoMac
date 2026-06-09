@@ -19,6 +19,7 @@ const newUpdateRoutes = require('./routes/newUpdate');
 const subscriberRoute = require('./routes/Subscriber');
 const testimonialRoute = require('./routes/Testimonial');
 const clientRoute = require('./routes/Client');
+const callBackRoute = require('./routes/CallBack');
 
 const dns = require('dns');
 
@@ -53,6 +54,7 @@ app.use('/api/newupdate', newUpdateRoutes);
 app.use('/api/subscribe', subscriberRoute);
 app.use('/api/testimonial', testimonialRoute);
 app.use('/api/client', clientRoute);
+app.use('/api/callback', callBackRoute);
 
 const PORT = process.env.PORT || 5000;
 

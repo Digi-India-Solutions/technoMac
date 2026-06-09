@@ -31,6 +31,7 @@ import FaqsManagement from "../pages/admin/application/faqs/page";
 import ClientManagement from "../pages/admin/application/client/page";
 import SubscribersManagement from '../pages/admin/application/subscription/page';
 import ReviewManagement from '../pages/admin/application/Review/page';
+import CallbackManagement from '../pages/admin/application/callback/page';
 import Login from "../components/auth/Login";
 import ResetPassword from "../components/auth/ResetPassword";
 import UserRolesManagement from "../pages/admin/user-roles/page";
@@ -95,6 +96,7 @@ const routes: RouteObject[] = [
           { path: 'subscription', element: <SubscribersManagement /> },
           { path: 'review', element: <ReviewManagement /> },
           { path: 'client', element: <ClientManagement /> },
+          { path: 'callback', element: <CallbackManagement /> },
         ],
       },
       {

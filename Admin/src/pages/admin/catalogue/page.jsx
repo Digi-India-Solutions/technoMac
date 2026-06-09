@@ -1,13 +1,13 @@
 import { useState, useRef, useEffect } from 'react';
-import AdminLayout from '../../../../components/feature/AdminLayout';
-import Card from '../../../../components/base/Card';
-import Button from '../../../../components/base/Button';
+import AdminLayout from '../../../components/feature/AdminLayout';
+import Card from '../../../components/base/Card';
+import Button from '../../../components/base/Button';
 import {
   getData,
   postData,
   patchData,
   deleteData,
-} from '../../../../services/FetchNodeServices';
+} from '../../../services/FetchNodeServices';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Swal from 'sweetalert2';
