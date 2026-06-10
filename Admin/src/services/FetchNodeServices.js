@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const serverURL = 'http://localhost:8000/api';
+// const serverURL = 'http://localhost:8000/api';
+const serverURL = 'https://api.technomacmedical.info/api';
 
 const getToken = () => {
   const admin = JSON.parse(sessionStorage.getItem('Admin'));
