@@ -108,7 +108,7 @@ exports.verifyEmail = async (req, res) => {
     await admin.save();
 
     // ✅ Browser mein seedha login page pe redirect karo
-    res.redirect('https://technomacmedical.info/login?verified=true');
+    res.redirect('https://admin.technomacmedical.com/login?verified=true');
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
