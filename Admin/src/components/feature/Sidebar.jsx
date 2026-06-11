@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { postData } from '../../services/FetchNodeServices';
 
 export default function Sidebar({ isOpen, onClose, isDarkMode }) {
-const [expandedItems, setExpandedItems] = useState({});
+  const [expandedItems, setExpandedItems] = useState(false);
   const [permissions, setPermissions] = useState({});
   const [user, setUser] = useState(JSON.parse(sessionStorage.getItem("JeansUser")));
   const location = useLocation();
@@ -26,14 +26,14 @@ const [expandedItems, setExpandedItems] = useState({});
   }, [user?.role]);
 
 
-  useEffect(() => {
-    const index = menuItems.findIndex(
-      (item) => item.title === 'System Management',
-    );
-    if (index !== -1) {
-      setExpandedItems({ [index]: true });
-    }
-  }, [permissions]);
+  // useEffect(() => {
+  //   const index = menuItems.findIndex(
+  //     (item) => item.title === 'System Management',
+  //   );
+  //   if (index !== -1) {
+  //     setExpandedItems({ [index]: true });
+  //   }
+  // }, [permissions]);
 
   const toggleExpanded = (index) => {
     setExpandedItems((prev) => ({
@@ -42,43 +42,43 @@ const [expandedItems, setExpandedItems] = useState({});
     }));
   };
 
-const handleNavigation = (path) => {
-  console.log('CLICKED');
-  console.log('Width:', window.innerWidth);
+  const handleNavigation = (path) => {
+    console.log('CLICKED');
+    console.log('Width:', window.innerWidth);
 
-  navigate(path);
+    navigate(path);
 
-  if (window.innerWidth < 768) {
-    onClose();
-  }
-};
+    if (window.innerWidth < 768) {
+      onClose();
+    }
+  };
 
   // Build menu dynamically based on permissions
   const menuItems = [
-    ...(permissions?.dashboard?.read || user?.role === 'Super Admin'
-      ? [
-          {
-            title: 'Dashboard',
-            icon: 'ri-dashboard-line',
-            path: '/admin/dashboard',
-          },
-        ]
-      : []),
+    // ...(permissions?.dashboard?.read || user?.role === 'Super Admin'
+    //   ? [
+    //       {
+    //         title: 'Dashboard',
+    //         icon: 'ri-dashboard-line',
+    //         path: '/admin/dashboard',
+    //       },
+    //     ]
+    //   : []),
     {
       title: 'System Management',
       icon: 'ri-settings-3-line',
       children: [
         // ...(permissions?.banners?.read ? [
-        { title: 'Banners', path: '/admin/application/banners' },
+        { title: 'Banners',icon: 'ri-image-line', path: '/admin/application/banners' },
         // ] : []),
         // ...(permissions?.categories?.read ? [
-        { title: 'Categories', path: '/admin/application/categories' },
+        { title: 'Categories', icon: 'ri-layout-grid-line',path: '/admin/application/categories' },
         // ] : []),
         // ...(permissions?.categories?.read ? [
-        { title: 'Sub-Categories', path: '/admin/application/subcategories' },
+        { title: 'Sub-Categories',icon: 'ri-node-tree', path: '/admin/application/subcategories' },
         // ] : []),
         // ...(permissions?.products?.read ? [
-        { title: 'Products', path: '/admin/application/products' },
+        { title: 'Products',icon: 'ri-shopping-bag-line', path: '/admin/application/products' },
 
         // ] : []),
         // ...(permissions?.products?.read ? [
@@ -132,30 +132,30 @@ const handleNavigation = (path) => {
     // ...(permissions?.enquiries?.read ? [
     {
       title: 'New Update',
-      icon: 'ri-exchange-line',
+      icon: 'ri-notification-3-line',
       path: '/admin/new_update',
     },
     {
-      title: 'enquiries',
+      title: 'Enquiries',
       icon: 'ri-question-answer-line',
       path: '/admin/enquiries',
     },
     {
-      title: 'CatalogueDownload',
-      icon: 'ri-question-answer-line',
+      title: 'Catalogue Download',
+      icon: 'ri-download-2-line',
       path: '/admin/application/CatalogueDownloadsManagement',
     },
-    { title: 'Warranties', path: '/admin/application/warranties' },
-    { title: 'Certificate', path: '/admin/application/certificate' },
-    { title: 'Catalogue', path: '/admin/application/catalogue' },
+    { title: 'Warranties',icon: 'ri-shield-check-line', path: '/admin/application/warranties' },
+    { title: 'Certificate', icon: 'ri-medal-line', path: '/admin/application/certificate' },
+    { title: 'Catalogue', icon: 'ri-file-list-3-line', path: '/admin/application/catalogue' },
     // ] : []),
     // ...(permissions?.catalogueUpload?.read ? [
     // { title: 'Catalogue Upload', icon: 'ri-file-pdf-line', path: '/admin/catalogue', },
-    { title: 'FAQs', path: '/admin/application/faqs' },
-    { title: 'subscription', path: '/admin/application/subscription' },
-    { title: 'review', path: '/admin/application/review' },
-    { title: 'client', path: '/admin/application/client' },
-    { title: 'CallBack List', path: '/admin/application/callback' },
+    { title: 'FAQs',icon: 'ri-questionnaire-line', path: '/admin/application/faqs' },
+    { title: 'Subscription',icon: 'ri-mail-send-line', path: '/admin/application/subscription' },
+    { title: 'Review', icon: 'ri-star-half-line',path: '/admin/application/review' },
+    { title: 'Client',icon: 'ri-user-heart-line', path: '/admin/application/client' },
+    { title: 'CallBack List',icon: 'ri-phone-line', path: '/admin/application/callback' },
     // ] : []),
     //  ...(permissions?.recycledOrder?.read || user?.role === 'Super Admin' ? [
     // { title: 'Recycled Order', icon: 'ri-recycle-line', path: '/admin/recycledOrder', },
@@ -177,9 +177,8 @@ const handleNavigation = (path) => {
 
       {/* Sidebar */}
       <div
-        className={`fixed left-0 top-0 h-full w-64 border-r transform transition-all duration-300 ease-in-out z-50 lg:translate-x-0 ${
-          isOpen ? 'translate-x-0' : '-translate-x-full'
-        } ${isDarkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'}`}
+        className={`fixed left-0 top-0 h-full w-64 border-r transform transition-all duration-300 ease-in-out z-50 lg:translate-x-0 ${isOpen ? 'translate-x-0' : '-translate-x-full'
+          } ${isDarkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'}`}
       >
         <div className="flex flex-col h-full">
           {/* Header */}
@@ -199,11 +198,10 @@ const handleNavigation = (path) => {
             </div>
             <button
               onClick={onClose}
-              className={`lg:hidden p-1 rounded-md transition-colors ${
-                isDarkMode
-                  ? 'hover:bg-gray-700 text-gray-400'
-                  : 'bg-blue-50 text-black hover:text-blue-500 rounded-3xl'
-              }`}
+              className={`lg:hidden p-1 rounded-md transition-colors ${isDarkMode
+                ? 'hover:bg-gray-700 text-gray-400'
+                : 'bg-blue-50 text-black hover:text-blue-500 rounded-3xl'
+                }`}
             >
               <i className="ri-close-line text-blue-700"></i>
             </button>
@@ -218,11 +216,10 @@ const handleNavigation = (path) => {
                     <div>
                       <button
                         onClick={() => toggleExpanded(index)}
-                        className={`w-full flex items-center justify-between px-3 py-2 text-left rounded-lg transition-colors ${
-                          isDarkMode
-                            ? 'text-gray-300 hover:bg-gray-700'
-                            : 'bg-blue-50 hover:text-blue-500 rounded-3xl'
-                        }`}
+                        className={`w-full flex items-center justify-between px-3 py-2 text-left rounded-lg transition-colors ${isDarkMode
+                          ? 'text-gray-300 hover:bg-gray-700'
+                          : 'bg-blue-50 hover:text-blue-500 rounded-3xl'
+                          }`}
                       >
                         <div className="flex items-center space-x-3">
                           <i
@@ -231,24 +228,22 @@ const handleNavigation = (path) => {
                           <span className="font-medium">{item.title}</span>
                         </div>
                         <i
-                          className={`ri-arrow-down-s-line transition-transform ${
-                            expandedItems[index] ? 'rotate-180' : ''
-                          }`}
+                          className={`ri-arrow-down-s-line transition-transform ${expandedItems ? 'rotate-180' : ''
+                            }`}
                         ></i>
                       </button>
-                      {expandedItems[index] && (
+                      {expandedItems && (
                         <ul className="mt-1 ml-6 space-y-1">
                           {item.children.map((child, childIndex) => (
                             <li key={childIndex}>
                               <button
                                 onClick={() => handleNavigation(child.path)}
-                                className={`w-full text-left px-3 py-2 text-sm rounded-lg transition-colors ${
-                                  location.pathname === child.path
-                                    ? 'bg-blue-100 text-blue-700'
-                                    : isDarkMode
-                                      ? 'text-gray-400 hover:bg-gray-700 hover:text-gray-200'
-                                      : 'bg-blue-50 hover:text-blue-500 rounded-3xl'
-                                }`}
+                                className={`w-full text-left px-3 py-2 text-sm rounded-lg transition-colors ${location.pathname === child.path
+                                  ? 'bg-blue-100 text-blue-700'
+                                  : isDarkMode
+                                    ? 'text-gray-400 hover:bg-gray-700 hover:text-gray-200'
+                                    : 'bg-blue-50 hover:text-blue-500 rounded-3xl'
+                                  }`}
                               >
                                 {child.title}
                               </button>
@@ -260,13 +255,12 @@ const handleNavigation = (path) => {
                   ) : (
                     <button
                       onClick={() => handleNavigation(item.path)}
-                      className={`w-full flex items-center space-x-3 px-3 py-2 text-left rounded-lg transition-colors ${
-                        location.pathname === item.path
-                          ? 'bg-blue-100 text-blue-700'
-                          : isDarkMode
-                            ? 'text-gray-300 hover:bg-gray-700'
-                            : 'bg-blue-50 hover:text-blue-500 rounded-3xl'
-                      }`}
+                      className={`w-full flex items-center space-x-3 px-3 py-2 text-left rounded-lg transition-colors ${location.pathname === item.path
+                        ? 'bg-blue-100 text-blue-700'
+                        : isDarkMode
+                          ? 'text-gray-300 hover:bg-gray-700'
+                          : 'bg-blue-50 hover:text-blue-500 rounded-3xl'
+                        }`}
                     >
                       <i className={`${item.icon} text-lg text-blue-500`}></i>
                       <span className="font-medium">{item.title}</span>

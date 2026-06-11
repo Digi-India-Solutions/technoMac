@@ -160,7 +160,7 @@ export default function ClientsManagement() {
   const handleToggle = async (id) => {
     setTogglingId(id);
     try {
-      const response = await patchData(`client/toggle/${id}`, {});
+      const response = await getData(`client/toggle/${id}`);
       if (response?.success) {
         toast.success(response.message || 'Status updated');
         fetchClients();

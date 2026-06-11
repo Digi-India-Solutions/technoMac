@@ -10,6 +10,7 @@ export default function ProductPage() {
   const searchParams = useSearchParams()
   const categoryId = searchParams.get("category");
   const subCategoryId = searchParams.get("sub");
+  const subCategoryByBanner = searchParams.get("subCategory")
   const [search, setSearch] = useState("");
   const [product, setProduct] = useState([])
 
@@ -20,12 +21,12 @@ export default function ProductPage() {
   const fetchProductByCategory = async () => {
     try {
       let response
-      if (subCategoryId) {
-        response = await getData(`product/by-subcategory/${subCategoryId}`)
+      if (subCategoryId || subCategoryByBanner) {
+        response = await getData(`product/by-subcategory/${subCategoryId || subCategoryByBanner}`)
       } else if (categoryId) {
         response = await getData(`product/by-category/${categoryId}`)
-      }else{
-         response = await getData(`product/`)
+      } else {
+        response = await getData(`product/`)
       }
 
       console.log("RESPONSE==>aa", response)
@@ -38,8 +39,8 @@ export default function ProductPage() {
   }
 
   useEffect(() => {
-      fetchProductByCategory()
-  }, [categoryId, subCategoryId])
+    fetchProductByCategory()
+  }, [categoryId, subCategoryId, subCategoryByBanner])
 
   console.log("filteredProducts", filteredProducts)
   return (
@@ -61,8 +62,8 @@ export default function ProductPage() {
           </span>
 
           <h1>
-             
-            {`Explore Our ${filteredProducts[0]?.category?.name ? filteredProducts[0]?.category?.name:'Dental Equipment'}`}
+
+            {`Explore Our ${filteredProducts[0]?.category?.name ? filteredProducts[0]?.category?.name : 'Dental Equipment'}`}
           </h1>
 
           <p>

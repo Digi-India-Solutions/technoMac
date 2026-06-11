@@ -2,8 +2,11 @@ self.__BUILD_MANIFEST = {
   "/": [
     "static/chunks/pages/index.js"
   ],
-  "/contact": [
-    "static/chunks/pages/contact.js"
+  "/clinic-setup": [
+    "static/chunks/pages/clinic-setup.js"
+  ],
+  "/product/[slug]": [
+    "static/chunks/pages/product/[slug].js"
   ],
   "/products": [
     "static/chunks/pages/products.js"

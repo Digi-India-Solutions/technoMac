@@ -12,8 +12,8 @@ exports.createProduct = async (req, res) => {
       model,
       description,
       price,
-      discountPrice,
-      stock,
+      // discountPrice,
+      // stock,
       features,
       specifications,
       isFeatured,
@@ -78,8 +78,8 @@ exports.createProduct = async (req, res) => {
       model,
       description,
       price,
-      discountPrice,
-      stock,
+      // discountPrice,
+      // stock,
       images,
       specifications: parsedSpecs,
       features: parsedFeatures,
@@ -97,7 +97,7 @@ exports.createProduct = async (req, res) => {
 // ── GET ALL ─────────────────────────────────────────────────────
 exports.getAllProducts = async (req, res) => {
   try {
-    const products = await Product.find({ isActive: true })
+    const products = await Product.find()
       .populate('category', 'name')
       .populate('subCategory', 'name')
       .sort({ createdAt: -1 });
@@ -178,9 +178,9 @@ exports.updateProduct = async (req, res) => {
       subCategory,
       description,
       price,
-      discountPrice,
+      // discountPrice,
       features,
-      stock,
+      // stock,
       specifications,
       isFeatured,
       isActive,
@@ -233,8 +233,8 @@ exports.updateProduct = async (req, res) => {
       subCategory,
       description,
       price,
-      discountPrice,
-      stock,
+      // discountPrice,
+      // stock,
       isActive,
       isFeatured: isFeatured === 'true' || isFeatured === true,
     };

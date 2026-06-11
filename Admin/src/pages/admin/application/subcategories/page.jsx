@@ -8,7 +8,7 @@ import { getToken } from '../../../../services/FetchNodeServices';
 import Swal from 'sweetalert2';
 import axios from 'axios';
 
-const BASE_URL = 'http://localhost:8000/api';
+const BASE_URL = 'https://api.technomacmedical.com/api';
 const PLACEHOLDER_IMG = 'https://via.placeholder.com/400x200?text=No+Image';
 const ITEMS_PER_PAGE = 12;
 

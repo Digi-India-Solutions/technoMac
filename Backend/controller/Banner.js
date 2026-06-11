@@ -15,9 +15,9 @@ const uploadToCloudinary = (buffer) =>
 // ─── CREATE BANNER ───────────────────────────────────────────────────────────
 exports.createBanner = async (req, res) => {
   try {
-    const { title, subtitle, buttonText, categoryId } = req.body;
+    const { title, subtitle, buttonText, categoryId ,subCategoryId} = req.body;
 
-    if (!categoryId) {
+    if (!categoryId && !subCategoryId) {
       return res
         .status(400)
         .json({ success: false, message: 'Category is required' });
@@ -33,6 +33,7 @@ exports.createBanner = async (req, res) => {
 
     const banner = await Banner.create({
       categoryId,
+      subCategoryId,
       title,
       subtitle,
       buttonText,
@@ -53,7 +54,7 @@ exports.getAllBanner = async (req, res) => {
     const banners = await Banner.find({ isActive: true }).populate(
       'categoryId',
       'name image',
-    );
+    ).populate("subCategoryId");
 
     res.status(200).json({ success: true, banners });
   } catch (error) {
@@ -80,15 +81,15 @@ exports.getBannerByCategory = async (req, res) => {
 // ─── UPDATE BANNER ───────────────────────────────────────────────────────────
 exports.updateBanner = async (req, res) => {
   try {
-    const { categoryId, title, subtitle, buttonText } = req.body;
+    const { categoryId, title, subtitle, buttonText,subCategoryId } = req.body;
 
-    if (!categoryId) {
+    if (!categoryId && !subCategoryId) {
       return res
         .status(400)
         .json({ success: false, message: 'Category is required' });
     }
 
-    const updateData = { categoryId, title, subtitle, buttonText };
+    const updateData = { categoryId,subCategoryId, title, subtitle, buttonText };
 
     if (req.file) {
       const result = await uploadToCloudinary(req.file.buffer);
@@ -97,7 +98,7 @@ exports.updateBanner = async (req, res) => {
 
     const banner = await Banner.findByIdAndUpdate(req.params.id, updateData, {
       new: true,
-    }).populate('categoryId', 'name image');
+    }).populate('categoryId', 'name image').populate('subCategoryId');
 
     if (!banner) {
       return res

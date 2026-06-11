@@ -51,11 +51,13 @@ export default function HeroBanner() {
     try {
       // ✅ Remove leading slash — getData likely prepends serverURL + "/"
       const response = await getData("banner/all");
+      console.log('response==>',response)
       if (response.success === true) {
         // ✅ Map API response to the shape our UI expects
         const mapped = response.banners.map((item) => ({
           image: item.imageUrl || item.image || item.banner_image,
           category: item?.categoryId || {},
+          subCategory: item?.subCategoryId || {},
           title: item.title || item.banner_title || "",
           desc: item.desc || item.description || item.subtitle || "",
           isRemote: item.isActive || true, // flag to use <img> instead of next/image for remote URLs
@@ -143,7 +145,7 @@ export default function HeroBanner() {
                       className={styles.primaryBtn}
                     >
                       <Link
-                        href={{ pathname: "/products", query: { category: item?.category?._id } }}
+                        href={{ pathname: "/products", query: { subCategory: item?.subCategory?._id } }}
                         className={styles.productCard}
                         style={{ textDecoration: "none", color: '#fff' }}
                       >
@@ -196,6 +198,6 @@ export default function HeroBanner() {
 
       </Swiper>
 
-    </section>
+    </section >
   );
 }   
