@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["turbopack:///[project]/src/Component/common/Breadcrumb/Breadcrumb.module.css"],"sourcesContent":[".breadcrumb {\r\n  display: flex;\r\n  align-items: center;\r\n  gap: 10px;\r\n  margin-bottom: 30px;\r\n  flex-wrap: wrap;\r\n}\r\n\r\n.breadcrumb a {\r\n  text-decoration: none;\r\n  color: var(--theme-color);\r\n  font-size: 15px;\r\n  font-weight: 600;\r\n  transition: 0.3s;\r\n}\r\n\r\n.breadcrumb a:hover {\r\n  color: #111;\r\n}\r\n\r\n.breadcrumb span {\r\n  color: #999;\r\n}\r\n\r\n.breadcrumb p {\r\n  margin: 0;\r\n  color: #666;\r\n  font-size: 15px;\r\n}\r\n\r\n@media(max-width: 576px) {\r\n  .breadcrumb {\r\n    display: none;\r\n  }\r\n}"],"names":[],"mappings":"AAAA;;;;;;;;AAQA;;;;;;;;AAQA;;;;AAIA;;;;AAIA;;;;;;AAMA;EACE"}}]
-}
