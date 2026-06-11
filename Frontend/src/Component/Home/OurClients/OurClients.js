@@ -174,8 +174,9 @@ export default function OurClients() {
                     />
                   </div>
 
+
                   {/* NAME */}
-                  {item.name && (
+                  {/* {item.name && (
                     <p style={{
                       margin: "8px 0 2px",
                       fontSize: "13px",
@@ -186,10 +187,10 @@ export default function OurClients() {
                     }}>
                       {item.name}
                     </p>
-                  )}
+                  )} */}
 
                   {/* DESCRIPTION */}
-                  {item.description && (
+                  {/* {item.description && (
                     <p style={{
                       margin: 0,
                       fontSize: "11px",
@@ -203,7 +204,7 @@ export default function OurClients() {
                     }}>
                       {item.description}
                     </p>
-                  )}
+                  )} */}
 
                 </div>
               </div>
