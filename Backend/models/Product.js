@@ -24,10 +24,10 @@ const ProductSchema = new mongoose.Schema(
       type: Number,
       default: 0,
     },
-    discountPrice: {
-      type: Number,
-      default: 0,
-    },
+    // discountPrice: {
+    //   type: Number,
+    //   default: 0,
+    // },
     images: [
       {
         type: String, // multiple images array
@@ -45,10 +45,10 @@ const ProductSchema = new mongoose.Schema(
       required: true,
       trim: true,
     },
-    stock: {
-      type: Number,
-      default: 0,
-    },
+    // stock: {
+    //   type: Number,
+    //   default: 0,
+    // },
     specifications: [
       {
         key: { type: String },

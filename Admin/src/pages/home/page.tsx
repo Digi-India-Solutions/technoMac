@@ -110,7 +110,7 @@ export default function Home() {
 
         {/* CTA Button */}
         <button
-          onClick={() => login ? navigate('/admin/dashboard') : navigate('/login')}
+          onClick={() => login ? navigate('/admin/application/banners') : navigate('/login')}
           style={{
             width: '100%',
             background: 'linear-gradient(135deg, #2563eb, #1d4ed8)',

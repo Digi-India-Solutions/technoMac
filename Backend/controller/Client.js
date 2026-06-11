@@ -162,6 +162,7 @@ exports.deleteClient = async (req, res) => {
 // ─────────────────────────────────────────────────────────────
 exports.toggleClientStatus = async (req, res) => {
     try {
+        console.log("TOGLES===>",req.params)
         const client = await Client.findById(req.params.id);
         if (!client) {
             return res.status(404).json({ success: false, message: 'Client not found' });

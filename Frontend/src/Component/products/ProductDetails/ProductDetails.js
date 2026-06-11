@@ -157,7 +157,7 @@ export default function ProductDetails() {
                 <a href={`https://wa.me/+91${9311125574}?text=${encodeURIComponent("Hello TECHNOMAC, I am interested in your products.")}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  style={{ textDecoration:'none'}}
+                  style={{ textDecoration: 'none' }}
                 >
                   <button className={styles.primaryBtn}>
                     <FaWhatsapp />
@@ -172,7 +172,7 @@ export default function ProductDetails() {
             </div>
           </div>
         </div>
-        <div className={styles.relatedSection}>
+        {filterRelatedProducts.length > 0 && <div className={styles.relatedSection}>
           <div className={styles.relatedHeading}>
             <span>
               Related Products
@@ -227,7 +227,7 @@ export default function ProductDetails() {
               </SwiperSlide>
             ))}
           </Swiper>
-        </div>
+        </div>}
       </div>
     </section>
   );

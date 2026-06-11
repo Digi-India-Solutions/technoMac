@@ -147,7 +147,7 @@ const handleLogout = () => {
           )}
         </div>
 
-        <div className="relative profile-dropdown">
+        {/* <div className="relative profile-dropdown">
           <a
             href="https://catalogue.anibhavicreations.com"
             target="_blank"
@@ -165,7 +165,7 @@ const handleLogout = () => {
               Catalogue Link
             </span>
           </a>
-        </div>
+        </div> */}
         {/* Profile */}
         <div className="relative profile-dropdown">
           <button
@@ -182,10 +182,10 @@ const handleLogout = () => {
           {showProfile && (
             <div className={`absolute right-0 top-12 w-48 rounded-lg shadow-lg border z-50 ${isDarkMode ? '' : 'bg-white border-gray-200'
               }`}>
-              <div className={`p-4 border-b ${isDarkMode ? 'border-gray-700' : 'border-gray-200'}`}>
-                <p className={`font-medium ${isDarkMode ? 'text-gray-200' : 'text-gray-800'}`}>Admin User</p>
+              {/* <div className={`p-4 border-b ${isDarkMode ? 'border-gray-700' : 'border-gray-200'}`}>
+                <p className={`font-medium ${isDarkMode ? 'text-gray-200' : 'text-gray-800'}`}>Admin</p>
                 <p className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>admin@garments.com</p>
-              </div>
+              </div> */}
               <div className="py-2">
                 {/* <button className={'w-full text-left px-4 py-2 text-sm transition-colors hover:bg-opacity-50 flex items-center space-x-2 '}>
                   <i className="ri-user-settings-line"></i>

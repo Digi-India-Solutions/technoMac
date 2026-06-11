@@ -68,7 +68,7 @@ const Login = () => {
 
         toast.success('Login successful!');
 
-        setTimeout(() => navigate('/admin/dashboard'), 800);
+        setTimeout(() => navigate('/admin/application/banners'), 800);
       } else {
         toast.error(loginResponse?.message || 'Invalid email or password');
       }

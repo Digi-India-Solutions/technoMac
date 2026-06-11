@@ -352,7 +352,7 @@ export default function CatalogueManagement() {
             )}
 
             {/* Table Overview */}
-            {displayed.length > 0 && (
+            {/* {displayed.length > 0 && (
               <Card className="mt-8">
                 <div className="p-6">
                   <h2 className="text-lg font-semibold mb-4">
@@ -443,7 +443,7 @@ export default function CatalogueManagement() {
                   </div>
                 </div>
               </Card>
-            )}
+            )} */}
           </>
         )}
 

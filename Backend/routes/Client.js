@@ -32,7 +32,7 @@ router.post('/create',  upload.single('image'), createClient);
 router.put('/update/:id',  upload.single('image'), updateClient);
 
 // PATCH  /api/client/toggle/:id         →  toggle isActive (show/hide)
-router.patch('/toggle/:id',  toggleClientStatus);
+router.get('/toggle/:id',  toggleClientStatus);
 
 // DELETE /api/client/delete/:id         →  permanently delete a client
 router.delete('/delete/:id',  deleteClient);

@@ -46,7 +46,7 @@ export default function ProductsManagement() {
     subCategory: '',
     price: '',
     discountPrice: '',
-    stock: '',
+    // stock: '',
     isFeatured: false,
     isActive: true,
     images: [],
@@ -181,8 +181,8 @@ export default function ProductsManagement() {
     fd.append('category', formData.category);
     fd.append('subCategory', formData.subCategory);
     fd.append('price', formData.price);
-    fd.append('discountPrice', formData.discountPrice || '');
-    fd.append('stock', formData.stock || '');
+    // fd.append('discountPrice', formData.discountPrice || '');
+    // fd.append('stock', formData.stock || '');
     fd.append('isFeatured', String(formData.isFeatured));
     fd.append('isActive', String(formData.isActive));
 
@@ -246,8 +246,8 @@ export default function ProductsManagement() {
       category: catId,
       subCategory: product.subCategory?._id || product.subCategory || '',
       price: product.price?.toString() || '',
-      discountPrice: product.discountPrice?.toString() || '',
-      stock: product.stock?.toString() || '',
+      // discountPrice: product.discountPrice?.toString() || '',
+      // stock: product.stock?.toString() || '',
       isFeatured: product.isFeatured || false,
       isActive: product.isActive ?? true,
       images: product.images || [],
@@ -538,18 +538,18 @@ export default function ProductsManagement() {
                           ₹{product.price}
                         </p>
                       </div>
-                      <div>
+                      {/* <div>
                         <p className="text-gray-500 text-xs">Discount</p>
                         <p className="font-semibold text-red-500">
                           {product.discountPrice
                             ? `₹${product.discountPrice}`
                             : '—'}
                         </p>
-                      </div>
-                      <div>
+                      </div> */}
+                      {/* <div>
                         <p className="text-gray-500 text-xs">Stock</p>
                         <p className="font-semibold">{product.stock ?? '—'}</p>
-                      </div>
+                      </div> */}
                     </div>
                     <div className="flex space-x-2">
                       <Button
@@ -560,8 +560,12 @@ export default function ProductsManagement() {
                       </Button>
                       <Button
                         onClick={() => toggleStatus(product)}
-                        className={`flex-1 text-sm ${product.isActive ? 'bg-orange-50 text-orange-600 hover:bg-orange-100' : 'bg-green-50 text-green-600 hover:bg-green-100'}`}
+                        className={`flex-1 text-sm font-medium flex items-center justify-center gap-1.5 ${product.isActive
+                            ? 'bg-orange-300 text-orange-600 border border-orange-200 hover:bg-orange-100'
+                            : 'bg-green-300 text-green-600 border border-green-200 hover:bg-green-100'
+                          }`}
                       >
+                        <i className={`text-sm ${product.isActive ? 'ri-toggle-fill' : 'ri-toggle-line'}`}></i>
                         {product.isActive ? 'Deactivate' : 'Activate'}
                       </Button>
                       <Button
@@ -577,7 +581,7 @@ export default function ProductsManagement() {
             </div>
 
             {/* Table */}
-            <Card className="mt-8">
+            {/* <Card className="mt-8">
               <div className="p-6">
                 <h2 className="text-lg font-semibold mb-4">
                   All Products Overview
@@ -685,7 +689,7 @@ export default function ProductsManagement() {
                   </table>
                 </div>
               </div>
-            </Card>
+            </Card> */}
           </>
         )}
 
@@ -852,7 +856,7 @@ export default function ProductsManagement() {
                         step="0.01"
                       />
                     </div>
-                    <div>
+                    {/* <div>
                       <label className="block text-sm font-medium text-gray-700 mb-1">
                         Discount Price (₹)
                       </label>
@@ -869,11 +873,11 @@ export default function ProductsManagement() {
                         min="0"
                         step="0.01"
                       />
-                    </div>
+                    </div> */}
                   </div>
 
                   {/* Stock */}
-                  <div>
+                  {/* <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
                       Stock
                     </label>
@@ -886,7 +890,7 @@ export default function ProductsManagement() {
                       className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
                       min="0"
                     />
-                  </div>
+                  </div> */}
 
                   {/* ── FEATURES ── */}
                   <div>

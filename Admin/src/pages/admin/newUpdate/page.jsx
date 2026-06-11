@@ -834,7 +834,7 @@ export default function NewUpdateManagement() {
                         )}
 
                         {/* Table Overview */}
-                        {displayed.length > 0 && (
+                        {/* {displayed.length > 0 && (
                             <Card className="mt-8">
                                 <div className="p-6">
                                     <h2 className="text-lg font-semibold mb-4">All Updates Overview</h2>
@@ -908,7 +908,7 @@ export default function NewUpdateManagement() {
                                     </div>
                                 </div>
                             </Card>
-                        )}
+                        )} */}
                     </>
                 )}
 
