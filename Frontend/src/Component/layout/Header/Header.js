@@ -376,7 +376,7 @@ export default function Header() {
   useEffect(() => {
     const fetchAllCategory = async () => {
       try {
-        const response = await getData("category/all");
+        const response = await getData("parentCategory/all");
         console.log("categoryResponse=>", response);
 
         if (response?.success === true && Array.isArray(response.data)) {
@@ -412,7 +412,7 @@ export default function Header() {
     const fetchSubCategories = async () => {
       setLoadingSubCategories(true);
       try {
-        const response = await getData(`sub-category/by-category/${categoryId}`);
+        const response = await getData(`category/by-parent/${categoryId}`);
         console.log("subCategoryResponse=>", response);
 
         if (response?.success === true && Array.isArray(response.data)) {
@@ -528,7 +528,7 @@ export default function Header() {
                           subCategories.map((sub) => (
                             <Link
                               // category=${activeCategory?._id}&
-                              href={`/products?sub=${sub._id}`}
+                              href={`/products?category=${sub._id}`}
                               key={sub._id}
                             >
                               {/* ✅ adjust field name to match your API */}

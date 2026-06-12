@@ -7,9 +7,16 @@ const SubCategorySchema = new mongoose.Schema(
       required: true,
       trim: true,
     },
+    // ✅ Category reference (Category → SubCategory)
     category: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'Category', 
+      ref: 'Category',
+      required: true,
+    },
+    // ✅ NEW: direct parentCategoryId for easier filtering
+    parentCategoryId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'ParentCategory',
       required: true,
     },
     image: {

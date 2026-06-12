@@ -9,6 +9,7 @@ const bannerRoute = require('./routes/banner');
 const ContactRoute = require('./routes/Contact');
 const faqRoute = require('./routes/faq');
 const { categoryRouter } = require('./routes/category');
+const { parentCategoryRouter } = require('./routes/ParentCategory')
 const { subCategoryRouter } = require('./routes/subCategory');
 const { productRouter } = require('./routes/Product');
 const warrantyRoute = require('./routes/Warrenty');
@@ -43,6 +44,7 @@ app.use('/api/admin', adminRoute);
 app.use('/api/banner', bannerRoute);
 app.use('/api/contact', ContactRoute);
 app.use('/api/category', categoryRouter);
+app.use('/api/parentCategory', parentCategoryRouter)
 app.use('/api/sub-category', subCategoryRouter);
 app.use('/api/product', productRouter);
 app.use('/api/warranty', warrantyRoute);

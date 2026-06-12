@@ -1,345 +1,265 @@
-
 const cloudinary = require('../config/cloudinary');
 const { Product } = require('../models/Product');
+const { SubCategory } = require('../models/Subcategory ');
+const { Category } = require('../models/Category');
+const mongoose = require('mongoose');
 
-// ── CREATE ──────────────────────────────────────────────────────
-exports.createProduct = async (req, res) => {
+// ── Helper: upload single buffer ─────────────────────────────────────────────
+const uploadToCloudinary = (buffer, folder) =>
+  new Promise((resolve, reject) => {
+    cloudinary.uploader
+      .upload_stream({ folder }, (error, result) => {
+        if (error) reject(error);
+        else resolve(result.secure_url);
+      })
+      .end(buffer);
+  });
+
+// ── Helper: upload multiple files ────────────────────────────────────────────
+const uploadMultiple = (files, folder) =>
+  Promise.all(files.map((f) => uploadToCloudinary(f.buffer, folder)));
+
+// ── Helper: parse JSON string safely ─────────────────────────────────────────
+const parseJSON = (val, fallback = []) => {
+  if (!val) return fallback;
   try {
-    const {
-      name,
-      category,
-      subCategory,
-      model,
-      description,
-      price,
-      // discountPrice,
-      // stock,
-      features,
-      specifications,
-      isFeatured,
-    } = req.body;
-
-    // Multiple images — multer array se
-    let images = [];
-
-    if (req.files && req.files.length > 0) {
-      images = await Promise.all(
-        req.files.map(
-          (file) =>
-            new Promise((resolve, reject) => {
-              cloudinary.uploader
-                .upload_stream({ folder: 'products' }, (error, result) => {
-                  if (error) reject(error);
-                  else resolve(result.secure_url);
-                })
-                .end(file.buffer);
-            }),
-        ),
-      );
-    }
-
-    // specifications JSON string se parse karo (form-data mein string aata hai)
-    let parsedSpecs = [];
-    if (specifications) {
-      try {
-        parsedSpecs =
-          typeof specifications === 'string'
-            ? JSON.parse(specifications)
-            : specifications;
-      } catch {
-        parsedSpecs = [];
-      }
-    }
-
-    // ✅ Features parse
-    let parsedFeatures = [];
-    if (features) {
-      try {
-        parsedFeatures =
-          typeof features === 'string' ? JSON.parse(features) : features;
-      } catch {
-        parsedFeatures = [];
-      }
-    }
-
-    const existingProduct = await Product.findOne({ model });
-
-    if (existingProduct) {
-      return res.status(400).json({
-        success: false,
-        message: 'Product with this model already exists',
-      });
-    }
-
-    const product = await Product.create({
-      name,
-      category,
-      subCategory,
-      model,
-      description,
-      price,
-      // discountPrice,
-      // stock,
-      images,
-      specifications: parsedSpecs,
-      features: parsedFeatures,
-      isFeatured: isFeatured === 'true' || isFeatured === true,
-    });
-
-    res
-      .status(201)
-      .json({ success: true, message: 'Product created', data: product });
-  } catch (error) {
-    res.status(500).json({ message: error.message });
+    return typeof val === 'string' ? JSON.parse(val) : val;
+  } catch {
+    return fallback;
   }
 };
 
-// ── GET ALL ─────────────────────────────────────────────────────
+// ── Helper: populate chain ────────────────────────────────────────────────────
+const populateProduct = (query) =>
+  query
+    .populate('parentCategoryId', 'name')
+    .populate('category', 'name')
+    .populate('subCategory', 'name');
+
+// ── CREATE ───────────────────────────────────────────────────────────────────
+exports.createProduct = async (req, res) => {
+  try {
+    const { name, category, subCategory, model, description, price, features, specifications, isFeatured } = req.body;
+
+    if (!name?.trim()) return res.status(400).json({ success: false, message: 'Name is required' });
+    if (!category) return res.status(400).json({ success: false, message: 'Category is required' });
+    if (!subCategory) return res.status(400).json({ success: false, message: 'Sub-Category is required' });
+    if (!model?.trim()) return res.status(400).json({ success: false, message: 'Model is required' });
+
+    // ✅ Duplicate model check
+    const existing = await Product.findOne({ model: model.trim() });
+    if (existing) {
+      return res.status(400).json({ success: false, message: 'Product with this model already exists' });
+    }
+
+    // ✅ Auto-fetch parentCategoryId from category
+    const categoryDoc = await Category.findById(category);
+    if (!categoryDoc) return res.status(404).json({ success: false, message: 'Category not found' });
+    const parentCategoryId = categoryDoc.parentCategoryId;
+
+    const images = req.files?.length > 0
+      ? await uploadMultiple(req.files, 'products')
+      : [];
+
+    const product = await Product.create({
+      name: name.trim(),
+      parentCategoryId,
+      category,
+      subCategory,
+      model: model.trim(),
+      description: description?.trim() || '',
+      price: price || 0,
+      images,
+      specifications: parseJSON(specifications),
+      features: parseJSON(features),
+      isFeatured: isFeatured === 'true' || isFeatured === true,
+    });
+
+    const populated = await populateProduct(Product.findById(product._id));
+    res.status(201).json({ success: true, message: 'Product created', data: populated });
+  } catch (error) {
+    console.error('createProduct:', error);
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
+
+// ── GET ALL ──────────────────────────────────────────────────────────────────
 exports.getAllProducts = async (req, res) => {
   try {
-    const products = await Product.find()
-      .populate('category', 'name')
-      .populate('subCategory', 'name')
+    const products = await populateProduct(
+      Product.find().sort({ createdAt: -1 })
+    );
+    res.status(200).json({ success: true, data: products });
+  } catch (error) {
+    console.error('getAllProducts:', error);
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
+
+// ── GET BY CATEGORY ───────────────────────────────────────────────────────────
+exports.getProductsByCategory = async (req, res) => {
+  try {
+    const products = await populateProduct(
+      Product.find({ category: req.params.categoryId, isActive: true })
+    );
+    res.status(200).json({ success: true, data: products });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
+
+// ── GET BY SUBCATEGORY ────────────────────────────────────────────────────────
+exports.getProductsBySubCategory = async (req, res) => {
+  try {
+    const products = await populateProduct(
+      Product.find({ subCategory: req.params.subCategoryId, isActive: true })
+    );
+    res.status(200).json({ success: true, data: products });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
+
+// ── GET BY PARENT CATEGORY ────────────────────────────────────────────────────
+exports.getProductsByParentCategory = async (req, res) => {
+  try {
+    const { parentId } = req.params;
+
+    // ✅ Validate ObjectId before query
+    if (!mongoose.Types.ObjectId.isValid(parentId)) {
+      return res.status(400).json({ success: false, message: 'Invalid parentId' });
+    }
+
+    const products = await Product.find({
+      parentCategoryId: parentId, // ✅ Mongoose converts string to ObjectId automatically
+      isActive: true,
+    })
+      .populate('parentCategoryId', 'name image')
+      .populate('category', 'name image')
+      .populate('subCategory', 'name image')
       .sort({ createdAt: -1 });
 
     res.status(200).json({ success: true, data: products });
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    console.error('getProductsByParentCategory:', error);
+    res.status(500).json({ success: false, message: error.message });
   }
 };
 
-// ── GET BY CATEGORY ─────────────────────────────────────────────
-exports.getProductsByCategory = async (req, res) => {
-  try {
-    const products = await Product.find({
-      category: req.params.categoryId,
-      isActive: true,
-    })
-      .populate('category', 'name')
-      .populate('subCategory', 'name');
-
-    res.status(200).json({ success: true, data: products });
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-};
-
-// ── GET BY SUBCATEGORY ──────────────────────────────────────────
-exports.getProductsBySubCategory = async (req, res) => {
-  try {
-    const products = await Product.find({
-      subCategory: req.params.subCategoryId,
-      isActive: true,
-    })
-      .populate('category', 'name')
-      .populate('subCategory', 'name');
-
-    res.status(200).json({ success: true, data: products });
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-};
-
-// ── GET SINGLE ──────────────────────────────────────────────────
+// ── GET SINGLE ────────────────────────────────────────────────────────────────
 exports.getProductById = async (req, res) => {
   try {
-    const product = await Product.findById(req.params.id)
-      .populate('category', 'name')
-      .populate('subCategory', 'name');
-
-    if (!product) return res.status(404).json({ message: 'Product not found' });
-
+    const product = await populateProduct(Product.findById(req.params.id));
+    if (!product) return res.status(404).json({ success: false, message: 'Product not found' });
     res.status(200).json({ success: true, data: product });
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.status(500).json({ success: false, message: error.message });
   }
 };
 
-// ── GET FEATURED ────────────────────────────────────────────────
+// ── GET FEATURED ──────────────────────────────────────────────────────────────
 exports.getFeaturedProducts = async (req, res) => {
   try {
-    const products = await Product.find({ isFeatured: true, isActive: true })
-      .populate('category', 'name')
-      .populate('subCategory', 'name');
-
+    const products = await populateProduct(
+      Product.find({ isFeatured: true, isActive: true })
+    );
     res.status(200).json({ success: true, data: products });
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.status(500).json({ success: false, message: error.message });
   }
 };
 
-// ── UPDATE ──────────────────────────────────────────────────────
+// ── UPDATE ────────────────────────────────────────────────────────────────────
 exports.updateProduct = async (req, res) => {
   try {
-    const {
-      name,
-      category,
-      model,
-      subCategory,
-      description,
-      price,
-      // discountPrice,
-      features,
-      // stock,
-      specifications,
-      isFeatured,
-      isActive,
-    } = req.body;
+    const { name, category, subCategory, model, description, price, features, specifications, isFeatured, isActive } = req.body;
 
-    let images;
-
-    if (req.files && req.files.length > 0) {
-      images = await Promise.all(
-        req.files.map(
-          (file) =>
-            new Promise((resolve, reject) => {
-              cloudinary.uploader
-                .upload_stream({ folder: 'products' }, (error, result) => {
-                  if (error) reject(error);
-                  else resolve(result.secure_url);
-                })
-                .end(file.buffer);
-            }),
-        ),
-      );
-    }
-
-    let parsedSpecs;
-    if (specifications) {
-      try {
-        parsedSpecs =
-          typeof specifications === 'string'
-            ? JSON.parse(specifications)
-            : specifications;
-      } catch {
-        parsedSpecs = undefined;
-      }
-    }
-    // ✅ Features parse
-    let parsedFeatures;
-    if (features) {
-      try {
-        parsedFeatures =
-          typeof features === 'string' ? JSON.parse(features) : features;
-      } catch {
-        parsedFeatures = undefined;
-      }
-    }
-
-    const updateData = {
-      name,
-      category,
-      model,
-      subCategory,
-      description,
-      price,
-      // discountPrice,
-      // stock,
-      isActive,
-      isFeatured: isFeatured === 'true' || isFeatured === true,
-    };
-    if (images) updateData.images = images;
-    if (parsedSpecs) updateData.specifications = parsedSpecs;
-    if (parsedFeatures) updateData.features = parsedFeatures;  
-
+    // ✅ Duplicate model check (exclude current product)
     if (model) {
-      const existingProduct = await Product.findOne({
-        model,
-        _id: { $ne: req.params.id }, // current product ko ignore karo
-      });
-
-      if (existingProduct) {
-        return res.status(400).json({
-          success: false,
-          message: 'Product with this model already exists',
-        });
+      const existing = await Product.findOne({ model: model.trim(), _id: { $ne: req.params.id } });
+      if (existing) {
+        return res.status(400).json({ success: false, message: 'Product with this model already exists' });
       }
     }
 
-    const product = await Product.findByIdAndUpdate(req.params.id, updateData, {
-      new: true,
-    });
-    if (!product) return res.status(404).json({ message: 'Product not found' });
+    const updateData = {};
+    if (name !== undefined) updateData.name = name.trim();
+    if (model !== undefined) updateData.model = model.trim();
+    if (description !== undefined) updateData.description = description.trim();
+    if (price !== undefined) updateData.price = price;
+    if (isFeatured !== undefined) updateData.isFeatured = isFeatured === 'true' || isFeatured === true;
+    if (isActive !== undefined) updateData.isActive = isActive === 'true' || isActive === true;
 
-    res
-      .status(200)
-      .json({ success: true, message: 'Product updated', data: product });
+    // ✅ If category changed, auto-update parentCategoryId
+    if (category !== undefined) {
+      updateData.category = category;
+      const categoryDoc = await Category.findById(category);
+      if (categoryDoc) updateData.parentCategoryId = categoryDoc.parentCategoryId;
+    }
+    if (subCategory !== undefined) updateData.subCategory = subCategory;
+
+    if (req.files?.length > 0) {
+      updateData.images = await uploadMultiple(req.files, 'products');
+    }
+
+    const parsedSpecs = parseJSON(specifications, null);
+    const parsedFeatures = parseJSON(features, null);
+    if (parsedSpecs !== null) updateData.specifications = parsedSpecs;
+    if (parsedFeatures !== null) updateData.features = parsedFeatures;
+
+    const product = await populateProduct(
+      Product.findByIdAndUpdate(req.params.id, updateData, { new: true, runValidators: true })
+    );
+    if (!product) return res.status(404).json({ success: false, message: 'Product not found' });
+
+    res.status(200).json({ success: true, message: 'Product updated', data: product });
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    console.error('updateProduct:', error);
+    res.status(500).json({ success: false, message: error.message });
   }
 };
 
-// ── DELETE ──────────────────────────────────────────────────────
+// ── DELETE ────────────────────────────────────────────────────────────────────
 exports.deleteProduct = async (req, res) => {
   try {
     const product = await Product.findByIdAndDelete(req.params.id);
-    if (!product) return res.status(404).json({ message: 'Product not found' });
-
+    if (!product) return res.status(404).json({ success: false, message: 'Product not found' });
     res.status(200).json({ success: true, message: 'Product deleted' });
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.status(500).json({ success: false, message: error.message });
   }
 };
 
-// ── SEARCH WITH PAGINATION ──────────────────────────────────────
-// GET /product/search?q=&category=&subCategory=&minPrice=&maxPrice=&page=&limit=
+// ── SEARCH WITH PAGINATION ────────────────────────────────────────────────────
 exports.searchProducts = async (req, res) => {
   try {
-    const {
-      q,           // name ya model se search
-      category,    // category id
-      subCategory, // subCategory id
-      minPrice,
-      maxPrice,
-      page = 1,
-      limit = 20,
-    } = req.query;
+    const { q, parentCategoryId, category, subCategory, minPrice, maxPrice, page = 1, limit = 20 } = req.query;
 
-    // ── Build filter object ──────────────────────────────────────
     const filter = { isActive: true };
 
-    // Name OR Model mein text search
-    if (q && q.trim()) {
+    if (q?.trim()) {
       filter.$or = [
         { name: { $regex: q.trim(), $options: 'i' } },
         { model: { $regex: q.trim(), $options: 'i' } },
       ];
     }
-
-    // Category filter
-    if (category && category.trim()) {
-      filter.category = category.trim();
-    }
-
-    // SubCategory filter
-    if (subCategory && subCategory.trim()) {
-      filter.subCategory = subCategory.trim();
-    }
-
-    // Price range filter
+    if (parentCategoryId?.trim()) filter.parentCategoryId = parentCategoryId.trim();
+    if (category?.trim()) filter.category = category.trim();
+    if (subCategory?.trim()) filter.subCategory = subCategory.trim();
     if (minPrice || maxPrice) {
       filter.price = {};
       if (minPrice) filter.price.$gte = Number(minPrice);
       if (maxPrice) filter.price.$lte = Number(maxPrice);
     }
 
-    // ── Pagination ───────────────────────────────────────────────
-    const pageNum  = Math.max(1, parseInt(page));
-    const limitNum = Math.min(100, Math.max(1, parseInt(limit))); // max 100, default 20
-    const skip     = (pageNum - 1) * limitNum;
+    const pageNum = Math.max(1, parseInt(page));
+    const limitNum = Math.min(100, Math.max(1, parseInt(limit)));
+    const skip = (pageNum - 1) * limitNum;
 
-    // ── Query ────────────────────────────────────────────────────
     const [products, total] = await Promise.all([
-      Product.find(filter)
-        .populate('category', 'name')
-        .populate('subCategory', 'name')
-        .sort({ createdAt: -1 })
-        .skip(skip)
-        .limit(limitNum),
+      populateProduct(Product.find(filter).sort({ createdAt: -1 }).skip(skip).limit(limitNum)),
       Product.countDocuments(filter),
     ]);
-
-    const totalPages = Math.ceil(total / limitNum);
 
     res.status(200).json({
       success: true,
@@ -348,12 +268,13 @@ exports.searchProducts = async (req, res) => {
         total,
         page: pageNum,
         limit: limitNum,
-        totalPages,
-        hasNextPage: pageNum < totalPages,
+        totalPages: Math.ceil(total / limitNum),
+        hasNextPage: pageNum < Math.ceil(total / limitNum),
         hasPrevPage: pageNum > 1,
       },
     });
   } catch (error) {
+    console.error('searchProducts:', error);
     res.status(500).json({ success: false, message: error.message });
   }
 };

@@ -1,137 +1,169 @@
 const { Category } = require('../models/Category');
 const cloudinary = require('../config/cloudinary');
 
+// ── Helper: upload buffer to Cloudinary ──────────────────────────────────────
+const uploadToCloudinary = (buffer, folder) =>
+  new Promise((resolve, reject) => {
+    cloudinary.uploader
+      .upload_stream({ folder }, (error, result) => {
+        if (error) reject(error);
+        else resolve(result);
+      })
+      .end(buffer);
+  });
+
+// ── CREATE ───────────────────────────────────────────────────────────────────
 exports.createCategory = async (req, res) => {
   try {
-    const { name, description } = req.body;
+    const { name, description, parentCategoryId } = req.body;
 
-    const existing = await Category.findOne({ name });
+    // ✅ Validation
+    if (!name?.trim()) {
+      return res.status(400).json({ success: false, message: 'Name is required' });
+    }
+    if (!parentCategoryId) {
+      return res.status(400).json({ success: false, message: 'Parent Category is required' });
+    }
 
+    // ✅ Duplicate check
+    const existing = await Category.findOne({ name: name.trim() });
     if (existing) {
-      return res.status(400).json({
-        message: 'Category already exists',
-      });
+      return res.status(400).json({ success: false, message: 'Category already exists' });
     }
 
     let imageUrl = '';
-
     if (req.file) {
-      const result = await new Promise((resolve, reject) => {
-        cloudinary.uploader
-          .upload_stream({ folder: 'categories' }, (error, result) => {
-            if (error) reject(error);
-            else resolve(result);
-          })
-          .end(req.file.buffer);
-      });
-
+      const result = await uploadToCloudinary(req.file.buffer, 'categories');
       imageUrl = result.secure_url;
     }
 
     const category = await Category.create({
-      name,
-      description,
+      name: name.trim(),
+      parentCategoryId,
+      description: description?.trim() || '',
       image: imageUrl,
     });
 
-    res.status(201).json({
-      success: true,
-      data: category,
-    });
+    // ✅ Populate parentCategoryId in response
+    await category.populate('parentCategoryId', 'name');
+
+    res.status(201).json({ success: true, message: 'Category created', data: category });
   } catch (error) {
-    res.status(500).json({
-      message: error.message,
-    });
+    console.error('createCategory:', error);
+    res.status(500).json({ success: false, message: error.message });
   }
 };
 
-// ── GET ALL ─────────────────────────────────────────────────────
+// ── GET ALL ──────────────────────────────────────────────────────────────────
 exports.getAllCategories = async (req, res) => {
   try {
-    const categories = await Category.find({ isActive: true }).sort({
-      createdAt: -1,
-    });
+    // ✅ FIX: removed isActive filter — admin needs all categories
+    // ✅ FIX: populate parentCategoryId so frontend can show parent name
+    const categories = await Category.find()
+      .populate('parentCategoryId', 'name')
+      .sort({ createdAt: -1 });
+
     res.status(200).json({ success: true, data: categories });
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    console.error('getAllCategories:', error);
+    res.status(500).json({ success: false, message: error.message });
   }
 };
 
-// ── GET SINGLE ──────────────────────────────────────────────────
+// ── GET ALL ACTIVE (public route) ────────────────────────────────────────────
+exports.getAllActiveCategories = async (req, res) => {
+  try {
+    const categories = await Category.find({ isActive: true })
+      .populate('parentCategoryId', 'name')
+      .sort({ createdAt: -1 });
+
+    res.status(200).json({ success: true, data: categories });
+  } catch (error) {
+    console.error('getAllActiveCategories:', error);
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
+
+// ── GET SINGLE ───────────────────────────────────────────────────────────────
 exports.getCategoryById = async (req, res) => {
   try {
-    const category = await Category.findById(req.params.id);
-    if (!category)
-      return res.status(404).json({ message: 'Category not found' });
+    const category = await Category.findById(req.params.id)
+      .populate('parentCategoryId', 'name');
+
+    if (!category) {
+      return res.status(404).json({ success: false, message: 'Category not found' });
+    }
 
     res.status(200).json({ success: true, data: category });
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    console.error('getCategoryById:', error);
+    res.status(500).json({ success: false, message: error.message });
   }
 };
 
-// ── UPDATE ──────────────────────────────────────────────────────
+// ── GET BY PARENT CATEGORY ───────────────────────────────────────────────────
+exports.getCategoriesByParent = async (req, res) => {
+  try {
+    const categories = await Category.find({
+      parentCategoryId: req.params.parentId,
+      isActive: true,
+    }).sort({ createdAt: -1 });
+
+    res.status(200).json({ success: true, data: categories });
+  } catch (error) {
+    console.error('getCategoriesByParent:', error);
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
+
+// ── UPDATE ───────────────────────────────────────────────────────────────────
 exports.updateCategory = async (req, res) => {
   try {
-    const { name, description, isActive } = req.body;
+    const { name, parentCategoryId, description, isActive } = req.body;
 
-    const updateData = {
-      name,
-      description,
-      isActive,
-    };
+    const updateData = {};
 
-    // New image upload to Cloudinary
+    if (name !== undefined) updateData.name = name.trim();
+    if (parentCategoryId !== undefined) updateData.parentCategoryId = parentCategoryId;
+    if (description !== undefined) updateData.description = description.trim();
+
+    // ✅ FIX: handle boolean string from FormData
+    if (isActive !== undefined) {
+      updateData.isActive = isActive === true || isActive === 'true';
+    }
+
     if (req.file) {
-      const result = await new Promise((resolve, reject) => {
-        cloudinary.uploader
-          .upload_stream({ folder: 'categories' }, (error, result) => {
-            if (error) reject(error);
-            else resolve(result);
-          })
-          .end(req.file.buffer);
-      });
-
+      const result = await uploadToCloudinary(req.file.buffer, 'categories');
       updateData.image = result.secure_url;
     }
 
     const category = await Category.findByIdAndUpdate(
       req.params.id,
       updateData,
-      {
-        new: true,
-      },
-    );
+      { new: true, runValidators: true }
+    ).populate('parentCategoryId', 'name');
 
     if (!category) {
-      return res.status(404).json({
-        message: 'Category not found',
-      });
+      return res.status(404).json({ success: false, message: 'Category not found' });
     }
 
-    res.status(200).json({
-      success: true,
-      message: 'Category updated',
-      data: category,
-    });
+    res.status(200).json({ success: true, message: 'Category updated', data: category });
   } catch (error) {
-    console.log(error);
-
-    res.status(500).json({
-      message: error.message,
-    });
+    console.error('updateCategory:', error);
+    res.status(500).json({ success: false, message: error.message });
   }
 };
 
-// ── DELETE ──────────────────────────────────────────────────────
+// ── DELETE ───────────────────────────────────────────────────────────────────
 exports.deleteCategory = async (req, res) => {
   try {
     const category = await Category.findByIdAndDelete(req.params.id);
-    if (!category)
-      return res.status(404).json({ message: 'Category not found' });
-
+    if (!category) {
+      return res.status(404).json({ success: false, message: 'Category not found' });
+    }
     res.status(200).json({ success: true, message: 'Category deleted' });
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    console.error('deleteCategory:', error);
+    res.status(500).json({ success: false, message: error.message });
   }
 };

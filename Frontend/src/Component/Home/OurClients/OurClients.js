@@ -174,7 +174,6 @@ export default function OurClients() {
                     />
                   </div>
 
-
                   {/* NAME */}
                   {/* {item.name && (
                     <p style={{

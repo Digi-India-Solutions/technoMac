@@ -1,8 +1,5 @@
 const mongoose = require('mongoose');
 
-// ══════════════════════════════════════════════
-// PRODUCT  →  actual product (belongs to SubCategory → Category)
-// ══════════════════════════════════════════════
 const ProductSchema = new mongoose.Schema(
   {
     name: {
@@ -10,29 +7,27 @@ const ProductSchema = new mongoose.Schema(
       required: true,
       trim: true,
     },
+    // ✅ Full category chain
+    parentCategoryId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'ParentCategory',
+      required: true,
+    },
     category: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'Category', // top-level category
+      ref: 'Category',
       required: true,
     },
     subCategory: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'SubCategory', // sub category
+      ref: 'SubCategory',
       required: true,
     },
     price: {
       type: Number,
       default: 0,
     },
-    // discountPrice: {
-    //   type: Number,
-    //   default: 0,
-    // },
-    images: [
-      {
-        type: String, // multiple images array
-      },
-    ],
+    images: [{ type: String }],
     model: {
       type: String,
       required: true,
@@ -45,32 +40,15 @@ const ProductSchema = new mongoose.Schema(
       required: true,
       trim: true,
     },
-    // stock: {
-    //   type: Number,
-    //   default: 0,
-    // },
     specifications: [
       {
         key: { type: String },
         value: { type: String },
       },
     ],
-
-    // ✅ NEW
-    features: [
-      {
-        type: String, // e.g. "Fully Automatic System"
-        trim: true,
-      },
-    ],
-    isActive: {
-      type: Boolean,
-      default: true,
-    },
-    isFeatured: {
-      type: Boolean,
-      default: false, // homepage pe featured products
-    },
+    features: [{ type: String, trim: true }],
+    isActive: { type: Boolean, default: true },
+    isFeatured: { type: Boolean, default: false },
   },
   { timestamps: true },
 );
