@@ -1,13 +1,5 @@
 import CountUp from "react-countup";
 import { useInView } from "react-intersection-observer";
-
-// import {
-//   FaUserMd,
-//   FaHandshake,
-//   FaTruckMedical,
-//   FaTools,
-// } from "react-icons/fa";
-
 import styles from "./TrustSection.module.css";
 import { FaHandshake, FaTools, FaUserMd } from "react-icons/fa";
 import { FaTruckMedical } from "react-icons/fa6";

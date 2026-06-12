@@ -3,45 +3,6 @@ import { FaPlus, FaMinus, } from "react-icons/fa";
 import styles from "./FAQSection.module.css";
 import { getData } from "../../../services/FetchNodeServices";
 
-const faqData = [
-
-  {
-    question:
-      "What dental products does TECHNOMAC provide?",
-    answer:
-      "TECHNOMAC provides dental chairs, imaging systems, autoclaves, compressors, RVG sensors, intraoral cameras and modern clinic setup solutions.",
-  },
-
-  {
-    question:
-      "Do you provide installation support?",
-    answer:
-      "Yes, we provide complete installation, demo and technical support for dental clinics across India.",
-  },
-
-  {
-    question:
-      "Is warranty available on products?",
-    answer:
-      "Yes, all major TECHNOMAC products come with warranty and service support.",
-  },
-
-  {
-    question:
-      "Can I request a clinic setup consultation?",
-    answer:
-      "Absolutely. Our experts help you plan and setup modern dental clinics with the best equipment.",
-  },
-
-  {
-    question:
-      "Do you provide after-sales service?",
-    answer:
-      "Yes, we have dedicated technical engineers for fast service and maintenance support.",
-  },
-
-];
-
 export default function FAQSection() {
   const [faq, setFaq] = useState([])
   const [activeIndex, setActiveIndex] = useState(0);

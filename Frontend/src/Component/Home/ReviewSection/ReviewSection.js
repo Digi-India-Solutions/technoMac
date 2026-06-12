@@ -10,41 +10,6 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { getData } from "../../../services/FetchNodeServices"; // ✅ was missing
 
-// ── Static fallback (used if API fails or returns empty) ─────────
-const STATIC_REVIEWS = [
-  {
-    _id: "1",
-    name: "Dr. Amit Sharma",
-    designation: "MDS Orthodontist",
-    image: image2,
-    review: "TECHNOMAC products completely transformed my clinic setup. Their dental chair quality and after-sales service are outstanding.",
-    rating: 5,
-  },
-  {
-    _id: "2",
-    name: "Dr. Priya Verma",
-    designation: "Dental Surgeon",
-    image: image1,
-    review: "The intraoral camera and RVG sensor are excellent. Smooth performance and professional support team.",
-    rating: 5,
-  },
-  {
-    _id: "3",
-    name: "Dr. Rahul Mehta",
-    designation: "Implantologist",
-    image: image3,
-    review: "Highly recommended for dental clinic setup. Premium equipment with fast installation and technical support.",
-    rating: 5,
-  },
-  {
-    _id: "4",
-    name: "Dr. Neha Kapoor",
-    designation: "Dental Specialist",
-    image: image1,
-    review: "Excellent build quality and advanced technology. TECHNOMAC gives genuine service support.",
-    rating: 5,
-  },
-];
 
 // ── Star renderer (uses rating field) ────────────────────────────
 function StarRating({ rating = 5 }) {
@@ -58,7 +23,7 @@ function StarRating({ rating = 5 }) {
 }
 
 export default function ReviewSection() {
-  const [reviews, setReviews] = useState(STATIC_REVIEWS); // ✅ static as default
+  const [reviews, setReviews] = useState([]); // ✅ static as default
   const [loading, setLoading] = useState(true);
 
   const fetchAllReviews = async () => {
