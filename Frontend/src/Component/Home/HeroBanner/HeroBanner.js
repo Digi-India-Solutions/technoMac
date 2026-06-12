@@ -11,37 +11,6 @@ import heroImage4 from "../../../../Images/banner4.jpg";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 
-// const statice_bannerss = [
-
-//   {
-//     image: heroImage1,
-//     title: "Advanced Dental Clinic Setup",
-//     desc:
-//       "Premium dental healthcare equipment and modern clinic solutions.",
-//   },
-
-//   {
-//     image: heroImage2,
-//     title: "Modern Imaging Solutions",
-//     desc:
-//       "High precision dental imaging and diagnostic systems.",
-//   },
-
-//   {
-//     image: heroImage3,
-//     title: "Smart Dental Equipment",
-//     desc:
-//       "Reliable dental machines designed for modern professionals.",
-//   },
-
-//   {
-//     image: heroImage4,
-//     title: "Trusted By Dental Experts",
-//     desc:
-//       "Innovative healthcare technology trusted across India.",
-//   },
-
-// ];
 
 export default function HeroBanner() {
   const [banners, setBanners] = useState([])

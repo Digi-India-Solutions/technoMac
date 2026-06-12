@@ -11,45 +11,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { getData } from "../../../services/FetchNodeServices";
 
-const products = [
 
-  {
-    id: 1,
-    name: "Dental Imaging",
-    image: image1,
-  },
-
-  {
-    id: 2,
-    name: "Dental Chairs",
-    image: image2,
-  },
-
-  {
-    id: 3,
-    name: "Sterilization",
-    image: image3,
-  },
-
-  {
-    id: 4,
-    name: "Air Compressor",
-    image: image4,
-  },
-
-  {
-    id: 5,
-    name: "RVG Sensor",
-    image: image5,
-  },
-
-  {
-    id: 6,
-    name: "Dental Accessories",
-    image: image6,
-  },
-
-];
 
 export default function HomeProducts() {
   const [category, setCategory] = useState([])
