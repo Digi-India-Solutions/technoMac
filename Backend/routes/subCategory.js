@@ -1,22 +1,25 @@
 const express = require('express');
 const subCategoryRouter = express.Router();
+const upload = require('../middleware/multer');
+
 const {
   createSubCategory,
   getAllSubCategories,
+  getAllActiveSubCategories,
   getSubCategoryById,
   getSubCategoriesByCategory,
+  getSubCategoriesByParent,
   updateSubCategory,
   deleteSubCategory,
 } = require('../controller/Subcategory');
-// ✅ Ye line add karo file ke top mein
-const upload = require('../middleware/multer');
-const adminAuth = require('../middleware/adminAuth');
 
-subCategoryRouter.post('/', adminAuth, upload.single('image'), createSubCategory);
-subCategoryRouter.get('/', adminAuth, getAllSubCategories);
-subCategoryRouter.get('/by-category/:categoryId', getSubCategoriesByCategory); // ← important
+subCategoryRouter.post('/', upload.single('image'), createSubCategory);
+subCategoryRouter.get('/',  getAllSubCategories);        // admin (all)
+subCategoryRouter.get('/active', getAllActiveSubCategories);             // public
+subCategoryRouter.get('/by-category/:categoryId', getSubCategoriesByCategory);           // filter by category
+subCategoryRouter.get('/by-parent/:parentId', getSubCategoriesByParent);             // filter by parentCategory
 subCategoryRouter.get('/:id', getSubCategoryById);
-subCategoryRouter.put('/:id', adminAuth, upload.single('image'), updateSubCategory);
-subCategoryRouter.delete('/:id', deleteSubCategory);
+subCategoryRouter.put('/:id',  upload.single('image'), updateSubCategory);
+subCategoryRouter.delete('/:id',  deleteSubCategory);
 
 module.exports.subCategoryRouter = subCategoryRouter;

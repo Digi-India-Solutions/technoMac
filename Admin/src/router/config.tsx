@@ -40,6 +40,7 @@ import CartsManagement from "../pages/admin/application/cart/page";
 import TermAndCondition from "../pages/admin/termAndCondition/page.jsx";
 import BlankPage from "../pages/admin/blanckPage/page.jsx"
 import NewUpdate from "../pages/admin/newUpdate/page.jsx"
+import ParentCategory from "../pages/admin/application/parent-category/page.jsx"
 
 const CatalogueUpload = lazy(() => import('../pages/admin/catalogue/page'));
 
@@ -72,6 +73,8 @@ const routes: RouteObject[] = [
       {
         path: 'application',
         children: [
+          
+           { path: 'parentCategory', element: <ParentCategory /> },
           { path: 'categories', element: <CategoriesManagement /> },
           { path: 'subcategories', element: <SubCategoriesManagement /> },
           { path: 'products', element: <ProductsManagement /> },

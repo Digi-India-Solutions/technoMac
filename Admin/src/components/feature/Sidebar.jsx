@@ -71,6 +71,9 @@ export default function Sidebar({ isOpen, onClose, isDarkMode }) {
         // ...(permissions?.banners?.read ? [
         { title: 'Banners',icon: 'ri-image-line', path: '/admin/application/banners' },
         // ] : []),
+         // ...(permissions?.parentCategory?.read ? [
+        { title: 'Parent Category', icon: 'ri-layout-grid-line',path: '/admin/application/parentCategory' },
+        // ] : []),
         // ...(permissions?.categories?.read ? [
         { title: 'Categories', icon: 'ri-layout-grid-line',path: '/admin/application/categories' },
         // ] : []),

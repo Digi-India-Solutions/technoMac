@@ -58,7 +58,7 @@ export default function HomeProducts() {
   const fetchAllCategory = async () => {
     try {
       // ✅ Remove leading slash — getData likely prepends serverURL + "/"
-      const response = await getData("category/all");
+      const response = await getData("parentCategory/all");
       console.log("categoryResponse=>", response)
       if (response.success === true) {
         // console.log("SSSS==>response", category)
@@ -126,7 +126,7 @@ export default function HomeProducts() {
             >
 
               <Link
-                href={{ pathname: "/products", query: { category: item?._id } }}
+                href={{ pathname: "/products", query: { parentCategory: item?._id } }}
                 className={styles.productCard}
               >
 
