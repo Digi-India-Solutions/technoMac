@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   flex-wrap: wrap;
 }
 
@@ -24,7 +24,7 @@
 
 .breadcrumb p {
   margin: 0;
-  color: #666;
+  color: #1E293B;
   font-size: 15px;
 }
 

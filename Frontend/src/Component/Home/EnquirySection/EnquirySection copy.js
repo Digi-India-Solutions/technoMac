@@ -2,7 +2,7 @@ import { useState } from "react";
 import styles from "./EnquirySection.module.css";
 import { FaPhoneAlt, FaEnvelope, FaPaperPlane, FaUser } from "react-icons/fa";
 import { postData } from "../../../services/FetchNodeServices";
-import image from "./1.jpg"
+import image from "./newslater.jpg"
 import Image from "next/image";
 
 export default function EnquirySection() {

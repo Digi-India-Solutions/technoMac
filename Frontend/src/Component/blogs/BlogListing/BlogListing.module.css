@@ -1,43 +1,17 @@
 .blogSection {
-  padding: 140px 0 0;
+  padding: 90px 0 0;
   background: #f8f8f8;
 }
 
 .heading {
-
   text-align: center;
-
-  margin-bottom: 60px;
-}
-
-.heading span {
-
-  display: inline-block;
-
-  background:
-    rgba(229,57,53,0.1);
-
-  color: var(--theme-color);
-
-  padding: 10px 18px;
-
-  border-radius: 50px;
-
-  font-size: 13px;
-
-  font-weight: 700;
-
-  margin-bottom: 18px;
+  margin-bottom: 20px;
 }
 
 .heading h2 {
-
-  font-size: 58px;
-
-  font-weight: 900;
-
+  font-size: var(--all-heading-font);
+  font-weight: 800;
   line-height: 1.1;
-
   color: #111;
 }
 

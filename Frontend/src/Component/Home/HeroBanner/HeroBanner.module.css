@@ -85,15 +85,15 @@
 
   color: #ff6b6b;
 
-  padding: 10px 22px;
+  padding: 10px 15px;
 
   border-radius: 50px;
 
-  font-size: 13px;
+  font-size: 12px;
 
   font-weight: 700;
 
-  margin-bottom: 22px;
+  margin-bottom: 10px;
 
   backdrop-filter: blur(12px);
 }
@@ -101,28 +101,18 @@
 /* TITLE */
 
 .bannerContent h1 {
-
-  font-size: 68px;
-
+  font-size: 38px;
   font-weight: 900;
-
-  line-height: 1.05;
-
-  margin-bottom: 22px;
+  margin-bottom: 10px;
 }
 
 /* DESC */
 
 .bannerContent p {
-
-  font-size: 17px;
-
+  font-size: 16px;
   line-height: 1.9;
-
   color: rgba(255,255,255,0.78);
-
-  margin-bottom: 35px;
-
+  margin-bottom: 15px;
   max-width: 580px;
 }
 
@@ -144,7 +134,7 @@
 .primaryBtn,
 .secondaryBtn {
 
-  height: 58px;
+  height: 50px;
 
   border: none;
 

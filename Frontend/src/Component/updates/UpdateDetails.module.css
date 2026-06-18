@@ -14,7 +14,7 @@
 
   border-radius: 40px;
 
-  margin-bottom: 50px;
+  margin-bottom: 20px;
 
   box-shadow:
     0 20px 45px rgba(0, 0, 0, 0.08);
@@ -29,12 +29,6 @@
   object-fit: cover;
 }
 
-.content {
-
-  max-width: 950px;
-
-  margin: auto;
-}
 
 .content span {
 
@@ -58,24 +52,14 @@
 
 .content h1 {
 
-  font-size: 60px;
+  font-size: var(--all-heading-font);
 
-  font-weight: 900;
-
-  margin-bottom: 24px;
-
-  line-height: 1.1;
+  font-weight: 800;
 }
 
 .content p {
-
-  font-size: 17px;
-
-  color: #666;
-
-  line-height: 1.9;
-
-  margin-bottom: 40px;
+  color: #1E293B;
+  margin-bottom: 20px;
 }
 
 /* POINT BOX */
@@ -83,36 +67,28 @@
 .pointBox {
 
   background: #fff;
-
-  border-radius: 30px;
-
-  padding: 40px;
-
+  border-radius: 20px;
+  padding: 20px;
   box-shadow:
     0 15px 35px rgba(0, 0, 0, 0.05);
 }
 
 .pointBox h3 {
-
-  font-size: 30px;
-
-  font-weight: 800;
-
-  margin-bottom: 24px;
+  font-size: 20px;
+  margin-bottom: 10px;
 }
 
 .pointBox ul {
-
   padding-left: 20px;
 }
 
 .pointBox li {
 
-  margin-bottom: 16px;
+  margin-bottom: 0px;
 
   color: #555;
 
-  font-size: 16px;
+  font-size: 14px;
 
   line-height: 1.8;
 }

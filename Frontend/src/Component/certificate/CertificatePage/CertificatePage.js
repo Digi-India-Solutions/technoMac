@@ -13,6 +13,7 @@ import {
   FaAward,
   FaShieldAlt,
   FaCheckCircle,
+  FaTimes,
 } from "react-icons/fa";
 import Breadcrumb from "../../common/Breadcrumb/Breadcrumb";
 import { useEffect, useState } from "react";
@@ -22,55 +23,40 @@ import { getData } from "../../../services/FetchNodeServices";
 export default function CertificatePage() {
   const [certificate, setCertificate] = useState([])
   const [loading, setLoading] = useState(false)
+  const [selectedImage, setSelectedImage] = useState(null);
 
   const fetchAllCertificate = async () => {
     try {
-      // ✅ Remove leading slash — getData likely prepends serverURL + "/"
       const response = await getData("certificate/all");
       console.log("Certificate Response=>", response)
       if (response.success === true) {
 
         setCertificate(response.data);
       }
-      // If empty or null → keep static fallback already in state
     } catch (e) {
       console.error("Certificate fetch failed, using static fallback:", e?.message);
-      // ✅ Static Category already set as default — nothing extra needed
     } finally {
       setLoading(false);
     }
   };
 
-  // ✅ useEffect instead of useState
   useEffect(() => {
     fetchAllCertificate();
   }, []);
-  // console.log("SSSS==>response", category)
+
   return (
-
     <section className={styles.certificateSection}>
-
-      {/* GLOW */}
-
       <div className={styles.glow}></div>
-
       <div className="container">
-
         <Breadcrumb pageName="Certificates" />
-
-        {/* HEADING */}
-
         <div className={styles.heading}>
-
           <span>
             TECHNOMAC CERTIFICATIONS
           </span>
-
           <h1>
             Trusted &
             Certified Excellence
           </h1>
-
           <p>
             TECHNOMAC follows strict
             healthcare quality standards
@@ -82,85 +68,59 @@ export default function CertificatePage() {
 
         </div>
 
-        {/* TOP INFO */}
-
         <div className="row mb-5">
-
           <div className="col-lg-4 col-md-6 mb-4">
-
             <div className={styles.infoCard}>
-
               <FaAward />
-
               <h4>
                 Certified Quality
               </h4>
-
               <p>
                 High quality certified
                 dental healthcare products.
               </p>
-
             </div>
-
           </div>
-
           <div className="col-lg-4 col-md-6 mb-4">
-
             <div className={styles.infoCard}>
-
               <FaShieldAlt />
-
               <h4>
                 Trusted Standards
               </h4>
-
               <p>
                 Products tested with
                 international safety standards.
               </p>
-
             </div>
-
           </div>
-
           <div className="col-lg-4 col-md-6 mb-4">
-
             <div className={styles.infoCard}>
-
               <FaCheckCircle />
-
               <h4>
                 Reliable Support
               </h4>
-
               <p>
                 Supporting modern clinics
                 with trusted technology.
               </p>
-
             </div>
-
           </div>
-
         </div>
 
-        {/* CERTIFICATE GRID */}
-
         <div className="row">
-
           {certificate.map((item, index) => (
-
-            <div
-              className="col-lg-4 col-md-6 mb-5"
+            <div className="col-lg-3 col-md-6 mb-3"
               key={index}
             >
-
               <div className={styles.certificateCard}>
-
-                {/* FRAME */}
-
-                <div className={styles.frame}>
+                <div
+                  className={styles.frame}
+                  onClick={() => setSelectedImage(item)}
+                >
+                  <div className={styles.verifyBadge}>
+                    Verified
+                    <FaCheckCircle />
+                  </div>
 
                   <div className={styles.innerFrame}>
 
@@ -175,31 +135,54 @@ export default function CertificatePage() {
                   </div>
 
                 </div>
-
-                {/* CONTENT */}
-
                 <div className={styles.cardContent}>
-
                   <h3>
                     {item.title}
                   </h3>
-
-                  <span>
-                    Verified Certificate
-                  </span>
-
                 </div>
-
               </div>
-
             </div>
-
           ))}
+        </div>
+      </div>
+      {selectedImage && (
+
+        <div
+          className={styles.modalOverlay}
+          onClick={() => setSelectedImage(null)}
+        >
+
+          <div
+            className={styles.modalContent}
+            onClick={(e) => e.stopPropagation()}
+          >
+
+            <button
+              className={styles.closeBtn}
+              onClick={() => setSelectedImage(null)}
+            >
+
+              <FaTimes />
+
+            </button>
+
+            <Image
+              src={selectedImage.image}
+              alt={selectedImage.title}
+              width={1400}
+              height={900}
+              className={styles.modalImage}
+            />
+
+            <h3>
+              {selectedImage.title}
+            </h3>
+
+          </div>
 
         </div>
 
-      </div>
-
+      )}
     </section>
   );
 }

@@ -1,5 +1,7 @@
 :root {
   --theme-color: #e60415;
+  --all-heading-font: 28px;
+  --text-color: #334155;
 }
 
 body {
@@ -16,7 +18,7 @@ body {
 
 .hero-section {
   position: relative;
-  padding: 100px 0 0;
+  padding: 50px 0 30px;
   overflow: hidden;
 }
 
@@ -39,31 +41,29 @@ body {
 }
 
 .hero-content h1 {
-  font-size: 76px;
+  font-size: var(--all-heading-font);
   line-height: 1.05;
   font-weight: 800;
   color: #111;
-  margin-bottom: 25px;
+  margin-bottom: 10px;
   letter-spacing: -2px;
 }
 
-.hero-content p {
-  font-size: 18px;
+.hero-content p { 
   line-height: 1.8;
-  color: #666;
+  color: #1E293B;
   max-width: 550px;
 }
 
 /* Button */
 
-.hero-btn {
-  margin-top: 35px;
+.hero-btn { 
   border: none;
   background: var(--theme-color);
   color: #fff;
-  padding: 12px 24px;
-  border-radius: 10px;
-  font-size: 16px;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 14px;
   font-weight: 600;
   transition: 0.3s;
 }
@@ -82,7 +82,7 @@ body {
 
 .hero-image img {
   width: 100%;
-  max-width: 700px;
+  max-width: 500px;
   height: auto;
   object-fit: contain;
   animation: floatImage 4s ease-in-out infinite;
@@ -137,7 +137,7 @@ body {
 .globalProductCard p {
   font-size: 15px;
   line-height: 1.7;
-  color: #666;
+  color: #1E293B;
   margin-bottom: 18px;
 }
 
@@ -199,18 +199,7 @@ body {
     transform: translateY(0px);
   }
 }
-
-/* =========================
-   LARGE DEVICE
-========================= */
-
-@media(max-width: 1400px) {
-
-  .hero-content h1 {
-    font-size: 40px;
-  }
-}
-
+ 
 /* =========================
    LAPTOP
 ========================= */

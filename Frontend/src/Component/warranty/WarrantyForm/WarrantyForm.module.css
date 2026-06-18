@@ -2,7 +2,7 @@
 
   position: relative;
 
-  padding: 140px 0 110px;
+  padding: 90px 0 0px;
 
   background:
     linear-gradient(
@@ -75,56 +75,17 @@
   margin: auto auto 60px;
 }
 
-.heading span {
-
-  display: inline-flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  padding: 12px 24px;
-
-  border-radius: 100px;
-
-  background:
-    rgba(229,57,53,0.08);
-
-  color: var(--theme-color);
-
-  font-size: 13px;
-
-  font-weight: 800;
-
-  letter-spacing: 1px;
-
-  margin-bottom: 24px;
-}
-
 .heading h1 {
 
-  font-size: 40px;
-
-  font-weight: 900;
-
+  font-size:var(--all-heading-font);
+  font-weight: 800;
   line-height: 1.08;
-
   color: #111;
-
-  margin-bottom: 22px;
 }
 
 .heading p {
+  color: #1E293B;
 
-  font-size: 17px;
-
-  line-height: 1.9;
-
-  color: #666;
-
-  max-width: 850px;
-
-  margin: auto;
 }
 
 /* INFO CARD */
@@ -187,12 +148,12 @@
 
 .infoCard svg {
 
-  width: 78px;
-  height: 78px;
+  width: 50px;
+  height: 50px;
 
-  padding: 18px;
+  padding: 10px;
 
-  border-radius: 24px;
+  border-radius: 15px;
 
   background:
     linear-gradient(
@@ -219,7 +180,7 @@
 
 .infoCard p {
 
-  color: #666;
+  color: #1E293B;
 
   line-height: 1.9;
 
@@ -242,9 +203,9 @@
   border:
     1px solid rgba(255,255,255,0.7);
 
-  border-radius: 40px;
+  border-radius: 20px;
 
-  padding: 30px;
+  padding: 20px;
 
   box-shadow:
     0 25px 60px rgba(0,0,0,0.07);
@@ -253,8 +214,7 @@
 /* FORM FIELD */
 
 .formField {
-
-  margin-bottom: 28px;
+  margin-bottom: 15px;
 }
 
 /* LABEL */
@@ -263,9 +223,9 @@
 
   display: block;
 
-  font-size: 15px;
+  font-size: 14px;
 
-  font-weight: 700;
+  font-weight: 600;
 
   color: #111;
 
@@ -286,7 +246,7 @@
   position: absolute;
 
   top: 50%;
-  left: 20px;
+  left: 10px;
 
   transform: translateY(-50%);
 
@@ -316,7 +276,7 @@
 
   border-radius: 10px;
 
-  padding-left: 56px;
+  padding-left: 30px;
 
   padding-right: 20px;
 
@@ -333,12 +293,12 @@
 .inputGroup input,
 .inputGroup select {
 
-  height: 54px;
+  height: 40px;
 }
 
 .inputGroup textarea {
 
-  height: 60px;
+  height: 40px;
 
   resize: none;
 
@@ -427,12 +387,10 @@
 
 .uploadBox svg {
 
-  width: 50px;
-  height: 50px;
-
-  padding: 14px;
-
-  border-radius: 28px;
+  width: 40px;
+  height: 40px;
+  padding: 7px;
+  border-radius: 10px;
 
   background:
     linear-gradient(
@@ -443,14 +401,14 @@
 
   color: #fff;
 
-  margin-bottom: 24px;
+  margin-bottom: 10px;
 }
 
 .uploadBox h4 {
 
-  font-size: 22px;
+  font-size: 18px;
 
-  font-weight: 900;
+  font-weight: 700;
 
   margin-bottom: 0px;
 
@@ -459,9 +417,9 @@
 
 .uploadBox p {
 
-  color: #666;
+  color: #1E293B;
 
-  margin-bottom: 28px;
+  margin-bottom: 0px;
 
   line-height: 1.8;
 }
@@ -479,9 +437,9 @@
   border:
     1px solid rgba(0,0,0,0.08);
 
-  border-radius: 18px;
+  border-radius: 10px;
 
-  padding: 14px;
+  padding: 10px;
 
   background: #fff;
 }
@@ -492,11 +450,11 @@
 
   width: 100%;
 
-  height: 72px;
+  height: 40px;
 
   border: none;
 
-  border-radius: 22px;
+  border-radius: 15px;
 
   margin-top: 20px;
 
@@ -509,9 +467,9 @@
 
   color: #fff;
 
-  font-size: 17px;
+  font-size: 16px;
 
-  font-weight: 800;
+  font-weight: 700;
 
   letter-spacing: 0.5px;
 

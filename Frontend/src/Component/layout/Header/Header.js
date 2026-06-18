@@ -474,7 +474,7 @@ export default function Header() {
               {/* Logo */}
               <div className={styles.logo}>
                 <Link href="/">
-                  <Image src={logo} alt="TECHNOMAC Logo" height={50} width={150} />
+                  <Image src={logo} alt="TECHNOMAC Logo" height={40} width={150} />
                 </Link>
               </div>
 

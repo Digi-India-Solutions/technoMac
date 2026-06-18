@@ -900,13 +900,14 @@ import setupImage from "../../../../Images/about-image.png";
 import { useState, useCallback, useEffect } from "react";
 import Link from "next/link";
 import { getData } from "../../../services/FetchNodeServices";
+import Breadcrumb from "../../common/Breadcrumb/Breadcrumb";
 
 const services = [
   "Complete Dental Clinic Planning",
-  "Single Chair & Multi Chair Setup",
-  "Equipment Selection Guidance",
-  "Modern Interior Layout Design",
   "Installation & Training Support",
+  "Single Chair & Multi Chair Setup",
+  "Modern Interior Layout Designs",
+  "Equipment Selection Guidances",
   "After Sales Service & AMC",
 ];
 
@@ -981,12 +982,12 @@ export default function ClinicSetup() {
           body { font-family: Georgia, serif; padding: 40px; color: #1a1a2e; background: #fff; }
           .header { text-align: center; border-bottom: 3px solid #0066cc; padding-bottom: 20px; margin-bottom: 30px; }
           .header h1 { font-size: 28px; color: #0066cc; }
-          .header p  { color: #666; margin-top: 6px; }
+          .header p  { color: #1E293B; margin-top: 6px; }
           .section   { margin-bottom: 28px; }
           .section h2 { font-size: 16px; color: #0066cc; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; border-left: 4px solid #0066cc; padding-left: 10px; }
           .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
           .card { background: #f0f6ff; border-radius: 8px; padding: 16px; }
-          .card span { font-size: 12px; color: #666; display: block; margin-bottom: 4px; }
+          .card span { font-size: 12px; color: #1E293B; display: block; margin-bottom: 4px; }
           .card h3   { font-size: 22px; color: #0066cc; font-weight: bold; }
           .card p    { font-size: 13px; color: #444; margin-top: 4px; }
           .highlight { background: #0066cc; color: #fff; border-radius: 10px; padding: 20px; text-align: center; margin-bottom: 20px; }
@@ -1058,7 +1059,7 @@ export default function ClinicSetup() {
 
         <div class="section">
           <h2>Suggested Dental Chairs</h2>
-          <p style="font-size:13px; color:#666; margin-bottom:14px;">
+          <p style="font-size:13px; color:#1E293B; margin-bottom:14px;">
             Based on your budget of ₹${targetBudget.toLocaleString("en-IN")} (3× monthly revenue)
           </p>
           <div class="grid">
@@ -1095,13 +1096,12 @@ export default function ClinicSetup() {
     <section className={styles.setupSection}>
       <div className={styles.glow}></div>
       <div className="container">
-
+        <Breadcrumb pageName="Clinic Setup" />
         {/* HERO */}
         <div className={styles.heroWrapper}>
           <div className="row align-items-center">
             <div className="col-lg-6">
               <div className={styles.content}>
-                <span>TECHNOMAC CLINIC SETUP</span>
                 <h1>Complete Dental Clinic Setup Solutions</h1>
                 <p>
                   TECHNOMAC helps dentists build world-class clinics with advanced

@@ -14,25 +14,23 @@
   display: inline-block;
   background: #ffe7ea;
   color: #ff4d5a;
-  padding: 12px 20px;
+  padding: 8px 14px;
   border-radius: 50px;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 600;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .leftContent h2 {
-  font-size: 28px;
+  font-size: var(--all-heading-font);
   line-height: 1.1;
   font-weight: 800;
-  color: #111;
   margin-bottom: 25px;
 }
 
 .leftContent p {
-  font-size: 17px;
   line-height: 1.7;
-  color: #666;
+  color: #1E293B;
   margin-bottom: 20px;
 }
 
@@ -103,7 +101,7 @@
 
 .statCard p {
   font-size: 16px;
-  color: #666;
+  color: #1E293B;
   margin: 0;
 }
 

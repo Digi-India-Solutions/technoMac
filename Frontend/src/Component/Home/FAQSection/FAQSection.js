@@ -59,10 +59,10 @@ export default function FAQSection() {
           <div className="col-lg-5">
 
             <div className={styles.leftContent}>
-
+{/* 
               <span>
                 FAQ'S
-              </span>
+              </span> */}
 
               <h2>
                 Frequently Asked
@@ -76,7 +76,7 @@ export default function FAQSection() {
                 services.
               </p>
 
-              <button>
+              <button onclick={() => window.location.href = "/contact"}>
                 Contact Support
               </button>
 

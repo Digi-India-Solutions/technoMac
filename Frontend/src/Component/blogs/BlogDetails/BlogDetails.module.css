@@ -1,5 +1,5 @@
 .detailsSection {
-  padding: 100px 0 0px;
+  padding: 90px 0 0px;
 }
 
 .imageWrapper {
@@ -14,19 +14,12 @@
 
   overflow: hidden;
 
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 }
 
 .blogImage {
 
   object-fit: cover;
-}
-
-.content {
-
-  /* max-width: 900px; */
-
-  margin: auto;
 }
 
 .content span {
@@ -42,7 +35,7 @@
 
   border-radius: 50px;
 
-  font-size: 13px;
+  font-size: 12px;
 
   font-weight: 700;
 
@@ -51,17 +44,12 @@
 
 .content h1 {
 
-  font-size: 40px;
-  font-weight: 900;
+  font-size: var(--all-heading-font);
+  font-weight: 800;
   line-height: 1.1;
 }
 
 .content p {
-
-  font-size: 18px;
-
-  line-height: 2;
-
   color: #555;
 }
 

@@ -243,7 +243,7 @@ export default function ContactPage() {
                                     <div className="col-12">
                                         <div className={styles.inputGroup}>
                                             <label>Message</label>
-                                            <textarea rows="6" name="message" value={form.message} onChange={handleChange} placeholder="Write your message..." ></textarea>
+                                            <textarea rows="4" name="message" value={form.message} onChange={handleChange} placeholder="Write your message..." ></textarea>
                                             {errors.message && <span className={styles.errorText}>{errors.message}</span>}
                                         </div>
                                     </div>

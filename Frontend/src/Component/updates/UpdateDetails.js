@@ -1,5 +1,6 @@
 import Image from "next/image";
 import styles from "./UpdateDetails.module.css";
+import Breadcrumb from "../common/Breadcrumb/Breadcrumb";
 
 export default function UpdateDetails({
   item,
@@ -8,8 +9,10 @@ export default function UpdateDetails({
   return (
 
     <section className={styles.detailsSection}>
-
       <div className="container">
+
+        <Breadcrumb pageName="Update Details" />
+
 
         {/* IMAGE */}
 
@@ -28,11 +31,6 @@ export default function UpdateDetails({
         {/* CONTENT */}
 
         <div className={styles.content}>
-
-          <span>
-            TECHNOMAC UPDATE
-          </span>
-
           <h1>
             {item.title}
           </h1>

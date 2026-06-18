@@ -706,7 +706,6 @@ export default function WarrantyForm() {
 
         {/* HEADING */}
         <div className={styles.heading}>
-          <span>TECHNOMAC WARRANTY</span>
           <h1>Warranty Registration Form</h1>
           <p>
             Thank you for choosing our product and registering your warranty with TECHNOMAC.

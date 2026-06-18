@@ -2,7 +2,7 @@
 
   position: relative;
 
-  padding: 100px 0 0px;
+  padding: 90px 0 0px;
 
   background:
     linear-gradient(180deg,
@@ -41,43 +41,26 @@
 }
 
 .heading span {
-
   display: inline-block;
-
   background:
     rgba(229, 57, 53, 0.08);
-
   color: var(--theme-color);
-
-  padding: 12px 22px;
-
+  padding: 10px 20px;
   border-radius: 50px;
-
   font-size: 12px;
-
-  font-weight: 800;
-
-  margin-bottom: 22px;
-}
-
-.heading h1 {
-
-  font-size: 40px;
-
-  font-weight: 900;
-
-  color: #111;
-
+  font-weight: 700;
+  letter-spacing: 1px;
   margin-bottom: 10px;
 }
 
+.heading h1 {
+  font-size: var(--all-heading-font);
+  font-weight: 800;
+  color: #111;
+}
+
 .heading p {
-
-  font-size: 17px;
-
-  line-height: 1.9;
-
-  color: #666;
+  color: #1E293B;
 }
 
 /* CARD */
@@ -86,7 +69,7 @@
 
   background: #fff;
 
-  border-radius: 34px;
+  border-radius: 20px;
 
   overflow: hidden;
 
@@ -132,61 +115,42 @@
 /* CONTENT */
 
 .cardContent {
-
-  padding: 18px;
-
+  padding: 10px;
   display: flex;
-
   flex-direction: column;
-
   justify-content: space-between;
-
-  gap: 25px;
+  gap: 0px;
 }
 
 .cardContent h3 {
-
-  font-size: 18px;
-
-  font-weight: 800;
-
-  margin-bottom: 12px;
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 5px;
 }
 
 .cardContent p {
-
-  color: #666;
-
-  line-height: 1.8;
+  color: #1E293B;
+  font-size: 14px;
 }
 
 /* BUTTON */
 
 .cardContent button {
 
-  height: 58px;
-
+  height: 40px;
   border: none;
-
-  border-radius: 18px;
-
+  border-radius: 15px;
   background:
     linear-gradient(135deg,
       var(--theme-color),
       #ff6b6b);
 
   color: #fff;
-
   font-weight: 700;
-
   display: flex;
-
   align-items: center;
-
   justify-content: center;
-
   gap: 10px;
-
   transition: 0.4s ease;
 }
 
@@ -297,7 +261,7 @@
 }
 
 .modalHeading p {
-  color: #666;
+  color: #1E293B;
 
   font-size: 14px;
 }
@@ -455,9 +419,10 @@
   }
 
   .submitBtn {
-  height: 40px;
+    height: 40px;
     font-size: 12px;
   }
+
   .modalHeading span {
     font-size: 12px;
   }
@@ -473,29 +438,40 @@
   align-items: center;
   gap: 12px;
 }
+
 .successIcon {
   font-size: 52px;
   color: #38a169;
 }
+
 .spinnerIcon {
   font-size: 48px;
   color: #0066cc;
   animation: spin 1s linear infinite;
 }
+
 @keyframes spin {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
+
 .successState h3 {
   font-size: 20px;
   color: #1a1a2e;
   margin: 0;
 }
+
 .successState p {
   font-size: 14px;
-  color: #666;
+  color: #1E293B;
   margin: 0;
 }
+
 .successHint {
   font-size: 13px !important;
   color: #888 !important;
@@ -510,7 +486,10 @@
   text-decoration: underline;
   cursor: pointer;
 }
-.fallbackLink:hover { color: #0052a3; }
+
+.fallbackLink:hover {
+  color: #0052a3;
+}
 
 /* SELECTED BADGE */
 .selectedBadge {
@@ -547,17 +526,24 @@
   transition: all 0.2s;
   flex-shrink: 0;
 }
-.previewBtn:hover { background: #0066cc; color: #fff; }
+
+.previewBtn:hover {
+  background: var(--theme-color);
+  color: #fff;
+}
 
 /* IMAGE WRAPPER */
 .imageWrapper {
   position: relative;
   width: 100%;
-  height: 220px;
+  height: 300px;
   overflow: hidden;
   border-radius: 10px 10px 0 0;
 }
-.catalogueImage { object-fit: cover; }
+
+.catalogueImage {
+  object-fit: cover;
+}
 
 /* PDF BADGE */
 .pdfBadge {
@@ -581,6 +567,7 @@
   gap: 8px;
   margin-top: 12px;
 }
+
 .downloadBtn {
   flex: 1;
   display: flex;
@@ -596,12 +583,29 @@
   cursor: pointer;
   transition: background 0.2s;
 }
-.downloadBtn:hover { background: #0052a3; }
+
+.downloadBtn:hover {
+  background: #0052a3;
+}
 
 /* ERRORS */
-.inputError input { border-color: #e53e3e !important; }
-.errorText { color: #e53e3e; font-size: 11px; margin-top: 3px; display: block; }
-.apiError  { color: #e53e3e; font-size: 13px; text-align: center; margin: 8px 0; }
+.inputError input {
+  border-color: #e53e3e !important;
+}
+
+.errorText {
+  color: #e53e3e;
+  font-size: 11px;
+  margin-top: 3px;
+  display: block;
+}
+
+.apiError {
+  color: #e53e3e;
+  font-size: 13px;
+  text-align: center;
+  margin: 8px 0;
+}
 
 /* SUBMIT */
 .submitBtn {
@@ -621,27 +625,95 @@
   margin-top: 16px;
   transition: background 0.2s;
 }
-.submitBtn:hover    { background: #0052a3; }
-.submitBtn:disabled { opacity: 0.7; cursor: not-allowed; }
+
+.submitBtn:hover {
+  background: #0052a3;
+}
+
+.submitBtn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
 
 /* SKELETON */
-.skeletonCard { background: #f5f5f5; border-radius: 12px; overflow: hidden; }
-.skeletonImage, .skeletonLine, .skeletonLineShort, .skeletonBtn {
+.skeletonCard {
+  background: #f5f5f5;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.skeletonImage,
+.skeletonLine,
+.skeletonLineShort,
+.skeletonBtn {
   background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
   background-size: 200% 100%;
   animation: shimmer 1.5s infinite;
 }
-.skeletonImage     { width: 100%; height: 200px; }
-.skeletonLine      { height: 16px; width: 80%; margin: 14px auto 8px; border-radius: 4px; }
-.skeletonLineShort { height: 12px; width: 60%; margin: 0 auto 12px; border-radius: 4px; }
-.skeletonBtn       { height: 36px; width: 80%; margin: 0 auto 16px; border-radius: 6px; }
+
+.skeletonImage {
+  width: 100%;
+  height: 200px;
+}
+
+.skeletonLine {
+  height: 16px;
+  width: 80%;
+  margin: 14px auto 8px;
+  border-radius: 4px;
+}
+
+.skeletonLineShort {
+  height: 12px;
+  width: 60%;
+  margin: 0 auto 12px;
+  border-radius: 4px;
+}
+
+.skeletonBtn {
+  height: 36px;
+  width: 80%;
+  margin: 0 auto 16px;
+  border-radius: 6px;
+}
+
 @keyframes shimmer {
-  0%   { background-position:  200% 0; }
-  100% { background-position: -200% 0; }
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: -200% 0;
+  }
 }
 
 /* STATES */
-.errorState { text-align: center; padding: 60px 20px; color: #e53e3e; }
-.retryBtn   { margin-top: 12px; padding: 10px 24px; background: #0066cc; color: #fff; border: none; border-radius: 6px; cursor: pointer; }
-.emptyState { text-align: center; padding: 60px 20px; color: #999; }
-.emptyState svg { font-size: 48px; margin-bottom: 12px; color: #ccc; display: block; margin: 0 auto 12px; }
+.errorState {
+  text-align: center;
+  padding: 60px 20px;
+  color: #e53e3e;
+}
+
+.retryBtn {
+  margin-top: 12px;
+  padding: 10px 24px;
+  background: #0066cc;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.emptyState {
+  text-align: center;
+  padding: 60px 20px;
+  color: #999;
+}
+
+.emptyState svg {
+  font-size: 48px;
+  margin-bottom: 12px;
+  color: #ccc;
+  display: block;
+  margin: 0 auto 12px;
+}

@@ -17,9 +17,9 @@
 
   /* NAVBAR */
 
-  --navbar-bg: rgba(10, 10, 10, 0.95);
+  --navbar-bg: #123C69;
 
-  --topbar-bg: #000000;
+  --topbar-bg: #123C69;
 
   --mobile-menu-bg: #111111;
 
@@ -311,23 +311,17 @@
 /* Button */
 
 .quoteBtn {
-
   border: none;
-
   background:
     linear-gradient(
       135deg,
       var(--primary-color),
       #ff6b6b
     );
-
   color: var(--white-color);
-
-  padding: 13px 24px;
-
-  border-radius: 14px;
-
-  font-size: 15px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 14px;
 
   font-weight: 600;
 
@@ -731,13 +725,13 @@
 
   color: #fff;
 
-  padding: 14px 24px;
+  padding: 10px 20px;
 
-  border-radius: 14px;
+  border-radius: 8px;
 
   font-size: 14px;
 
-  font-weight: 700;
+  font-weight: 600;
 
   backdrop-filter: blur(10px);
 

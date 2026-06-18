@@ -79,31 +79,15 @@ function CategoryStrip({ parentCategoryId }) {
   }
 
   return (
-    <section className={categoryStyles.productSection} style={{ paddingTop: 15, marginBottom: 15 }}>
-      <div className="row">
+    <section className={categoryStyles.productSection} style={{ padding: 15, marginBottom: 15 }}>
+      {/* <div className="row">
         {categories.map((item) => (
           <div className="col-lg-3 col-md-6 col-6 mb-4" key={item._id}>
             <Link
               href={{ pathname: '/products', query: { category: item._id } }}
               className={styles.productCard}
             >
-              {/* <div className={categoryStyles.imageWrapper}>
-                {item.image ? (
-                  <Image
-                    width={400}
-                    height={300}
-                    src={item?.image || dummyImage}
-                    alt={item.name}
-                    style={{ objectFit: 'cover', width: '100%', height: '100%' }}
-                  />
-                ) : (
-                  <div style={{ width: '100%', height: '100%', background: '#e5e7eb', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <i className="ri-image-line" style={{ fontSize: 32, color: '#9ca3af' }}></i>
-                  </div>
-                )}
-              </div> */}
               <div className={categoryStyles.imageWrapper}>
-                {/* ✅ Always shows image — falls back to dummyImage on error or empty src */}
                 <CardImage src={item.image} alt={item.name} />
               </div>
               <div className={categoryStyles.cardContent}>
@@ -113,7 +97,33 @@ function CategoryStrip({ parentCategoryId }) {
             </Link>
           </div>
         ))}
-      </div>
+      </div> */}
+       <div className="row">
+           {categories.map((item) => (
+            <div className="col-lg-3 col-md-6 col-6 mb-4" key={item._id}>
+              <Link href={{ pathname: '/products', query: { category: item._id } }}
+                className={styles.productCard}
+              >
+                <div className={styles.imageWrapper}>
+                  <Image
+                    width={400}
+                    height={300}
+                    src={item.image}
+                    alt={item.name}
+                  />
+                </div>
+                <div className={styles.cardContent}>
+                  <h3>
+                    {item.name}
+                  </h3>
+                  <span>
+                    Explore Products
+                  </span>
+                </div>
+              </Link>
+            </div>
+          ))}
+        </div>
     </section>
   );
 }
@@ -167,7 +177,7 @@ function SubCategoryStrip({ categoryId }) {
   }
 
   return (
-    <section className={categoryStyles.productSection} style={{ paddingTop: 15, marginBottom: 15 }}>
+    <section className={categoryStyles.productSection} style={{ padding: 15, marginBottom: 15 }}>
       <div className="row">
         {categories.map((item) => (
           <div className="col-lg-3 col-md-6 col-6 mb-4" key={item._id}>
@@ -190,8 +200,7 @@ function SubCategoryStrip({ categoryId }) {
                   </div>
                 )}
               </div> */}
-              <div className={categoryStyles.imageWrapper}>
-                {/* ✅ Always shows image — falls back to dummyImage on error or empty src */}
+              <div className={categoryStyles.imageWrapper}> 
                 <CardImage src={item.image} alt={item.name} />
               </div>
               <div className={categoryStyles.cardContent}>
@@ -296,7 +305,7 @@ function ProductPageContent() {
 
         {/* HEADING */}
         <div className={styles.heading}>
-          <span>TECHNOMAC PRODUCTS</span>
+          {/* <span>TECHNOMAC PRODUCTS</span> */}
           <h1>Explore Our {headingName}</h1>
           <p>
             Discover premium dental healthcare products and modern clinic
@@ -329,7 +338,7 @@ function ProductPageContent() {
           <div className={`row ${styles.productGrid}`}>
             {filteredProducts.length > 0 ? (
               filteredProducts.map((item) => (
-                <div className="col-lg-4 col-md-6 col-6 mb-4" key={item._id}>
+                <div className="col-lg-3 col-md-6 col-6 mb-4" key={item._id}>
                   <ProductCard item={item} />
                 </div>
               ))
@@ -337,7 +346,7 @@ function ProductPageContent() {
               <div className="col-12">
                 <div className={styles.emptyBox}>
                   <i className="ri-search-line" style={{ fontSize: 40, color: '#9ca3af', display: 'block', marginBottom: 12 }}></i>
-                  <h3>No Products Found</h3>
+                  <h3 style={{fontSize: '28px', margin: '0'}}>No Products Found</h3>
                   <p>Try searching another dental product.</p>
                 </div>
               </div>

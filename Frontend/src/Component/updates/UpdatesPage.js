@@ -5,6 +5,7 @@ import styles from "./UpdatesPage.module.css";
 import { FaArrowRight, FaClock, FaCalendarAlt, } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import { getData } from "../../services/FetchNodeServices";
+import Breadcrumb from "../common/Breadcrumb/Breadcrumb";
 
 export default function UpdatesPage() {
   const [update, setUpdate] = useState([])
@@ -48,15 +49,12 @@ export default function UpdatesPage() {
       <div className={styles.glow}></div>
 
       <div className="container">
+        <Breadcrumb pageName="Updates" />
+
 
         {/* TOP */}
 
         <div className={styles.heading}>
-
-          <span>
-            TECHNOMAC NEWS
-          </span>
-
           <h1>
             Latest Updates &
             Healthcare News
@@ -78,7 +76,7 @@ export default function UpdatesPage() {
           {update.map((item) => (
 
             <div
-              className="col-lg-4 col-md-6 mb-4"
+              className="col-lg-3 col-md-6 mb-4"
               key={item.id}
             >
 

@@ -11,8 +11,6 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { getData } from "../../../services/FetchNodeServices";
 
-
-
 export default function HomeProducts() {
   const [category, setCategory] = useState([])
   const [loading, setLoading] = useState(false)
@@ -47,22 +45,10 @@ export default function HomeProducts() {
   useEffect(() => {
     fetchAllCategory();
   }, []);
-  // console.log("SSSS==>response", category)
-
   return (
-
     <section className={styles.productSection}>
-
       <div className="container">
-
-        {/* HEADER */}
-
         <div className={styles.sectionHeader}>
-
-          <span>
-            Our Products
-          </span>
-
           <h2>
             Advanced Dental
             Equipment Solutions
@@ -79,56 +65,32 @@ export default function HomeProducts() {
         {/* GRID */}
 
         <div className="row">
-
           {category.map((item) => (
-
-            <div
-              className="col-lg-3 col-md-6 col-6 mb-4"
-              key={item._id}
-            >
-
-              <Link
-                href={{ pathname: "/products", query: { parentCategory: item?._id } }}
+            <div className="col-lg-3 col-md-6 col-6 mb-4" key={item._id}>
+              <Link href={{ pathname: "/products", query: { parentCategory: item?._id } }}
                 className={styles.productCard}
               >
-
-                {/* IMAGE */}
-
                 <div className={styles.imageWrapper}>
-
                   <Image
                     width={400}
                     height={300}
                     src={item.image}
                     alt={item.name}
                   />
-
                 </div>
-
                 <div className={styles.cardContent}>
-
                   <h3>
                     {item.name}
                   </h3>
-
                   <span>
                     Explore Products
                   </span>
-
                 </div>
-
               </Link>
-
             </div>
-
           ))}
-
         </div>
-
       </div>
-
     </section>
-
-
   );
 }

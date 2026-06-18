@@ -6,11 +6,9 @@
 
 .contactInfo {
   background:
-    linear-gradient(
-      135deg,
+    linear-gradient(135deg,
       #111,
-      #1b1b1b
-    );
+      #1b1b1b);
 
   border-radius: 30px;
 
@@ -35,7 +33,7 @@
   height: 300px;
 
   background:
-    rgba(229,57,53,0.15);
+    rgba(229, 57, 53, 0.15);
 
   border-radius: 50%;
 
@@ -50,7 +48,7 @@
   display: inline-block;
 
   background:
-    rgba(229,57,53,0.15);
+    rgba(229, 57, 53, 0.15);
 
   color: #ff6b6b;
 
@@ -71,23 +69,17 @@
 
 .contactInfo h2 {
 
-  font-size: 28px;
-
+  font-size: 18px;
   font-weight: 800;
-
   color: #fff;
-
   line-height: 1.1;
-
-  margin-bottom: 20px;
-
+  margin-bottom: 10px;
   position: relative;
-
   z-index: 2;
 }
 
 .contactInfo p {
-
+  font-size: 14px;
   color: #cfcfcf;
 
   line-height: 1.4;
@@ -118,13 +110,13 @@
 
 .icon {
 
-  min-width: 50px;
-  height: 50px;
+  min-width: 40px;
+  height: 40px;
 
   border-radius: 10px;
 
   background:
-    rgba(255,255,255,0.08);
+    rgba(255, 255, 255, 0.08);
 
   display: flex;
 
@@ -134,16 +126,16 @@
 
   color: #ff4d5a;
 
-  font-size: 20px;
+  font-size: 16px;
 }
 
 .infoBox h4 {
 
   color: #fff;
 
-  font-size: 18px;
+  font-size: 14px;
 
-  margin-bottom: 8px;
+  margin-bottom: 0px;
 }
 
 .infoBox a,
@@ -167,25 +159,21 @@
   padding: 30px;
 
   box-shadow:
-    0 10px 40px rgba(0,0,0,0.05);
+    0 10px 40px rgba(0, 0, 0, 0.05);
 }
 
 /* HEADER */
 
 .formHeader span {
-
   color: var(--theme-color);
-
   font-weight: 600;
 }
 
 .formHeader h3 {
 
-  font-size: 28px;
-
+  font-size: var(--all-heading-font);
   font-weight: 800;
-
-  margin: 0px 0 20px;
+  margin: 0px 0 10px;
 }
 
 /* INPUT */
@@ -211,7 +199,7 @@
   width: 100%;
   border: 1px solid #e5e5e5;
   border-radius: 10px;
-  padding: 10px 20px;
+  padding: 7px 14px;
   outline: none;
   transition: 0.3s;
   background: #fafafa;
@@ -233,29 +221,21 @@
 
   flex-wrap: wrap;
 
-  margin-top: 10px;
+  margin-top: 0px;
 }
 
 .submitBtn,
 .whatsappBtn {
-
   border: none;
-
-  padding: 15px 28px;
-
-  border-radius: 16px;
-
-  font-weight: 600;
-
-  display: flex;
-
+  border-radius: 10px;
+  font-size: 12px;
   align-items: center;
-
   gap: 10px;
-
-  transition: 0.3s;
-
+  padding: 10px 20px;
+  font-weight: 600;
   text-decoration: none;
+  transition: all .3s;
+  display: flex;
 }
 
 .submitBtn {
@@ -294,8 +274,8 @@
 @media(max-width: 576px) {
 
   .inputGroup {
-  margin-bottom: 10px;
-}
+    margin-bottom: 10px;
+  }
 
   .contactSection {
     padding: 90px 0 0px;
@@ -324,27 +304,29 @@
   .whatsappBtn {
     justify-content: center;
   }
+
   .contactInfo p {
-  margin-bottom: 10px;
-  font-size: 14px;
-}
+    margin-bottom: 10px;
+    font-size: 14px;
+  }
+
   .contactInfo a {
-  font-size: 14px;
-}
+    font-size: 14px;
+  }
 
-.infoBox {
-  gap: 18px;
-  margin-bottom: 10px;
-}
+  .infoBox {
+    gap: 18px;
+    margin-bottom: 10px;
+  }
 
 
-.inputGroup input,
-.inputGroup textarea {
+  .inputGroup input,
+  .inputGroup textarea {
 
-  border-radius: 12px;
+    border-radius: 12px;
 
-  padding: 10px 15px;
-}
+    padding: 10px 15px;
+  }
 
 }
 

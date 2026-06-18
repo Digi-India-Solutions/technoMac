@@ -24,9 +24,9 @@ export default function TrustSection() {
 
             <div className={styles.leftContent}>
 
-              <span className={styles.tag}>
+              {/* <span className={styles.tag}>
                 Trusted Dental Partner
-              </span>
+              </span> */}
 
               <h2>
                 Shaping Dentistry

@@ -88,9 +88,8 @@
 }
 
 .sectionHeader h2 {
-  color: #111;
-  margin-bottom: 24px;
-  font-size: 40px;
+  margin-bottom: 10px;
+  font-size: var(--all-heading-font);
   font-weight: 900;
   line-height: 0.5;
 }
@@ -101,9 +100,7 @@
 
   margin: auto;
 
-  color: #666;
-
-  font-size: 17px;
+  color: #1E293B;
 
   line-height: 1.9;
 }
@@ -300,13 +297,13 @@ content: "TECHNOMAC";
 
 .cardContent h3 {
 
-  font-size: 18px;
+  font-size: 16px;
 
-  font-weight: 800;
+  font-weight: 700;
 
   line-height: 1.2;
 
-  color: #111;
+  color: #334155;
 
   margin-bottom: 5px;
 }

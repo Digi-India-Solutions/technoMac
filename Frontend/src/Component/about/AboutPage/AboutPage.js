@@ -7,19 +7,12 @@ import Breadcrumb from "../../common/Breadcrumb/Breadcrumb";
 export default function AboutPage() {
 
   return (
-    <section className="allSections">
+    <section className={styles.aboutSection}>
       <div className="container">
         <Breadcrumb pageName="About Us" />
 
-        {/* HERO */}
           <div className={styles.aboutHero}>
-
         <div className={styles.heroContent}>
-
-          <span className={styles.tag}>
-            About TECHNOMAC
-          </span>
-
           <h1>
             Engineering Smiles.
             Empowering Dentists.
@@ -101,11 +94,6 @@ export default function AboutPage() {
         <div className="container">
 
           <div className={styles.sectionHeading}>
-
-            <span>
-              Why Dentists Choose TECHNOMAC
-            </span>
-
             <h2>
               Trusted Across India
             </h2>
@@ -116,7 +104,7 @@ export default function AboutPage() {
 
             {/* CARD */}
 
-            <div className="col-lg-6 mb-4">
+            <div className="col-lg-3 col-6 mb-4">
 
               <div className={styles.featureCard}>
 
@@ -138,7 +126,7 @@ export default function AboutPage() {
 
             {/* CARD */}
 
-            <div className="col-lg-6 mb-4">
+            <div className="col-lg-3 col-6 mb-4">
 
               <div className={styles.featureCard}>
 
@@ -160,7 +148,7 @@ export default function AboutPage() {
 
             {/* CARD */}
 
-            <div className="col-lg-6 mb-4">
+            <div className="col-lg-3 col-6 mb-4">
 
               <div className={styles.featureCard}>
 
@@ -182,7 +170,7 @@ export default function AboutPage() {
 
             {/* CARD */}
 
-            <div className="col-lg-6 mb-4">
+            <div className="col-lg-3 col-6 mb-4">
 
               <div className={styles.featureCard}>
 
@@ -215,11 +203,6 @@ export default function AboutPage() {
         <div className="container">
 
           <div className={styles.sectionHeading}>
-
-            <span>
-              Our Products
-            </span>
-
             <h2>
               Complete Dental Equipment Range
             </h2>

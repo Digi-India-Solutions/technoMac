@@ -2,7 +2,7 @@
 
   position: relative;
 
-  padding: 150px 0 100px;
+  padding: 90px 0 0px;
 
   background: #f8f8f8;
 
@@ -43,7 +43,7 @@
 
   max-width: 850px;
 
-  margin: auto auto 70px;
+  margin: auto auto 20px;
 }
 
 .heading span {
@@ -68,24 +68,17 @@
 
 .heading h1 {
 
-  font-size: 40px;
+  font-size: var(--all-heading-font);
 
-  font-weight: 900;
+  font-weight: 800;
 
   line-height: 1.05;
 
   color: #111;
-
-  margin-bottom: 24px;
 }
 
 .heading p {
-
-  color: #666;
-
-  font-size: 17px;
-
-  line-height: 1.9;
+  color: #1E293B;
 }
 
 /* POLICY GRID */
@@ -154,7 +147,7 @@
 
 .policyCard p {
 
-  color: #666;
+  color: #1E293B;
 
   font-size: 15px;
 

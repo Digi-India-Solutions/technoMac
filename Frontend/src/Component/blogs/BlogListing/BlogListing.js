@@ -12,15 +12,8 @@ export default function BlogListing() {
     <section className={styles.blogSection}>
 
       <div className="container">
-
         <Breadcrumb pageName="Blogs" />
-
         <div className={styles.heading}>
-
-          <span>
-            TECHNOMAC BLOGS
-          </span>
-
           <h2>
             Latest Dental
             Insights & News
@@ -33,7 +26,7 @@ export default function BlogListing() {
           {blogs.map((item) => (
 
             <div
-              className="col-lg-4 col-md-6 col-6 mb-4"
+              className="col-lg-3 col-md-6 col-6 mb-4"
               key={item.id}
             >
 

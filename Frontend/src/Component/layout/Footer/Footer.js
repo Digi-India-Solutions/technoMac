@@ -317,7 +317,7 @@ export default function Footer() {
                   alt="TECHNOMAC Logo"
                   width={150}
                   height={50}
-                  style={{ objectFit: "contain" }} // ✅ fixed objectFit warning
+                  style={{ objectFit: "cover" }}
                 />
                 <p>
                   Premium dental healthcare equipment supplier providing
@@ -413,8 +413,6 @@ export default function Footer() {
                     </>
                   )}
                 </form>
-
-                <small>No spam. Only useful updates.</small>
               </div>
             </div>
 

@@ -2,7 +2,7 @@
 
   position: relative;
 
-  padding: 100px 0 10px;
+  padding: 90px 0 10px;
 
   background:
     linear-gradient(180deg,
@@ -68,18 +68,12 @@
   line-height: 1;
 
   color: #111;
-  margin-top: 1rem;
   margin-bottom: 5px;
 }
 
 .content p {
-
-  color: #666;
-
-  font-size: 16px;
-
-  line-height: 1.9;
-
+  color: #1E293B;
+  font-size: 15px;
   margin-bottom: 10px;
 }
 
@@ -88,22 +82,16 @@
 .featureList {
 
   display: flex;
-
-  flex-direction: column;
-
-  gap: 0px;
-
+  flex-wrap: wrap;
+  gap: 10px;
   margin-bottom: 10px;
 }
 
 .featureItem {
 
   display: flex;
-
   align-items: center;
-
-  gap: 14px;
-
+  gap: 5px;
   font-weight: 600;
 
   color: #222;
@@ -265,7 +253,7 @@
 
 .aboutCard p {
 
-  color: #666;
+  color: #1E293B;
 
   line-height: 1.9;
 }
@@ -300,10 +288,8 @@
 }
 
 .sectionHeading h2 {
-
-  font-size: 28px;
-
-  font-weight: 900;
+  font-size: var(--all-heading-font);
+  font-weight: 800;
 }
 
 /* PROCESS CARD */
@@ -355,7 +341,7 @@
 
 .processCard p {
 
-  color: #666;
+  color: #1E293B;
 
   line-height: 1.8;
 }
@@ -393,15 +379,15 @@
 }
 
 .solutionCard h3 {
-
-  font-size: 20px;
-  font-weight: 800;
+  color: var(--theme-color);
+  font-size: 16px;
+  font-weight: 600;
   margin-bottom: 10px;
 }
 
 .solutionCard p {
 
-  color: #666;
+  color: #1E293B;
 
   line-height: 1.9;
 }
@@ -442,18 +428,14 @@
 
 .includeContent h2 {
 
-  font-size: 28px;
-  font-weight: 900;
-  line-height: 1.1;
+  font-size: var(--all-heading-font);
+  font-weight: 800;
   margin-bottom: 10px;
 }
 
 .includeContent p {
 
-  color: #666;
-
-  line-height: 1.9;
-
+  color: #1E293B;
   margin-bottom: 10px;
 }
 
@@ -592,24 +574,17 @@
 }
 
 .ctaCard button {
-
-  height: 62px;
-
+  height: 40px;
   border: none;
-
   padding: 0 35px;
-
-  border-radius: 18px;
+  border-radius: 12px;
 
   background:
     linear-gradient(135deg,
       var(--theme-color),
       #ff6b6b);
-
   color: #fff;
-
   font-weight: 700;
-
   transition: 0.4s ease;
 }
 
@@ -724,7 +699,7 @@
 
 .resultTop h2 {
 
-  font-size: 40px;
+  font-size: var(--all-heading-font);
 
   font-weight: 900;
 
@@ -735,7 +710,7 @@
 
 .resultTop p {
 
-  color: #666;
+  color: #1E293B;
 }
 
 /* STATS */
@@ -760,7 +735,7 @@
 
   margin-top: 12px;
 
-  font-size: 30px;
+  font-size: var(--all-heading-font);
 
   font-weight: 800;
 }
@@ -791,7 +766,7 @@
 
   margin-top: 14px;
 
-  font-size: 30px;
+  font-size: var(--all-heading-font);
 
   font-weight: 900;
 
@@ -802,7 +777,7 @@
 
   margin: 14px 0;
 
-  font-size: 18px;
+  font-size: 16px;
 
   font-weight: 800;
 

@@ -66,21 +66,17 @@
 }
 
 .heading h2 {
-
     font-size: 28px;
-
     font-weight: 900;
-
     color: #111;
-
-    margin-bottom: 5px;
+    margin-bottom: 0px;
 }
 
 .heading p {
 
     font-size: 17px;
 
-    color: #666;
+    color: #1E293B;
 
     line-height: 1.8;
 }
@@ -133,6 +129,53 @@
 .clientCard:hover .clientLogo {
 
     transform: scale(1.05);
+}
+
+.clientSlider {
+
+  padding: 10px 0 30px;
+}
+
+.logoWrapper {
+
+  position: relative;
+
+  width: 100%;
+
+  height: 100px;
+}
+
+.clientCard {
+  background: #fff;
+  border-radius: 20px;
+  padding: 10px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #f2f2f2;
+  transition: 0.3s ease;
+}
+
+.clientCard:hover {
+
+  transform: translateY(-6px);
+
+  box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+}
+
+.clientLogo {
+
+  object-fit: cover;
+
+  filter: grayscale(100%);
+
+  transition: 0.3s ease;
+}
+
+.clientCard:hover .clientLogo {
+
+  filter: grayscale(0%);
 }
 
 /* RESPONSIVE */

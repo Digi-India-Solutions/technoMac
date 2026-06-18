@@ -62,7 +62,7 @@ export default function ProductDetails() {
   const filterRelatedProducts = relatedProducts.filter((item) => item?._id !== product?._id)
   return (
 
-    <section className="allSections">
+    <section className={styles.detailsPage}>
       <div className="container">
         <Breadcrumb pageName={product?.name} />
 
