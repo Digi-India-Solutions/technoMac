@@ -2,41 +2,7 @@
    ROOT VARIABLES
 ========================= */
 
-:root {
 
-  /* MAIN COLORS */
-
-  --primary-color: var(--theme-color);
-  --secondary-color: #111111;
-
-  --white-color: #ffffff;
-
-  --text-color: #d6d6d6;
-
-  --hover-color: #ff5a5f;
-
-  /* NAVBAR */
-
-  --navbar-bg: #123C69;
-
-  --topbar-bg: #123C69;
-
-  --mobile-menu-bg: #111111;
-
-  /* SHADOW */
-
-  --box-shadow:
-    0 10px 35px rgba(0,0,0,0.25);
-
-  /* BORDER */
-
-  --border-color:
-    rgba(255,255,255,0.08);
-
-  /* TRANSITION */
-
-  --transition: 0.3s ease;
-}
 
 /* =========================
    HEADER
