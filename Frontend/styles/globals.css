@@ -1,7 +1,46 @@
-:root {
+/* :root {
   --theme-color: #e60415;
   --all-heading-font: 28px;
   --text-color: #334155;
+} */
+
+:root {
+
+  /* MAIN COLORS */
+  --theme-color: #e60415;
+  --primary-color: var(--theme-color);
+  --secondary-color: #111111;
+
+  --white-color: #ffffff;
+
+  --all-heading-font: 28px;
+
+  /* --text-color: #d6d6d6; */
+  --text-color: #334155;
+
+  --hover-color: #ff5a5f;
+
+  /* NAVBAR */
+
+  --navbar-bg: #123C69;
+
+  --topbar-bg: #123C69;
+
+  --mobile-menu-bg: #111111;
+
+  /* SHADOW */
+
+  --box-shadow:
+    0 10px 35px rgba(0, 0, 0, 0.25);
+
+  /* BORDER */
+
+  --border-color:
+    rgba(255, 255, 255, 0.08);
+
+  /* TRANSITION */
+
+  --transition: 0.3s ease;
 }
 
 body {
@@ -49,7 +88,7 @@ body {
   letter-spacing: -2px;
 }
 
-.hero-content p { 
+.hero-content p {
   line-height: 1.8;
   color: #1E293B;
   max-width: 550px;
@@ -57,7 +96,7 @@ body {
 
 /* Button */
 
-.hero-btn { 
+.hero-btn {
   border: none;
   background: var(--theme-color);
   color: #fff;
@@ -199,7 +238,7 @@ body {
     transform: translateY(0px);
   }
 }
- 
+
 /* =========================
    LAPTOP
 ========================= */
