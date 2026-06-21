@@ -236,12 +236,7 @@
   margin-top: 30px;
   overflow: hidden;
   padding: 30px 0;
-  background:
-    linear-gradient(
-      135deg,
-      #0f0f0f 0%,
-      #181818 100%
-    );
+  background:var(--topbar-bg);
   border-top:1px solid rgba(255,255,255,0.05);
   border-bottom:1px solid rgba(255,255,255,0.05);
 }

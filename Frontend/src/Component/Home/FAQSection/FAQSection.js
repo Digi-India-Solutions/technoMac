@@ -76,7 +76,7 @@ export default function FAQSection() {
                 services.
               </p>
 
-              <button onclick={() => window.location.href = "/contact"}>
+              <button>
                 Contact Support
               </button>
 
@@ -87,7 +87,8 @@ export default function FAQSection() {
           {/* RIGHT */}
 
           <div className="col-lg-7">
-
+          <div className={styles.faqWrapperScroller}>
+            
             <div className={styles.faqWrapper}>
 
               {faq.map((item, index) => (
@@ -145,6 +146,7 @@ export default function FAQSection() {
 
             </div>
 
+          </div>
           </div>
 
         </div>

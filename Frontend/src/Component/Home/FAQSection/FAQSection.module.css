@@ -147,11 +147,9 @@
 /* FAQ WRAPPER */
 
 .faqWrapper {
-
   display: flex;
-
   flex-direction: column;
-
+  padding: 10px;
   gap: 8px;
 }
 
@@ -289,6 +287,23 @@
   padding: 0 10px 28px;
 }
 
+.faqWrapperScroller{
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.faqWrapperScroller::-webkit-scrollbar {
+  width: 6px;
+}
+
+.faqWrapperScroller::-webkit-scrollbar-thumb {
+  background: var(--topbar-bg);
+  border-radius: 10px;
+}
+
+.faqWrapperScroller::-webkit-scrollbar-track {
+  background: transparent;
+}
 /* TABLET */
 
 @media (max-width: 991px) {

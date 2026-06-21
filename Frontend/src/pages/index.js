@@ -104,10 +104,9 @@ export default function Home() {
       </div> */}
       <OurClients />
       {/* <CTASection /> */}
-      <EnquirySection />
       <ReviewSection />
       <FAQSection />
-
+      <EnquirySection />
     </Layout>
   );
 }
