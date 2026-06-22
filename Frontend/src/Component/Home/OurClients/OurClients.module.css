@@ -68,7 +68,7 @@
 .heading h2 {
     font-size: 28px;
     font-weight: 900;
-    color: #111;
+    color: var(--navbar-bg);
     margin-bottom: 0px;
 }
 
@@ -103,7 +103,7 @@
 
     border:
         1px solid rgba(0, 0, 0, 0.04);
-        flex-direction: column;
+    flex-direction: column;
 }
 
 .clientCard:hover {
@@ -133,50 +133,50 @@
 
 .clientSlider {
 
-  padding: 10px 0 30px;
+    padding: 10px 0 30px;
 }
 
 .logoWrapper {
 
-  position: relative;
+    position: relative;
 
-  width: 100%;
+    width: 100%;
 
-  height: 100px;
+    height: 100px;
 }
 
 .clientCard {
-  background: #fff;
-  border-radius: 20px;
-  padding: 10px;
-  height: 120px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid #f2f2f2;
-  transition: 0.3s ease;
+    background: #fff;
+    border-radius: 20px;
+    padding: 10px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #f2f2f2;
+    transition: 0.3s ease;
 }
 
 .clientCard:hover {
 
-  transform: translateY(-6px);
+    transform: translateY(-6px);
 
-  box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
 }
 
 .clientLogo {
 
-  object-fit: cover;
+    object-fit: cover;
 
-  filter: grayscale(100%);
+    /* filter: grayscale(100%); */
 
-  transition: 0.3s ease;
+    transition: 0.3s ease;
 }
 
-.clientCard:hover .clientLogo {
+/* .clientCard:hover .clientLogo {
 
-  filter: grayscale(0%);
-}
+    filter: grayscale(0%);
+} */
 
 /* RESPONSIVE */
 
@@ -194,18 +194,21 @@
 }
 
 @media(max-width: 576px) {
+    .logoWrapper {
+        width: 90%;
+    }
+
     .clientLogo {
         object-fit: fill;
     }
 
     .clientSection {
 
-        padding: 30px 0;
+        padding: 30px 0 0;
     }
 
     .heading {
-
-        margin-bottom: 40px;
+        margin-bottom: 0px;
     }
 
     .heading h2 {

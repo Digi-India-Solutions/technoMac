@@ -91,7 +91,7 @@
 
   font-size: var(--all-heading-font);
   font-weight: 800;
-  color: #111827;
+  color: var(--topbar-bg);
 }
 
 .leftContent p {
