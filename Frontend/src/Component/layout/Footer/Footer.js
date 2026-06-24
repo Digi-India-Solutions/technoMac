@@ -363,7 +363,7 @@ export default function Footer() {
                     <a href="mailto:info@technomac.in">info@technomac.in</a>
                   </li>
                   <li>
-                    <FaMapMarkerAlt />
+                    <FaMapMarkerAlt style={{fontSize:"40px"}} />
                     <span>
                       Plot no.-88, Pocket-L, Sector 1, Bawana Industrial Area,
                       DSIIDC Sub-city, New Delhi-110039, India

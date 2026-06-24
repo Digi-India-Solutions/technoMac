@@ -107,9 +107,11 @@ export default function AboutPage() {
             <div className="col-lg-3 col-6 mb-4">
 
               <div className={styles.featureCard}>
-
+                
+                <div className="d-flex justify-content-center">
                 <div className={styles.iconBox}>
                   <FaTools />
+                </div>
                 </div>
 
                 <h3>
@@ -129,9 +131,10 @@ export default function AboutPage() {
             <div className="col-lg-3 col-6 mb-4">
 
               <div className={styles.featureCard}>
-
+                <div className="d-flex justify-content-center">
                 <div className={styles.iconBox}>
                   <FaUserMd />
+                </div>
                 </div>
 
                 <h3>
@@ -151,9 +154,10 @@ export default function AboutPage() {
             <div className="col-lg-3 col-6 mb-4">
 
               <div className={styles.featureCard}>
-
+                <div className="d-flex justify-content-center">
                 <div className={styles.iconBox}>
                   <FaShieldAlt />
+                </div>
                 </div>
 
                 <h3>
@@ -173,9 +177,10 @@ export default function AboutPage() {
             <div className="col-lg-3 col-6 mb-4">
 
               <div className={styles.featureCard}>
-
+                <div className="d-flex justify-content-center">
                 <div className={styles.iconBox}>
-                  <FaTruckMedical />
+                   <FaTruckMedical />
+                </div>
                 </div>
 
                 <h3>

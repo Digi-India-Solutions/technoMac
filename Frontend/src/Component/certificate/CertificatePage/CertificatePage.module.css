@@ -1,7 +1,7 @@
     .certificateSection {
         position: relative;
         padding: 90px 0 0px;
-        background: linear-gradient(180deg, #ffffff,#f8f8f8);
+        background: linear-gradient(180deg, #ffffff, #f8f8f8);
         overflow: hidden;
     }
 
@@ -32,21 +32,9 @@
         z-index: 2;
     }
 
-    .heading span {
-        display: inline-block;
-        background:
-            rgba(229, 57, 53, 0.08);
-        color: var(--theme-color);
-        padding: 10px 20px;
-        border-radius: 50px;
-        font-size: 12px;
-        font-weight: 700;
-        letter-spacing: 1px;
-        margin-bottom: 10px;
-    }
 
     .heading h1 {
-        color: #111;
+        color: var(--heading);
         margin-bottom: 14px;
         font-size: var(--all-heading-font);
         font-weight: 800;
@@ -91,23 +79,21 @@
 
         border-radius: 24px;
 
-        background:
-            linear-gradient(135deg,
-                var(--theme-color),
-                #ff6b6b);
+        background:var(--heading);
 
         color: #fff;
 
-        margin-bottom: 24px;
+        margin-bottom: 15px;
     }
 
     .infoCard h4 {
 
-        font-size: 28px;
+        font-size: 22px;
 
-        font-weight: 800;
+        font-weight: 600;
 
-        margin-bottom: 15px;
+        margin-bottom: 0px;
+        color: var(--gradient-theme-color);
     }
 
     .infoCard p {
@@ -161,11 +147,11 @@
 
         font-size: 16px;
 
-        font-weight: 800;
+        font-weight: 600;
 
         margin-bottom: 12px;
 
-        color: #111;
+        color: var(--heading);
     }
 
     .cardContent span {
@@ -185,193 +171,194 @@
 
         font-weight: 700;
     }
+
     /* FRAME */
 
-.frame {
+    .frame {
 
-    position: relative;
+        position: relative;
 
-    cursor: pointer;
+        cursor: pointer;
 
-    overflow: hidden;
+        overflow: hidden;
 
-    border-radius: 22px;
-}
-
-/* VERIFIED BADGE */
-
-.verifyBadge {
-
-    position: absolute;
-
-    top: 14px;
-    right: 14px;
-
-    z-index: 3;
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 6px;
-
-    padding: 8px 14px;
-
-    background: rgba(255,255,255,0.95);
-
-    color: #16a34a;
-
-    border-radius: 50px;
-
-    font-size: 12px;
-
-    font-weight: 700;
-
-    box-shadow:
-        0 8px 20px rgba(0,0,0,0.12);
-}
-
-.verifyBadge svg {
-
-    font-size: 14px;
-}
-
-/* MODAL */
-
-.modalOverlay {
-
-    position: fixed;
-
-    inset: 0;
-
-    background: rgba(0,0,0,0.85);
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    padding: 20px;
-
-    z-index: 9999;
-
-    animation: fadeIn .3s ease;
-}
-
-.modalContent {
-
-    position: relative;
-
-    max-width: 1000px;
-
-    width: 100%;
-
-    text-align: center;
-}
-
-.modalImage {
-
-    width: 100%;
-
-    height: auto;
-
-    max-height: 85vh;
-
-    object-fit: contain;
-
-    border-radius: 20px;
-
-    background: #fff;
-}
-
-.modalContent h3 {
-
-    color: #fff;
-
-    font-size: 22px;
-
-    font-weight: 700;
-
-    margin-top: 20px;
-}
-
-/* CLOSE BUTTON */
-
-.closeBtn {
-
-    position: absolute;
-
-    top: -18px;
-    right: -18px;
-
-    width: 44px;
-    height: 44px;
-
-    border: none;
-
-    border-radius: 50%;
-
-    background: #fff;
-
-    color: #111;
-
-    cursor: pointer;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    font-size: 18px;
-
-    transition: 0.3s ease;
-}
-
-.closeBtn:hover {
-
-    background: var(--theme-color);
-
-    color: #fff;
-}
-
-@keyframes fadeIn {
-
-    from {
-
-        opacity: 0;
+        border-radius: 22px;
     }
 
-    to {
-
-        opacity: 1;
-    }
-}
-
-@media (max-width: 576px) {
+    /* VERIFIED BADGE */
 
     .verifyBadge {
 
-        top: 10px;
-        right: 10px;
+        position: absolute;
 
-        padding: 6px 10px;
+        top: 14px;
+        right: 14px;
 
-        font-size: 11px;
+        z-index: 3;
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 6px;
+
+        padding: 8px 14px;
+
+        background: var(--gradient-theme-color);
+
+        color: white;
+
+        border-radius: 50px;
+
+        font-size: 12px;
+
+        font-weight: 700;
+
+        box-shadow:
+            0 8px 20px rgba(0, 0, 0, 0.12);
+    }
+
+    .verifyBadge svg {
+
+        font-size: 14px;
+    }
+
+    /* MODAL */
+
+    .modalOverlay {
+
+        position: fixed;
+
+        inset: 0;
+
+        background: rgba(0, 0, 0, 0.85);
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        padding: 20px;
+
+        z-index: 9999;
+
+        animation: fadeIn .3s ease;
+    }
+
+    .modalContent {
+
+        position: relative;
+
+        max-width: 1000px;
+
+        width: 100%;
+
+        text-align: center;
+    }
+
+    .modalImage {
+
+        width: 100%;
+
+        height: auto;
+
+        max-height: 85vh;
+
+        object-fit: contain;
+
+        border-radius: 20px;
+
+        background: #fff;
     }
 
     .modalContent h3 {
 
-        font-size: 18px;
+        color: #fff;
+
+        font-size: 22px;
+
+        font-weight: 700;
+
+        margin-top: 20px;
     }
+
+    /* CLOSE BUTTON */
 
     .closeBtn {
 
-        top: -10px;
-        right: -5px;
+        position: absolute;
+
+        top: -18px;
+        right: -18px;
+
+        width: 44px;
+        height: 44px;
+
+        border: none;
+
+        border-radius: 50%;
+
+        background: #fff;
+
+        color: #111;
+
+        cursor: pointer;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        font-size: 18px;
+
+        transition: 0.3s ease;
     }
-}
+
+    .closeBtn:hover {
+
+        background: var(--theme-color);
+
+        color: #fff;
+    }
+
+    @keyframes fadeIn {
+
+        from {
+
+            opacity: 0;
+        }
+
+        to {
+
+            opacity: 1;
+        }
+    }
+
+    @media (max-width: 576px) {
+
+        .verifyBadge {
+
+            top: 10px;
+            right: 10px;
+
+            padding: 6px 10px;
+
+            font-size: 11px;
+        }
+
+        .modalContent h3 {
+
+            font-size: 18px;
+        }
+
+        .closeBtn {
+
+            top: -10px;
+            right: -5px;
+        }
+    }
 
     /* RESPONSIVE */
 
@@ -395,16 +382,7 @@
 
     @media(max-width: 576px) {
 
-        .heading span {
-
-        padding: 6px 12px;
-        font-size: 12px;
-        font-weight: 700;
-        margin-bottom: 10px;
-    }
-
         .certificateSection {
-
             padding: 90px 0 0px;
         }
 

@@ -6,6 +6,7 @@
       #f6f7fb 100%);
   position: relative;
   overflow: hidden;
+  border-radius: 30px;
 }
 
 /* BACKGROUND GLOW */

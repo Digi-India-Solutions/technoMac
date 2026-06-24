@@ -41,39 +41,19 @@
 
 /* CONTENT */
 
-.content span {
-
-  display: inline-block;
-  margin-bottom: 0.5rem;
-  background:
-    rgba(229, 57, 53, 0.10);
-
-  color: var(--theme-color);
-
-  padding: 10px 18px;
-
-  border-radius: 50px;
-
-  font-size: 12px;
-
-  font-weight: 700;
-
-  /* margin-bottom: 22px; */
-}
-
 .content h1 {
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 900;
 
   line-height: 1;
 
-  color: #111;
+  color: var(--heading);
   margin-bottom: 5px;
 }
 
 .content p {
   color: #1E293B;
-  font-size: 15px;
+  font-size: 14px;
   margin-bottom: 10px;
 }
 
@@ -99,7 +79,7 @@
 
 .featureItem svg {
 
-  color: var(--theme-color);
+  color: var(--heading);
 
   font-size: 18px;
 }
@@ -154,7 +134,7 @@
 
 .secondaryBtn {
 
-  background: #111;
+  background: var(--heading);
 
   color: #fff;
 }
@@ -205,11 +185,11 @@
 
 .floatingCard h4 {
 
-  font-size: 34px;
+  font-size: 28px;
 
-  font-weight: 900;
+  font-weight: 800;
 
-  color: var(--theme-color);
+  color: var(--heading);
 
   margin-bottom: 5px;
 }
@@ -267,29 +247,11 @@
   margin-bottom: 20px;
 }
 
-.sectionHeading span {
-
-  display: inline-block;
-
-  background:
-    rgba(229, 57, 53, 0.10);
-
-  color: var(--theme-color);
-
-  padding: 10px 18px;
-
-  border-radius: 50px;
-
-  font-size: 12px;
-
-  font-weight: 700;
-
-  margin-bottom: 18px;
-}
 
 .sectionHeading h2 {
   font-size: var(--all-heading-font);
   font-weight: 800;
+  color: var(--heading);
 }
 
 /* PROCESS CARD */
@@ -299,8 +261,9 @@
   background: #fff;
 
   border-radius: 30px;
+  text-align: center;
 
-  padding: 20px;
+  padding: 20px 10px 0;
 
   height: 100%;
 
@@ -317,14 +280,14 @@
 }
 
 .number {
-  background: linear-gradient(135deg, var(--theme-color), #ff6b6b);
+  background: var(--gradient-theme-color);
   color: #fff;
-  border-radius: 10px;
+  border-radius: 50%;
   justify-content: center;
   align-items: center;
   width: 50px;
   height: 50px;
-  margin-bottom: 22px;
+  margin-bottom: 10px;
   font-size: 20px;
   font-weight: 800;
   display: flex;
@@ -333,6 +296,7 @@
 .processCard h4 {
 
   font-size: 18px;
+  color: var(--theme-color);
 
   font-weight: 800;
 
@@ -379,8 +343,8 @@
 }
 
 .solutionCard h3 {
-  color: var(--theme-color);
-  font-size: 16px;
+  color: var(--heading);
+  font-size: 18px;
   font-weight: 600;
   margin-bottom: 10px;
 }
@@ -388,8 +352,6 @@
 .solutionCard p {
 
   color: #1E293B;
-
-  line-height: 1.9;
 }
 
 /* INCLUDE */
@@ -406,31 +368,12 @@
   border-radius: 36px;
 }
 
-.includeContent span {
-
-  display: inline-block;
-
-  background:
-    rgba(229, 57, 53, 0.10);
-
-  color: var(--theme-color);
-
-  padding: 10px 18px;
-
-  border-radius: 50px;
-
-  font-size: 12px;
-
-  font-weight: 700;
-
-  margin-bottom: 10px;
-}
 
 .includeContent h2 {
-
   font-size: var(--all-heading-font);
-  font-weight: 800;
-  margin-bottom: 10px;
+  font-weight: 600;
+  color: var(--heading);
+  margin-bottom: 0px;
 }
 
 .includeContent p {
@@ -451,7 +394,7 @@
 
 .includeList div {
   background: #fff;
-  padding: 6px 12px;
+  padding: 10px 12px;
   font-size: 14px;
   border-radius: 10px;
   font-weight: 600;
@@ -468,11 +411,8 @@
 
 .equipmentCard {
 
-  background:
-    linear-gradient(135deg,
-      #ffffff,
-      #f8f8f8);
-
+  background:var(--gradient-theme-color);
+  color: white;
   border-radius: 28px;
 
   height: 150px;
@@ -520,10 +460,7 @@
 
 .ctaCard {
 
-  background:
-    linear-gradient(135deg,
-      #111,
-      #1d1d1d);
+  background:var(--gradient-theme-color);
 
   border-radius: 40px;
 
@@ -540,10 +477,9 @@
 
   display: inline-block;
 
-  background:
-    rgba(229, 57, 53, 0.15);
+  background:var(--theme-color);
 
-  color: #ff6b6b;
+  color: white;
 
   padding: 10px 18px;
 

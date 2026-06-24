@@ -17,7 +17,7 @@ export default function PrivacyPolicy() {
 
         <div className={styles.heading}>
 
-          <span>
+          <span className="hero-tag">
             TECHNOMAC POLICY
           </span>
 

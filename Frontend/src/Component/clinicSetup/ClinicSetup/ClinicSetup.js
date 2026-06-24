@@ -1113,7 +1113,7 @@ export default function ClinicSetup() {
                   {services.map((item, index) => (
                     <div className={styles.featureItem} key={index}>
                       <FaCheckCircle />
-                      <span>{item}</span>
+                      <span className="hero-tag mb-0">{item}</span>
                     </div>
                   ))}
                 </div>
@@ -1170,7 +1170,7 @@ export default function ClinicSetup() {
         {/* SOLUTIONS */}
         <div className={styles.solutionSection}>
           <div className={styles.sectionHeading}>
-            <span>COMPLETE SOLUTIONS</span>
+            <span className="hero-tag">COMPLETE SOLUTIONS</span>
             <h2>End-To-End Clinic Setup Services</h2>
             <p>TECHNOMAC provides complete dental clinic setup solutions including planning, equipment, interior concepts, installation and after-sales support.</p>
           </div>
@@ -1200,7 +1200,7 @@ export default function ClinicSetup() {
             </div>
             <div className="col-lg-6">
               <div className={styles.includeContent}>
-                <span>WHAT'S INCLUDED</span>
+                <span className="hero-tag">WHAT'S INCLUDED</span>
                 <h2>Everything Needed To Start Your Clinic</h2>
                 <p>We help dentists setup efficient, modern and patient-friendly clinics with complete equipment and infrastructure support.</p>
                 <div className={styles.includeList}>
@@ -1216,14 +1216,16 @@ export default function ClinicSetup() {
         {/* PROCESS */}
         <div className={styles.processSection}>
           <div className={styles.sectionHeading}>
-            <span>WORK PROCESS</span>
+            <span className="hero-tag">WORK PROCESS</span>
             <h2>How We Setup Your Clinic</h2>
           </div>
           <div className="row">
             {process.map((item, index) => (
               <div className="col-lg-3 col-md-6 col-6 mb-4" key={index}>
                 <div className={styles.processCard}>
+                  <div className="d-flex justify-content-center">
                   <div className={styles.number}>0{index + 1}</div>
+                  </div>
                   <h4>{item.title}</h4>
                   <p>{item.desc}</p>
                 </div>
@@ -1235,7 +1237,7 @@ export default function ClinicSetup() {
         {/* EQUIPMENT */}
         <div className={styles.equipmentSection}>
           <div className={styles.sectionHeading}>
-            <span>OUR EQUIPMENT</span>
+            <span className="hero-tag">OUR EQUIPMENT</span>
             <h2>Advanced Dental Technologies</h2>
           </div>
           <div className="row">
@@ -1250,7 +1252,7 @@ export default function ClinicSetup() {
         {/* CTA */}
         <div className={styles.ctaSection}>
           <div className={styles.ctaCard}>
-            <span>FREE CONSULTATION</span>
+            <span className="hero-tag">FREE CONSULTATION</span>
             <h2>Ready To Build Your Dream Dental Clinic?</h2>
             <p>Our experts will help you choose the right equipment, optimize clinic layout and setup a modern dental space.</p>
             {/* ✅ Fixed: Link as direct element, not inside button */}

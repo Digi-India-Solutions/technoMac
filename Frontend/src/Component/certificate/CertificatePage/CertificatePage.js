@@ -50,7 +50,7 @@ export default function CertificatePage() {
       <div className="container">
         <Breadcrumb pageName="Certificates" />
         <div className={styles.heading}>
-          <span>
+          <span className="hero-tag">
             TECHNOMAC CERTIFICATIONS
           </span>
           <h1>

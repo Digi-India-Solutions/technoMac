@@ -18,10 +18,13 @@
 
   box-shadow:
     0 20px 45px rgba(0, 0, 0, 0.08);
+  border: 2px solid #123C69;
+  padding: 10px;
 }
 
 .image {
 
+  border-radius: 30px;
   width: 100%;
 
   height: 550px;
@@ -53,7 +56,7 @@
 .content h1 {
 
   font-size: var(--all-heading-font);
-
+  color: var(--heading);
   font-weight: 800;
 }
 
@@ -65,12 +68,13 @@
 /* POINT BOX */
 
 .pointBox {
-
-  background: #fff;
+  background: var(--gradient-theme-color);
   border-radius: 20px;
   padding: 20px;
+  color: white;
   box-shadow:
     0 15px 35px rgba(0, 0, 0, 0.05);
+    margin-bottom: 1rem;
 }
 
 .pointBox h3 {
@@ -86,7 +90,7 @@
 
   margin-bottom: 0px;
 
-  color: #555;
+  color: white;
 
   font-size: 14px;
 

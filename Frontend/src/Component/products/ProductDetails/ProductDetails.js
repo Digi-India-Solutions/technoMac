@@ -109,7 +109,7 @@ export default function ProductDetails() {
           </div>
           <div className="col-lg-7">
             <div className={styles.content}>
-              <span className={styles.category}>
+              <span className="hero-tag">
                 {product?.category?.name}
               </span>
               <h1>
@@ -159,7 +159,7 @@ export default function ProductDetails() {
                   rel="noopener noreferrer"
                   style={{ textDecoration: 'none' }}
                 >
-                  <button className={styles.primaryBtn}>
+                  <button className="quoteBtn d-flex align-items-center gap-2">
                     <FaWhatsapp />
                     WhatsApp Inquiry
                   </button>

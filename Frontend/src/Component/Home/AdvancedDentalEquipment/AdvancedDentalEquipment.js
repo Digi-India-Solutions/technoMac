@@ -296,7 +296,7 @@ function AdvancedDentalEquipment({ productName = 'TECHNOMAC Dental Equipment' })
                                     and advanced clinic setup solutions
                                     designed for modern dental professionals.
                                 </p>
-                                <button className="hero-btn" onClick={() => setShowModal(true)}>
+                                <button className="quoteBtn" onClick={() => setShowModal(true)}>
                                     Request a Call
                                 </button>
                             </div>

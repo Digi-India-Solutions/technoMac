@@ -255,7 +255,7 @@ export default function ContactPage() {
                                 {/* BUTTONS */}
 
                                 <div className={styles.buttonGroup}>
-                                    <button type="submit" className={styles.submitBtn} >{loading ? 'Send Inquiry...' : 'Send Inquiry'}</button>
+                                    <button type="submit" className="quoteBtn" >{loading ? 'Send Inquiry...' : 'Send Inquiry'}</button>
                                     <a href="https://wa.me/919999999999" target="_blank" className={styles.whatsappBtn}>
                                         <FaWhatsapp />
                                         WhatsApp

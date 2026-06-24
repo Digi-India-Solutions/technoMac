@@ -469,7 +469,7 @@
 
   width: 260px;
 
-  background: #111;
+  background: var(--navbar-bg);
 
   padding: 25px 0;
 }

@@ -131,32 +131,10 @@
   margin-top: 0px;
 }
 
-.primaryBtn,
-.secondaryBtn {
-  border: none;
-  padding: 10px 20px;
-  border-radius: 10px;
-  font-size: 14px;
-  font-weight: 500;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  transition: 0.3s;
-}
-
-.primaryBtn {
-  background: var(--theme-color);
-  color: #fff;
-}
 
 .secondaryBtn {
   background: #111;
   color: #fff;
-}
-
-.primaryBtn:hover,
-.secondaryBtn:hover {
-  transform: translateY(-3px);
 }
 
 /* =========================
