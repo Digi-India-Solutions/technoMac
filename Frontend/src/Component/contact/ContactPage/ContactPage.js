@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Breadcrumb from "../../common/Breadcrumb/Breadcrumb";
 import styles from "./ContactPage.module.css";
 
 import {
@@ -105,7 +104,7 @@ export default function ContactPage() {
     return (
         <section className={styles.contactSection}>
             <div className="container">
-                <Breadcrumb pageName="Contact Us" />
+                {/* Breadcrumb removed for testing */}
                 <div className="row">
                     <div className="col-lg-5 mb-4">
 
