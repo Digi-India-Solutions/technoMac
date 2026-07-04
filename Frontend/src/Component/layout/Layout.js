@@ -1,7 +1,7 @@
 
 import Footer from "./Footer/Footer";
 import Header from "./Header/Header";
-import WhatsAppChat from "../../Component/whatsapp/WhatsAppChat.js"
+import WhatsAppChat from "../../Component/whatsapp/WhatsAppChat"
 export default function Layout({ children }) {
   return (
     <>
