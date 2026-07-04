@@ -107,6 +107,7 @@ export default function Home() {
       <ReviewSection />
       <FAQSection />
       <EnquirySection />
+     
     </Layout>
   );
 }

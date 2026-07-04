@@ -104,10 +104,10 @@ export default function EnquirySection() {
 
           {/* RIGHT */}
           <div className={styles.formWrapper}>
-            <h2>Stay Connected With TECHNOMAC</h2>
+            <h2>Stay Connected with Technomac</h2>
             <p>
-              Get product updates, dental equipment offers and latest
-              healthcare innovations.
+              Be the first to discover new products, exclusive offers,
+              and advancements in medical and dental technology.
             </p>
             <form className={styles.form} onSubmit={handleSubmit}>
               <div className="row">

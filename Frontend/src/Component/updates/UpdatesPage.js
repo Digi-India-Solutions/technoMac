@@ -61,10 +61,9 @@ export default function UpdatesPage() {
           </h1>
 
           <p>
-            Explore the latest innovations,
-            product launches and modern
-            healthcare technology updates
-            from TECHNOMAC.
+            Discover the latest product launches,
+            medical and dental innovations, and
+            healthcare technology trends from Technomac Medical Systems.
           </p>
 
         </div>

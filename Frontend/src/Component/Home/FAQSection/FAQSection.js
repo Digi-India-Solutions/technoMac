@@ -59,7 +59,7 @@ export default function FAQSection() {
           <div className="col-lg-5">
 
             <div className={styles.leftContent}>
-{/* 
+              {/* 
               <span>
                 FAQ'S
               </span> */}
@@ -70,10 +70,8 @@ export default function FAQSection() {
               </h2>
 
               <p>
-                Everything you need to know
-                about TECHNOMAC dental
-                healthcare products and
-                services.
+                Find answers to common questions about Technomac Medical Systems'
+                medical and dental products, services, and support.
               </p>
 
               <button>
@@ -87,66 +85,66 @@ export default function FAQSection() {
           {/* RIGHT */}
 
           <div className="col-lg-7">
-          <div className={styles.faqWrapperScroller}>
-            
-            <div className={styles.faqWrapper}>
+            <div className={styles.faqWrapperScroller}>
 
-              {faq.map((item, index) => (
+              <div className={styles.faqWrapper}>
 
-                <div
-                  className={`${styles.faqItem} ${activeIndex === index
-                    ? styles.active
-                    : ""
-                    }`}
-                  key={index}
-                >
-
-                  {/* QUESTION */}
+                {faq.map((item, index) => (
 
                   <div
-                    className={styles.question}
-                    onClick={() =>
-                      toggleFAQ(index)
-                    }
+                    className={`${styles.faqItem} ${activeIndex === index
+                      ? styles.active
+                      : ""
+                      }`}
+                    key={index}
                   >
 
-                    <h4>
-                      {item.question}
-                    </h4>
+                    {/* QUESTION */}
 
                     <div
-                      className={styles.icon}
+                      className={styles.question}
+                      onClick={() =>
+                        toggleFAQ(index)
+                      }
                     >
 
-                      {activeIndex === index ? (
-                        <FaMinus />
-                      ) : (
-                        <FaPlus />
-                      )}
+                      <h4>
+                        {item.question}
+                      </h4>
+
+                      <div
+                        className={styles.icon}
+                      >
+
+                        {activeIndex === index ? (
+                          <FaMinus />
+                        ) : (
+                          <FaPlus />
+                        )}
+
+                      </div>
+
+                    </div>
+
+                    {/* ANSWER */}
+
+                    <div
+                      className={styles.answer}
+                    >
+
+                      <p>
+                        {item.answer}
+                      </p>
 
                     </div>
 
                   </div>
 
-                  {/* ANSWER */}
+                ))}
 
-                  <div
-                    className={styles.answer}
-                  >
-
-                    <p>
-                      {item.answer}
-                    </p>
-
-                  </div>
-
-                </div>
-
-              ))}
+              </div>
 
             </div>
-
-          </div>
           </div>
 
         </div>

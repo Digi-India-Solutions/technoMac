@@ -1,0 +1,252 @@
+/* FLOATING ICON */
+.waFloatingIcon {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 55px;
+  height: 55px;
+  background: #25d366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 9999;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.waFloatingIcon:hover {
+  transform: scale(1.1);
+  box-shadow: 0 12px 28px rgba(37, 211, 102, 0.4);
+}
+
+.waFloatingIcon i {
+  font-size: 28px;
+  color: #fff;
+}
+
+/* CHAT BOX */
+.waChatBox {
+  position: fixed;
+  right: 20px;
+  bottom: 90px;
+  width: 300px;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  z-index: 9999;
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(200px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(50);
+    opacity: 1;
+  }
+}
+
+/* HEADER */
+.waHeader {
+  background: linear-gradient(135deg, #25d366, #1ebc59);
+  color: #fff;
+  padding: 12px 14px;
+  border-radius: 14px 14px 0 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.waHeader span {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+.waHeader button {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 22px;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+  opacity: 0.85;
+  transition: opacity 0.2s;
+}
+
+.waHeader button:hover {
+  opacity: 1;
+}
+
+/* AVATAR in header */
+.waAvatar {
+  width: 36px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  margin-right: 10px;
+}
+
+.waHeaderLeft {
+  display: flex;
+  align-items: center;
+}
+
+.waHeaderInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.waOnline {
+  font-size: 11px;
+  opacity: 0.85;
+  font-weight: 400;
+}
+
+/* BODY */
+.waBody {
+  padding: 14px;
+  background: #f0f0f0;
+}
+
+/* BUBBLE */
+.waBubble {
+  background: #fff;
+  border-radius: 0px 10px 10px 10px;
+  padding: 10px 12px;
+  font-size: 13px;
+  color: #333;
+  margin-bottom: 12px;
+  line-height: 1.5;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+/* INPUT AREA */
+.waInputWrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #fff;
+  border-radius: 10px;
+  padding: 6px 8px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+}
+
+.waTextarea {
+  flex: 1;
+  resize: none;
+  padding: 6px 4px;
+  border: none;
+  outline: none;
+  font-size: 13px;
+  background: transparent;
+  color: #333;
+  font-family: inherit;
+}
+
+/* SEND BUTTON */
+.waSendBtn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #25d366;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease;
+  flex-shrink: 0;
+}
+
+.waSendBtn:hover {
+  background: #1ebc59;
+}
+
+.waSendBtn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+@media only screen and (max-width: 768px) {
+  .waFloatingIcon {
+    bottom: 50px;
+    right: 15px;
+  }
+
+  .waChatBox {
+    right: 15px;
+    bottom: 120px;
+    width: 280px;
+  }
+}
+
+/* ICON TOGGLE ANIMATION */
+.waFloatingIconOpen {
+  background: #128c7e;
+}
+
+.waIconInner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.waIconRotate {
+  transform: rotate(90deg);
+}
+
+/* PULSE ring on floating icon */
+.waFloatingIcon::after {
+  content: "";
+  position: absolute;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background: rgba(37, 211, 102, 0.4);
+  animation: pulse 2s infinite;
+  z-index: -1;
+}
+
+@keyframes pulse {
+  0%   { transform: scale(1);   opacity: 0.7; }
+  70%  { transform: scale(1.5); opacity: 0;   }
+  100% { transform: scale(1.5); opacity: 0;   }
+}
+
+/* SLIDE UP — chat box open */
+.waChatBox {
+  position: fixed;
+  right: 20px;
+  bottom: 90px;
+  width: 300px;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  z-index: 9999;
+  animation: slideUp 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  transform-origin: bottom right;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(50px) scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}

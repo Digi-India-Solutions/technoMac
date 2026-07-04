@@ -114,14 +114,11 @@ export default function ContactPage() {
                             <span className={styles.tag}>Get In Touch</span>
 
                             <h2>
-                                Let's Build Your
-                                Perfect Dental Clinic
+                                Let's Build Better Healthcare Together
                             </h2>
                             <p>
-                                Connect with TECHNOMAC for
-                                premium dental equipment,
-                                clinic setup solutions and
-                                healthcare support.
+                                Connect with TECHNOMAC for premium equipment’s,
+                                clinic & hospital setup solutions and healthcare support.
                             </p>
 
                             {/* BOX */}
