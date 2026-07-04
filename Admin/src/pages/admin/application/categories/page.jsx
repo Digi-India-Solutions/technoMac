@@ -9,7 +9,7 @@ import { getData, postData, patchData, deleteData } from '../../../../services/F
 import Swal from 'sweetalert2';
 
 const PLACEHOLDER_IMG = 'https://via.placeholder.com/400x200?text=No+Image';
-const ITEMS_PER_PAGE = 12;
+const ITEMS_PER_PAGE = 50;
 
 const DEFAULT_FORM = {
   name: '',
