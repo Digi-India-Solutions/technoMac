@@ -14,7 +14,7 @@ export default function OurClients() {
     try {
       setIsLoading(true);
       const response = await getData("client/all");
-      console.log("SSS==>CLINT" , response)
+      console.log("SSS==>CLINT", response)
       if (response?.success) {
         const active = (response.data || [])
           .filter((c) => c.isActive)
@@ -43,10 +43,10 @@ export default function OurClients() {
         {/* HEADING */}
         <div className={styles.heading}>
           {/* <span>TRUSTED CLIENTS</span> */}
-          <h2>Our Valuable Clients</h2>
+          <h2>Our Valued Clients</h2>
           <p>
-            Trusted by dental clinics, hospitals and healthcare
-            professionals across India.
+            A trusted partner to Hospitals, Medical and Dental clinics, Diagnostic Centers ,
+            and Healthcare Professionals across India.
           </p>
         </div>
 
@@ -90,58 +90,58 @@ export default function OurClients() {
           //   ))}
           // </div>
           <Swiper
-  modules={[Autoplay]}
-  slidesPerView={2}
-  spaceBetween={20}
-  loop={true}
-  speed={4000}
-  autoplay={{
-    delay: 0,
-    disableOnInteraction: false,
-    pauseOnMouseEnter: true,
-  }}
-  breakpoints={{
-    576: {
-      slidesPerView: 3,
-    },
-    768: {
-      slidesPerView: 4,
-    },
-    992: {
-      slidesPerView: 5,
-    },
-    1200: {
-      slidesPerView: 6,
-    },
-  }}
-  className={styles.clientSlider}
->
+            modules={[Autoplay]}
+            slidesPerView={2}
+            spaceBetween={20}
+            loop={true}
+            speed={4000}
+            autoplay={{
+              delay: 0,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: true,
+            }}
+            breakpoints={{
+              576: {
+                slidesPerView: 3,
+              },
+              768: {
+                slidesPerView: 4,
+              },
+              992: {
+                slidesPerView: 5,
+              },
+              1200: {
+                slidesPerView: 6,
+              },
+            }}
+            className={styles.clientSlider}
+          >
 
-  {clients.map((item) => (
+            {clients.map((item) => (
 
-    <SwiperSlide key={item._id}>
+              <SwiperSlide key={item._id}>
 
-      <div className={styles.clientCard}>
+                <div className={styles.clientCard}>
 
-        <div className={styles.logoWrapper}>
+                  <div className={styles.logoWrapper}>
 
-          <Image
-            src={item.image}
-            alt={item.name || "Client Logo"}
-            fill
-            className={styles.clientLogo}
-            sizes="(max-width: 576px) 50vw, 16vw"
-          />
+                    <Image
+                      src={item.image}
+                      alt={item.name || "Client Logo"}
+                      fill
+                      className={styles.clientLogo}
+                      sizes="(max-width: 576px) 50vw, 16vw"
+                    />
 
-        </div>
+                  </div>
 
-      </div>
+                </div>
 
-    </SwiperSlide>
+              </SwiperSlide>
 
-  ))}
+            ))}
 
-</Swiper>
+          </Swiper>
         )}
 
       </div>

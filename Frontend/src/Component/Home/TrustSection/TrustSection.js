@@ -29,24 +29,21 @@ export default function TrustSection() {
               </span> */}
 
               <h2>
-                Shaping Dentistry
-                for Over 30 Years
+                Empowering Medical & Dental
+                Professionals Since 1999
               </h2>
 
               <p>
-                For more than three decades,
-                Unicorn DenMart has been the
-                trusted partner of Indian dentists,
-                delivering world-class dental
-                equipment and instruments that
-                redefine clinical excellence.
+                For over 26 years, Technomac Medical Systems has been
+                empowering medical and dental professionals across India with world-class
+                equipment and innovative clinical solutions.
+
               </p>
 
               <p>
-                Our dedication to bringing global
-                innovations backed by strong
-                service support has made us a
-                pioneer in the dental industry.
+                Built on quality, reliability,
+                and customer-first support, Technomac
+                continues to shape the future of healthcare.
               </p>
 
             </div>
@@ -113,7 +110,7 @@ export default function TrustSection() {
               <div className={styles.statCard}>
 
                 <div className={styles.iconBox}>
-                  <FaTruckMedical />        
+                  <FaTruckMedical />
                 </div>
 
                 <h3>

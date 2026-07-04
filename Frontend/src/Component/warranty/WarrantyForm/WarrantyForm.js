@@ -556,24 +556,24 @@ const PRODUCT_MODELS = [
 export default function WarrantyForm() {
 
   const [form, setForm] = useState({
-    email:          "",
-    customerName:   "",
-    clinicName:     "",
-    customerContact:"",
-    clinicAddress:  "",
-    purchaseDate:   "",
-    productModel:   "",
-    serialNumber:   "",
-    dealerName:     "",
-    dealerCompany:  "",
-    dealerContact:  "",
-    dealerAddress:  "",
+    email: "",
+    customerName: "",
+    clinicName: "",
+    customerContact: "",
+    clinicAddress: "",
+    purchaseDate: "",
+    productModel: "",
+    serialNumber: "",
+    dealerName: "",
+    dealerCompany: "",
+    dealerContact: "",
+    dealerAddress: "",
   });
 
-  const [image, setImage]       = useState(null);   // ✅ file handled separately
+  const [image, setImage] = useState(null);   // ✅ file handled separately
   const [imagePreview, setImagePreview] = useState(null);
-  const [errors, setErrors]     = useState({});
-  const [loading, setLoading]   = useState(false);
+  const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false);
   const [successMsg, setSuccessMsg] = useState("");
 
   // ─── Handle Text/Select/Date Change ─────────────────────────────────────────
@@ -609,27 +609,27 @@ export default function WarrantyForm() {
     const phoneRegex = /^[6-9]\d{9}$/;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    if (!form.email.trim())             e.email           = "Email is required";
-    else if (!emailRegex.test(form.email)) e.email        = "Enter a valid email";
+    if (!form.email.trim()) e.email = "Email is required";
+    else if (!emailRegex.test(form.email)) e.email = "Enter a valid email";
 
-    if (!form.customerName.trim())      e.customerName    = "Customer name is required";
-    if (!form.clinicName.trim())        e.clinicName      = "Clinic name is required";
+    if (!form.customerName.trim()) e.customerName = "Customer name is required";
+    if (!form.clinicName.trim()) e.clinicName = "Clinic name is required";
 
-    if (!form.customerContact.trim())   e.customerContact = "Contact number is required";
+    if (!form.customerContact.trim()) e.customerContact = "Contact number is required";
     else if (!phoneRegex.test(form.customerContact)) e.customerContact = "Enter a valid 10-digit number";
 
-    if (!form.clinicAddress.trim())     e.clinicAddress   = "Clinic address is required";
-    if (!form.purchaseDate)             e.purchaseDate    = "Purchase date is required";
-    if (!form.productModel)             e.productModel    = "Please select a product model";
-    if (!form.serialNumber.trim())      e.serialNumber    = "Serial number is required";
-    if (!form.dealerName.trim())        e.dealerName      = "Dealer name is required";
-    if (!form.dealerCompany.trim())     e.dealerCompany   = "Dealer company is required";
+    if (!form.clinicAddress.trim()) e.clinicAddress = "Clinic address is required";
+    if (!form.purchaseDate) e.purchaseDate = "Purchase date is required";
+    if (!form.productModel) e.productModel = "Please select a product model";
+    if (!form.serialNumber.trim()) e.serialNumber = "Serial number is required";
+    if (!form.dealerName.trim()) e.dealerName = "Dealer name is required";
+    if (!form.dealerCompany.trim()) e.dealerCompany = "Dealer company is required";
 
-    if (!form.dealerContact.trim())     e.dealerContact   = "Dealer contact is required";
+    if (!form.dealerContact.trim()) e.dealerContact = "Dealer contact is required";
     else if (!phoneRegex.test(form.dealerContact)) e.dealerContact = "Enter a valid 10-digit number";
 
-    if (!form.dealerAddress.trim())     e.dealerAddress   = "Dealer address is required";
-    if (!image)                         e.image           = "Product image is required";
+    if (!form.dealerAddress.trim()) e.dealerAddress = "Dealer address is required";
+    if (!image) e.image = "Product image is required";
 
     return e;
   };
@@ -648,19 +648,19 @@ export default function WarrantyForm() {
 
     // ✅ Use FormData — required for file upload
     const payload = new FormData();
-    payload.append("email",           form.email.trim());
-    payload.append("customerName",    form.customerName.trim());
-    payload.append("clinicName",      form.clinicName.trim());
+    payload.append("email", form.email.trim());
+    payload.append("customerName", form.customerName.trim());
+    payload.append("clinicName", form.clinicName.trim());
     payload.append("customerContact", form.customerContact.trim());
-    payload.append("clinicAddress",   form.clinicAddress.trim());
-    payload.append("purchaseDate",    form.purchaseDate);
-    payload.append("productModel",    form.productModel);
-    payload.append("serialNumber",    form.serialNumber.trim());
-    payload.append("dealerName",      form.dealerName.trim());
-    payload.append("dealerCompany",   form.dealerCompany.trim());
-    payload.append("dealerContact",   form.dealerContact.trim());
-    payload.append("dealerAddress",   form.dealerAddress.trim());
-    payload.append("productImage",    image); // ✅ file appended
+    payload.append("clinicAddress", form.clinicAddress.trim());
+    payload.append("purchaseDate", form.purchaseDate);
+    payload.append("productModel", form.productModel);
+    payload.append("serialNumber", form.serialNumber.trim());
+    payload.append("dealerName", form.dealerName.trim());
+    payload.append("dealerCompany", form.dealerCompany.trim());
+    payload.append("dealerContact", form.dealerContact.trim());
+    payload.append("dealerAddress", form.dealerAddress.trim());
+    payload.append("productImage", image); // ✅ file appended
 
     console.log("Warranty Payload =>", Object.fromEntries(payload));
 
@@ -734,7 +734,7 @@ export default function WarrantyForm() {
             <div className={styles.infoCard}>
               <FaClinicMedical />
               <h4>Trusted Healthcare</h4>
-              <p>Supporting modern dental clinics with premium healthcare solutions.</p>
+              <p>Empowering medical and dental professionals with premium healthcare solutions.</p>
             </div>
           </div>
         </div>

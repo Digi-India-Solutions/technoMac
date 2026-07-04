@@ -286,7 +286,7 @@ export default function Footer() {
     setStatus("loading");
     try {
       const res = await postData("subscribe/", { email: email.trim() });
-      console.log("res===>" , res)
+      console.log("res===>", res)
       if (res?.success) {
         setStatus("success");
         setMsg("Thank you for subscribing!");
@@ -320,9 +320,9 @@ export default function Footer() {
                   style={{ objectFit: "cover" }}
                 />
                 <p>
-                  Premium dental healthcare equipment supplier providing
-                  advanced clinic setup solutions and modern dental products
-                  for professionals.
+                  Premium Medical healthcare equipment’s manufacturer &
+                  supplier providing advanced Dental setup solutions and
+                  modern healthcare products for professionals.
                 </p>
                 <div className={styles.socialIcons}>
                   <a href="#" aria-label="Facebook"><FaFacebookF /></a>
@@ -345,6 +345,7 @@ export default function Footer() {
                   <li><Link href="/products">Products</Link></li>
                   <li><Link href="/contact">Contact</Link></li>
                   <li><Link href="/privacy-policy">Privacy Policy</Link></li>
+                  <li><Link href="/certificates">Certificates</Link></li>
                 </ul>
               </div>
             </div>
@@ -363,7 +364,7 @@ export default function Footer() {
                     <a href="mailto:info@technomac.in">info@technomac.in</a>
                   </li>
                   <li>
-                    <FaMapMarkerAlt style={{fontSize:"40px"}} />
+                    <FaMapMarkerAlt style={{ fontSize: "40px" }} />
                     <span>
                       Plot no.-88, Pocket-L, Sector 1, Bawana Industrial Area,
                       DSIIDC Sub-city, New Delhi-110039, India
@@ -378,8 +379,8 @@ export default function Footer() {
               <div className={styles.newsletterBox}>
                 <h4>Subscribe to Our Newsletter</h4>
                 <p>
-                  Get latest dental equipment updates, offers and clinic
-                  setup innovations.
+                  Get product updates, medical and dental equipment offers,
+                  and the latest healthcare innovations.
                 </p>
 
                 {/* ✅ Fixed form — onSubmit on form, not onClick on button */}

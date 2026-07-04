@@ -546,7 +546,7 @@ export default function Header() {
                   </div>
                 </div>
 
-                <Link href="/certificates">Certificates</Link>
+                {/* <Link href="/certificates">Certificates</Link> */}
                 <Link href="/catalogue">Catalogue</Link>
                 <Link href="/clinic-setup">Clinic Setup</Link>
                 <Link href="/updates">New Updates</Link>
