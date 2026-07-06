@@ -100,7 +100,7 @@ function CategoryStrip({ parentCategoryId }) {
       </div> */}
       <div className="row">
         {categories.map((item) => (
-          <div className="col-lg-2 col-md-4 col-4 mb-3" key={item._id}>
+          <div className="col-lg-3 col-md-4 col-6 mb-3" key={item._id}>
             <Link href={{ pathname: '/products', query: { category: item._id } }}
               className={styles.productCard}
             >
