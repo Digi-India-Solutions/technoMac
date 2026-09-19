@@ -156,7 +156,7 @@ function SubCategoryStrip({ categoryId }) {
         {categories.map((item) => (
           <div className="col-lg-2 col-md-3 col-6 mb-3" key={item._id}>
             <Link
-              href={{ pathname: '/products', query: { sub: toSlug(item.name) || item.name } }}
+              href={{ pathname: '/products', query: { subCategory: toSlug(item.name) || item.name } }}
               className={`${styles.productCard} ${styles.categoryCard}`}
             >
               <div className={styles.categoryImage}>
@@ -225,7 +225,6 @@ function ProductPageContent() {
     headingName = 'Dental Equipment';
   }
 
-  console.log("subCategoryId", subCategoryId)
   // ── Fetch products based on active filter ─────────────────────────────────
   useEffect(() => {
     const fetchProducts = async () => {
