@@ -14,6 +14,35 @@ import Link from "next/link";
 
 import { optimizeImageUrl } from "../../../utils/imageOptimizer";
 
+// Helper to convert names to URL-safe slugs without %20
+const toSlug = (text) => {
+  if (!text) return "";
+  return text
+    .toLowerCase()
+    .trim()
+    .replace(/[^\w\s-]/g, "")
+    .replace(/[\s_-]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+};
+
+const getExploreHref = (item) => {
+  const subSlug = toSlug(item?.subCategory?.name || item?.subCategory?.title);
+  if (subSlug) {
+    return { pathname: "/products", query: { subCategory: subSlug } };
+  }
+  if (item?.subCategory?._id) {
+    return { pathname: "/products", query: { subCategory: item.subCategory._id } };
+  }
+  const catSlug = toSlug(item?.category?.name || item?.category?.title);
+  if (catSlug) {
+    return { pathname: "/products", query: { category: catSlug } };
+  }
+  if (item?.category?._id) {
+    return { pathname: "/products", query: { category: item.category._id } };
+  }
+  return { pathname: "/products" };
+};
+
 const defaultStaticBanners = [
   { image: heroImage1, title: "Precision In Every Smile", desc: "Advanced dental technology engineered for exceptional clinical results." },
   { image: heroImage2, title: "Modern Clinic Innovations", desc: "Transforming dental practices with ergonomic, reliable equipment." },
@@ -129,7 +158,7 @@ export default function HeroBanner() {
                       className={styles.primaryBtn}
                     >
                       <Link
-                        href={{ pathname: "/products", query: { subCategory: item?.subCategory?._id } }}
+                        href={getExploreHref(item)}
                         className={styles.productCard}
                         style={{ textDecoration: "none", color: '#fff' }}
                       >

@@ -185,10 +185,13 @@ console.log("subCategoryId ",subCategoryId )
     }
 
     if (!subCategoryDoc) {
+      const escapeRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
       const decodedParam = decodeURIComponent(subCategoryId).trim();
       const normalizedParam = decodedParam.replace(/[-_]+/g, ' ').trim();
-      const slugPattern = new RegExp(`^${decodedParam.replace(/[-_]/g, '[-_\\s]')}$`, 'i');
-      const namePattern = new RegExp(`^${normalizedParam}$`, 'i');
+      const escapedSlug = escapeRegex(decodedParam).replace(/[-_]/g, '[-_\\s]');
+      const escapedName = escapeRegex(normalizedParam);
+      const slugPattern = new RegExp(`^${escapedSlug}$`, 'i');
+      const namePattern = new RegExp(`^${escapedName}$`, 'i');
 
       subCategoryDoc = await SubCategory.findOne({
         $or: [
