@@ -2,6 +2,12 @@ const mongoose = require('mongoose');
 
 const BannerSchema = new mongoose.Schema(
   {
+    parentCategoryId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'ParentCategory',
+      required: true,
+    },
+
     categoryId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Category',
@@ -11,7 +17,7 @@ const BannerSchema = new mongoose.Schema(
     subCategoryId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'SubCategory',
-      required: true,
+      required: false,
     },
 
     title: {
@@ -21,7 +27,7 @@ const BannerSchema = new mongoose.Schema(
 
     subtitle: {
       type: String,
-      required: true,
+      default: '',
     },
 
     image: {
@@ -45,6 +51,7 @@ const BannerSchema = new mongoose.Schema(
 
 // Performance Indexes
 BannerSchema.index({ isActive: 1, createdAt: -1 });
+BannerSchema.index({ parentCategoryId: 1, isActive: 1 });
 BannerSchema.index({ categoryId: 1, isActive: 1 });
 
 module.exports = mongoose.model('Banner', BannerSchema);
