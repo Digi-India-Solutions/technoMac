@@ -26,19 +26,19 @@ const toSlug = (text) => {
 };
 
 const getExploreHref = (item) => {
-  const subSlug = toSlug(item?.subCategory?.name || item?.subCategory?.title);
-  if (subSlug) {
-    return { pathname: "/products", query: { subCategory: subSlug } };
-  }
-  if (item?.subCategory?._id) {
-    return { pathname: "/products", query: { subCategory: item.subCategory._id } };
-  }
   const catSlug = toSlug(item?.category?.name || item?.category?.title);
   if (catSlug) {
     return { pathname: "/products", query: { category: catSlug } };
   }
   if (item?.category?._id) {
     return { pathname: "/products", query: { category: item.category._id } };
+  }
+  const parentSlug = toSlug(item?.parentCategory?.name || item?.parentCategory?.title);
+  if (parentSlug) {
+    return { pathname: "/products", query: { parentCategory: parentSlug } };
+  }
+  if (item?.parentCategory?._id) {
+    return { pathname: "/products", query: { parentCategory: item.parentCategory._id } };
   }
   return { pathname: "/products" };
 };
@@ -68,6 +68,7 @@ export default function HeroBanner() {
       if (response?.success === true && Array.isArray(response?.banners) && response.banners.length > 0) {
         const mapped = response.banners.map((item) => ({
           image: optimizeImageUrl(item.imageUrl || item.image || item.banner_image),
+          parentCategory: item?.parentCategoryId || {},
           category: item?.categoryId || {},
           subCategory: item?.subCategoryId || {},
           title: item.title || item.banner_title || "",

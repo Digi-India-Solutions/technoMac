@@ -1,4 +1,5 @@
 const Banner = require('../models/Banner');
+const { Category } = require('../models/Category');
 const cloudinary = require('../config/cloudinary');
 
 // ─── Helper: upload buffer to Cloudinary ────────────────────────────────────
@@ -15,12 +16,25 @@ const uploadToCloudinary = (buffer) =>
 // ─── CREATE BANNER ───────────────────────────────────────────────────────────
 exports.createBanner = async (req, res) => {
   try {
-    const { title, subtitle, buttonText, categoryId, subCategoryId, deviceType } = req.body;
+    let { title, subtitle, buttonText, parentCategoryId, categoryId, subCategoryId, deviceType } = req.body;
 
-    if (!categoryId && !subCategoryId) {
+    if (!categoryId) {
       return res
         .status(400)
         .json({ success: false, message: 'Category is required' });
+    }
+
+    if (!parentCategoryId && categoryId) {
+      const categoryDoc = await Category.findById(categoryId);
+      if (categoryDoc && categoryDoc.parentCategoryId) {
+        parentCategoryId = categoryDoc.parentCategoryId;
+      }
+    }
+
+    if (!parentCategoryId) {
+      return res
+        .status(400)
+        .json({ success: false, message: 'Parent Category is required' });
     }
 
     if (!req.file) {
@@ -32,16 +46,22 @@ exports.createBanner = async (req, res) => {
     const result = await uploadToCloudinary(req.file.buffer);
 
     const banner = await Banner.create({
+      parentCategoryId,
       categoryId,
-      subCategoryId,
+      subCategoryId: subCategoryId || undefined,
       title,
-      subtitle,
+      subtitle: subtitle || '',
       buttonText,
       deviceType: deviceType || 'desktop',
       image: result.secure_url,
     });
 
-    res.status(201).json({ success: true, banner });
+    const populatedBanner = await Banner.findById(banner._id)
+      .populate('parentCategoryId', 'name image')
+      .populate('categoryId', 'name image parentCategoryId')
+      .populate('subCategoryId');
+
+    res.status(201).json({ success: true, banner: populatedBanner || banner });
   } catch (error) {
     console.error('createBanner error:', error);
     res.status(500).json({ success: false, message: error.message });
@@ -51,11 +71,12 @@ exports.createBanner = async (req, res) => {
 // ─── GET ALL BANNERS ─────────────────────────────────────────────────────────
 exports.getAllBanner = async (req, res) => {
   try {
-    // FIX: 'category' was an undefined variable — use the string 'name image'
-    const banners = await Banner.find({ isActive: true }).populate(
-      'categoryId',
-      'name image',
-    ).populate("subCategoryId").lean();
+    const banners = await Banner.find({ isActive: true })
+      .populate('parentCategoryId', 'name image')
+      .populate('categoryId', 'name image parentCategoryId')
+      .populate('subCategoryId')
+      .sort({ createdAt: -1 })
+      .lean();
 
     res.status(200).json({ success: true, banners });
   } catch (error) {
@@ -70,7 +91,10 @@ exports.getBannerByCategory = async (req, res) => {
     const banners = await Banner.find({
       categoryId: req.params.categoryId,
       isActive: true,
-    }).populate('categoryId', 'name image').lean();
+    })
+      .populate('parentCategoryId', 'name image')
+      .populate('categoryId', 'name image')
+      .lean();
 
     res.status(200).json({ success: true, banners });
   } catch (error) {
@@ -82,15 +106,34 @@ exports.getBannerByCategory = async (req, res) => {
 // ─── UPDATE BANNER ───────────────────────────────────────────────────────────
 exports.updateBanner = async (req, res) => {
   try {
-    const { categoryId, title, subtitle, buttonText, subCategoryId, deviceType } = req.body;
+    let { parentCategoryId, categoryId, title, subtitle, buttonText, subCategoryId, deviceType } = req.body;
 
-    if (!categoryId && !subCategoryId) {
+    if (!categoryId) {
       return res
         .status(400)
         .json({ success: false, message: 'Category is required' });
     }
 
-    const updateData = { categoryId, subCategoryId, title, subtitle, buttonText };
+    if (!parentCategoryId && categoryId) {
+      const categoryDoc = await Category.findById(categoryId);
+      if (categoryDoc && categoryDoc.parentCategoryId) {
+        parentCategoryId = categoryDoc.parentCategoryId;
+      }
+    }
+
+    const updateData = { 
+      categoryId, 
+      title, 
+      subtitle: subtitle || '', 
+      buttonText 
+    };
+
+    if (parentCategoryId) {
+      updateData.parentCategoryId = parentCategoryId;
+    }
+    if (subCategoryId !== undefined) {
+      updateData.subCategoryId = subCategoryId || null;
+    }
     if (deviceType) {
       updateData.deviceType = deviceType;
     }
@@ -102,7 +145,10 @@ exports.updateBanner = async (req, res) => {
 
     const banner = await Banner.findByIdAndUpdate(req.params.id, updateData, {
       returnDocument: 'after',
-    }).populate('categoryId', 'name image').populate('subCategoryId');
+    })
+      .populate('parentCategoryId', 'name image')
+      .populate('categoryId', 'name image parentCategoryId')
+      .populate('subCategoryId');
 
     if (!banner) {
       return res
