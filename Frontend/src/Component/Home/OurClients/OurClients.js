@@ -93,6 +93,7 @@ export default function OurClients() {
             spaceBetween={20}
             loop={true}
             speed={4000}
+            // autoplay={false}
             autoplay={{
               delay: 0,
               disableOnInteraction: false,

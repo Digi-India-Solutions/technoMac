@@ -28,44 +28,40 @@ const toSlug = (text) => {
 export default function ProductDetails() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const productIdentifier = router?.query?.slug || searchParams?.get("productId") || router?.query?.productId;
+  const productIdentifier =
+    router?.query?.slug ||
+    searchParams?.get("productId") ||
+    router?.query?.productId;
 
   const [product, setProduct] = useState({});
   const [loading, setLoading] = useState(true);
   const [relatedProducts, setRelatedProducts] = useState([]);
   const [activeImage, setActiveImage] = useState("");
-  const [zoomStyle, setZoomStyle] = useState({
-    transform: "scale(1)",
-    transformOrigin: "50% 50%",
-  });
+  const [showAllFeatures, setShowAllFeatures] = useState(false);
+  const [showAllSpecifications, setShowAllSpecifications] = useState(false);
+
+  // Image lightbox state
+  const [isImageModalOpen, setIsImageModalOpen] = useState(false);
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+
   const [contactInfo, setContactInfo] = useState({});
-
-  const handleMouseMove = (e) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width) * 100;
-    const y = ((e.clientY - rect.top) / rect.height) * 100;
-
-    setZoomStyle({
-      transform: "scale(2)",
-      transformOrigin: `${x}% ${y}%`,
-    });
-  };
-
-  const handleMouseLeave = () => {
-    setZoomStyle({
-      transform: "scale(1)",
-      transformOrigin: "50% 50%",
-    });
-  };
 
   const fetchProduct = async () => {
     if (!productIdentifier) return;
     setLoading(true);
+
     try {
-      let response = await getData(`product/${encodeURIComponent(productIdentifier)}`);
+      let response = await getData(
+        `product/${encodeURIComponent(productIdentifier)}`
+      );
+
       if (response?.success === true && response?.data) {
         setProduct(response.data);
-        if (Array.isArray(response.data.images) && response.data.images.length > 0) {
+
+        if (
+          Array.isArray(response.data.images) &&
+          response.data.images.length > 0
+        ) {
           setActiveImage(response.data.images[0]);
         }
       }
@@ -78,8 +74,12 @@ export default function ProductDetails() {
 
   const fetchProductBycategoryId = async () => {
     if (!product?.category?._id) return;
+
     try {
-      let responses = await getData(`product/by-category/${product?.category?._id}`);
+      let responses = await getData(
+        `product/by-category/${product?.category?._id}`
+      );
+
       if (responses?.success === true) {
         setRelatedProducts(responses.data);
       }
@@ -104,9 +104,77 @@ export default function ProductDetails() {
       : product.image
         ? [product.image]
         : [];
-  const galleryImages = rawGallery.map((img) => optimizeImageUrl(img, { width: 1000 }));
 
-  const filterRelatedProducts = relatedProducts.filter((item) => item?._id !== product?._id);
+  const galleryImages = rawGallery.map((img) =>
+    optimizeImageUrl(img, { width: 1000 })
+  );
+
+  const filterRelatedProducts = relatedProducts.filter(
+    (item) => item?._id !== product?._id
+  );
+
+  // ── Image Lightbox Functions ─────────────────────────────────────────────
+
+  const openImageModal = (index) => {
+    setSelectedImageIndex(index);
+    setActiveImage(galleryImages[index]);
+    setIsImageModalOpen(true);
+  };
+
+  const closeImageModal = () => {
+    setIsImageModalOpen(false);
+  };
+
+  const showPreviousImage = () => {
+    if (galleryImages.length === 0) return;
+
+    setSelectedImageIndex((prevIndex) => {
+      const newIndex =
+        prevIndex === 0 ? galleryImages.length - 1 : prevIndex - 1;
+
+      setActiveImage(galleryImages[newIndex]);
+
+      return newIndex;
+    });
+  };
+
+  const showNextImage = () => {
+    if (galleryImages.length === 0) return;
+
+    setSelectedImageIndex((prevIndex) => {
+      const newIndex =
+        prevIndex === galleryImages.length - 1 ? 0 : prevIndex + 1;
+
+      setActiveImage(galleryImages[newIndex]);
+
+      return newIndex;
+    });
+  };
+
+  // Close modal with Escape and change image with keyboard arrows
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (!isImageModalOpen) return;
+
+      if (e.key === "Escape") {
+        closeImageModal();
+      }
+
+      if (e.key === "ArrowLeft") {
+        showPreviousImage();
+      }
+
+      if (e.key === "ArrowRight") {
+        showNextImage();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isImageModalOpen, galleryImages.length]);
 
   // ── SEO Meta Calculations ────────────────────────────────────────────────
   const pageTitle = product?.metaTitle
@@ -134,13 +202,17 @@ export default function ProductDetails() {
       .filter(Boolean)
       .join(", ");
 
-  const mainImageUrl = activeImage || (galleryImages[0] || "https://www.technomac.in/logo.png");
+  const mainImageUrl =
+    activeImage ||
+    galleryImages[0] ||
+    "https://www.technomac.in/logo.png";
 
   const canonicalUrl = product?.canonicalUrl
     ? product.canonicalUrl
-    : `https://www.technomac.in/product/${product.slug || product._id || ""}`;
+    : `https://www.technomac.in/product/${product.slug || product._id || ""
+    }`;
 
-  // ── JSON-LD Structured Data Schema.org Product ────────────────────────────
+  // ── JSON-LD Structured Data Schema.org Product ───────────────────────────
   const jsonLdSchema = product?._id
     ? {
       "@context": "https://schema.org/",
@@ -167,10 +239,10 @@ export default function ProductDetails() {
     const fetchContactInfo = async () => {
       try {
         const res = await getData("contact-info");
+
         if (res?.success && res?.data) {
           setContactInfo({
-            salesPhone:
-              res.data.salesPhone,
+            salesPhone: res.data.salesPhone,
             servicePhone: res.data.servicePhone,
             email: res.data.email,
             address: res.data.address,
@@ -181,6 +253,7 @@ export default function ProductDetails() {
         console.error("fetchContactInfo error:", err);
       }
     };
+
     fetchContactInfo();
   }, []);
 
@@ -227,105 +300,205 @@ export default function ProductDetails() {
             <SkeletonLoader type="detail" />
           ) : (
             <div className="row">
-            <div className="col-lg-5">
-              <div className={styles.imageWrapper}>
-                <div
-                  className={styles.mainImage}
-                  onMouseMove={handleMouseMove}
-                  onMouseLeave={handleMouseLeave}
-                >
-                  {activeImage ? (
-                    <Image
-                      src={activeImage}
-                      alt={product?.name || "Product"}
-                      width={1000}
-                      height={800}
-                      className={styles.mainProductImage}
-                      style={zoomStyle}
-                    />
-                  ) : (
-                    <div className="w-full h-full flex items-center justify-center text-gray-400 bg-gray-100">
-                      No Image Available
-                    </div>
-                  )}
-                </div>
-                <div className={styles.galleryWrapper}>
-                  <div className={styles.gallery}>
-                    {galleryImages.map((img, index) => (
-                      <button
-                        type="button"
-                        key={index}
-                        className={`${styles.thumbBox} ${activeImage === img ? styles.activeThumb : ""
-                          }`}
-                        onClick={() => setActiveImage(img)}
-                      >
-                        <Image
-                          src={img}
-                          alt={`thumb-${index}`}
-                          width={100}
-                          height={100}
-                          className={styles.thumbImage}
-                        />
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
+              <div className="col-lg-5">
+                <div className={styles.imageWrapper}>
+                  <div
+                    className={styles.mainImage}
+                    onClick={() => {
+                      const currentIndex = galleryImages.findIndex(
+                        (img) => img === activeImage
+                      );
 
-            <div className="col-lg-7">
-              <div className={styles.content}>
-                <span className="hero-tag">{product?.category?.name}</span>
-                <h1>{product?.name}</h1>
-                <p className={styles.description}>{product?.description}</p>
-
-                {Array.isArray(product?.features) && product.features.length > 0 && (
-                  <div className={styles.sectionBox}>
-                    <h3>Salient Features</h3>
-                    <ul>
-                      {product.features.map((feature, index) => (
-                        <li key={index}>
-                          <FaCheckCircle />
-                          {feature}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-
-                {Array.isArray(product?.specifications) &&
-                  product.specifications.length > 0 && (
-                    <div className={styles.sectionBox}>
-                      <h3>Technical Specifications</h3>
-                      <div className={styles.specGrid}>
-                        {product.specifications.map((spec, index) => (
-                          <div key={index}>
-                            <span>{spec.label || spec.key}</span>
-                            <p>{spec.value}</p>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-
-                <div className={styles.buttonGroup}>
-                  <a
-                    href={`https://wa.me/${contactInfo?.whatsappPhone}?text=${encodeURIComponent(
-                      `Hello TECHNOMAC, I am interested in ${product?.name || "your products"}.`
-                    )}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{ textDecoration: "none" }}
+                      openImageModal(
+                        currentIndex >= 0 ? currentIndex : 0
+                      );
+                    }}
+                    style={{ cursor: "pointer" }}
                   >
-                    <button className="quoteBtn d-flex align-items-center gap-2">
-                      <FaWhatsapp />
-                      WhatsApp Inquiry
-                    </button>
-                  </a>
+                    {activeImage ? (
+                      <Image
+                        src={activeImage}
+                        alt={product?.name || "Product"}
+                        width={1000}
+                        height={800}
+                        className={styles.mainProductImage}
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center text-gray-400 bg-gray-100">
+                        No Image Available
+                      </div>
+                    )}
+                  </div>
+
+                  <div className={styles.galleryWrapper}>
+                    <div className={styles.gallery}>
+                      {galleryImages.map((img, index) => (
+                        <button
+                          type="button"
+                          key={index}
+                          className={`${styles.thumbBox} ${activeImage === img
+                            ? styles.activeThumb
+                            : ""
+                            }`}
+                          onClick={() => {
+                            setActiveImage(img);
+                          }}
+                        >
+                          <Image
+                            src={img}
+                            alt={`thumb-${index}`}
+                            width={100}
+                            height={100}
+                            className={styles.thumbImage}
+                          />
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="col-lg-7">
+                <div className={styles.content}>
+                  <span className="hero-tag">
+                    {product?.category?.name}
+                  </span>
+
+                  <h1>{product?.name}</h1>
+
+                  <p className={styles.description}>
+                    {product?.description}
+                  </p>
+
+                  {/* {Array.isArray(product?.features) &&
+                    product.features.length > 0 && (
+                      <div className={styles.sectionBox}>
+                        <h3>Salient Features</h3>
+
+                        <ul>
+                          {product.features.map((feature, index) => (
+                            <li key={index}>
+                              <FaCheckCircle />
+                              {feature}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )} */}
+                 {Array.isArray(product?.features) && product.features.length > 0 && (
+  <div className={styles.sectionBox}>
+    <h3>Salient Features</h3>
+
+    <div
+      className={`${styles.expandableContent} ${
+        showAllFeatures ? styles.expanded : ""
+      }`}
+    >
+      <ul>
+        {product.features.map((feature, index) => (
+          <li
+            key={index}
+            className={
+              !showAllFeatures && index >= 6
+                ? styles.hiddenItem
+                : styles.visibleItem
+            }
+          >
+            <FaCheckCircle />
+            {feature}
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    {product.features.length > 6 && (
+      <button
+        type="button"
+        className={styles.viewMoreBtn}
+        onClick={() => setShowAllFeatures((prev) => !prev)}
+      >
+        {showAllFeatures ? "View Less" : "View More"}
+      </button>
+    )}
+  </div>
+)}
+
+                  {/* {Array.isArray(product?.specifications) &&
+                    product.specifications.length > 0 && (
+                      <div className={styles.sectionBox}>
+                        <h3>Technical Specifications</h3>
+
+                        <div className={styles.specGrid}>
+                          {product.specifications.map((spec, index) => (
+                            <div key={index}>
+                              <span>{spec.label || spec.key}</span>
+                              <p>{spec.value}</p>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )} */}
+{Array.isArray(product?.specifications) &&
+  product.specifications.length > 0 && (
+    <div className={styles.sectionBox}>
+      <h3>Technical Specifications</h3>
+
+      <div
+        className={`${styles.expandableContent} ${
+          showAllSpecifications ? styles.expanded : ""
+        }`}
+      >
+        <div className={styles.specGrid}>
+          {product.specifications.map((spec, index) => (
+            <div
+              key={index}
+              className={
+                !showAllSpecifications && index >= 6
+                  ? styles.hiddenItem
+                  : styles.visibleItem
+              }
+            >
+              <span>{spec.label || spec.key}</span>
+              <p>{spec.value}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {product.specifications.length > 6 && (
+        <button
+          type="button"
+          className={styles.viewMoreBtn}
+          onClick={() =>
+            setShowAllSpecifications((prev) => !prev)
+          }
+        >
+          {showAllSpecifications ? "View Less" : "View More"}
+        </button>
+      )}
+    </div>
+  )}
+
+                  <div className={styles.buttonGroup}>
+                    <a
+                      href={`https://wa.me/${contactInfo?.whatsappPhone
+                        }?text=${encodeURIComponent(
+                          `Hello TECHNOMAC, I am interested in ${product?.name || "your products"
+                          }.`
+                        )}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{ textDecoration: "none" }}
+                    >
+                      <button className="quoteBtn d-flex align-items-center gap-2">
+                        <FaWhatsapp />
+                        WhatsApp Inquiry
+                      </button>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
           )}
 
           {filterRelatedProducts.length > 0 && (
@@ -334,6 +507,7 @@ export default function ProductDetails() {
                 <span>Related Products</span>
                 <h2>Explore More Equipment</h2>
               </div>
+
               <Swiper
                 slidesPerView={4}
                 spaceBetween={24}
@@ -365,11 +539,20 @@ export default function ProductDetails() {
                           />
                         ) : null}
                       </div>
+
                       <div className={styles.relatedContent}>
                         <span>{item?.category?.name}</span>
+
                         <h3>{item.name}</h3>
+
                         {/* <p>{item?.description}</p> */}
-                        <Link href={`/product/${item?.slug || toSlug(item?.name) || item._id}`} >
+
+                        <Link
+                          href={`/product/${item?.slug ||
+                            toSlug(item?.name) ||
+                            item._id
+                            }`}
+                        >
                           <button>View Details</button>
                         </Link>
                       </div>
@@ -381,6 +564,490 @@ export default function ProductDetails() {
           )}
         </div>
       </section>
+
+      {/* ─────────────────────────────────────────────────────────────
+          IMAGE LIGHTBOX / MODAL
+      ───────────────────────────────────────────────────────────── */}
+      {isImageModalOpen && galleryImages.length > 0 && (
+        <div
+          className={styles.imageModalOverlay}
+          onClick={closeImageModal}
+        >
+          <div
+            className={styles.imageModal}
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close Button */}
+            <button
+              type="button"
+              className={styles.imageModalClose}
+              onClick={closeImageModal}
+              aria-label="Close image"
+            >
+              &times;
+            </button>
+
+            {/* Previous Button */}
+            {galleryImages.length > 1 && (
+              <button
+                type="button"
+                className={`${styles.imageModalArrow} ${styles.imageModalPrev}`}
+                onClick={showPreviousImage}
+                aria-label="Previous image"
+              >
+                &#10094;
+              </button>
+            )}
+
+            {/* Main Modal Image */}
+            <div className={styles.imageModalMain}>
+              <Image
+                src={galleryImages[selectedImageIndex]}
+                alt={`${product?.name || "Product"} - ${selectedImageIndex + 1
+                  }`}
+                width={1400}
+                height={1000}
+                className={styles.imageModalImage}
+              />
+            </div>
+
+            {/* Next Button */}
+            {galleryImages.length > 1 && (
+              <button
+                type="button"
+                className={`${styles.imageModalArrow} ${styles.imageModalNext}`}
+                onClick={showNextImage}
+                aria-label="Next image"
+              >
+                &#10095;
+              </button>
+            )}
+
+            {/* Image Counter */}
+            {galleryImages.length > 1 && (
+              <div className={styles.imageModalCounter}>
+                {selectedImageIndex + 1} / {galleryImages.length}
+              </div>
+            )}
+
+            {/* Modal Thumbnails */}
+            {galleryImages.length > 1 && (
+              <div className={styles.imageModalThumbnails}>
+                {galleryImages.map((img, index) => (
+                  <button
+                    key={index}
+                    type="button"
+                    className={`${styles.imageModalThumb} ${selectedImageIndex === index
+                      ? styles.imageModalThumbActive
+                      : ""
+                      }`}
+                    onClick={() => {
+                      setSelectedImageIndex(index);
+                      setActiveImage(img);
+                    }}
+                  >
+                    <Image
+                      src={img}
+                      alt={`Product image ${index + 1}`}
+                      width={90}
+                      height={70}
+                    />
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+      )}
     </>
   );
 }
+
+
+
+// import Link from "next/link";
+// import Head from "next/head";
+// import { useRouter } from "next/router";
+// import { FaCheckCircle, FaFilePdf, FaWhatsapp } from "react-icons/fa";
+// import { Swiper, SwiperSlide } from "swiper/react";
+// import { Navigation } from "swiper/modules";
+// import styles from "./ProductDetails.module.css";
+// import Image from "next/image";
+// import { useEffect, useState } from "react";
+// import Breadcrumb from "../../common/Breadcrumb/Breadcrumb";
+// import { useSearchParams } from "next/navigation";
+// import { getData } from "../../../services/FetchNodeServices";
+// import { optimizeImageUrl } from "../../../utils/imageOptimizer";
+
+// import SkeletonLoader from "../../common/Loader/SkeletonLoader";
+
+// // Helper to convert product name to clean URL slug without %20
+// const toSlug = (text) => {
+//   if (!text) return "";
+//   return text
+//     .toLowerCase()
+//     .trim()
+//     .replace(/[^\w\s-]/g, "")
+//     .replace(/[\s_-]+/g, "-")
+//     .replace(/^-+|-+$/g, "");
+// };
+
+// export default function ProductDetails() {
+//   const router = useRouter();
+//   const searchParams = useSearchParams();
+//   const productIdentifier = router?.query?.slug || searchParams?.get("productId") || router?.query?.productId;
+
+//   const [product, setProduct] = useState({});
+//   const [loading, setLoading] = useState(true);
+//   const [relatedProducts, setRelatedProducts] = useState([]);
+//   const [activeImage, setActiveImage] = useState("");
+//   const [zoomStyle, setZoomStyle] = useState({
+//     transform: "scale(1)",
+//     transformOrigin: "50% 50%",
+//   });
+//   const [contactInfo, setContactInfo] = useState({});
+
+//   const handleMouseMove = (e) => {
+//     const rect = e.currentTarget.getBoundingClientRect();
+//     const x = ((e.clientX - rect.left) / rect.width) * 100;
+//     const y = ((e.clientY - rect.top) / rect.height) * 100;
+
+//     setZoomStyle({
+//       transform: "scale(2)",
+//       transformOrigin: `${x}% ${y}%`,
+//     });
+//   };
+
+//   const handleMouseLeave = () => {
+//     setZoomStyle({
+//       transform: "scale(1)",
+//       transformOrigin: "50% 50%",
+//     });
+//   };
+
+//   const fetchProduct = async () => {
+//     if (!productIdentifier) return;
+//     setLoading(true);
+//     try {
+//       let response = await getData(`product/${encodeURIComponent(productIdentifier)}`);
+//       if (response?.success === true && response?.data) {
+//         setProduct(response.data);
+//         if (Array.isArray(response.data.images) && response.data.images.length > 0) {
+//           setActiveImage(response.data.images[0]);
+//         }
+//       }
+//     } catch (e) {
+//       console.error("fetchProduct error:", e);
+//     } finally {
+//       setLoading(false);
+//     }
+//   };
+
+//   const fetchProductBycategoryId = async () => {
+//     if (!product?.category?._id) return;
+//     try {
+//       let responses = await getData(`product/by-category/${product?.category?._id}`);
+//       if (responses?.success === true) {
+//         setRelatedProducts(responses.data);
+//       }
+//     } catch (e) {
+//       console.error("fetchProductBycategoryId error:", e);
+//     }
+//   };
+
+//   useEffect(() => {
+//     fetchProduct();
+//   }, [productIdentifier]);
+
+//   useEffect(() => {
+//     if (product?.category?._id) {
+//       fetchProductBycategoryId();
+//     }
+//   }, [product?.category?._id]);
+
+//   const rawGallery =
+//     Array.isArray(product.images) && product.images.length > 0
+//       ? product.images
+//       : product.image
+//         ? [product.image]
+//         : [];
+//   const galleryImages = rawGallery.map((img) => optimizeImageUrl(img, { width: 1000 }));
+
+//   const filterRelatedProducts = relatedProducts.filter((item) => item?._id !== product?._id);
+
+//   // ── SEO Meta Calculations ────────────────────────────────────────────────
+//   const pageTitle = product?.metaTitle
+//     ? product.metaTitle
+//     : product?.name
+//       ? `${product.name} | TECHNOMAC`
+//       : "Medical & Dental Equipment | TECHNOMAC";
+
+//   const pageDescription = product?.metaDescription
+//     ? product.metaDescription
+//     : product?.description
+//       ? product.description.slice(0, 160)
+//       : "Explore high-quality medical and dental equipment manufactured by TECHNOMAC Medical Systems.";
+
+//   const pageKeywords = product?.metaKeywords
+//     ? product.metaKeywords
+//     : [
+//       product?.name,
+//       product?.category?.name,
+//       product?.parentCategoryId?.name,
+//       "TECHNOMAC",
+//       "dental equipment",
+//       "medical equipment",
+//     ]
+//       .filter(Boolean)
+//       .join(", ");
+
+//   const mainImageUrl = activeImage || (galleryImages[0] || "https://www.technomac.in/logo.png");
+
+//   const canonicalUrl = product?.canonicalUrl
+//     ? product.canonicalUrl
+//     : `https://www.technomac.in/product/${product.slug || product._id || ""}`;
+
+//   // ── JSON-LD Structured Data Schema.org Product ────────────────────────────
+//   const jsonLdSchema = product?._id
+//     ? {
+//       "@context": "https://schema.org/",
+//       "@type": "Product",
+//       name: product.name,
+//       image: galleryImages,
+//       description: pageDescription,
+//       sku: product.sku || product._id,
+//       brand: {
+//         "@type": "Brand",
+//         name: "TECHNOMAC",
+//       },
+//       offers: {
+//         "@type": "Offer",
+//         url: canonicalUrl,
+//         priceCurrency: "INR",
+//         price: product.price || "0",
+//         availability: "https://schema.org/InStock",
+//       },
+//     }
+//     : null;
+
+//   useEffect(() => {
+//     const fetchContactInfo = async () => {
+//       try {
+//         const res = await getData("contact-info");
+//         if (res?.success && res?.data) {
+//           setContactInfo({
+//             salesPhone:
+//               res.data.salesPhone,
+//             servicePhone: res.data.servicePhone,
+//             email: res.data.email,
+//             address: res.data.address,
+//             whatsappPhone: res.data.whatsappPhone,
+//           });
+//         }
+//       } catch (err) {
+//         console.error("fetchContactInfo error:", err);
+//       }
+//     };
+//     fetchContactInfo();
+//   }, []);
+
+//   return (
+//     <>
+//       <Head>
+//         {/* ── Primary Meta ── */}
+//         <title>{pageTitle}</title>
+//         <meta name="description" content={pageDescription} />
+//         <meta name="keywords" content={pageKeywords} />
+//         <meta name="robots" content="index, follow" />
+//         <link rel="canonical" href={canonicalUrl} />
+
+//         {/* ── Open Graph ── */}
+//         <meta property="og:type" content="product" />
+//         <meta property="og:title" content={pageTitle} />
+//         <meta property="og:description" content={pageDescription} />
+//         <meta property="og:image" content={mainImageUrl} />
+//         <meta property="og:url" content={canonicalUrl} />
+//         <meta property="og:site_name" content="TECHNOMAC" />
+
+//         {/* ── Twitter Cards ── */}
+//         <meta name="twitter:card" content="summary_large_image" />
+//         <meta name="twitter:title" content={pageTitle} />
+//         <meta name="twitter:description" content={pageDescription} />
+//         <meta name="twitter:image" content={mainImageUrl} />
+
+//         {/* ── JSON-LD Structured Data Script ── */}
+//         {jsonLdSchema && (
+//           <script
+//             type="application/ld+json"
+//             dangerouslySetInnerHTML={{
+//               __html: JSON.stringify(jsonLdSchema),
+//             }}
+//           />
+//         )}
+//       </Head>
+
+//       <section className={styles.detailsPage}>
+//         <div className="container">
+//           <Breadcrumb pageName={product?.name || "Product Details"} />
+
+//           {loading ? (
+//             <SkeletonLoader type="detail" />
+//           ) : (
+//             <div className="row">
+//             <div className="col-lg-5">
+//               <div className={styles.imageWrapper}>
+//                 <div
+//                   className={styles.mainImage}
+//                   onMouseMove={handleMouseMove}
+//                   onMouseLeave={handleMouseLeave}
+//                 >
+//                   {activeImage ? (
+//                     <Image
+//                       src={activeImage}
+//                       alt={product?.name || "Product"}
+//                       width={1000}
+//                       height={800}
+//                       className={styles.mainProductImage}
+//                       style={zoomStyle}
+//                     />
+//                   ) : (
+//                     <div className="w-full h-full flex items-center justify-center text-gray-400 bg-gray-100">
+//                       No Image Available
+//                     </div>
+//                   )}
+//                 </div>
+//                 <div className={styles.galleryWrapper}>
+//                   <div className={styles.gallery}>
+//                     {galleryImages.map((img, index) => (
+//                       <button
+//                         type="button"
+//                         key={index}
+//                         className={`${styles.thumbBox} ${activeImage === img ? styles.activeThumb : ""
+//                           }`}
+//                         onClick={() => setActiveImage(img)}
+//                       >
+//                         <Image
+//                           src={img}
+//                           alt={`thumb-${index}`}
+//                           width={100}
+//                           height={100}
+//                           className={styles.thumbImage}
+//                         />
+//                       </button>
+//                     ))}
+//                   </div>
+//                 </div>
+//               </div>
+//             </div>
+
+//             <div className="col-lg-7">
+//               <div className={styles.content}>
+//                 <span className="hero-tag">{product?.category?.name}</span>
+//                 <h1>{product?.name}</h1>
+//                 <p className={styles.description}>{product?.description}</p>
+
+//                 {Array.isArray(product?.features) && product.features.length > 0 && (
+//                   <div className={styles.sectionBox}>
+//                     <h3>Salient Features</h3>
+//                     <ul>
+//                       {product.features.map((feature, index) => (
+//                         <li key={index}>
+//                           <FaCheckCircle />
+//                           {feature}
+//                         </li>
+//                       ))}
+//                     </ul>
+//                   </div>
+//                 )}
+
+//                 {Array.isArray(product?.specifications) &&
+//                   product.specifications.length > 0 && (
+//                     <div className={styles.sectionBox}>
+//                       <h3>Technical Specifications</h3>
+//                       <div className={styles.specGrid}>
+//                         {product.specifications.map((spec, index) => (
+//                           <div key={index}>
+//                             <span>{spec.label || spec.key}</span>
+//                             <p>{spec.value}</p>
+//                           </div>
+//                         ))}
+//                       </div>
+//                     </div>
+//                   )}
+
+//                 <div className={styles.buttonGroup}>
+//                   <a
+//                     href={`https://wa.me/${contactInfo?.whatsappPhone}?text=${encodeURIComponent(
+//                       `Hello TECHNOMAC, I am interested in ${product?.name || "your products"}.`
+//                     )}`}
+//                     target="_blank"
+//                     rel="noopener noreferrer"
+//                     style={{ textDecoration: "none" }}
+//                   >
+//                     <button className="quoteBtn d-flex align-items-center gap-2">
+//                       <FaWhatsapp />
+//                       WhatsApp Inquiry
+//                     </button>
+//                   </a>
+//                 </div>
+//               </div>
+//             </div>
+//           </div>
+//           )}
+
+//           {filterRelatedProducts.length > 0 && (
+//             <div className={styles.relatedSection}>
+//               <div className={styles.relatedHeading}>
+//                 <span>Related Products</span>
+//                 <h2>Explore More Equipment</h2>
+//               </div>
+//               <Swiper
+//                 slidesPerView={4}
+//                 spaceBetween={24}
+//                 navigation={true}
+//                 modules={[Navigation]}
+//                 breakpoints={{
+//                   0: {
+//                     slidesPerView: 2,
+//                   },
+//                   768: {
+//                     slidesPerView: 3,
+//                   },
+//                   1200: {
+//                     slidesPerView: 4,
+//                   },
+//                 }}
+//               >
+//                 {filterRelatedProducts?.map((item) => (
+//                   <SwiperSlide key={item._id || item.id}>
+//                     <div className={styles.relatedCard}>
+//                       <div className={styles.relatedImage}>
+//                         {item.images?.[0] ? (
+//                           <Image
+//                             src={item.images[0]}
+//                             alt={item.name}
+//                             width={300}
+//                             height={250}
+//                             className={styles.relatedProductImage}
+//                           />
+//                         ) : null}
+//                       </div>
+//                       <div className={styles.relatedContent}>
+//                         <span>{item?.category?.name}</span>
+//                         <h3>{item.name}</h3>
+//                         {/* <p>{item?.description}</p> */}
+//                         <Link href={`/product/${item?.slug || toSlug(item?.name) || item._id}`} >
+//                           <button>View Details</button>
+//                         </Link>
+//                       </div>
+//                     </div>
+//                   </SwiperSlide>
+//                 ))}
+//               </Swiper>
+//             </div>
+//           )}
+//         </div>
+//       </section>
+//     </>
+//   );
+// }

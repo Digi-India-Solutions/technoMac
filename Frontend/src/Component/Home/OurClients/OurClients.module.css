@@ -146,10 +146,9 @@
 }
 
 .clientCard {
-    background: #fff;
     border-radius: 20px;
     padding: 10px;
-    height: 120px;
+    height: 140px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -166,7 +165,7 @@
 
 .clientLogo {
 
-    object-fit: cover;
+    object-fit: contain;
 
     /* filter: grayscale(100%); */
 
@@ -199,7 +198,7 @@
     }
 
     .clientLogo {
-        object-fit: fill;
+        object-fit: contain;
     }
 
     .clientSection {

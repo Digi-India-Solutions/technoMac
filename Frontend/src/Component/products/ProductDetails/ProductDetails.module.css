@@ -7,19 +7,16 @@
 .imageWrapper {
   position: sticky;
   top: 140px;
-  max-width: 400px;
+  max-width: 450px;
   margin: 0;
 }
 
 .mainImage {
-  background: #fff;
-  border-radius: 24px;
+  border-radius: 10px;
   padding: 0;
   text-align: center;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
   overflow: hidden; 
-  cursor: zoom-in;
-  border: 1px solid #f0f0f0;
+  cursor: zoom-in; 
 }
 
 
@@ -34,12 +31,9 @@
 .gallery img {
   /* width: 100px;
   height: 100px; */
-  object-fit: cover;
+  object-fit: fill;
   border-radius: 10px;
-  cursor: pointer;
-  background: #fff;
-  /* padding: 3px; */
-  border: 1px solid #eee;
+  cursor: pointer;  
 }
 
 /* RIGHT */
@@ -73,7 +67,7 @@
 .sectionBox {
   background: #fff;
   border-radius: 24px;
-  padding: 30px;
+  padding: 20px;
   margin-bottom: 25px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
 }
@@ -95,7 +89,7 @@
   display: flex;
   align-items: flex-start;
   gap: 12px;
-  margin-bottom: 18px;
+  margin-bottom: 0px;
   color: #444;
   font-size: 15px;
   line-height: 1.6;
@@ -113,13 +107,13 @@
 .specGrid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
+  gap: 10px;
 }
 
 .specGrid div {
   background: #f8f8f8;
-  padding: 20px;
-  border-radius: 18px;
+  padding: 10px;
+  border-radius: 10px;
 }
 
 .specGrid span {
@@ -128,7 +122,7 @@
 }
 
 .specGrid p {
-  margin: 10px 0 0;
+  margin: 0px 0 0;
   font-size: 16px;
   font-weight: 600;
 }
@@ -153,17 +147,17 @@
 
 .mainProductImage {
   width: 100%;
-  height: 400px !important;
+  height: 500px !important;
   display: block;
   border-radius: 24px;
-  object-fit: contain;
+  object-fit: cover;
   transition: transform .08s linear;
   will-change: transform;
 }
 
-.mainImage:hover .mainProductImage {
-  transform: scale(1.3);   /* Try 1.2–1.5 */
-}
+/* .mainImage:hover .mainProductImage {
+  transform: scale(1.3);
+} */
 
 
 
@@ -374,6 +368,280 @@
 
 .relatedSection .swiper-slide {
   height: auto;
+}
+
+/* =========================================================
+   IMAGE LIGHTBOX
+========================================================= */
+
+.imageModalOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+}
+
+.imageModal {
+  position: relative;
+  width: 100%;
+  max-width: 1400px;
+  height: 100%;
+  max-height: 95vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.imageModalMain {
+  width: 100%;
+  height: calc(100% - 110px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.imageModalImage {
+  width: auto;
+  height: auto;
+  max-width: 85%;
+  max-height: 80vh;
+  object-fit: contain;
+}
+
+/* Close Button */
+
+.imageModalClose {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 45px;
+  height: 45px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  font-size: 32px;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 10;
+  transition: 0.2s ease;
+}
+
+.imageModalClose:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Previous / Next Buttons */
+
+.imageModalArrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  font-size: 25px;
+  cursor: pointer;
+  z-index: 10;
+  transition: 0.2s ease;
+}
+
+.imageModalArrow:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.imageModalPrev {
+  left: 10px;
+}
+
+.imageModalNext {
+  right: 10px;
+}
+
+/* Counter */
+
+.imageModalCounter {
+  position: absolute;
+  bottom: 82px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+  font-size: 14px;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 5px 12px;
+  border-radius: 20px;
+}
+
+/* Modal Thumbnails */
+
+.imageModalThumbnails {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  overflow-x: auto;
+  padding: 10px 0;
+}
+
+.imageModalThumb {
+  flex: 0 0 auto;
+  width: 75px;
+  height: 60px;
+  padding: 3px;
+  border: 2px solid transparent;
+  background: rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 5px;
+  transition: 0.2s ease;
+}
+
+.imageModalThumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.imageModalThumb:hover {
+  border-color: rgba(255, 255, 255, 0.7);
+}
+
+.imageModalThumbActive {
+  border-color: #fff;
+}
+
+/* =========================================
+   VIEW MORE / VIEW LESS ANIMATION
+========================================= */
+
+.expandableContent {
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+  max-height: 500px;
+}
+
+.expandableContent.expanded {
+  max-height: 3000px;
+}
+
+.hiddenItem {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  margin: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  transform: translateY(-10px);
+  pointer-events: none;
+}
+
+.visibleItem {
+  max-height: 500px;
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    max-height 0.45s ease,
+    opacity 0.35s ease,
+    transform 0.45s ease,
+    margin 0.45s ease,
+    padding 0.45s ease;
+}
+
+
+/* View More Button */
+
+.viewMoreBtn {
+  margin-top: 15px;
+  padding: 8px 20px;
+  border: none;
+  border-radius: 5px;
+  background: #000;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition:
+    background 0.3s ease,
+    transform 0.2s ease;
+}
+
+.viewMoreBtn:hover {
+  background: #333;
+  transform: translateY(-1px);
+}
+
+.viewMoreBtn:active {
+  transform: translateY(0);
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+  .relatedContent span { 
+  font-size: 12px; 
+}
+
+.relatedContent h3 {
+  font-size: 12px; 
+}
+
+  .imageModalOverlay {
+    padding: 15px;
+  }
+
+  .imageModalImage {
+    max-width: 90%;
+    max-height: 65vh;
+  }
+
+  .imageModalArrow {
+    width: 42px;
+    height: 42px;
+    font-size: 20px;
+  }
+
+  .imageModalPrev {
+    left: 0;
+  }
+
+  .imageModalNext {
+    right: 0;
+  }
+
+  .imageModalClose {
+    width: 40px;
+    height: 40px;
+    font-size: 28px;
+  }
+
+  .imageModalThumbnails {
+    justify-content: flex-start;
+    padding-left: 45px;
+    padding-right: 45px;
+  }
+
+  .imageModalThumb {
+    width: 65px;
+    height: 52px;
+  }
+
+  .imageModalCounter {
+    bottom: 72px;
+  }
 }
 
 /* =========================
