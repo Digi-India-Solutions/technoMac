@@ -82,7 +82,7 @@ export default function ReviewSection() {
           <div className={styles.heading}>
             {/* <span>Testimonials</span> */}
             <h2>What Doctors Say About TECHNOMAC</h2>
-            <p>Trusted by thousands of dental professionals across India.</p>
+            <p>Trusted by Thousands of Healthcare Professionals across India.</p>
           </div>
 
           {/* SLIDER */}

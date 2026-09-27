@@ -427,7 +427,7 @@ export default function EnquiryPopup() {
         {/* HEADER */}
         <span className="hero-tag">TECHNOMAC</span>
         <h2>Quick Enquiry</h2>
-        <p>Get free consultation for dental clinic setup and equipment solutions.</p>
+        <p>Get a Free Consultation for Clinic Setup & Equipment Solutions </p>
 
         {/* SUCCESS MESSAGE */}
         {successMsg && (

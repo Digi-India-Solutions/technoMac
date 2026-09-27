@@ -515,7 +515,7 @@ export default function CataloguePage() {
         <div className={styles.heading}>
           <span className="hero-tag">TECHNOMAC BROCHURES</span>
           <h1>Product Catalogues</h1>
-          <p>Download our latest dental equipment brochures, clinic setup catalogues and premium healthcare product details.</p>
+          <p>Explore our latest dental and medical equipment brochures, clinic setup catalogues, and premium healthcare product details </p>
         </div>
 
         {/* SKELETON */}
