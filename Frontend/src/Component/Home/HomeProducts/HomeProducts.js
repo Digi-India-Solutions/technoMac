@@ -54,14 +54,11 @@ export default function HomeProducts() {
       <div className="container">
         <div className={styles.sectionHeader}>
           <h2>
-            Advanced Dental
-            Equipment Solutions
+            Advanced Medical and Dental Equipment Solutions
           </h2>
 
           <p>
-            Explore premium dental
-            healthcare products designed
-            for modern clinics and professionals.
+            Explore Premium Dental and Medical Healthcare products designed for modern clinics and professionals
           </p>
         </div>
 
