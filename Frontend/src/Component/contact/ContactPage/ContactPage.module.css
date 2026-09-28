@@ -286,3 +286,206 @@
   opacity: 0.7;
   cursor: not-allowed;
 }
+
+/* ─── Searchable Product Dropdown ─── */
+.customSelectWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.customSelectTrigger {
+  width: 100%;
+  border: 1px solid #e5e5e5;
+  border-radius: 10px;
+  padding: 7px 14px;
+  outline: none;
+  transition: 0.3s;
+  background: #fafafa;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  min-height: 38px;
+  font-size: 14px;
+  color: #111;
+  user-select: none;
+  box-sizing: border-box;
+}
+
+.customSelectTrigger:hover,
+.selectActive {
+  border-color: var(--theme-color) !important;
+}
+
+.selectedText {
+  color: #111;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 14px;
+}
+
+.placeholderText {
+  color: #757575;
+  font-size: 14px;
+}
+
+.selectIcons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: 8px;
+  flex-shrink: 0;
+}
+
+.clearBtn {
+  font-size: 16px;
+  line-height: 1;
+  color: #888;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  transition: all 0.2s;
+}
+
+.clearBtn:hover {
+  background: #fee2e2;
+  color: #e53935;
+}
+
+.dropdownArrow {
+  font-size: 12px;
+  color: #666;
+  transition: transform 0.2s ease;
+}
+
+.arrowOpen {
+  transform: rotate(180deg);
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: calc(100% + 5px);
+  left: 0;
+  right: 0;
+  background: #ffffff;
+  border: 1px solid #e5e5e5;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+  z-index: 9999;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.searchBox {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 12px;
+  font-size: 13px;
+  color: #888;
+  pointer-events: none;
+}
+
+.dropdownSearchInput {
+  width: 100%;
+  padding: 8px 30px 8px 34px !important;
+  border: 1px solid #e5e5e5 !important;
+  border-radius: 8px !important;
+  background: #fbfbfb !important;
+  font-size: 13.5px !important;
+  outline: none;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+
+.dropdownSearchInput:focus {
+  border-color: var(--theme-color) !important;
+  background: #ffffff !important;
+}
+
+.clearSearchBtn {
+  position: absolute;
+  right: 10px;
+  font-size: 16px;
+  color: #999;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.clearSearchBtn:hover {
+  color: #333;
+}
+
+.optionsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 210px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.optionsList::-webkit-scrollbar {
+  width: 6px;
+}
+
+.optionsList::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.optionsList::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+}
+
+.optionsList::-webkit-scrollbar-thumb:hover {
+  background: #aaa;
+}
+
+.optionItem {
+  padding: 9px 12px;
+  font-size: 13.5px;
+  color: #222;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.optionItem:hover {
+  background: #f5f5f5;
+  color: var(--theme-color);
+}
+
+.activeOption {
+  background: rgba(229, 57, 53, 0.08) !important;
+  color: var(--theme-color) !important;
+  font-weight: 600;
+}
+
+.noResults {
+  padding: 14px 10px;
+  font-size: 13px;
+  color: #888;
+  text-align: center;
+}
+
+@media (max-width: 576px) {
+  .customSelectTrigger {
+    border-radius: 12px;
+    padding: 10px 15px;
+  }
+}
