@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import styles from "./ContactPage.module.css";
 
 import {
@@ -6,18 +6,37 @@ import {
   FaEnvelope,
   FaMapMarkerAlt,
   FaWhatsapp,
+  FaChevronDown,
+  FaSearch,
 } from "react-icons/fa";
 import { postData, getData } from "../../../services/FetchNodeServices";
 
 export default function ContactPage() {
   const [form, setForm] = useState({
-    fullName: "", phoneNumber: "", email: "", productInterest: "", message: "",
+    fullName: "",
+    phoneNumber: "",
+    email: "",
+    productInterest: "",
+    message: "",
   });
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
   const [successMsg, setSuccessMsg] = useState("");
 
-  const [contactInfo, setContactInfo] = useState({ salesPhone: "", servicePhone: "", email: "", address: "", whatsappPhone: "", });
+  const [contactInfo, setContactInfo] = useState({
+    salesPhone: "",
+    servicePhone: "",
+    email: "",
+    address: "",
+    whatsappPhone: "",
+  });
+
+  // ─── Products & Searchable Dropdown State ────────────────────────────────
+  const [productsList, setProductsList] = useState([]);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const dropdownRef = useRef(null);
+  const searchInputRef = useRef(null);
 
   useEffect(() => {
     const fetchContactInfo = async () => {
@@ -25,12 +44,10 @@ export default function ContactPage() {
         const res = await getData("contact-info");
         if (res?.success && res?.data) {
           setContactInfo({
-            salesPhone:
-              res.data.salesPhone,
+            salesPhone: res.data.salesPhone,
             servicePhone: res.data.servicePhone,
             email: res.data.email,
-            address:
-              res.data.address,
+            address: res.data.address,
             whatsappPhone: res.data.whatsappPhone,
           });
         }
@@ -41,6 +58,72 @@ export default function ContactPage() {
     fetchContactInfo();
   }, []);
 
+  // ─── Fetch All Products For Dropdown ─────────────────────────────────────
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const res = await getData("product");
+        let list = [];
+        if (res?.success && Array.isArray(res?.data) && res.data.length > 0) {
+          list = res.data
+            .map((item) => item.name?.trim())
+            .filter(Boolean);
+        }
+
+        const defaultOptions = [
+          "Dental Chair",
+          "Autoclave",
+          "X-Ray Machine",
+          "Suction Machine",
+          "Full Clinic Setup",
+        ];
+
+        const combined = Array.from(new Set([...list, ...defaultOptions]));
+        setProductsList(combined);
+      } catch (err) {
+        console.error("fetchProducts error:", err);
+        setProductsList([
+          "Dental Chair",
+          "Autoclave",
+          "X-Ray Machine",
+          "Suction Machine",
+          "Full Clinic Setup",
+        ]);
+      }
+    };
+    fetchProducts();
+  }, []);
+
+  // ─── Click Outside & Escape to Close Dropdown ────────────────────────────
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsDropdownOpen(false);
+      }
+    };
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") {
+        setIsDropdownOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (isDropdownOpen) {
+      setTimeout(() => {
+        searchInputRef.current?.focus();
+      }, 60);
+    } else {
+      setSearchQuery("");
+    }
+  }, [isDropdownOpen]);
+
   // ─── Handle Input Change ───────────────────────────────────────────────────
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -50,6 +133,19 @@ export default function ContactPage() {
       setErrors((prev) => ({ ...prev, [name]: "" }));
     }
   };
+
+  const handleSelectProduct = (productName) => {
+    setForm((prev) => ({ ...prev, productInterest: productName }));
+    setIsDropdownOpen(false);
+    setSearchQuery("");
+    if (errors.productInterest) {
+      setErrors((prev) => ({ ...prev, productInterest: "" }));
+    }
+  };
+
+  const filteredProducts = productsList.filter((prod) =>
+    prod.toLowerCase().includes(searchQuery.toLowerCase().trim())
+  );
 
   // ─── Validation ────────────────────────────────────────────────────────────
   const validate = () => {
@@ -89,7 +185,7 @@ export default function ContactPage() {
     setSuccessMsg("");
 
     try {
-      const res = await postData("contact", form);
+      const res = await postData("contact/create", form);
 
       if (res?.success) {
         setSuccessMsg(
@@ -104,7 +200,7 @@ export default function ContactPage() {
           message: "",
         });
       } else {
-        setSuccessMsg("Something went wrong. Please try again.");
+        setSuccessMsg(res?.message || "Something went wrong. Please try again.");
       }
     } catch (error) {
       console.error("Contact Form Submit Error:", error);
@@ -253,20 +349,116 @@ export default function ContactPage() {
 
                     {/* PRODUCT INTEREST */}
                     <div className="col-md-6 col-12 mb-3">
-                      <div className={styles.inputGroup}>
+                      <div className={styles.inputGroup} ref={dropdownRef}>
                         <label>Product Interest</label>
-                        <select
-                          name="productInterest"
-                          value={form.productInterest}
-                          onChange={handleChange}
-                        >
-                          <option value="">Select Product</option>
-                          <option value="Dental Chair">Dental Chair</option>
-                          <option value="Autoclave">Autoclave</option>
-                          <option value="X Ray Machine">X-Ray Machine</option>
-                          <option value="Suction Machine">Suction Machine</option>
-                          <option value="Clinic Setup">Full Clinic Setup</option>
-                        </select>
+                        <div className={styles.customSelectWrapper}>
+                          <div
+                            className={`${styles.customSelectTrigger} ${
+                              errors.productInterest ? styles.inputError : ""
+                            } ${isDropdownOpen ? styles.selectActive : ""}`}
+                            onClick={() => setIsDropdownOpen((prev) => !prev)}
+                            tabIndex={0}
+                            role="button"
+                            aria-expanded={isDropdownOpen}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter" || e.key === " ") {
+                                e.preventDefault();
+                                setIsDropdownOpen((prev) => !prev);
+                              }
+                            }}
+                          >
+                            <span
+                              className={
+                                form.productInterest
+                                  ? styles.selectedText
+                                  : styles.placeholderText
+                              }
+                            >
+                              {form.productInterest || "Select Product"}
+                            </span>
+                            <div className={styles.selectIcons}>
+                              {form.productInterest && (
+                                <span
+                                  className={styles.clearBtn}
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    handleSelectProduct("");
+                                  }}
+                                  title="Clear selection"
+                                >
+                                  ×
+                                </span>
+                              )}
+                              <FaChevronDown
+                                className={`${styles.dropdownArrow} ${
+                                  isDropdownOpen ? styles.arrowOpen : ""
+                                }`}
+                              />
+                            </div>
+                          </div>
+
+                          {isDropdownOpen && (
+                            <div className={styles.dropdownMenu}>
+                              <div className={styles.searchBox}>
+                                <FaSearch className={styles.searchIcon} />
+                                <input
+                                  ref={searchInputRef}
+                                  type="text"
+                                  placeholder="Search product..."
+                                  value={searchQuery}
+                                  onChange={(e) => setSearchQuery(e.target.value)}
+                                  onClick={(e) => e.stopPropagation()}
+                                  className={styles.dropdownSearchInput}
+                                />
+                                {searchQuery && (
+                                  <span
+                                    className={styles.clearSearchBtn}
+                                    onClick={(e) => {
+                                      e.stopPropagation();
+                                      setSearchQuery("");
+                                      searchInputRef.current?.focus();
+                                    }}
+                                  >
+                                    ×
+                                  </span>
+                                )}
+                              </div>
+
+                              <ul className={styles.optionsList}>
+                                <li
+                                  className={`${styles.optionItem} ${
+                                    !form.productInterest
+                                      ? styles.activeOption
+                                      : ""
+                                  }`}
+                                  onClick={() => handleSelectProduct("")}
+                                >
+                                  Select Product
+                                </li>
+                                {filteredProducts.length > 0 ? (
+                                  filteredProducts.map((prodName, idx) => (
+                                    <li
+                                      key={idx}
+                                      className={`${styles.optionItem} ${
+                                        form.productInterest === prodName
+                                          ? styles.activeOption
+                                          : ""
+                                      }`}
+                                      onClick={() => handleSelectProduct(prodName)}
+                                      title={prodName}
+                                    >
+                                      {prodName}
+                                    </li>
+                                  ))
+                                ) : (
+                                  <li className={styles.noResults}>
+                                    No products found
+                                  </li>
+                                )}
+                              </ul>
+                            </div>
+                          )}
+                        </div>
                       </div>
                     </div>
 

@@ -12,6 +12,7 @@ const adminAuth = require('../middleware/adminAuth');
 
 // Public Form Submit
 router.post('/create', createContact);
+router.post('/', createContact);
 
 // Admin Only
 router.get('/all',  getAllContacts);  
