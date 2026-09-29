@@ -286,7 +286,8 @@ function ProductPageContent() {
 
         {/* HEADING */}
         <div className={styles.heading}>
-          <h1>Explore Our Medical & {headingName}</h1>
+          {/* <h1>Explore Our Medical & {headingName}</h1> */}
+          <h1>Explore Our Products Ranges</h1>
           <p>
             From advanced medical devices to cutting-edge dental equipment,
             discover innovative solutions trusted by hospitals, clinics,
