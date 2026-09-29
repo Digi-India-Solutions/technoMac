@@ -323,7 +323,14 @@ export default function Header() {
               {/* Logo */}
               <div className={styles.logo}>
                 <Link href="/">
-                  <Image src={logo} alt="TECHNOMAC Logo" height={40} width={150} />
+                  <Image
+                    src={logo}
+                    alt="TECHNOMAC Logo"
+                    height={32}
+                    width={130}
+                    priority
+                    style={{ objectFit: "contain", height: "32px", width: "auto" }}
+                  />
                 </Link>
               </div>
 

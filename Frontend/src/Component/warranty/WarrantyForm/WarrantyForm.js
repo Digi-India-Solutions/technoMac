@@ -531,15 +531,16 @@
 // }
 
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Breadcrumb from "../../common/Breadcrumb/Breadcrumb";
 import styles from "./WarrantyForm.module.css";
 import {
   FaUser, FaEnvelope, FaPhoneAlt, FaClinicMedical,
   FaMapMarkerAlt, FaCalendarAlt, FaHashtag, FaBuilding,
   FaUpload, FaShieldAlt, FaCheckCircle,
+  FaChevronDown, FaSearch, FaTimes, FaCheck,
 } from "react-icons/fa";
-import { postData } from "../../../services/FetchNodeServices"; // ✅ ADDED
+import { postData, getData } from "../../../services/FetchNodeServices"; // ✅ ADDED
 
 const PRODUCT_MODELS = [
   "MR-01/70 Wall Model",
@@ -575,6 +576,59 @@ export default function WarrantyForm() {
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
   const [successMsg, setSuccessMsg] = useState("");
+
+  // ─── Searchable Product Model State ─────────────────────────────────────────
+  const [productList, setProductList] = useState(PRODUCT_MODELS);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownRef = useRef(null);
+  const searchInputRef = useRef(null);
+
+  // ─── Fetch All Products For Dropdown ─────────────────────────────────────────
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const res = await getData("product");
+        if (res?.success && Array.isArray(res?.data) && res.data.length > 0) {
+          const names = res.data
+            .map((item) => (item.name || item.model || item.sku || "").trim())
+            .filter(Boolean);
+          // Combine fetched products with fallback models and remove duplicates
+          const combined = Array.from(new Set([...names, ...PRODUCT_MODELS]));
+          setProductList(combined);
+        }
+      } catch (err) {
+        console.error("fetchProducts error in WarrantyForm:", err);
+      }
+    };
+    fetchProducts();
+  }, []);
+
+  // ─── Close Dropdown On Outside Click ─────────────────────────────────────────
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsDropdownOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  // ─── Auto-focus search input when opened ─────────────────────────────────────
+  useEffect(() => {
+    if (isDropdownOpen && searchInputRef.current) {
+      setTimeout(() => {
+        searchInputRef.current?.focus();
+      }, 50);
+    }
+  }, [isDropdownOpen]);
+
+  const filteredProducts = productList.filter((model) =>
+    model.toLowerCase().includes(searchTerm.toLowerCase().trim())
+  );
 
   // ─── Handle Text/Select/Date Change ─────────────────────────────────────────
   const handleChange = (e) => {
@@ -673,7 +727,6 @@ export default function WarrantyForm() {
 
       if (response?.success === true) {
         setSuccessMsg("Warranty registered successfully! Our team will contact you soon.");
-        // ✅ Reset all fields
         setForm({
           email: "", customerName: "", clinicName: "", customerContact: "",
           clinicAddress: "", purchaseDate: "", productModel: "", serialNumber: "",
@@ -682,6 +735,8 @@ export default function WarrantyForm() {
         setImage(null);
         setImagePreview(null);
         setErrors({});
+        setSearchTerm("");
+        setIsDropdownOpen(false);
       } else {
         setErrors({ api: response?.message || "Something went wrong. Please try again." });
       }
@@ -828,14 +883,117 @@ export default function WarrantyForm() {
               <div className="col-lg-6">
                 <div className={`${styles.formField} ${errors.productModel ? styles.fieldError : ""}`}>
                   <label>Product Model *</label>
-                  <div className={styles.inputGroup}>
-                    <FaBuilding />
-                    <select name="productModel" value={form.productModel} onChange={handleChange}>
-                      <option value="">Select Product Model</option>
-                      {PRODUCT_MODELS.map((model) => (
-                        <option key={model} value={model}>{model}</option>
-                      ))}
-                    </select>
+                  <div className={styles.customSelectWrapper} ref={dropdownRef}>
+                    <div
+                      className={`${styles.customSelectTrigger} ${isDropdownOpen ? styles.selectOpen : ""} ${!form.productModel ? styles.placeholder : ""}`}
+                      onClick={() => {
+                        setIsDropdownOpen((prev) => !prev);
+                        if (!isDropdownOpen) {
+                          setSearchTerm("");
+                        }
+                      }}
+                      tabIndex={0}
+                      role="combobox"
+                      aria-expanded={isDropdownOpen}
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter" || e.key === " ") {
+                          e.preventDefault();
+                          setIsDropdownOpen((prev) => !prev);
+                        } else if (e.key === "Escape") {
+                          setIsDropdownOpen(false);
+                        }
+                      }}
+                    >
+                      <div className={styles.selectTriggerLeft}>
+                        <FaBuilding className={styles.selectIcon} />
+                        <span className={styles.selectValue}>
+                          {form.productModel || "Select Product Model"}
+                        </span>
+                      </div>
+                      <div className={styles.selectTriggerRight}>
+                        {form.productModel && (
+                          <button
+                            type="button"
+                            className={styles.clearBtn}
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setForm((prev) => ({ ...prev, productModel: "" }));
+                            }}
+                            title="Clear selection"
+                          >
+                            <FaTimes />
+                          </button>
+                        )}
+                        <FaChevronDown className={`${styles.chevron} ${isDropdownOpen ? styles.chevronRotated : ""}`} />
+                      </div>
+                    </div>
+
+                    {isDropdownOpen && (
+                      <div className={styles.dropdownMenu}>
+                        {/* Search Input */}
+                        <div className={styles.searchBoxWrapper}>
+                          <FaSearch className={styles.searchIcon} />
+                          <input
+                            ref={searchInputRef}
+                            type="text"
+                            className={styles.searchInput}
+                            placeholder="Search product model..."
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
+                            onClick={(e) => e.stopPropagation()}
+                          />
+                          {searchTerm && (
+                            <button
+                              type="button"
+                              className={styles.searchClearBtn}
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                setSearchTerm("");
+                                searchInputRef.current?.focus();
+                              }}
+                              title="Clear search"
+                            >
+                              <FaTimes />
+                            </button>
+                          )}
+                        </div>
+
+                        {/* Scrollable list */}
+                        <div className={styles.dropdownList}>
+                          {filteredProducts.length > 0 ? (
+                            filteredProducts.map((model) => {
+                              const isSelected = form.productModel === model;
+                              return (
+                                <div
+                                  key={model}
+                                  className={`${styles.dropdownItem} ${isSelected ? styles.itemSelected : ""}`}
+                                  onClick={() => {
+                                    setForm((prev) => ({ ...prev, productModel: model }));
+                                    if (errors.productModel) {
+                                      setErrors((prev) => ({ ...prev, productModel: "" }));
+                                    }
+                                    setIsDropdownOpen(false);
+                                    setSearchTerm("");
+                                  }}
+                                >
+                                  <span className={styles.itemText}>{model}</span>
+                                  {isSelected && <FaCheck className={styles.checkIcon} />}
+                                </div>
+                              );
+                            })
+                          ) : (
+                            <div className={styles.noResults}>
+                              No product models found matching "{searchTerm}"
+                            </div>
+                          )}
+                        </div>
+
+                        {/* Count Footer */}
+                        <div className={styles.dropdownFooter}>
+                          Showing {filteredProducts.length} of {productList.length} products
+                        </div>
+                      </div>
+                    )}
                   </div>
                   <Err field="productModel" />
                 </div>

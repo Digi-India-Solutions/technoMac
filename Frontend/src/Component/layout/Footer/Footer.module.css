@@ -8,7 +8,7 @@
 
 .footerTop {
   padding-bottom: 0px;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* Logo */
@@ -19,7 +19,7 @@
   margin-bottom: 20px;
 }
 
-.footerAbout img{
+.footerAbout img {
   object-fit: cover;
 }
 
@@ -61,7 +61,8 @@
 /* Links */
 
 .footerLinks h4,
-.footerContact h4 , .newsletterBox h4 {
+.footerContact h4,
+.newsletterBox h4 {
   font-size: 18px;
   margin-bottom: 10px;
 }
@@ -118,7 +119,7 @@
 
 .queryBtn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(255,77,90,0.3);
+  box-shadow: 0 10px 20px rgba(255, 77, 90, 0.3);
 }
 
 /* Bottom */
@@ -146,11 +147,9 @@
   height: 220px;
 
   background:
-    radial-gradient(
-      circle,
-      rgba(229,57,53,0.18),
-      transparent 70%
-    );
+    radial-gradient(circle,
+      rgba(229, 57, 53, 0.18),
+      transparent 70%);
 
   top: -120px;
   right: -80px;
@@ -165,7 +164,7 @@
   display: inline-block;
 
   background:
-    rgba(229,57,53,0.14);
+    rgba(229, 57, 53, 0.14);
 
   color: #ff6b6b;
 
@@ -191,7 +190,7 @@
 
 .newsletterBox p {
 
-  color: rgba(255,255,255,0.68);
+  color: rgba(255, 255, 255, 0.68);
 
   font-size: 14px;
 
@@ -239,7 +238,7 @@
   padding: 0 18px;
 
   background:
-    rgba(255,255,255,0.08);
+    rgba(255, 255, 255, 0.08);
 
   color: #fff;
   font-size: 14px;
@@ -250,12 +249,12 @@
 .inputGroup input:focus {
 
   box-shadow:
-    0 0 0 3px rgba(229,57,53,0.18);
+    0 0 0 3px rgba(229, 57, 53, 0.18);
 }
 
 .inputGroup input::placeholder {
 
-  color: rgba(255,255,255,0.42);
+  color: rgba(255, 255, 255, 0.42);
 }
 
 /* BUTTON */
@@ -271,11 +270,9 @@
   border-radius: 10px;
 
   background:
-    linear-gradient(
-      135deg,
+    linear-gradient(135deg,
       var(--theme-color),
-      #ff6b6b
-    );
+      #ff6b6b);
 
   color: #fff;
 
@@ -286,7 +283,7 @@
   transition: 0.4s ease;
 
   box-shadow:
-    0 12px 28px rgba(229,57,53,0.25);
+    0 12px 28px rgba(229, 57, 53, 0.25);
 }
 
 .inputGroup button:hover {
@@ -294,7 +291,7 @@
   transform: translateY(-3px);
 
   box-shadow:
-    0 18px 35px rgba(229,57,53,0.35);
+    0 18px 35px rgba(229, 57, 53, 0.35);
 }
 
 /* SMALL TEXT */
@@ -305,7 +302,7 @@
 
   margin-top: 18px;
 
-  color: rgba(255,255,255,0.45);
+  color: rgba(255, 255, 255, 0.45);
 
   font-size: 12px;
 

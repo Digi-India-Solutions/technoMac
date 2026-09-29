@@ -131,16 +131,22 @@
 ========================= */
 
 .logo {
-
   display: flex;
-
   align-items: center;
-
   flex-shrink: 0;
 }
 
+.logo a {
+  display: inline-flex;
+  align-items: center;
+}
+
 .logo img {
-  object-fit: none;
+  object-fit: contain !important;
+  height: 32px !important;
+  width: auto !important;
+  max-width: 140px;
+  display: block;
 }
 
 /* =========================

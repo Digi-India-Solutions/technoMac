@@ -27,7 +27,7 @@ const INITIAL_FORM = {
 };
 
 // ── Modal Form ───────────────────────────────────────────────────
-function CallBackModal({ onClose, productName = "TECHNOMAC Dental Equipment" }) {
+function CallBackModal({ onClose, productName = "TECHNOMAC" }) {
     const [form, setForm] = useState(INITIAL_FORM);
     const [errors, setErrors] = useState({});
     const [loading, setLoading] = useState(false);
@@ -100,8 +100,7 @@ function CallBackModal({ onClose, productName = "TECHNOMAC Dental Equipment" }) 
                     <div>
                         <h2 className={styles.modalTitle}>Get a Call Back</h2>
                         <p className={styles.modalSubtitle}>
-                            We&apos;re committed to providing you with the best possible dental
-                            equipment and support. Our team will get back to you within 24 hours.
+                            We&apos;re committed to providing the right Dental and Medical Equipment Solutions for your needs. Our team will get back to you within 24 hours.
                         </p>
                     </div>
                     <button className={styles.closeBtn} onClick={onClose}>
@@ -274,7 +273,7 @@ function CallBackModal({ onClose, productName = "TECHNOMAC Dental Equipment" }) 
     );
 }
 
-function AdvancedDentalEquipment({ productName = 'TECHNOMAC Dental Equipment' }) {
+function AdvancedDentalEquipment({ productName = 'TECHNOMAC' }) {
     const [showModal, setShowModal] = useState(false);
 
     return (
