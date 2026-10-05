@@ -1,4 +1,356 @@
 .detailsSection {
+  padding: 90px 0 70px;
+  background: #f8fafc;
+}
+
+.wrapper {
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+/* =========================
+   TOP BAR
+========================= */
+
+.topBar {
+  margin-bottom: 20px;
+}
+
+.backBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #475569;
+  font-size: 13.5px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  padding: 8px 18px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 30px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+}
+
+.backBtn:hover {
+  color: var(--theme-color, #e53935);
+  border-color: rgba(229, 57, 53, 0.3);
+  transform: translateX(-4px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.header {
+  margin-bottom: 20px;
+}
+
+.metaRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+.updateBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(229, 57, 53, 0.1);
+  color: var(--theme-color, #e53935);
+  padding: 6px 16px;
+  border-radius: 30px;
+  font-size: 11.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.badgeIcon {
+  font-size: 11px;
+}
+
+.metaItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #64748b;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.title {
+  font-size: 34px;
+  font-weight: 800;
+  color: #0f172a;
+  line-height: 1.25;
+  margin: 0;
+  letter-spacing: -0.4px;
+}
+
+/* =========================
+   HERO IMAGE
+========================= */
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  height: 440px;
+  max-height: 480px;
+  border-radius: 24px;
+  overflow: hidden;
+  margin-bottom: 32px;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.08);
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+}
+
+.updateImage {
+  object-fit: cover;
+  display: block;
+}
+
+/* =========================
+   ARTICLE CARD
+========================= */
+
+.articleCard {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 20px;
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+}
+
+/* =========================
+   DESCRIPTION
+========================= */
+
+.description {
+  color: #334155;
+  font-size: 16.5px;
+  line-height: 1.85;
+  font-weight: 400;
+}
+
+.description p {
+  margin: 0 0 10px;
+}
+
+/* =========================
+   HIGHLIGHTS
+========================= */
+
+.highlights {
+  padding-top: 20px;
+  border-top: 1px solid #f1f5f9;
+}
+
+.sectionHeading {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.headingIcon {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: rgba(229, 57, 53, 0.1);
+  color: var(--theme-color, #e53935);
+  font-size: 18px;
+}
+
+.sectionHeading h2 {
+  margin: 0 0 3px;
+  font-size: 24px;
+  line-height: 1.3;
+  font-weight: 750;
+  color: #0f172a;
+}
+
+.sectionHeading p {
+  margin: 0;
+  color: #64748b;
+  font-size: 13px;
+}
+
+/* =========================
+   POINTS
+========================= */
+
+.pointsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pointItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 8px 16px;
+  background: #f8fafc;
+  border: 1px solid #eef2f7;
+  border-radius: 10px;
+  color: #334155;
+  font-size: 15px;
+  line-height: 1.65;
+  transition: all 0.25s ease;
+}
+
+.pointItem:hover {
+  transform: translateX(4px);
+  border-color: rgba(229, 57, 53, 0.2);
+  box-shadow: 0 5px 16px rgba(0, 0, 0, 0.04);
+}
+
+.pointIcon {
+  color: var(--theme-color, #e53935);
+  font-size: 15px;
+  flex-shrink: 0;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.articleFooter {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #f1f5f9;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.footerBackBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--theme-color, #e53935);
+  color: #ffffff;
+  padding: 12px 28px;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 20px rgba(229, 57, 53, 0.25);
+}
+
+.footerBackBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(229, 57, 53, 0.35);
+  color: #ffffff;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+  .detailsSection {
+    padding: 20px 0 60px;
+  }
+
+  .wrapper {
+    width: 100%;
+  }
+
+  .title {
+    font-size: 24px;
+  }
+
+  .metaRow {
+    gap: 10px;
+  }
+
+  .imageWrapper {
+    height: 260px;
+    border-radius: 16px;
+    margin-bottom: 24px;
+  }
+
+  .articleCard {
+    padding: 24px 20px;
+    border-radius: 16px;
+  }
+
+  .description {
+    font-size: 15px;
+    line-height: 1.75;
+  }
+
+  .sectionHeading h2 {
+    font-size: 20px;
+  }
+
+  .pointItem {
+    padding: 13px 14px;
+    font-size: 14px;
+  }
+
+  .footerBackBtn {
+    padding: 11px 22px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .detailsSection {
+    padding-top: 85px;
+  }
+
+  .backBtn {
+    font-size: 12.5px;
+    padding: 7px 14px;
+  }
+
+  .title {
+    font-size: 22px;
+  }
+
+  .imageWrapper {
+    height: 220px;
+    border-radius: 14px;
+  }
+
+  .articleCard {
+    padding: 22px 16px;
+  }
+
+  .sectionHeading {
+    gap: 10px;
+  }
+
+  .headingIcon {
+    width: 38px;
+    height: 38px;
+    font-size: 15px;
+  }
+
+  .sectionHeading h2 {
+    font-size: 18px;
+  }
+
+  .sectionHeading p {
+    font-size: 12px;
+  }
+}
+
+
+/* .detailsSection {
 
   padding: 100px 0 0px;
 
@@ -65,8 +417,6 @@
   margin-bottom: 20px;
 }
 
-/* POINT BOX */
-
 .pointBox {
   background: var(--gradient-theme-color);
   border-radius: 20px;
@@ -95,6 +445,11 @@
   font-size: 14px;
 
   line-height: 1.8;
+}
+
+.update_container{
+  margin:auto;
+  width: 70%;
 }
 
 @media(max-width:576px) {
@@ -142,4 +497,4 @@
   margin-bottom: 10px;
 }
 
-}
+} */
