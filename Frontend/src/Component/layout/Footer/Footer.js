@@ -100,7 +100,7 @@ export default function Footer() {
               <div className={styles.footerAbout}>
                 <Image
                   src={Logo}
-                  alt="TECHNOMAC Logo"
+                  alt="Technomac Medical Systems"
                   width={150}
                   height={50}
                   style={{ objectFit: "cover" }}
