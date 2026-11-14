@@ -325,7 +325,7 @@ export default function Header() {
                 <Link href="/">
                   <Image
                     src={logo}
-                    alt="TECHNOMAC Logo"
+                    alt="Technomac Medical Systems"
                     height={32}
                     width={130}
                     priority
@@ -887,7 +887,7 @@ export default function Header() {
 //               {/* Logo */}
 //               <div className={styles.logo}>
 //                 <Link href="/">
-//                   <Image src={logo} alt="TECHNOMAC Logo" height={40} width={150} />
+//                   <Image src={logo} alt="Technomac Medical Systems" height={40} width={150} />
 //                 </Link>
 //               </div>
 

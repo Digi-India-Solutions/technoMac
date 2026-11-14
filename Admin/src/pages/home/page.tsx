@@ -58,7 +58,7 @@ export default function Home() {
         }}>
           <img
             src={logo}
-            alt="Technomac Logo"
+            alt="Technomac Medical Systems"
             style={{ height: 92, width: 'auto', objectFit: 'contain', display: 'block' }}
           />
         </div>

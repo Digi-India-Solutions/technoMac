@@ -542,17 +542,7 @@ import {
 } from "react-icons/fa";
 import { postData, getData } from "../../../services/FetchNodeServices"; // ✅ ADDED
 
-const PRODUCT_MODELS = [
-  "MR-01/70 Wall Model",
-  "MR-01/60 Wall Model",
-  "MR-01 Floor Model",
-  "Cliq-X Portable X-Ray",
-  "Garuda Dental Chair",
-  "Garuda Plus Dental Chair",
-  "UV Cabinet",
-  "Auto Clave",
-  "RVG Sensor",
-];
+const PRODUCT_MODELS = [];
 
 export default function WarrantyForm() {
 
